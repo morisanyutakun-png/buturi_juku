@@ -21,6 +21,7 @@ import { PhilosophySection } from "@/components/philosophy-section";
 import { BookShowcase } from "@/components/book-showcase";
 import { Testimonials } from "@/components/testimonials";
 import { ForEveryoneSection } from "@/components/for-everyone-section";
+import { InstructorPortrait } from "@/components/instructor-portrait";
 import { courses } from "@/data/courses";
 import { articles } from "@/data/articles";
 import { instructor } from "@/data/instructor";
@@ -115,8 +116,8 @@ export default function HomePage() {
           {[
             { k: "共通テスト 物理", v: "満点", s: "講師の受験実績", color: "text-gold" },
             { k: "二次試験 物理", v: "9割", s: "難関大レベル", color: "text-accent" },
-            { k: "講師の所属", v: "名古屋大学", s: "電気電子情報工学科", color: "text-accent" },
-            { k: "対応エリア", v: "全国 Online", s: "初学者〜難関大まで", color: "text-gold" },
+            { k: "指導実績", v: "名大合格生を輩出", s: "塾講師としての実績", color: "text-gold" },
+            { k: "対応エリア", v: "全国 Online", s: "初学者〜難関大まで", color: "text-accent" },
           ].map((x) => (
             <div key={x.k} className="px-4 py-6 text-center md:py-8">
               <p className="text-[10px] tracking-[0.28em] uppercase text-paper/40">
@@ -197,24 +198,7 @@ export default function HomePage() {
         description="書籍を手がけた主宰講師が、体験授業からカリキュラム設計・授業まですべてを担当します。"
       >
         <div className="grid gap-10 rounded-3xl border border-paper/10 bg-gradient-to-br from-navy-900/80 via-ink-900/80 to-ink-950 p-8 md:grid-cols-[1fr_1.4fr] md:p-14">
-          <div className="relative flex aspect-[4/5] items-end overflow-hidden rounded-2xl border border-paper/10 bg-navy-800">
-            <div
-              aria-hidden
-              className="absolute inset-0 opacity-70 [background-image:radial-gradient(circle_at_30%_20%,rgba(110,168,255,0.4),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(232,197,122,0.25),transparent_60%)]"
-            />
-            <div className="relative p-8">
-              <p className="text-xs tracking-[0.3em] uppercase text-gold">
-                Chief Instructor
-              </p>
-              <p className="mt-3 font-serif text-2xl text-paper">
-                {instructor.name}
-              </p>
-              <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[11px] text-accent">
-                <GraduationCap className="h-3 w-3" aria-hidden />
-                {instructor.affiliationShort}
-              </p>
-            </div>
-          </div>
+          <InstructorPortrait />
           <div>
             <div className="flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-accent">
               <GraduationCap className="h-4 w-4" aria-hidden />
@@ -225,7 +209,7 @@ export default function HomePage() {
               あなた専用のルートを。
             </h3>
             <p className="mt-6 text-paper/70 leading-relaxed">
-              名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、大学受験物理の指導にも深く携わる。自身も共通テスト物理 満点・二次試験物理 9割を達成。塾講師経験と書籍執筆の経験を背景に、一人ひとりに合わせた学習ルートを設計します。
+              名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導にあたる。自身も共通テスト物理 満点・二次試験物理 9割を達成し、これまでの指導で<strong className="text-gold">名古屋大学合格生</strong>も輩出。書籍執筆の経験とあわせ、一人ひとりに合わせた学習ルートを設計します。
             </p>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-4">

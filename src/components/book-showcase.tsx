@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { BookOpen, ExternalLink, Quote } from "lucide-react";
 import { Section } from "@/components/section";
 import { featuredBook } from "@/data/books";
@@ -7,57 +8,47 @@ export function BookShowcase() {
     <Section
       eyebrow="PUBLISHED WORK"
       title={<>書籍を執筆した講師が、<br className="sm:hidden" />授業をそのまま担当します。</>}
-      description="主宰講師は、大学受験物理の書籍を手がけています。書籍で体系化した指導観を、そのままオンライン授業に持ち込みます。"
+      description="主宰講師 森祐太(名古屋大学 工学部 電気電子情報工学科)が手がけた電磁気の書籍。書籍で体系化した指導観を、そのままオンライン授業に持ち込みます。"
       className="relative overflow-hidden bg-gradient-to-b from-cream via-cream to-cream-muted text-ink-900"
     >
-      <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.3fr]">
+      <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
         <div className="relative">
           <div
             aria-hidden
-            className="absolute -left-6 -top-6 h-40 w-40 rounded-full bg-gold/40 blur-3xl"
+            className="absolute -left-10 -top-10 h-56 w-56 rounded-full bg-gold/40 blur-3xl"
           />
-          <div className="relative mx-auto flex aspect-[3/4] max-w-[320px] rotate-[-3deg] overflow-hidden rounded-[4px] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.35)] ring-1 ring-ink-900/10 transition hover:rotate-0">
-            <div className="flex h-full w-full flex-col justify-between bg-gradient-to-br from-navy-900 via-navy-800 to-ink-900 p-7 text-paper">
-              <div>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-gold">
-                  {featuredBook.field} / {featuredBook.publishedYear}
-                </p>
-                <p className="mt-6 font-serif text-2xl leading-tight">
-                  {featuredBook.title}
-                </p>
-              </div>
-              <div className="mt-8 h-px bg-gold/40" />
-              <div>
-                <p className="font-serif text-sm text-paper/70">
-                  {featuredBook.subtitle}
-                </p>
-                <p className="mt-6 font-mono text-[10px] tracking-[0.3em] text-paper/50">
-                  BY 森 祐太
-                </p>
-              </div>
+          <div
+            aria-hidden
+            className="absolute -right-10 bottom-10 h-48 w-48 rounded-full bg-orange-400/30 blur-3xl"
+          />
 
-              <svg
+          <figure className="relative">
+            <div className="relative overflow-hidden rounded-[6px] shadow-[0_50px_90px_-30px_rgba(0,0,0,0.4)] ring-1 ring-ink-900/10 transition duration-500 hover:-translate-y-1 hover:shadow-[0_60px_110px_-30px_rgba(0,0,0,0.45)]">
+              <Image
+                src={featuredBook.coverImage}
+                alt={`${featuredBook.title} の表紙`}
+                width={1135}
+                height={870}
+                priority={false}
+                className="block h-auto w-full"
+              />
+              {/* subtle reflection edge */}
+              <div
                 aria-hidden
-                className="absolute inset-x-0 bottom-6 h-16 w-full opacity-40"
-                viewBox="0 0 320 80"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0 60 Q 80 20 160 60 T 320 60"
-                  fill="none"
-                  stroke="#e8c57a"
-                  strokeWidth="1"
-                />
-                <path
-                  d="M0 50 Q 80 10 160 50 T 320 50"
-                  fill="none"
-                  stroke="#6ea8ff"
-                  strokeWidth="0.8"
-                  opacity="0.7"
-                />
-              </svg>
+                className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-black/10 to-transparent"
+              />
             </div>
-          </div>
+
+            <figcaption className="mt-5 flex items-center justify-between text-xs">
+              <span className="inline-flex items-center gap-2 rounded-full border border-ink-900/15 bg-paper/50 px-3 py-1 text-ink-700">
+                <BookOpen className="h-3 w-3" aria-hidden />
+                {featuredBook.field} / {featuredBook.publishedYear}
+              </span>
+              <span className="font-mono tracking-[0.22em] text-ink-700/60">
+                NAGOYA UNIV. EEI ENG.
+              </span>
+            </figcaption>
+          </figure>
         </div>
 
         <div>
@@ -65,10 +56,17 @@ export function BookShowcase() {
             <BookOpen className="h-3 w-3" aria-hidden />
             {featuredBook.badge ?? "著者による執筆書籍"}
           </div>
-          <h3 className="mt-6 font-serif text-display-md text-ink-900">
+
+          {featuredBook.tagline && (
+            <p className="mt-6 font-serif text-sm tracking-wider text-red-700">
+              {featuredBook.tagline}
+            </p>
+          )}
+
+          <h3 className="mt-2 font-serif text-display-md text-ink-900">
             {featuredBook.title}
           </h3>
-          <p className="mt-3 font-serif text-ink-700">
+          <p className="mt-4 font-serif text-ink-700">
             <span className="text-gold-deep">—</span> {featuredBook.subtitle}
           </p>
 

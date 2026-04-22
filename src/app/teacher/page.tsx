@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { BookOpen, ExternalLink, GraduationCap, Trophy } from "lucide-react";
+import { BookOpen, ExternalLink, GraduationCap, Trophy, Users } from "lucide-react";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
 import { BookShowcase } from "@/components/book-showcase";
+import { InstructorPortrait } from "@/components/instructor-portrait";
 import { breadcrumbJsonLd, personJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/data/site";
@@ -38,27 +39,7 @@ export default function TeacherPage() {
         description={instructor.leadline}
       >
         <div className="grid gap-10 rounded-3xl border border-paper/10 bg-gradient-to-br from-navy-900/70 via-ink-900/80 to-ink-950 p-8 md:grid-cols-[1fr_1.3fr] md:p-14">
-          <div className="relative flex aspect-[4/5] items-end overflow-hidden rounded-2xl border border-paper/10 bg-navy-800">
-            <div
-              aria-hidden
-              className="absolute inset-0 opacity-70 [background-image:radial-gradient(circle_at_30%_20%,rgba(110,168,255,0.4),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(232,197,122,0.25),transparent_60%)]"
-            />
-            <div className="relative p-8">
-              <p className="text-xs tracking-[0.3em] uppercase text-gold">
-                Chief Instructor
-              </p>
-              <p className="mt-3 font-serif text-3xl text-paper">
-                {instructor.name}
-              </p>
-              <p className="mt-1 font-mono text-[10px] tracking-[0.3em] text-paper/50">
-                {instructor.nameEn}
-              </p>
-              <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[11px] text-accent">
-                <GraduationCap className="h-3 w-3" aria-hidden />
-                {instructor.affiliationShort}
-              </p>
-            </div>
-          </div>
+          <InstructorPortrait />
 
           <div>
             <p className="text-xs tracking-[0.28em] uppercase text-accent">
@@ -148,6 +129,63 @@ export default function TeacherPage() {
         </div>
       </section>
 
+      {/* TEACHING TRACK RECORD */}
+      <Section
+        eyebrow="TEACHING TRACK RECORD"
+        title={<>塾講師として、<br className="sm:hidden" />物理指導の実績があります。</>}
+        description="名古屋大学で電磁気学を専攻しながら、塾講師として大学受験物理の指導に携わっています。これまでの指導で名古屋大学合格生を輩出するなど、幅広い学力層への指導実績があります。"
+      >
+        <div className="grid gap-5 md:grid-cols-2">
+          {instructor.trackRecord.map((t, i) => (
+            <div
+              key={t.label}
+              className="group relative overflow-hidden rounded-2xl border border-paper/10 bg-gradient-to-br from-navy-900/60 via-ink-900/80 to-ink-950 p-7"
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-accent/5 blur-2xl transition group-hover:bg-accent/15"
+              />
+              <div className="relative flex items-start justify-between">
+                <p className="font-mono text-[10px] tracking-[0.3em] text-accent">
+                  RECORD 0{i + 1}
+                </p>
+                <Users className="h-4 w-4 text-accent/60" aria-hidden />
+              </div>
+              <p className="relative mt-5 text-[11px] tracking-[0.22em] uppercase text-paper/50">
+                {t.label}
+              </p>
+              <p className="relative mt-3 font-serif text-xl text-paper">
+                {t.value}
+              </p>
+              <p className="relative mt-3 text-sm leading-relaxed text-paper/60">
+                {t.note}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 overflow-hidden rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-ink-900/80 to-ink-900">
+          <div className="grid gap-8 p-8 md:grid-cols-[auto_1fr] md:items-center md:gap-10 md:p-10">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gold/40 bg-gold/10 text-gold">
+              <Trophy className="h-6 w-6" aria-hidden />
+            </div>
+            <div>
+              <p className="font-mono text-[10px] tracking-[0.3em] text-gold">
+                HIGHLIGHT
+              </p>
+              <p className="mt-3 font-serif text-xl leading-relaxed text-paper sm:text-2xl">
+                塾講師として指導した受講生の中から、
+                <span className="text-gold">名古屋大学合格生</span>
+                を輩出しています。
+              </p>
+              <p className="mt-3 text-sm text-paper/70 leading-relaxed">
+                中堅大から難関大まで、物理指導を通して多様な受講生を志望校まで伴走してきました。
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       {/* Book showcase */}
       <BookShowcase />
 
@@ -232,20 +270,6 @@ export default function TeacherPage() {
               </a>
             </div>
           ))}
-          <div className="flex flex-col gap-4 p-6 md:flex-row md:items-center md:gap-10">
-            <p className="font-mono text-sm text-paper/40 md:w-24">—</p>
-            <div className="md:flex-1">
-              <p className="text-[10px] tracking-[0.28em] uppercase text-paper/40">
-                指導経験
-              </p>
-              <p className="mt-1 font-serif text-lg text-paper">
-                塾講師として、幅広い学力層を指導
-              </p>
-              <p className="mt-2 text-sm text-paper/70">
-                初学者〜難関大志望まで、多様なフェーズの受験生を担当。
-              </p>
-            </div>
-          </div>
         </div>
       </Section>
 
