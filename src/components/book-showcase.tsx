@@ -11,7 +11,7 @@ export function BookShowcase() {
       description="主宰講師 森祐太(名古屋大学 工学部 電気電子情報工学科)が手がけた電磁気の書籍。書籍で体系化した指導観を、そのままオンライン授業に持ち込みます。"
       className="relative overflow-hidden bg-gradient-to-b from-cream via-cream to-cream-muted text-ink-900"
     >
-      <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
+      <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1fr]">
         <div className="relative">
           <div
             aria-hidden
@@ -19,23 +19,28 @@ export function BookShowcase() {
           />
           <div
             aria-hidden
-            className="absolute -right-10 bottom-10 h-48 w-48 rounded-full bg-orange-400/30 blur-3xl"
+            className="absolute -right-10 bottom-10 h-48 w-48 rounded-full bg-ink-900/10 blur-3xl"
           />
 
-          <figure className="relative">
-            <div className="relative overflow-hidden rounded-[6px] shadow-[0_50px_90px_-30px_rgba(0,0,0,0.4)] ring-1 ring-ink-900/10 transition duration-500 hover:-translate-y-1 hover:shadow-[0_60px_110px_-30px_rgba(0,0,0,0.45)]">
+          <figure className="relative mx-auto w-full max-w-[380px]">
+            <div className="group relative overflow-hidden rounded-[6px] shadow-[0_50px_90px_-30px_rgba(0,0,0,0.5)] ring-1 ring-ink-900/20 transition duration-500 hover:-translate-y-1 hover:shadow-[0_60px_110px_-30px_rgba(0,0,0,0.55)]">
               <Image
                 src={featuredBook.coverImage}
                 alt={`${featuredBook.title} の表紙`}
-                width={1135}
-                height={870}
+                width={1713}
+                height={2655}
+                unoptimized
                 priority={false}
                 className="block h-auto w-full"
               />
-              {/* subtle reflection edge */}
+              {/* subtle reflection / spine edge */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-black/10 to-transparent"
+                className="pointer-events-none absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-black/30 to-transparent"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 right-0 w-2 bg-gradient-to-l from-white/10 to-transparent"
               />
             </div>
 
@@ -45,7 +50,7 @@ export function BookShowcase() {
                 {featuredBook.field} / {featuredBook.publishedYear}
               </span>
               <span className="font-mono tracking-[0.22em] text-ink-700/60">
-                NAGOYA UNIV. EEI ENG.
+                NAGOYA UNIV. EEI
               </span>
             </figcaption>
           </figure>
