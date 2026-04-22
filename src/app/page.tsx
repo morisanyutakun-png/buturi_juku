@@ -20,8 +20,10 @@ import { ComparisonTable } from "@/components/comparison-table";
 import { PhilosophySection } from "@/components/philosophy-section";
 import { BookShowcase } from "@/components/book-showcase";
 import { Testimonials } from "@/components/testimonials";
+import { ForEveryoneSection } from "@/components/for-everyone-section";
 import { courses } from "@/data/courses";
 import { articles } from "@/data/articles";
+import { instructor } from "@/data/instructor";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -111,16 +113,16 @@ export default function HomePage() {
       <section className="border-b border-paper/10 bg-navy-900/30">
         <div className="container grid grid-cols-2 divide-paper/10 md:grid-cols-4 md:divide-x">
           {[
-            { k: "指導分野", v: "物理 5分野", s: "力学〜原子まで" },
-            { k: "指導形式", v: "完全 1対1", s: "講師固定制" },
-            { k: "対応エリア", v: "全国 Online", s: "海外からも受講可" },
-            { k: "執筆実績", v: "大学受験物理 書籍", s: "電磁気 / 全分野" },
+            { k: "共通テスト 物理", v: "満点", s: "講師の受験実績", color: "text-gold" },
+            { k: "二次試験 物理", v: "9割", s: "難関大レベル", color: "text-accent" },
+            { k: "講師の所属", v: "名古屋大学", s: "電気電子情報工学科", color: "text-accent" },
+            { k: "対応エリア", v: "全国 Online", s: "初学者〜難関大まで", color: "text-gold" },
           ].map((x) => (
             <div key={x.k} className="px-4 py-6 text-center md:py-8">
               <p className="text-[10px] tracking-[0.28em] uppercase text-paper/40">
                 {x.k}
               </p>
-              <p className="mt-3 font-serif text-xl text-paper md:text-2xl">
+              <p className={`mt-3 font-serif text-xl md:text-2xl ${x.color}`}>
                 {x.v}
               </p>
               <p className="mt-1 text-[11px] text-paper/50">{x.s}</p>
@@ -128,6 +130,9 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* FOR EVERYONE */}
+      <ForEveryoneSection />
 
       {/* SUBJECTS */}
       <Section
@@ -201,7 +206,13 @@ export default function HomePage() {
               <p className="text-xs tracking-[0.3em] uppercase text-gold">
                 Chief Instructor
               </p>
-              <p className="mt-3 font-serif text-2xl text-paper">森 祐太</p>
+              <p className="mt-3 font-serif text-2xl text-paper">
+                {instructor.name}
+              </p>
+              <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[11px] text-accent">
+                <GraduationCap className="h-3 w-3" aria-hidden />
+                {instructor.affiliationShort}
+              </p>
             </div>
           </div>
           <div>
@@ -210,12 +221,29 @@ export default function HomePage() {
               PROFILE
             </div>
             <h3 className="mt-4 font-serif text-display-md text-paper">
-              物理を『わかる』まで、<br className="sm:hidden" />
-              あなたの隣で言語化する講師。
+              初学者にも、難関大志望にも、<br className="sm:hidden" />
+              あなた専用のルートを。
             </h3>
             <p className="mt-6 text-paper/70 leading-relaxed">
-              大学受験物理の指導歴を軸に、書籍執筆・教材開発にも携わる。『現象の言語化』と『立式のプロセス共有』を指導スタイルの中心に置き、物理が伸び悩む高校生の学習OSを書き換えることを得意とする。
+              名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、大学受験物理の指導にも深く携わる。自身も共通テスト物理 満点・二次試験物理 9割を達成。塾講師経験と書籍執筆の経験を背景に、一人ひとりに合わせた学習ルートを設計します。
             </p>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-4">
+              {instructor.achievements.map((a) => (
+                <div
+                  key={a.label}
+                  className="rounded-xl border border-paper/10 bg-ink-900/60 p-3 text-center"
+                >
+                  <p className="text-[9px] tracking-[0.22em] uppercase text-paper/50">
+                    {a.label}
+                  </p>
+                  <p className="mt-1 font-serif text-sm text-gold">
+                    {a.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+
             <Link
               href="/teacher"
               className="mt-8 inline-flex items-center gap-2 text-sm text-accent hover:text-accent-soft transition"

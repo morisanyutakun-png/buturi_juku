@@ -8,7 +8,7 @@ export const siteConfig = {
   shortName: "物理専門塾",
   tagline: "物理を、暗記ではなく理解へ。",
   description:
-    "森祐太 物理専門塾は、高校物理に特化したオンライン専門塾です。力学・電磁気・波動・熱・原子までを体系的な現象理解から学び、本質的に得点できる力を育てます。",
+    "森祐太 物理専門塾は、高校物理に特化した完全オンラインの個別指導塾です。物理が初めての初学者から、中堅大志望、難関大・医学部志望まで、一人ひとりに合わせたカリキュラムで『現象理解から得点できる物理』へ導きます。",
   // カスタムドメイン設定後、ここを差し替える
   url: "https://example.com",
   locale: "ja_JP",
@@ -19,7 +19,7 @@ export const siteConfig = {
     role: "主宰講師",
   },
   contact: {
-    email: "contact@example.com",
+    email: "morisan.yutakun@gmail.com",
     hours: "平日 10:00 – 21:00 / 土日 13:00 – 20:00",
   },
   address: {

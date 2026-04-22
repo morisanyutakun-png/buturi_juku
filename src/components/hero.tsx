@@ -45,7 +45,12 @@ export function Hero() {
 
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-paper/75 sm:text-lg">
               {siteConfig.name} は、<strong className="text-paper">高校物理だけ</strong>を扱う完全オンライン専門塾です。
-              書籍を手がけた主宰講師が、力学・電磁気・波動・熱・原子まで、<strong className="text-paper">現象理解から</strong>あなたの物理を組み立て直します。
+              <strong className="text-paper">物理が初めての人も、難関大を目指す人も</strong>。
+              名古屋大学 工学部所属の主宰講師が、あなたのレベルに合わせて物理を一から組み立て直します。
+            </p>
+
+            <p className="mt-4 text-xs tracking-[0.2em] uppercase text-paper/40">
+              初学者 / 中堅大 / 難関大 / 医学部 / 独学者 — すべて歓迎
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">

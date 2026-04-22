@@ -5,6 +5,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
 import { PhilosophySection } from "@/components/philosophy-section";
+import { ForEveryoneSection } from "@/components/for-everyone-section";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -57,6 +58,8 @@ export default function AboutPage() {
           </div>
         </div>
       </Section>
+
+      <ForEveryoneSection />
 
       <PhilosophySection />
 
