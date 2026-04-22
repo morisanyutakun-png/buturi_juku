@@ -4,13 +4,14 @@ import { CtaBlock } from "@/components/cta-block";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { PhilosophySection } from "@/components/philosophy-section";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
   title: "塾について",
   description:
-    "森祐太 物理専門塾の理念、なぜ物理専門塾なのか、総合塾との違い、教え方の思想について解説します。",
+    "森祐太 物理専門塾の理念、学習思想、なぜ物理専門塾なのか、総合塾との違いについて。物理を『わかる』まで追いかける塾の姿勢を解説します。",
   path: "/about",
 });
 
@@ -43,8 +44,8 @@ export default function AboutPage() {
               公式に当てはめる学習は、問題の前提が少しずれた瞬間に崩れます。私たちは物理を『現象を数式に翻訳する営み』として捉え直し、原理からの立式ができる状態を作ることを使命としています。
             </p>
           </div>
-          <div className="rounded-2xl border border-paper/10 bg-ink-900/60 p-8">
-            <p className="text-xs tracking-[0.28em] uppercase text-accent">
+          <div className="rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-ink-900/80 to-ink-900 p-8">
+            <p className="text-xs tracking-[0.28em] uppercase text-gold">
               OUR PROMISE
             </p>
             <h3 className="mt-4 font-serif text-2xl text-paper">
@@ -56,6 +57,8 @@ export default function AboutPage() {
           </div>
         </div>
       </Section>
+
+      <PhilosophySection />
 
       <Section
         eyebrow="WHY PHYSICS-ONLY"
@@ -92,9 +95,9 @@ export default function AboutPage() {
       </Section>
 
       <Section
-        eyebrow="PHILOSOPHY"
-        title="教え方の思想"
-        description="授業の進め方には、明確な順序と思想があります。"
+        eyebrow="TEACHING ORDER"
+        title="授業の進行順序"
+        description="私たちの授業には、明確な順序があります。"
       >
         <ol className="space-y-4">
           {[

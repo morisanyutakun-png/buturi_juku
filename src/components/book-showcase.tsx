@@ -1,0 +1,127 @@
+import { BookOpen, ExternalLink, Quote } from "lucide-react";
+import { Section } from "@/components/section";
+import { featuredBook } from "@/data/books";
+
+export function BookShowcase() {
+  return (
+    <Section
+      eyebrow="PUBLISHED WORK"
+      title={<>書籍を執筆した講師が、<br className="sm:hidden" />授業をそのまま担当します。</>}
+      description="主宰講師は、大学受験物理の書籍を手がけています。書籍で体系化した指導観を、そのままオンライン授業に持ち込みます。"
+      className="relative overflow-hidden bg-gradient-to-b from-cream via-cream to-cream-muted text-ink-900"
+    >
+      <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.3fr]">
+        <div className="relative">
+          <div
+            aria-hidden
+            className="absolute -left-6 -top-6 h-40 w-40 rounded-full bg-gold/40 blur-3xl"
+          />
+          <div className="relative mx-auto flex aspect-[3/4] max-w-[320px] rotate-[-3deg] overflow-hidden rounded-[4px] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.35)] ring-1 ring-ink-900/10 transition hover:rotate-0">
+            <div className="flex h-full w-full flex-col justify-between bg-gradient-to-br from-navy-900 via-navy-800 to-ink-900 p-7 text-paper">
+              <div>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-gold">
+                  {featuredBook.field} / {featuredBook.publishedYear}
+                </p>
+                <p className="mt-6 font-serif text-2xl leading-tight">
+                  {featuredBook.title}
+                </p>
+              </div>
+              <div className="mt-8 h-px bg-gold/40" />
+              <div>
+                <p className="font-serif text-sm text-paper/70">
+                  {featuredBook.subtitle}
+                </p>
+                <p className="mt-6 font-mono text-[10px] tracking-[0.3em] text-paper/50">
+                  BY 森 祐太
+                </p>
+              </div>
+
+              <svg
+                aria-hidden
+                className="absolute inset-x-0 bottom-6 h-16 w-full opacity-40"
+                viewBox="0 0 320 80"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0 60 Q 80 20 160 60 T 320 60"
+                  fill="none"
+                  stroke="#e8c57a"
+                  strokeWidth="1"
+                />
+                <path
+                  d="M0 50 Q 80 10 160 50 T 320 50"
+                  fill="none"
+                  stroke="#6ea8ff"
+                  strokeWidth="0.8"
+                  opacity="0.7"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold-deep/30 bg-ink-900/5 px-3 py-1 text-xs tracking-[0.2em] text-gold-deep">
+            <BookOpen className="h-3 w-3" aria-hidden />
+            {featuredBook.badge ?? "著者による執筆書籍"}
+          </div>
+          <h3 className="mt-6 font-serif text-display-md text-ink-900">
+            {featuredBook.title}
+          </h3>
+          <p className="mt-3 font-serif text-ink-700">
+            <span className="text-gold-deep">—</span> {featuredBook.subtitle}
+          </p>
+
+          <p className="mt-8 text-ink-700 leading-[1.9]">
+            {featuredBook.description}
+          </p>
+
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            {featuredBook.highlights.map((h) => (
+              <li
+                key={h}
+                className="flex items-start gap-3 rounded-xl border border-ink-900/10 bg-paper/60 p-4 text-sm text-ink-900"
+              >
+                <span
+                  aria-hidden
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded-full border border-gold-deep/50 bg-gold/40"
+                />
+                {h}
+              </li>
+            ))}
+          </ul>
+
+          <figure className="mt-10 rounded-2xl border border-ink-900/10 bg-paper/60 p-6">
+            <Quote className="h-5 w-5 text-gold-deep" aria-hidden />
+            <blockquote className="mt-3 font-serif text-lg leading-relaxed text-ink-900">
+              「電磁気で失点する本当の理由は、公式の暗記量ではなく、
+              <span className="text-gold-deep">場のイメージの欠如</span>
+              にある。」
+            </blockquote>
+            <figcaption className="mt-3 text-xs tracking-widest uppercase text-ink-700/60">
+              — 本書より
+            </figcaption>
+          </figure>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a
+              href={featuredBook.amazonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-paper transition hover:bg-navy-900"
+            >
+              Amazonで書籍を見る
+              <ExternalLink className="h-4 w-4 transition group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href="/teacher"
+              className="inline-flex items-center gap-2 rounded-full border border-ink-900/20 px-6 py-3.5 text-sm text-ink-900 hover:border-ink-900/50 transition"
+            >
+              講師プロフィールを見る
+            </a>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}

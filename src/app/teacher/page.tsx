@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import { BookOpen, Flame, ShieldCheck, Sparkles } from "lucide-react";
+import { BookOpen, ExternalLink, Flame, ShieldCheck, Sparkles } from "lucide-react";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { BookShowcase } from "@/components/book-showcase";
 import { breadcrumbJsonLd, personJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/data/site";
 import { absoluteUrl } from "@/lib/utils";
+import { books } from "@/data/books";
 
 export const metadata: Metadata = buildMetadata({
   title: "講師紹介",
   description:
-    "森祐太 物理専門塾の主宰講師・森祐太の経歴、指導スタンス、出版実績、強みをご紹介します。",
+    "森祐太 物理専門塾の主宰講師・森祐太の経歴、指導スタンス、出版実績、強みをご紹介します。電磁気の著書・Amazonでの購入リンクもこちらから。",
   path: "/teacher",
 });
 
@@ -61,10 +63,10 @@ export default function TeacherPage() {
           <div className="relative flex aspect-[4/5] items-end overflow-hidden rounded-2xl border border-paper/10 bg-navy-800">
             <div
               aria-hidden
-              className="absolute inset-0 opacity-60 [background-image:radial-gradient(circle_at_30%_20%,rgba(110,168,255,0.4),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(19,32,68,0.9),transparent_60%)]"
+              className="absolute inset-0 opacity-70 [background-image:radial-gradient(circle_at_30%_20%,rgba(110,168,255,0.4),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(232,197,122,0.25),transparent_60%)]"
             />
             <div className="relative p-8">
-              <p className="text-xs tracking-[0.3em] uppercase text-accent/80">
+              <p className="text-xs tracking-[0.3em] uppercase text-gold">
                 Chief Instructor
               </p>
               <p className="mt-3 font-serif text-3xl text-paper">森 祐太</p>
@@ -95,6 +97,9 @@ export default function TeacherPage() {
           </div>
         </div>
       </Section>
+
+      {/* Book showcase highlighted on teacher page */}
+      <BookShowcase />
 
       <Section
         eyebrow="STRENGTHS"
@@ -151,45 +156,65 @@ export default function TeacherPage() {
 
       <Section
         eyebrow="PUBLICATIONS"
-        title="出版実績・関連活動"
+        title="出版・関連活動"
         description="指導現場の知見を、書籍・教材として体系化しています。"
         className="bg-ink-900/40"
       >
         <div className="divide-y divide-paper/10 overflow-hidden rounded-2xl border border-paper/10 bg-ink-900/60">
-          {[
-            {
-              year: "2025",
-              label: "書籍執筆",
-              title: "大学受験物理 関連書籍(シリーズ)",
-              body: "高校物理の全分野を、原理から立式する視点で再構築した参考書。",
-            },
-            {
-              year: "2024",
-              label: "教材開発",
-              title: "物理学習オンライン教材",
-              body: "独学層向けに、現象理解と立式プロセスを段階学習できる教材を監修。",
-            },
-            {
-              year: "2023",
-              label: "指導実績",
-              title: "難関大合格指導",
-              body: "旧帝・医学部・早慶クラスへの複数合格者を個別指導から輩出。",
-            },
-          ].map((x) => (
+          {books.map((b) => (
             <div
-              key={x.title}
+              key={b.slug}
               className="flex flex-col gap-4 p-6 md:flex-row md:items-center md:gap-10"
             >
-              <p className="font-mono text-sm text-accent md:w-24">{x.year}</p>
+              <p className="font-mono text-sm text-gold md:w-24">
+                {b.publishedYear}
+              </p>
               <div className="md:flex-1">
                 <p className="text-[10px] tracking-[0.28em] uppercase text-paper/40">
-                  {x.label}
+                  書籍 / {b.field}
                 </p>
-                <p className="mt-1 font-serif text-lg text-paper">{x.title}</p>
-                <p className="mt-2 text-sm text-paper/70">{x.body}</p>
+                <p className="mt-1 font-serif text-lg text-paper">{b.title}</p>
+                <p className="mt-2 text-sm text-paper/70">{b.subtitle}</p>
               </div>
+              <a
+                href={b.amazonUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2.5 text-xs text-gold hover:bg-gold/15 transition"
+              >
+                Amazonで見る
+                <ExternalLink className="h-3 w-3 transition group-hover:translate-x-0.5" />
+              </a>
             </div>
           ))}
+          <div className="flex flex-col gap-4 p-6 md:flex-row md:items-center md:gap-10">
+            <p className="font-mono text-sm text-paper/40 md:w-24">2024</p>
+            <div className="md:flex-1">
+              <p className="text-[10px] tracking-[0.28em] uppercase text-paper/40">
+                教材開発
+              </p>
+              <p className="mt-1 font-serif text-lg text-paper">
+                物理学習オンライン教材
+              </p>
+              <p className="mt-2 text-sm text-paper/70">
+                独学層向けに、現象理解と立式プロセスを段階学習できる教材を監修。
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-4 p-6 md:flex-row md:items-center md:gap-10">
+            <p className="font-mono text-sm text-paper/40 md:w-24">2023</p>
+            <div className="md:flex-1">
+              <p className="text-[10px] tracking-[0.28em] uppercase text-paper/40">
+                指導実績
+              </p>
+              <p className="mt-1 font-serif text-lg text-paper">
+                難関大合格指導
+              </p>
+              <p className="mt-2 text-sm text-paper/70">
+                旧帝・医学部・早慶クラスへの複数合格者を個別指導から輩出。
+              </p>
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -214,6 +239,7 @@ export default function TeacherPage() {
           url: absoluteUrl("/teacher", siteConfig.url),
           description:
             "大学受験物理の書籍執筆・教材開発を手がける講師。現象の言語化と立式プロセスの共有を中心とした指導を行う。",
+          sameAs: books.map((b) => b.amazonUrl),
         })}
       />
     </>

@@ -38,6 +38,15 @@ const config: Config = {
           soft: "#a4c3ff",
           deep: "#3a6bd8",
         },
+        gold: {
+          DEFAULT: "#e8c57a",
+          soft: "#f2d99a",
+          deep: "#b88a3e",
+        },
+        cream: {
+          DEFAULT: "#f6efe2",
+          muted: "#e8e0cf",
+        },
       },
       fontFamily: {
         sans: [
