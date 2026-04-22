@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic",
+    sans-serif;
+  --font-serif: "Shippori Mincho", "Hiragino Mincho ProN", "Noto Serif JP",
+    "Yu Mincho", serif;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  @apply bg-ink-950 text-paper font-sans antialiased;
+  background-image:
+    radial-gradient(
+      1200px 600px at 50% -200px,
+      rgba(110, 168, 255, 0.08),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #05060a 0%, #05060a 100%);
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(110, 168, 255, 0.25);
+  color: #f5f5f7;
+}
+
+/* focus ring */
+:focus-visible {
+  @apply outline-none ring-2 ring-accent/70 ring-offset-2 ring-offset-ink-950;
+}
+
+/* prose-like styling for article */
+.article-content h2 {
+  @apply mt-16 mb-4 font-serif text-2xl text-paper scroll-mt-24;
+}
+
+.article-content h3 {
+  @apply mt-10 mb-3 font-serif text-xl text-paper scroll-mt-24;
+}
+
+.article-content p {
+  @apply my-5 leading-[1.9] text-paper/80;
+}
+
+.article-content a {
+  @apply text-accent underline-offset-4 hover:underline;
+}
+
+.article-content ul {
+  @apply my-5 list-disc space-y-2 pl-6 text-paper/80;
+}
+
+.article-content strong {
+  @apply text-paper;
+}

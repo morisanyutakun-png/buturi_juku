@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="森祐太 物理専門塾">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#05060a"/>
+      <stop offset="100%" stop-color="#0b1328"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="20%" cy="10%" r="70%">
+      <stop offset="0%" stop-color="#6ea8ff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#6ea8ff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#f5f5f7" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(80, 110)">
+    <text font-family="'Shippori Mincho','Noto Serif JP','Yu Mincho',serif" font-size="18" fill="#6ea8ff" letter-spacing="8">PHYSICS ACADEMY</text>
+    <text y="110" font-family="'Shippori Mincho','Noto Serif JP','Yu Mincho',serif" font-size="84" fill="#f5f5f7" letter-spacing="-1">森祐太 物理専門塾</text>
+    <text y="190" font-family="'Shippori Mincho','Noto Serif JP','Yu Mincho',serif" font-size="52" fill="#f5f5f7" letter-spacing="-0.5">物理を、<tspan fill="#6ea8ff">暗記</tspan>ではなく<tspan fill="#6ea8ff">理解</tspan>へ。</text>
+    <text y="260" font-family="'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="22" fill="#f5f5f7" fill-opacity="0.7">高校物理だけを、深く、丁寧に。オンラインで全国対応。</text>
+    <g transform="translate(0, 320)" fill="#f5f5f7" fill-opacity="0.7" font-family="'Hiragino Kaku Gothic ProN',sans-serif" font-size="16">
+      <text>— 力学 / 電磁気 / 波動 / 熱 / 原子</text>
+    </g>
+  </g>
+  <g transform="translate(1040, 510)">
+    <circle r="44" fill="none" stroke="#6ea8ff" stroke-opacity="0.5"/>
+    <circle r="30" fill="none" stroke="#6ea8ff" stroke-opacity="0.3"/>
+    <circle r="4" fill="#6ea8ff"/>
+  </g>
+</svg>
