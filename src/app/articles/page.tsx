@@ -6,7 +6,7 @@ import { CtaBlock } from "@/components/cta-block";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, itemListJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { articles } from "@/data/articles";
 import { formatDate } from "@/lib/utils";
@@ -16,6 +16,14 @@ export const metadata: Metadata = buildMetadata({
   description:
     "高校物理の学び方・分野別の苦手克服・受験戦略について、現場から発信するコラム一覧です。",
   path: "/articles",
+  keywords: [
+    "物理 勉強法",
+    "高校物理 苦手",
+    "大学受験物理 勉強法",
+    "力学 勉強法",
+    "電磁気 勉強法",
+  ],
+  category: "education",
 });
 
 export default function ArticlesIndexPage() {
@@ -81,6 +89,28 @@ export default function ArticlesIndexPage() {
           { name: "ホーム", href: "/" },
           { name: "物理学習コラム", href: "/articles" },
         ])}
+      />
+      <JsonLd
+        id="ld-webpage-articles"
+        data={webPageJsonLd({
+          name: "物理学習コラム",
+          description:
+            "高校物理の学び方、分野別の苦手克服、大学受験物理の戦略をまとめた記事一覧です。",
+          path: "/articles",
+        })}
+      />
+      <JsonLd
+        id="ld-articles-itemlist"
+        data={itemListJsonLd({
+          name: "物理学習コラム一覧",
+          description: "高校物理・大学受験物理の学習記事一覧です。",
+          path: "/articles",
+          items: sorted.map((article) => ({
+            name: article.title,
+            href: `/articles/${article.slug}`,
+            description: article.description,
+          })),
+        })}
       />
     </>
   );

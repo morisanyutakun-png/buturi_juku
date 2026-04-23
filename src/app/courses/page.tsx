@@ -6,7 +6,7 @@ import { CtaBlock } from "@/components/cta-block";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, itemListJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { courses } from "@/data/courses";
 
@@ -15,6 +15,14 @@ export const metadata: Metadata = buildMetadata({
   description:
     "森祐太 物理専門塾の講座一覧。体験授業、1対1個別指導、共通テスト対策、力学・電磁気の集中講座まで、目的に応じた講座をご用意しています。",
   path: "/courses",
+  keywords: [
+    "物理 講座",
+    "大学受験 物理 個別指導",
+    "共通テスト 物理 講座",
+    "力学 集中講座",
+    "電磁気 集中講座",
+  ],
+  category: "education",
 });
 
 export default function CoursesIndexPage() {
@@ -84,6 +92,28 @@ export default function CoursesIndexPage() {
           { name: "ホーム", href: "/" },
           { name: "講座一覧", href: "/courses" },
         ])}
+      />
+      <JsonLd
+        id="ld-webpage-courses"
+        data={webPageJsonLd({
+          name: "講座一覧",
+          description:
+            "体験授業、1対1個別指導、共通テスト対策、分野別集中講座を比較できる講座一覧ページです。",
+          path: "/courses",
+        })}
+      />
+      <JsonLd
+        id="ld-courses-itemlist"
+        data={itemListJsonLd({
+          name: "物理の森 講座一覧",
+          description: "目的別に選べる大学受験物理・高校物理の講座一覧です。",
+          path: "/courses",
+          items: courses.map((course) => ({
+            name: course.title,
+            href: `/courses/${course.slug}`,
+            description: course.summary,
+          })),
+        })}
       />
     </>
   );

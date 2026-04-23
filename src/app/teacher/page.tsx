@@ -7,7 +7,7 @@ import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
 import { BookShowcase } from "@/components/book-showcase";
 import { InstructorPortrait } from "@/components/instructor-portrait";
-import { breadcrumbJsonLd, personJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, personJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/data/site";
 import { absoluteUrl } from "@/lib/utils";
@@ -19,6 +19,14 @@ export const metadata: Metadata = buildMetadata({
   description:
     "森祐太 物理専門塾の主宰講師・森祐太(名古屋大学 工学部 電気電子情報工学科)のプロフィール。共通テスト物理満点、二次試験9割、電磁気書籍の執筆実績、塾講師経験など、講師の強みと指導スタンスをご紹介します。",
   path: "/teacher",
+  keywords: [
+    "森祐太 物理",
+    "物理 講師",
+    "名古屋大学 物理 講師",
+    "電磁気 書籍",
+    "大学受験物理 講師",
+  ],
+  category: "education",
 });
 
 export default function TeacherPage() {
@@ -294,6 +302,14 @@ export default function TeacherPage() {
           url: absoluteUrl("/teacher", siteConfig.url),
           description: instructor.bio,
           sameAs: books.map((b) => b.amazonUrl),
+        })}
+      />
+      <JsonLd
+        id="ld-webpage-teacher"
+        data={webPageJsonLd({
+          name: "講師紹介",
+          description: instructor.leadline,
+          path: "/teacher",
         })}
       />
     </>

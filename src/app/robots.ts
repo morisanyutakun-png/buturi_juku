@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site";
 
 export default function robots(): MetadataRoute.Robots {
+  const base = siteConfig.url.replace(/\/$/, "");
+
   return {
     rules: [
       {
@@ -9,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: `${siteConfig.url}/sitemap.xml`,
-    host: siteConfig.url,
+    sitemap: `${base}/sitemap.xml`,
+    host: base.replace(/^https?:\/\//, ""),
   };
 }

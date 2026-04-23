@@ -16,6 +16,7 @@ import {
   breadcrumbJsonLd,
   courseJsonLd,
   faqPageJsonLd,
+  webPageJsonLd,
 } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -35,6 +36,14 @@ export async function generateMetadata(
     title: course.title,
     description: `${course.subtitle} — ${course.summary}`,
     path: `/courses/${course.slug}`,
+    keywords: [
+      course.title,
+      course.subtitle,
+      course.category,
+      ...course.targets,
+      ...course.highlights,
+    ],
+    category: "education",
   });
 }
 
@@ -273,6 +282,17 @@ export default async function CourseDetailPage({
           name: course.title,
           description: course.summary,
           slug: course.slug,
+          category: course.category,
+          format: course.format,
+          targets: course.targets,
+        })}
+      />
+      <JsonLd
+        id={`ld-webpage-course-${course.slug}`}
+        data={webPageJsonLd({
+          name: course.title,
+          description: course.summary,
+          path: `/courses/${course.slug}`,
         })}
       />
       {course.faq.length > 0 && (

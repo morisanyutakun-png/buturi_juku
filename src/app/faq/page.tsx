@@ -4,7 +4,7 @@ import { CtaBlock } from "@/components/cta-block";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbJsonLd, faqPageJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { faqItems } from "@/data/faq";
 
@@ -13,6 +13,8 @@ export const metadata: Metadata = buildMetadata({
   description:
     "森祐太 物理専門塾に寄せられるよくある質問をまとめました。体験授業、授業形式、料金、オンライン受講についてお答えしています。",
   path: "/faq",
+  keywords: ["物理塾 FAQ", "物理塾 料金", "オンライン物理 授業", "物理 体験授業 無料"],
+  category: "education",
 });
 
 export default function FaqPage() {
@@ -87,6 +89,15 @@ export default function FaqPage() {
         data={faqPageJsonLd(
           faqItems.map((f) => ({ question: f.question, answer: f.answer })),
         )}
+      />
+      <JsonLd
+        id="ld-webpage-faq"
+        data={webPageJsonLd({
+          name: "よくある質問",
+          description:
+            "物理の森の体験授業、料金、授業形式、オンライン受講についてのFAQページです。",
+          path: "/faq",
+        })}
       />
     </>
   );

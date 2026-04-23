@@ -18,16 +18,8 @@ export const metadata: Metadata = {
   creator: siteConfig.author.name,
   publisher: siteConfig.name,
   keywords: [
-    "物理塾",
-    "物理専門塾",
-    "大学受験物理",
-    "オンライン物理",
-    "高校物理",
-    "力学",
-    "電磁気",
-    "波動",
-    "熱力学",
-    "物理",
+    ...siteConfig.seo.defaultKeywords,
+    ...siteConfig.seo.highIntentKeywords,
   ],
   formatDetection: { email: false, address: false, telephone: false },
   openGraph: {
@@ -42,12 +34,13 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: siteConfig.name,
+        alt: siteConfig.ogImageAlt,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    site: siteConfig.twitter,
     creator: siteConfig.twitter,
     title: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.description,
@@ -56,7 +49,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteConfig.url,
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {

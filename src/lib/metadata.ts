@@ -11,7 +11,13 @@ type BuildMetadataInput = {
   type?: "website" | "article";
   publishedTime?: string;
   modifiedTime?: string;
+  keywords?: readonly string[];
+  category?: string;
 };
+
+function uniqueKeywords(keywords: readonly string[]): string[] {
+  return Array.from(new Set(keywords.map((keyword) => keyword.trim()).filter(Boolean)));
+}
 
 export function buildMetadata({
   title,
@@ -22,14 +28,20 @@ export function buildMetadata({
   type = "website",
   publishedTime,
   modifiedTime,
+  keywords = [],
+  category,
 }: BuildMetadataInput): Metadata {
-  const fullTitle =
-    path === "/" ? `${siteConfig.name} | ${siteConfig.tagline}` : `${title} | ${siteConfig.name}`;
+  const fullTitle = `${title} | ${siteConfig.name}`;
   const desc = description ?? siteConfig.description;
   const canonical = absoluteUrl(path, siteConfig.url);
   const image = absoluteUrl(ogImage ?? siteConfig.ogImage, siteConfig.url);
+  const mergedKeywords = uniqueKeywords([
+    ...siteConfig.seo.defaultKeywords,
+    ...siteConfig.seo.highIntentKeywords,
+    ...keywords,
+  ]);
 
-  const images = [{ url: image, width: 1200, height: 630, alt: siteConfig.name }];
+  const images = [{ url: image, width: 1200, height: 630, alt: siteConfig.ogImageAlt }];
 
   const openGraph: Metadata["openGraph"] =
     type === "article"
@@ -55,19 +67,42 @@ export function buildMetadata({
         };
 
   return {
-    title: fullTitle,
+    title: { absolute: fullTitle },
     description: desc,
     metadataBase: new URL(siteConfig.url),
-    alternates: { canonical },
+    applicationName: siteConfig.name,
+    authors: [{ name: siteConfig.author.name, url: absoluteUrl("/teacher", siteConfig.url) }],
+    creator: siteConfig.author.name,
+    publisher: siteConfig.name,
+    keywords: mergedKeywords,
+    category,
+    alternates: {
+      canonical,
+      languages: {
+        "ja-JP": canonical,
+      },
+    },
+    referrer: "origin-when-cross-origin",
     robots: noIndex
       ? { index: false, follow: false }
-      : { index: true, follow: true, googleBot: { index: true, follow: true } },
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+          },
+        },
     openGraph,
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description: desc,
       images: [image],
+      site: siteConfig.twitter,
       creator: siteConfig.twitter,
     },
   };

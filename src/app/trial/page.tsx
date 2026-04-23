@@ -6,7 +6,7 @@ import { CtaBlock } from "@/components/cta-block";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, serviceJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -14,6 +14,13 @@ export const metadata: Metadata = buildMetadata({
   description:
     "森祐太 物理専門塾の無料体験授業(60分)のご案内。現状の学習診断から学習戦略の提案までをその場で行います。",
   path: "/trial",
+  keywords: [
+    "物理 体験授業",
+    "無料 物理 体験",
+    "オンライン 物理 体験授業",
+    "大学受験 物理 学習相談",
+  ],
+  category: "education",
 });
 
 const flow = [
@@ -163,6 +170,26 @@ export default function TrialPage() {
           { name: "ホーム", href: "/" },
           { name: "体験授業", href: "/trial" },
         ])}
+      />
+      <JsonLd
+        id="ld-webpage-trial"
+        data={webPageJsonLd({
+          name: "体験授業",
+          description:
+            "60分で現在の物理の理解度を診断し、学習戦略を提案する無料体験授業の案内ページです。",
+          path: "/trial",
+        })}
+      />
+      <JsonLd
+        id="ld-service-trial"
+        data={serviceJsonLd({
+          name: "無料体験授業",
+          description:
+            "高校物理・大学受験物理の現状診断と学習戦略提案を行う60分のオンライン体験授業です。",
+          path: "/trial",
+          serviceType: "オンライン物理学習相談 / 体験授業",
+          price: "0",
+        })}
       />
     </>
   );

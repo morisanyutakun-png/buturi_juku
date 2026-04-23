@@ -13,7 +13,7 @@ import {
   getArticleBySlug,
   getRelatedArticles,
 } from "@/data/articles";
-import { articleJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
+import { articleJsonLd, breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { formatDate } from "@/lib/utils";
 
@@ -36,6 +36,8 @@ export async function generateMetadata(
     type: "article",
     publishedTime: article.publishedAt,
     modifiedTime: article.updatedAt ?? article.publishedAt,
+    keywords: [article.category, ...article.tags],
+    category: article.category,
   });
 }
 
@@ -206,6 +208,16 @@ export default async function ArticleDetailPage({
           slug: article.slug,
           publishedAt: article.publishedAt,
           updatedAt: article.updatedAt,
+          keywords: article.tags,
+        })}
+      />
+      <JsonLd
+        id={`ld-webpage-article-${article.slug}`}
+        data={webPageJsonLd({
+          name: article.title,
+          description: article.description,
+          path: `/articles/${article.slug}`,
+          dateModified: article.updatedAt ?? article.publishedAt,
         })}
       />
     </>

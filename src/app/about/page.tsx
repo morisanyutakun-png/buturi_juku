@@ -6,7 +6,7 @@ import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
 import { PhilosophySection } from "@/components/philosophy-section";
 import { ForEveryoneSection } from "@/components/for-everyone-section";
-import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -14,6 +14,8 @@ export const metadata: Metadata = buildMetadata({
   description:
     "物理の森(森祐太 物理専門塾)の理念、学習思想、なぜ物理専門塾なのか、総合塾との違いについて。物理を『わかる』まで追いかける塾の姿勢を解説します。",
   path: "/about",
+  keywords: ["物理専門塾", "オンライン物理塾", "物理 総合塾 違い", "物理 苦手 克服"],
+  category: "education",
 });
 
 export default function AboutPage() {
@@ -158,6 +160,15 @@ export default function AboutPage() {
           { name: "ホーム", href: "/" },
           { name: "塾について", href: "/about" },
         ])}
+      />
+      <JsonLd
+        id="ld-webpage-about"
+        data={webPageJsonLd({
+          name: "塾について",
+          description:
+            "物理の森の理念、物理専門塾としての指導方針、総合塾との違いをまとめたページです。",
+          path: "/about",
+        })}
       />
     </>
   );

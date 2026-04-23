@@ -22,14 +22,27 @@ import { BookShowcase } from "@/components/book-showcase";
 import { Testimonials } from "@/components/testimonials";
 import { ForEveryoneSection } from "@/components/for-everyone-section";
 import { InstructorPortrait } from "@/components/instructor-portrait";
+import { JsonLd } from "@/components/json-ld";
+import { SeoIntentSection } from "@/components/seo-intent-section";
 import { courses } from "@/data/courses";
 import { articles } from "@/data/articles";
 import { instructor } from "@/data/instructor";
+import { siteConfig } from "@/data/site";
+import { itemListJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "トップ",
+  title: "大学受験物理のオンライン専門塾",
+  description:
+    "大学受験物理・高校物理に特化したオンライン物理専門塾。名古屋大学 工学部 電気電子情報工学科所属の森祐太が、初学者から難関大・医学部志望まで1対1で指導します。",
   path: "/",
+  keywords: [
+    "大学受験 物理 塾",
+    "高校物理 オンライン",
+    "物理 個別指導 オンライン",
+    "医学部 物理 対策",
+  ],
+  category: "education",
 });
 
 const features: {
@@ -145,6 +158,8 @@ export default function HomePage() {
 
       {/* FOR EVERYONE */}
       <ForEveryoneSection />
+
+      <SeoIntentSection />
 
       {/* SUBJECTS */}
       <Section
@@ -378,6 +393,28 @@ export default function HomePage() {
           </p>
         </div>
       </Section>
+
+      <JsonLd
+        id="ld-webpage-home"
+        data={webPageJsonLd({
+          name: `${siteConfig.name} | 大学受験物理のオンライン専門塾`,
+          description: siteConfig.description,
+          path: "/",
+        })}
+      />
+      <JsonLd
+        id="ld-home-courses"
+        data={itemListJsonLd({
+          name: "物理の森の主要講座",
+          description: "大学受験物理・高校物理に対応するオンライン講座の一覧です。",
+          path: "/",
+          items: courses.map((course) => ({
+            name: course.title,
+            href: `/courses/${course.slug}`,
+            description: course.summary,
+          })),
+        })}
+      />
     </>
   );
 }
