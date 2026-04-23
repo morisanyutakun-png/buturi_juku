@@ -35,38 +35,38 @@ export default function ContactPage() {
       >
         <div className="grid gap-10 lg:grid-cols-[1fr_1.5fr]">
           <div className="space-y-6">
-            <div className="rounded-2xl border border-paper/10 bg-ink-900/60 p-6">
+            <div className="rounded-2xl border border-ink-900/10 bg-white p-6">
               <div className="flex items-start gap-3">
-                <Mail className="mt-1 h-5 w-5 text-accent" aria-hidden />
+                <Mail className="mt-1 h-5 w-5 text-brand-deep" aria-hidden />
                 <div>
-                  <p className="text-[10px] tracking-[0.28em] uppercase text-paper/40">
+                  <p className="text-[10px] tracking-[0.28em] uppercase text-ink-400">
                     MAIL
                   </p>
-                  <p className="mt-1 text-paper">{siteConfig.contact.email}</p>
+                  <p className="mt-1 text-ink-900">{siteConfig.contact.email}</p>
                 </div>
               </div>
             </div>
-            <div className="rounded-2xl border border-paper/10 bg-ink-900/60 p-6">
+            <div className="rounded-2xl border border-ink-900/10 bg-white p-6">
               <div className="flex items-start gap-3">
-                <Clock className="mt-1 h-5 w-5 text-accent" aria-hidden />
+                <Clock className="mt-1 h-5 w-5 text-brand-deep" aria-hidden />
                 <div>
-                  <p className="text-[10px] tracking-[0.28em] uppercase text-paper/40">
+                  <p className="text-[10px] tracking-[0.28em] uppercase text-ink-400">
                     HOURS
                   </p>
-                  <p className="mt-1 text-paper leading-relaxed">
+                  <p className="mt-1 text-ink-900 leading-relaxed">
                     {siteConfig.contact.hours}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="rounded-2xl border border-paper/10 bg-ink-900/60 p-6">
+            <div className="rounded-2xl border border-ink-900/10 bg-white p-6">
               <div className="flex items-start gap-3">
-                <MapPin className="mt-1 h-5 w-5 text-accent" aria-hidden />
+                <MapPin className="mt-1 h-5 w-5 text-brand-deep" aria-hidden />
                 <div>
-                  <p className="text-[10px] tracking-[0.28em] uppercase text-paper/40">
+                  <p className="text-[10px] tracking-[0.28em] uppercase text-ink-400">
                     AREA
                   </p>
-                  <p className="mt-1 text-paper leading-relaxed">
+                  <p className="mt-1 text-ink-900 leading-relaxed">
                     {siteConfig.address.note}
                   </p>
                 </div>
@@ -74,7 +74,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-paper/10 bg-ink-900/60 p-8">
+          <div className="rounded-2xl border border-ink-900/10 bg-white p-8">
             <ContactForm />
           </div>
         </div>

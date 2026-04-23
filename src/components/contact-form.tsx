@@ -49,14 +49,14 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-accent/30 bg-accent/5 p-8 text-center">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-accent/40 bg-accent/10 text-accent">
+      <div className="rounded-2xl border border-forest/30 bg-forest-bg p-8 text-center">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-forest/40 bg-forest/10 text-forest-deep">
           <Check className="h-5 w-5" />
         </div>
-        <h3 className="mt-6 font-serif text-xl text-paper">
+        <h3 className="mt-6 font-serif text-xl text-ink-900">
           送信ありがとうございました。
         </h3>
-        <p className="mt-3 text-sm text-paper/70">
+        <p className="mt-3 text-sm text-ink-700">
           2営業日以内にご入力のメールアドレスへ担当よりご連絡いたします。
         </p>
       </div>
@@ -123,15 +123,15 @@ export function ContactForm() {
         />
       </Field>
 
-      <label className="flex items-start gap-3 text-xs text-paper/60">
+      <label className="flex items-start gap-3 text-xs text-ink-600">
         <input
           type="checkbox"
           name="agree"
           required
-          className="mt-1 accent-accent"
+          className="mt-1 accent-brand"
         />
         <span>
-          <a href="/privacy" className="text-accent hover:underline">
+          <a href="/privacy" className="text-brand hover:underline">
             プライバシーポリシー
           </a>
           に同意の上、送信します。
@@ -139,7 +139,7 @@ export function ContactForm() {
       </label>
 
       {error && (
-        <p className="text-sm text-red-400" role="alert">
+        <p className="text-sm text-red-600" role="alert">
           {error}
         </p>
       )}
@@ -147,7 +147,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-ink-950 transition hover:bg-accent-soft disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-warm px-6 py-3.5 text-sm font-medium text-white shadow-warm transition hover:bg-warm-deep disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
         {status === "submitting" ? (
           <>
@@ -163,7 +163,7 @@ export function ContactForm() {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-paper/10 bg-ink-900/60 px-4 py-3 text-sm text-paper placeholder:text-paper/30 outline-none focus:border-accent focus:ring-1 focus:ring-accent/60 transition";
+  "w-full rounded-xl border border-ink-900/15 bg-white px-4 py-3 text-sm text-ink-900 placeholder:text-ink-400 outline-none focus:border-brand focus:ring-1 focus:ring-brand/60 transition";
 
 function Field({
   label,
@@ -180,10 +180,10 @@ function Field({
     <div>
       <label
         htmlFor={htmlFor}
-        className="mb-2 block text-xs tracking-widest uppercase text-paper/60"
+        className="mb-2 block text-xs tracking-widest uppercase text-ink-600"
       >
         {label}
-        {required && <span className="ml-1 text-accent">*</span>}
+        {required && <span className="ml-1 text-warm">*</span>}
       </label>
       {children}
     </div>

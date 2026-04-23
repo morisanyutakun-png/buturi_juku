@@ -59,17 +59,17 @@ export default function TokushohoPage() {
         title="特定商取引法に基づく表記"
         description="特定商取引法第11条に基づき、以下の通り表記します。"
       >
-        <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-paper/10 bg-ink-900/60">
-          <dl className="divide-y divide-paper/10">
+        <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-ink-900/10 bg-white">
+          <dl className="divide-y divide-ink-900/10">
             {rows.map((row) => (
               <div
                 key={row.label}
                 className="grid gap-2 px-6 py-5 sm:grid-cols-[10rem_1fr] sm:items-start"
               >
-                <dt className="text-[10px] tracking-[0.28em] uppercase text-paper/50">
+                <dt className="text-[10px] tracking-[0.28em] uppercase text-ink-500">
                   {row.label}
                 </dt>
-                <dd className="text-sm leading-relaxed text-paper/80">
+                <dd className="text-sm leading-relaxed text-ink-800">
                   {row.value}
                 </dd>
               </div>

@@ -39,26 +39,26 @@ export default function FaqPage() {
             const items = faqItems.filter((f) => f.category === category);
             return (
               <div key={category}>
-                <h2 className="mb-6 font-serif text-xl text-paper">
-                  <span className="mr-3 text-accent">—</span>
+                <h2 className="mb-6 font-serif text-xl text-ink-900">
+                  <span className="mr-3 text-brand-deep">—</span>
                   {category}
                 </h2>
                 <div className="space-y-3">
                   {items.map((q) => (
                     <details
                       key={q.question}
-                      className="group rounded-2xl border border-paper/10 bg-ink-900/60 p-6 [&_summary::-webkit-details-marker]:hidden"
+                      className="group rounded-2xl border border-ink-900/10 bg-white p-6 [&_summary::-webkit-details-marker]:hidden"
                     >
-                      <summary className="flex cursor-pointer items-center justify-between gap-4 font-serif text-paper">
+                      <summary className="flex cursor-pointer items-center justify-between gap-4 font-serif text-ink-900">
                         <span>{q.question}</span>
                         <span
                           aria-hidden
-                          className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-paper/20 text-xs transition group-open:rotate-45"
+                          className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-ink-900/15 text-xs transition group-open:rotate-45"
                         >
                           +
                         </span>
                       </summary>
-                      <p className="mt-4 text-sm leading-relaxed text-paper/70">
+                      <p className="mt-4 text-sm leading-relaxed text-ink-700">
                         {q.answer}
                       </p>
                     </details>

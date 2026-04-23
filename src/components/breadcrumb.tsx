@@ -9,24 +9,24 @@ type Props = {
 
 export function Breadcrumb({ items }: Props) {
   return (
-    <nav aria-label="パンくずリスト" className="text-xs text-paper/50">
+    <nav aria-label="パンくずリスト" className="text-xs text-ink-500">
       <ol className="flex flex-wrap items-center gap-2">
         {items.map((c, i) => {
           const last = i === items.length - 1;
           return (
             <li key={c.href} className="flex items-center gap-2">
               {last ? (
-                <span aria-current="page" className="text-paper/80">
+                <span aria-current="page" className="text-ink-800">
                   {c.label}
                 </span>
               ) : (
-                <Link href={c.href} className="hover:text-accent transition">
+                <Link href={c.href} className="hover:text-brand transition">
                   {c.label}
                 </Link>
               )}
               {!last && (
                 <ChevronRight
-                  className="h-3 w-3 text-paper/30"
+                  className="h-3 w-3 text-ink-400"
                   aria-hidden
                 />
               )}

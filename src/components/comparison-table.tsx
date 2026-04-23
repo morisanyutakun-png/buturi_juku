@@ -44,18 +44,18 @@ const rows: {
 function Mark({ type }: { type: Cell }) {
   if (type === "good")
     return (
-      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-accent/40 bg-accent/10 text-accent">
+      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-forest/30 bg-forest-bg text-forest-deep">
         <Check className="h-4 w-4" aria-hidden />
       </span>
     );
   if (type === "bad")
     return (
-      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-paper/10 bg-paper/5 text-paper/40">
+      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-ink-900/10 bg-paper-soft text-ink-400">
         <X className="h-4 w-4" aria-hidden />
       </span>
     );
   return (
-    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-paper/10 bg-paper/5 text-paper/50">
+    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-ink-900/10 bg-paper-soft text-ink-500">
       <Minus className="h-4 w-4" aria-hidden />
     </span>
   );
@@ -67,20 +67,21 @@ export function ComparisonTable() {
       eyebrow="COMPARISON"
       title="物理専門塾と、他の選択肢との違い"
       description="総合塾・独学・映像授業とは何が違うのか。比較表でご確認ください。"
+      className="bg-paper-soft"
     >
-      <div className="overflow-hidden rounded-2xl border border-paper/10 bg-ink-900/60">
-        <div className="hidden grid-cols-[1.6fr_1fr_1fr_1fr] divide-x divide-paper/10 border-b border-paper/10 bg-ink-900 text-xs tracking-[0.2em] uppercase text-paper/50 md:grid">
+      <div className="overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-soft">
+        <div className="hidden grid-cols-[1.6fr_1fr_1fr_1fr] divide-x divide-ink-900/10 border-b border-ink-900/10 bg-paper-soft text-xs tracking-[0.2em] uppercase text-ink-500 md:grid">
           <div className="p-5">比較項目</div>
-          <div className="p-5 text-center text-accent">物理専門塾</div>
+          <div className="p-5 text-center text-brand-deep">物理専門塾</div>
           <div className="p-5 text-center">総合塾</div>
           <div className="p-5 text-center">独学</div>
         </div>
 
         {/* mobile: stacked */}
-        <div className="divide-y divide-paper/10 md:hidden">
+        <div className="divide-y divide-ink-900/10 md:hidden">
           {rows.map((r) => (
             <div key={r.criterion} className="p-5">
-              <p className="text-xs tracking-[0.22em] uppercase text-paper/50">
+              <p className="text-xs tracking-[0.22em] uppercase text-ink-500">
                 {r.criterion}
               </p>
               <div className="mt-4 grid grid-cols-3 gap-3 text-[11px]">
@@ -93,14 +94,14 @@ export function ComparisonTable() {
         </div>
 
         {/* desktop: grid */}
-        <div className="hidden divide-y divide-paper/10 md:block">
+        <div className="hidden divide-y divide-ink-900/10 md:block">
           {rows.map((r) => (
             <div
               key={r.criterion}
-              className="grid grid-cols-[1.6fr_1fr_1fr_1fr] items-start divide-x divide-paper/10"
+              className="grid grid-cols-[1.6fr_1fr_1fr_1fr] items-start divide-x divide-ink-900/10"
             >
               <div className="p-6">
-                <p className="font-serif text-paper">{r.criterion}</p>
+                <p className="font-serif text-ink-900">{r.criterion}</p>
               </div>
               <Cell cell={r.specialty} highlight />
               <Cell cell={r.general} />
@@ -110,7 +111,7 @@ export function ComparisonTable() {
         </div>
       </div>
 
-      <p className="mt-6 text-xs text-paper/40">
+      <p className="mt-6 text-xs text-ink-500">
         ※ 比較は一般論であり、すべての塾・環境に当てはまるものではありません。
       </p>
     </Section>
@@ -125,11 +126,11 @@ function Cell({
   highlight?: boolean;
 }) {
   return (
-    <div className={`p-6 text-center ${highlight ? "bg-accent/5" : ""}`}>
+    <div className={`p-6 text-center ${highlight ? "bg-brand-bg" : ""}`}>
       <div className="flex justify-center">
         <Mark type={cell.mark} />
       </div>
-      <p className="mt-3 text-xs leading-relaxed text-paper/70">{cell.note}</p>
+      <p className="mt-3 text-xs leading-relaxed text-ink-700">{cell.note}</p>
     </div>
   );
 }
@@ -145,17 +146,17 @@ function MobileCell({
 }) {
   return (
     <div
-      className={`rounded-lg border border-paper/10 p-3 text-center ${
-        highlight ? "border-accent/30 bg-accent/5" : "bg-ink-950/30"
+      className={`rounded-lg border p-3 text-center ${
+        highlight ? "border-brand/30 bg-brand-bg" : "border-ink-900/10 bg-paper-soft"
       }`}
     >
-      <p className="text-[9px] tracking-[0.2em] uppercase text-paper/40">
+      <p className="text-[9px] tracking-[0.2em] uppercase text-ink-500">
         {label}
       </p>
       <div className="mt-2 flex justify-center">
         <Mark type={cell.mark} />
       </div>
-      <p className="mt-2 text-[10px] leading-snug text-paper/60">{cell.note}</p>
+      <p className="mt-2 text-[10px] leading-snug text-ink-700">{cell.note}</p>
     </div>
   );
 }

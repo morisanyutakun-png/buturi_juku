@@ -38,18 +38,18 @@ export default function TeacherPage() {
         title={<>物理を『わかる』まで、<br className="sm:hidden" />言語化する人。</>}
         description={instructor.leadline}
       >
-        <div className="grid gap-10 rounded-3xl border border-paper/10 bg-gradient-to-br from-navy-900/70 via-ink-900/80 to-ink-950 p-8 md:grid-cols-[1fr_1.3fr] md:p-14">
+        <div className="grid gap-10 rounded-3xl border border-ink-900/10 bg-gradient-to-br from-paper-soft via-white to-paper-soft p-8 md:grid-cols-[1fr_1.3fr] md:p-14">
           <InstructorPortrait />
 
           <div>
-            <p className="text-xs tracking-[0.28em] uppercase text-accent">
+            <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
               PROFILE
             </p>
-            <h2 className="mt-4 font-serif text-display-md text-paper">
+            <h2 className="mt-4 font-serif text-display-md text-ink-900">
               初学者にも、難関大志望にも、<br className="sm:hidden" />
               あなた専用のルートを。
             </h2>
-            <p className="mt-6 text-paper/70 leading-[1.9]">
+            <p className="mt-6 text-ink-700 leading-[1.9]">
               {instructor.bio}
             </p>
 
@@ -57,16 +57,16 @@ export default function TeacherPage() {
               {instructor.achievements.map((a) => (
                 <div
                   key={a.label}
-                  className="rounded-xl border border-paper/10 bg-ink-900/60 p-5"
+                  className="rounded-xl border border-ink-900/10 bg-white p-5"
                 >
-                  <p className="text-[10px] tracking-[0.28em] uppercase text-paper/50">
+                  <p className="text-[10px] tracking-[0.28em] uppercase text-ink-500">
                     {a.label}
                   </p>
-                  <p className="mt-2 font-serif text-lg text-gold">
+                  <p className="mt-2 font-serif text-lg text-gold-deep">
                     {a.value}
                   </p>
                   {a.note && (
-                    <p className="mt-1 text-[11px] text-paper/50">{a.note}</p>
+                    <p className="mt-1 text-[11px] text-ink-500">{a.note}</p>
                   )}
                 </div>
               ))}
@@ -76,7 +76,7 @@ export default function TeacherPage() {
       </Section>
 
       {/* BIG RESULTS / KPI BANNER */}
-      <section className="relative overflow-hidden border-y border-paper/10 bg-gradient-to-b from-navy-900/40 to-ink-950">
+      <section className="relative overflow-hidden border-y border-ink-900/10 bg-gradient-to-b from-paper-soft to-paper-soft">
         <div
           aria-hidden
           className="absolute inset-0 opacity-50 [background-image:radial-gradient(circle_at_10%_30%,rgba(110,168,255,0.2),transparent_55%),radial-gradient(circle_at_90%_70%,rgba(232,197,122,0.15),transparent_55%)]"
@@ -87,43 +87,43 @@ export default function TeacherPage() {
               value: "満点",
               label: "共通テスト 物理",
               note: "100 / 100 点",
-              color: "text-gold",
+              color: "text-gold-deep",
               icon: Trophy,
             },
             {
               value: "9 割",
               label: "二次試験 物理",
               note: "難関大レベル",
-              color: "text-accent",
+              color: "text-brand-deep",
               icon: Trophy,
             },
             {
               value: "名大",
               label: "所属大学",
               note: "工学部 電気電子情報工学科",
-              color: "text-accent",
+              color: "text-brand-deep",
               icon: GraduationCap,
             },
             {
               value: "電磁気",
               label: "書籍 執筆",
               note: "大学受験物理",
-              color: "text-gold",
+              color: "text-gold-deep",
               icon: BookOpen,
             },
           ].map((x) => (
             <div
               key={x.label}
-              className="rounded-2xl border border-paper/10 bg-ink-900/60 p-6 text-center backdrop-blur"
+              className="rounded-2xl border border-ink-900/10 bg-white p-6 text-center backdrop-blur"
             >
               <x.icon className={`mx-auto h-5 w-5 ${x.color}`} aria-hidden />
               <p className={`mt-4 font-serif text-4xl ${x.color}`}>
                 {x.value}
               </p>
-              <p className="mt-3 text-[11px] tracking-[0.28em] uppercase text-paper/50">
+              <p className="mt-3 text-[11px] tracking-[0.28em] uppercase text-ink-500">
                 {x.label}
               </p>
-              <p className="mt-1 text-xs text-paper/60">{x.note}</p>
+              <p className="mt-1 text-xs text-ink-600">{x.note}</p>
             </div>
           ))}
         </div>
@@ -139,46 +139,46 @@ export default function TeacherPage() {
           {instructor.trackRecord.map((t, i) => (
             <div
               key={t.label}
-              className="group relative overflow-hidden rounded-2xl border border-paper/10 bg-gradient-to-br from-navy-900/60 via-ink-900/80 to-ink-950 p-7"
+              className="group relative overflow-hidden rounded-2xl border border-ink-900/10 bg-gradient-to-br from-paper-soft via-white to-paper-soft p-7"
             >
               <div
                 aria-hidden
-                className="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-accent/5 blur-2xl transition group-hover:bg-accent/15"
+                className="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-brand-bg blur-2xl transition group-hover:bg-warm/15"
               />
               <div className="relative flex items-start justify-between">
-                <p className="font-mono text-[10px] tracking-[0.3em] text-accent">
+                <p className="font-mono text-[10px] tracking-[0.3em] text-brand-deep">
                   RECORD 0{i + 1}
                 </p>
-                <Users className="h-4 w-4 text-accent/60" aria-hidden />
+                <Users className="h-4 w-4 text-brand/60" aria-hidden />
               </div>
-              <p className="relative mt-5 text-[11px] tracking-[0.22em] uppercase text-paper/50">
+              <p className="relative mt-5 text-[11px] tracking-[0.22em] uppercase text-ink-500">
                 {t.label}
               </p>
-              <p className="relative mt-3 font-serif text-xl text-paper">
+              <p className="relative mt-3 font-serif text-xl text-ink-900">
                 {t.value}
               </p>
-              <p className="relative mt-3 text-sm leading-relaxed text-paper/60">
+              <p className="relative mt-3 text-sm leading-relaxed text-ink-600">
                 {t.note}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-ink-900/80 to-ink-900">
+        <div className="mt-10 overflow-hidden rounded-2xl border border-gold/40 bg-gradient-to-br from-gold/10 via-white to-white">
           <div className="grid gap-8 p-8 md:grid-cols-[auto_1fr] md:items-center md:gap-10 md:p-10">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gold/40 bg-gold/10 text-gold">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gold/40 bg-gold-soft/50 text-gold-deep">
               <Trophy className="h-6 w-6" aria-hidden />
             </div>
             <div>
-              <p className="font-mono text-[10px] tracking-[0.3em] text-gold">
+              <p className="font-mono text-[10px] tracking-[0.3em] text-gold-deep">
                 HIGHLIGHT
               </p>
-              <p className="mt-3 font-serif text-xl leading-relaxed text-paper sm:text-2xl">
+              <p className="mt-3 font-serif text-xl leading-relaxed text-ink-900 sm:text-2xl">
                 塾講師として指導した受講生の中から、
-                <span className="text-gold">名古屋大学合格生</span>
+                <span className="text-gold-deep">名古屋大学合格生</span>
                 を輩出しています。
               </p>
-              <p className="mt-3 text-sm text-paper/70 leading-relaxed">
+              <p className="mt-3 text-sm text-ink-700 leading-relaxed">
                 中堅大から難関大まで、物理指導を通して多様な受講生を志望校まで伴走してきました。
               </p>
             </div>
@@ -193,21 +193,21 @@ export default function TeacherPage() {
         eyebrow="STRENGTHS"
         title="講師・森祐太の強み"
         description="単なる学歴や数字ではなく、受験指導の現場で機能している強みを8つに整理しました。"
-        className="bg-ink-900/40"
+        className="bg-paper-soft"
       >
         <div className="grid gap-6 md:grid-cols-2">
           {instructor.strengths.map((s, i) => (
             <div
               key={s.title}
-              className="relative overflow-hidden rounded-2xl border border-paper/10 bg-ink-900/60 p-8"
+              className="relative overflow-hidden rounded-2xl border border-ink-900/10 bg-white p-8"
             >
-              <p className="font-mono text-xs text-gold">
+              <p className="font-mono text-xs text-gold-deep">
                 0{i + 1}
               </p>
-              <h3 className="mt-4 font-serif text-xl text-paper">
+              <h3 className="mt-4 font-serif text-xl text-ink-900">
                 {s.title}
               </h3>
-              <p className="mt-4 text-sm leading-relaxed text-paper/70">
+              <p className="mt-4 text-sm leading-relaxed text-ink-700">
                 {s.body}
               </p>
             </div>
@@ -224,12 +224,12 @@ export default function TeacherPage() {
           {instructor.credo.map((c, i) => (
             <li
               key={c}
-              className="relative overflow-hidden rounded-2xl border border-gold/20 bg-gradient-to-br from-gold/5 via-ink-900/60 to-ink-900 p-8"
+              className="relative overflow-hidden rounded-2xl border border-gold/20 bg-gradient-to-br from-gold/5 via-white to-white p-8"
             >
-              <p className="font-mono text-xs tracking-[0.3em] text-gold">
+              <p className="font-mono text-xs tracking-[0.3em] text-gold-deep">
                 CREDO 0{i + 1}
               </p>
-              <p className="mt-4 font-serif text-lg leading-relaxed text-paper">
+              <p className="mt-4 font-serif text-lg leading-relaxed text-ink-900">
                 {c}
               </p>
             </li>
@@ -241,29 +241,29 @@ export default function TeacherPage() {
         eyebrow="PUBLICATIONS"
         title="出版・関連活動"
         description="指導現場の知見を、書籍・教材として体系化しています。"
-        className="bg-ink-900/40"
+        className="bg-paper-soft"
       >
-        <div className="divide-y divide-paper/10 overflow-hidden rounded-2xl border border-paper/10 bg-ink-900/60">
+        <div className="divide-y divide-ink-900/10 overflow-hidden rounded-2xl border border-ink-900/10 bg-white">
           {books.map((b) => (
             <div
               key={b.slug}
               className="flex flex-col gap-4 p-6 md:flex-row md:items-center md:gap-10"
             >
-              <p className="font-mono text-sm text-gold md:w-24">
+              <p className="font-mono text-sm text-gold-deep md:w-24">
                 {b.publishedYear}
               </p>
               <div className="md:flex-1">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-paper/40">
+                <p className="text-[10px] tracking-[0.28em] uppercase text-ink-400">
                   書籍 / {b.field}
                 </p>
-                <p className="mt-1 font-serif text-lg text-paper">{b.title}</p>
-                <p className="mt-2 text-sm text-paper/70">{b.subtitle}</p>
+                <p className="mt-1 font-serif text-lg text-ink-900">{b.title}</p>
+                <p className="mt-2 text-sm text-ink-700">{b.subtitle}</p>
               </div>
               <a
                 href={b.amazonUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2.5 text-xs text-gold hover:bg-gold/15 transition"
+                className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 bg-gold-soft/50 px-5 py-2.5 text-xs text-gold-deep hover:bg-gold-soft/60 transition"
               >
                 Amazonで見る
                 <ExternalLink className="h-3 w-3 transition group-hover:translate-x-0.5" />

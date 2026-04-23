@@ -44,26 +44,26 @@ export default function ArticlesIndexPage() {
             <Link
               key={a.slug}
               href={`/articles/${a.slug}`}
-              className="group flex h-full flex-col justify-between rounded-2xl border border-paper/10 bg-ink-900/60 p-8 transition hover:border-accent/40 hover:bg-ink-800/60"
+              className="group flex h-full flex-col justify-between rounded-2xl border border-ink-900/10 bg-white p-8 transition hover:border-brand/40 hover:bg-paper-soft"
             >
               <div>
-                <div className="flex items-center gap-3 text-[10px] tracking-[0.28em] uppercase text-accent">
+                <div className="flex items-center gap-3 text-[10px] tracking-[0.28em] uppercase text-brand-deep">
                   <span>{a.category}</span>
-                  <span className="h-px w-6 bg-accent/40" aria-hidden />
-                  <time dateTime={a.publishedAt} className="text-paper/40">
+                  <span className="h-px w-6 bg-warm/40" aria-hidden />
+                  <time dateTime={a.publishedAt} className="text-ink-400">
                     {formatDate(a.publishedAt)}
                   </time>
                 </div>
-                <h2 className="mt-4 font-serif text-xl leading-snug text-paper">
+                <h2 className="mt-4 font-serif text-xl leading-snug text-ink-900">
                   {a.title}
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-paper/70">
+                <p className="mt-4 text-sm leading-relaxed text-ink-700">
                   {a.description}
                 </p>
               </div>
-              <div className="mt-8 flex items-center justify-between text-xs text-paper/50">
+              <div className="mt-8 flex items-center justify-between text-xs text-ink-500">
                 <span>{a.readingTime}</span>
-                <span className="inline-flex items-center gap-1 text-accent transition group-hover:translate-x-0.5">
+                <span className="inline-flex items-center gap-1 text-brand-deep transition group-hover:translate-x-0.5">
                   続きを読む
                   <ArrowRight className="h-3 w-3" />
                 </span>

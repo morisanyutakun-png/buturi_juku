@@ -39,35 +39,35 @@ export default function CoursesIndexPage() {
             <Link
               key={c.slug}
               href={`/courses/${c.slug}`}
-              className="group flex h-full flex-col justify-between rounded-2xl border border-paper/10 bg-ink-900/60 p-8 transition hover:border-accent/40 hover:bg-ink-800/60"
+              className="group flex h-full flex-col justify-between rounded-2xl border border-ink-900/10 bg-white p-8 transition hover:border-brand/40 hover:bg-paper-soft"
             >
               <div>
-                <p className="text-[10px] tracking-[0.28em] uppercase text-accent">
+                <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
                   {c.category}
                 </p>
-                <h2 className="mt-4 font-serif text-2xl text-paper">
+                <h2 className="mt-4 font-serif text-2xl text-ink-900">
                   {c.title}
                 </h2>
-                <p className="mt-2 text-sm text-paper/60">{c.subtitle}</p>
-                <p className="mt-6 text-sm leading-relaxed text-paper/70">
+                <p className="mt-2 text-sm text-ink-600">{c.subtitle}</p>
+                <p className="mt-6 text-sm leading-relaxed text-ink-700">
                   {c.summary}
                 </p>
               </div>
               <div className="mt-8 grid grid-cols-2 gap-3 text-xs">
-                <div className="rounded-lg border border-paper/10 bg-ink-900 p-3">
-                  <p className="text-[10px] tracking-widest uppercase text-paper/40">
+                <div className="rounded-lg border border-ink-900/10 bg-white p-3">
+                  <p className="text-[10px] tracking-widest uppercase text-ink-400">
                     TIME
                   </p>
-                  <p className="mt-1 text-paper/80">{c.duration}</p>
+                  <p className="mt-1 text-ink-800">{c.duration}</p>
                 </div>
-                <div className="rounded-lg border border-paper/10 bg-ink-900 p-3">
-                  <p className="text-[10px] tracking-widest uppercase text-paper/40">
+                <div className="rounded-lg border border-ink-900/10 bg-white p-3">
+                  <p className="text-[10px] tracking-widest uppercase text-ink-400">
                     PRICE
                   </p>
-                  <p className="mt-1 text-paper/80">{c.price.value}</p>
+                  <p className="mt-1 text-ink-800">{c.price.value}</p>
                 </div>
               </div>
-              <p className="mt-6 inline-flex items-center gap-1 text-sm text-accent transition group-hover:translate-x-0.5">
+              <p className="mt-6 inline-flex items-center gap-1 text-sm text-brand-deep transition group-hover:translate-x-0.5">
                 コース詳細を見る
                 <ArrowRight className="h-4 w-4" />
               </p>

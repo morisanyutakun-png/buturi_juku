@@ -6,11 +6,6 @@ type Props = {
   className?: string;
 };
 
-/**
- * Photoless instructor "credentials card".
- * Shows concrete, verifiable credentials instead of a face photo.
- * This builds trust through evidence rather than visual identity alone.
- */
 export function InstructorPortrait({ className }: Props) {
   const credentials = [
     {
@@ -18,21 +13,21 @@ export function InstructorPortrait({ className }: Props) {
       label: "所属",
       value: "名古屋大学 工学部",
       sub: "電気電子情報工学科",
-      tone: "accent" as const,
+      tone: "brand" as const,
     },
     {
       icon: Trophy,
       label: "共通テスト 物理",
       value: "満点",
       sub: "100 / 100 点",
-      tone: "gold" as const,
+      tone: "warm" as const,
     },
     {
       icon: Trophy,
       label: "二次試験 物理",
       value: "9 割",
       sub: "難関大レベル",
-      tone: "accent" as const,
+      tone: "brand" as const,
     },
     {
       icon: BookOpen,
@@ -46,47 +41,57 @@ export function InstructorPortrait({ className }: Props) {
       label: "指導実績",
       value: "名大合格生を輩出",
       sub: "塾講師として指導",
-      tone: "gold" as const,
+      tone: "forest" as const,
     },
   ];
+
+  const toneClass = (tone: "brand" | "warm" | "gold" | "forest") => {
+    switch (tone) {
+      case "brand":
+        return {
+          wrap: "border-brand/25 bg-brand-bg",
+          icon: "border-brand/30 bg-white text-brand",
+          value: "text-brand-deep",
+        };
+      case "warm":
+        return {
+          wrap: "border-warm/30 bg-warm-bg",
+          icon: "border-warm/30 bg-white text-warm-deep",
+          value: "text-warm-deep",
+        };
+      case "gold":
+        return {
+          wrap: "border-gold/30 bg-gold-soft",
+          icon: "border-gold/30 bg-white text-gold-deep",
+          value: "text-gold-deep",
+        };
+      case "forest":
+        return {
+          wrap: "border-forest/30 bg-forest-bg",
+          icon: "border-forest/30 bg-white text-forest-deep",
+          value: "text-forest-deep",
+        };
+    }
+  };
 
   return (
     <div
       className={cn(
-        "relative flex flex-col overflow-hidden rounded-2xl border border-paper/10 bg-gradient-to-br from-navy-800 via-ink-900 to-ink-950",
+        "relative flex flex-col overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-card",
         className,
       )}
     >
-      {/* background grid */}
-      <svg
-        aria-hidden
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.1]"
-      >
-        <defs>
-          <pattern id="portrait-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path
-              d="M 40 0 L 0 0 0 40"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="0.6"
-              className="text-paper/50"
-            />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#portrait-grid)" />
-      </svg>
-
       {/* subtle orbital motif */}
       <svg
         aria-hidden
         viewBox="0 0 400 600"
         preserveAspectRatio="xMidYMid slice"
-        className="absolute inset-0 h-full w-full opacity-40"
+        className="absolute inset-0 h-full w-full opacity-30"
       >
         <defs>
           <radialGradient id="portrait-nucleus" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#f2d99a" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#b88a3e" stopOpacity="0" />
+            <stop offset="0%" stopColor="#caa34b" stopOpacity="0.28" />
+            <stop offset="100%" stopColor="#caa34b" stopOpacity="0" />
           </radialGradient>
         </defs>
         <g transform="translate(200 280)">
@@ -94,8 +99,8 @@ export function InstructorPortrait({ className }: Props) {
             rx="240"
             ry="90"
             fill="none"
-            stroke="#6ea8ff"
-            strokeOpacity="0.22"
+            stroke="#3b7cd9"
+            strokeOpacity="0.2"
             strokeWidth="0.8"
             transform="rotate(30)"
           />
@@ -103,7 +108,7 @@ export function InstructorPortrait({ className }: Props) {
             rx="200"
             ry="100"
             fill="none"
-            stroke="#6ea8ff"
+            stroke="#e28040"
             strokeOpacity="0.18"
             strokeWidth="0.8"
             transform="rotate(-40)"
@@ -112,91 +117,85 @@ export function InstructorPortrait({ className }: Props) {
         </g>
       </svg>
 
-      {/* TOP: header */}
-      <div className="relative flex items-center justify-between border-b border-paper/5 px-6 py-4">
+      {/* Header */}
+      <div className="relative flex items-center justify-between border-b border-ink-900/10 bg-paper-soft/50 px-6 py-4">
         <span className="inline-flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-          <span className="font-mono text-[10px] tracking-[0.3em] text-gold">
+          <span className="h-1.5 w-1.5 rounded-full bg-warm" />
+          <span className="font-mono text-[10px] tracking-[0.3em] text-warm-deep">
             CHIEF INSTRUCTOR
           </span>
         </span>
-        <span className="font-mono text-[10px] tracking-[0.22em] text-paper/40">
+        <span className="font-mono text-[10px] tracking-[0.22em] text-ink-400">
           PROFILE / 01
         </span>
       </div>
 
       {/* NAME block */}
       <div className="relative px-6 pt-7">
-        <p className="text-[10px] tracking-[0.3em] uppercase text-paper/40">
+        <p className="text-[10px] tracking-[0.3em] uppercase text-ink-500">
           Instructor
         </p>
-        <h3 className="mt-2 font-serif text-4xl leading-none text-paper">
+        <h3 className="mt-2 font-serif text-4xl leading-none text-ink-900">
           {instructor.name}
         </h3>
-        <p className="mt-2 font-mono text-[11px] tracking-[0.32em] text-paper/50">
+        <p className="mt-2 font-mono text-[11px] tracking-[0.32em] text-ink-500">
           {instructor.nameEn.toUpperCase()}
         </p>
-        <p className="mt-4 text-xs leading-relaxed text-paper/60">
+        <p className="mt-4 text-xs leading-relaxed text-ink-700">
           電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導に携わる。
         </p>
       </div>
 
       {/* divider */}
       <div className="relative mx-6 mt-6 flex items-center gap-3">
-        <span className="h-px flex-1 bg-paper/10" />
-        <Award className="h-3 w-3 text-gold" aria-hidden />
-        <span className="font-mono text-[10px] tracking-[0.3em] text-gold">
+        <span className="h-px flex-1 bg-ink-900/10" />
+        <Award className="h-3 w-3 text-warm-deep" aria-hidden />
+        <span className="font-mono text-[10px] tracking-[0.3em] text-warm-deep">
           CREDENTIALS
         </span>
-        <span className="h-px flex-1 bg-paper/10" />
+        <span className="h-px flex-1 bg-ink-900/10" />
       </div>
 
       {/* Credentials list */}
       <ul className="relative flex-1 space-y-2 px-6 py-5">
-        {credentials.map((c) => (
-          <li
-            key={c.label}
-            className={cn(
-              "flex items-center gap-3 rounded-lg border px-3 py-2.5",
-              c.tone === "gold"
-                ? "border-gold/20 bg-gold/5"
-                : "border-accent/20 bg-accent/5",
-            )}
-          >
-            <span
+        {credentials.map((c) => {
+          const t = toneClass(c.tone);
+          return (
+            <li
+              key={c.label}
               className={cn(
-                "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border",
-                c.tone === "gold"
-                  ? "border-gold/30 bg-gold/10 text-gold"
-                  : "border-accent/30 bg-accent/10 text-accent",
+                "flex items-center gap-3 rounded-lg border px-3 py-2.5",
+                t.wrap,
               )}
             >
-              <c.icon className="h-3.5 w-3.5" aria-hidden />
-            </span>
-            <div className="min-w-0 flex-1">
-              <p className="text-[9px] tracking-[0.22em] uppercase text-paper/45">
-                {c.label}
-              </p>
-              <p
+              <span
                 className={cn(
-                  "mt-0.5 font-serif text-sm leading-tight",
-                  c.tone === "gold" ? "text-gold-soft" : "text-paper",
+                  "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border",
+                  t.icon,
                 )}
               >
-                {c.value}
-              </p>
-            </div>
-            <p className="shrink-0 text-[10px] text-paper/45">{c.sub}</p>
-          </li>
-        ))}
+                <c.icon className="h-3.5 w-3.5" aria-hidden />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="text-[9px] tracking-[0.22em] uppercase text-ink-500">
+                  {c.label}
+                </p>
+                <p className={cn("mt-0.5 font-serif text-sm leading-tight", t.value)}>
+                  {c.value}
+                </p>
+              </div>
+              <p className="shrink-0 text-[10px] text-ink-500">{c.sub}</p>
+            </li>
+          );
+        })}
       </ul>
 
-      {/* Footer badge */}
-      <div className="relative border-t border-paper/5 bg-ink-950/40 px-6 py-4 backdrop-blur">
-        <p className="text-center font-serif text-xs leading-relaxed text-paper/60">
-          <span className="text-gold">“</span>
+      {/* Footer */}
+      <div className="relative border-t border-ink-900/10 bg-paper-soft/50 px-6 py-4">
+        <p className="text-center font-serif text-xs leading-relaxed text-ink-700">
+          <span className="text-warm-deep">“</span>
           物理が苦手な人から、難関大を目指す人まで。
-          <span className="text-gold">”</span>
+          <span className="text-warm-deep">”</span>
         </p>
       </div>
     </div>

@@ -42,11 +42,11 @@ export default function TrialPage() {
       >
         <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <div className="space-y-10">
-            <div className="rounded-2xl border border-paper/10 bg-ink-900/60 p-8">
-              <p className="text-xs tracking-[0.28em] uppercase text-accent">
+            <div className="rounded-2xl border border-ink-900/10 bg-white p-8">
+              <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
                 WHAT YOU GET
               </p>
-              <ul className="mt-6 space-y-3 text-sm text-paper/80">
+              <ul className="mt-6 space-y-3 text-sm text-ink-800">
                 {[
                   "苦手分野の現在地ヒアリング",
                   "診断ミニ授業による指導体験",
@@ -54,7 +54,7 @@ export default function TrialPage() {
                   "講座の詳細・費用面のご説明(ご希望の方のみ)",
                 ].map((x) => (
                   <li key={x} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-deep" />
                     <span>{x}</span>
                   </li>
                 ))}
@@ -62,13 +62,13 @@ export default function TrialPage() {
             </div>
 
             <div>
-              <p className="text-xs tracking-[0.28em] uppercase text-accent">
+              <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
                 FOR WHOM
               </p>
-              <h2 className="mt-4 font-serif text-2xl text-paper">
+              <h2 className="mt-4 font-serif text-2xl text-ink-900">
                 このような方におすすめです
               </h2>
-              <ul className="mt-6 space-y-3 text-sm text-paper/80">
+              <ul className="mt-6 space-y-3 text-sm text-ink-800">
                 {[
                   "物理の勉強法そのものに迷っている方",
                   "独学で進めてきたが、行き詰まりを感じている方",
@@ -77,9 +77,9 @@ export default function TrialPage() {
                 ].map((x) => (
                   <li
                     key={x}
-                    className="flex items-start gap-3 rounded-xl border border-paper/10 bg-ink-900/60 p-4"
+                    className="flex items-start gap-3 rounded-xl border border-ink-900/10 bg-white p-4"
                   >
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-deep" />
                     <span>{x}</span>
                   </li>
                 ))}
@@ -87,26 +87,26 @@ export default function TrialPage() {
             </div>
 
             <div>
-              <p className="text-xs tracking-[0.28em] uppercase text-accent">
+              <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
                 TIMELINE
               </p>
-              <h2 className="mt-4 font-serif text-2xl text-paper">
+              <h2 className="mt-4 font-serif text-2xl text-ink-900">
                 当日の流れ(60分)
               </h2>
               <ol className="mt-6 space-y-3">
                 {flow.map((f) => (
                   <li
                     key={f.step}
-                    className="rounded-xl border border-paper/10 bg-ink-900/60 p-6"
+                    className="rounded-xl border border-ink-900/10 bg-white p-6"
                   >
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                      <p className="font-mono text-xs text-accent">
+                      <p className="font-mono text-xs text-brand-deep">
                         STEP {f.step}
                       </p>
-                      <p className="font-mono text-xs text-paper/40">{f.time}</p>
+                      <p className="font-mono text-xs text-ink-400">{f.time}</p>
                     </div>
-                    <p className="mt-3 font-serif text-paper">{f.title}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-paper/70">
+                    <p className="mt-3 font-serif text-ink-900">{f.title}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-700">
                       {f.body}
                     </p>
                   </li>
@@ -116,33 +116,33 @@ export default function TrialPage() {
           </div>
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-2xl border border-paper/10 bg-gradient-to-br from-navy-900/80 to-ink-900/80 p-8">
-              <p className="text-[10px] tracking-[0.28em] uppercase text-accent">
+            <div className="rounded-2xl border border-ink-900/10 bg-gradient-to-br from-paper-soft to-white p-8">
+              <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
                 FEE
               </p>
-              <p className="mt-4 font-serif text-3xl text-paper">無料</p>
-              <p className="mt-3 text-xs text-paper/60">
+              <p className="mt-4 font-serif text-3xl text-ink-900">無料</p>
+              <p className="mt-3 text-xs text-ink-600">
                 初回のみ。Zoomによるオンライン実施。
               </p>
 
-              <ul className="mt-6 space-y-2 text-xs text-paper/70">
+              <ul className="mt-6 space-y-2 text-xs text-ink-700">
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-3 w-3 text-accent" />
+                  <Check className="mt-0.5 h-3 w-3 text-brand-deep" />
                   入塾前提ではありません
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-3 w-3 text-accent" />
+                  <Check className="mt-0.5 h-3 w-3 text-brand-deep" />
                   保護者同席も可能です
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-3 w-3 text-accent" />
+                  <Check className="mt-0.5 h-3 w-3 text-brand-deep" />
                   当日中に学習戦略をお渡しします
                 </li>
               </ul>
 
               <Link
                 href="/contact"
-                className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-medium text-ink-950 hover:bg-accent-soft transition"
+                className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-warm px-5 py-3 text-sm font-medium text-white hover:bg-warm-deep transition"
               >
                 申し込みフォームへ
                 <ArrowRight className="h-4 w-4" />

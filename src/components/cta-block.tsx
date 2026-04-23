@@ -18,29 +18,29 @@ export function CtaBlock({
   secondary = { label: "お問い合わせ", href: "/contact" },
 }: Props) {
   return (
-    <section className="relative overflow-hidden border-y border-paper/10 bg-navy-900">
+    <section className="relative overflow-hidden border-y border-ink-900/10 bg-gradient-to-br from-brand-bg via-paper to-warm-bg">
       <div
         aria-hidden
-        className="absolute inset-0 opacity-70 [background-image:radial-gradient(circle_at_20%_0%,rgba(110,168,255,0.2),transparent_50%),radial-gradient(circle_at_80%_100%,rgba(19,32,68,0.8),transparent_60%)]"
+        className="absolute inset-0 opacity-90 [background-image:radial-gradient(circle_at_10%_0%,rgba(59,124,217,0.18),transparent_55%),radial-gradient(circle_at_90%_100%,rgba(226,128,64,0.18),transparent_55%)]"
       />
       <Container className="relative py-20 sm:py-24">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-end">
           <div>
-            <p className="text-xs tracking-[0.28em] uppercase text-accent">{eyebrow}</p>
-            <h2 className="mt-6 font-serif text-display-md text-paper">{title}</h2>
-            <p className="mt-6 max-w-xl text-paper/70 leading-relaxed">{description}</p>
+            <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">{eyebrow}</p>
+            <h2 className="mt-6 font-serif text-display-md text-ink-900">{title}</h2>
+            <p className="mt-6 max-w-xl text-ink-700 leading-relaxed">{description}</p>
           </div>
           <div className="flex flex-wrap gap-3 md:justify-end">
             <Link
               href={primary.href}
-              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-ink-950 transition hover:bg-accent-soft"
+              className="group inline-flex items-center gap-2 rounded-full bg-warm px-6 py-3.5 text-sm font-medium text-white shadow-warm transition hover:bg-warm-deep"
             >
               {primary.label}
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
             </Link>
             <Link
               href={secondary.href}
-              className="inline-flex items-center gap-2 rounded-full border border-paper/20 px-6 py-3 text-sm text-paper hover:border-accent hover:text-accent transition"
+              className="inline-flex items-center gap-2 rounded-full border border-ink-900/15 bg-white px-6 py-3.5 text-sm text-ink-800 hover:border-brand hover:text-brand transition"
             >
               {secondary.label}
             </Link>

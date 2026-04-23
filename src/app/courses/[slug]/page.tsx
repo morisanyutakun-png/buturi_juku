@@ -68,25 +68,25 @@ export default async function CourseDetailPage({
       >
         <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <div className="space-y-10">
-            <div className="rounded-2xl border border-paper/10 bg-ink-900/60 p-8">
-              <p className="text-xs tracking-[0.28em] uppercase text-accent">
+            <div className="rounded-2xl border border-ink-900/10 bg-white p-8">
+              <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
                 OVERVIEW
               </p>
-              <p className="mt-4 text-paper/80 leading-[1.9]">{course.summary}</p>
+              <p className="mt-4 text-ink-800 leading-[1.9]">{course.summary}</p>
             </div>
 
             <div>
-              <p className="text-xs tracking-[0.28em] uppercase text-accent">
+              <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
                 FOR WHOM
               </p>
-              <h2 className="mt-4 font-serif text-2xl text-paper">対象者</h2>
+              <h2 className="mt-4 font-serif text-2xl text-ink-900">対象者</h2>
               <ul className="mt-6 space-y-3">
                 {course.targets.map((t) => (
                   <li
                     key={t}
-                    className="flex items-start gap-3 rounded-xl border border-paper/10 bg-ink-900/60 p-4 text-sm text-paper/80"
+                    className="flex items-start gap-3 rounded-xl border border-ink-900/10 bg-white p-4 text-sm text-ink-800"
                   >
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-deep" />
                     <span>{t}</span>
                   </li>
                 ))}
@@ -94,25 +94,25 @@ export default async function CourseDetailPage({
             </div>
 
             <div>
-              <p className="text-xs tracking-[0.28em] uppercase text-accent">
+              <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
                 CURRICULUM
               </p>
-              <h2 className="mt-4 font-serif text-2xl text-paper">
+              <h2 className="mt-4 font-serif text-2xl text-ink-900">
                 学べる内容
               </h2>
               <ol className="mt-6 space-y-4">
                 {course.curriculum.map((c, i) => (
                   <li
                     key={c.heading}
-                    className="rounded-xl border border-paper/10 bg-ink-900/60 p-6"
+                    className="rounded-xl border border-ink-900/10 bg-white p-6"
                   >
-                    <p className="font-mono text-xs text-accent">
+                    <p className="font-mono text-xs text-brand-deep">
                       UNIT {String(i + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="mt-3 font-serif text-lg text-paper">
+                    <h3 className="mt-3 font-serif text-lg text-ink-900">
                       {c.heading}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-paper/70">
+                    <p className="mt-3 text-sm leading-relaxed text-ink-700">
                       {c.body}
                     </p>
                   </li>
@@ -121,10 +121,10 @@ export default async function CourseDetailPage({
             </div>
 
             <div>
-              <p className="text-xs tracking-[0.28em] uppercase text-accent">
+              <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
                 FLOW
               </p>
-              <h2 className="mt-4 font-serif text-2xl text-paper">
+              <h2 className="mt-4 font-serif text-2xl text-ink-900">
                 受講の流れ
               </h2>
               <ol className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -136,39 +136,39 @@ export default async function CourseDetailPage({
                 ].map((s) => (
                   <li
                     key={s.step}
-                    className="rounded-xl border border-paper/10 bg-ink-900/60 p-5"
+                    className="rounded-xl border border-ink-900/10 bg-white p-5"
                   >
-                    <p className="font-mono text-xs text-accent">STEP {s.step}</p>
-                    <p className="mt-2 font-serif text-paper">{s.title}</p>
-                    <p className="mt-2 text-xs leading-relaxed text-paper/70">{s.body}</p>
+                    <p className="font-mono text-xs text-brand-deep">STEP {s.step}</p>
+                    <p className="mt-2 font-serif text-ink-900">{s.title}</p>
+                    <p className="mt-2 text-xs leading-relaxed text-ink-700">{s.body}</p>
                   </li>
                 ))}
               </ol>
             </div>
 
             <div>
-              <p className="text-xs tracking-[0.28em] uppercase text-accent">
+              <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
                 FAQ
               </p>
-              <h2 className="mt-4 font-serif text-2xl text-paper">
+              <h2 className="mt-4 font-serif text-2xl text-ink-900">
                 よくある質問
               </h2>
               <div className="mt-6 space-y-3">
                 {course.faq.map((q) => (
                   <details
                     key={q.question}
-                    className="group rounded-xl border border-paper/10 bg-ink-900/60 p-6 [&_summary::-webkit-details-marker]:hidden"
+                    className="group rounded-xl border border-ink-900/10 bg-white p-6 [&_summary::-webkit-details-marker]:hidden"
                   >
-                    <summary className="flex cursor-pointer items-center justify-between gap-4 font-serif text-paper">
+                    <summary className="flex cursor-pointer items-center justify-between gap-4 font-serif text-ink-900">
                       <span>{q.question}</span>
                       <span
                         aria-hidden
-                        className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-paper/20 text-xs transition group-open:rotate-45"
+                        className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-ink-900/15 text-xs transition group-open:rotate-45"
                       >
                         +
                       </span>
                     </summary>
-                    <p className="mt-4 text-sm leading-relaxed text-paper/70">
+                    <p className="mt-4 text-sm leading-relaxed text-ink-700">
                       {q.answer}
                     </p>
                   </details>
@@ -178,34 +178,34 @@ export default async function CourseDetailPage({
           </div>
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-2xl border border-paper/10 bg-gradient-to-br from-navy-900/80 to-ink-900/80 p-8">
-              <p className="text-[10px] tracking-[0.28em] uppercase text-accent">
+            <div className="rounded-2xl border border-ink-900/10 bg-gradient-to-br from-paper-soft to-white p-8">
+              <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
                 {course.price.label}
               </p>
-              <p className="mt-4 font-serif text-3xl text-paper">
+              <p className="mt-4 font-serif text-3xl text-ink-900">
                 {course.price.value}
               </p>
               {course.price.note && (
-                <p className="mt-3 text-xs text-paper/60 leading-relaxed">
+                <p className="mt-3 text-xs text-ink-600 leading-relaxed">
                   {course.price.note}
                 </p>
               )}
 
               <dl className="mt-8 space-y-3 text-sm">
                 <div className="flex justify-between gap-3">
-                  <dt className="text-paper/50">形式</dt>
-                  <dd className="text-right text-paper/80">{course.format}</dd>
+                  <dt className="text-ink-500">形式</dt>
+                  <dd className="text-right text-ink-800">{course.format}</dd>
                 </div>
                 <div className="flex justify-between gap-3">
-                  <dt className="text-paper/50">時間</dt>
-                  <dd className="text-right text-paper/80">{course.duration}</dd>
+                  <dt className="text-ink-500">時間</dt>
+                  <dd className="text-right text-ink-800">{course.duration}</dd>
                 </div>
               </dl>
 
-              <ul className="mt-6 space-y-2 text-xs text-paper/70">
+              <ul className="mt-6 space-y-2 text-xs text-ink-700">
                 {course.highlights.map((h) => (
                   <li key={h} className="flex items-start gap-2">
-                    <Check className="mt-0.5 h-3 w-3 shrink-0 text-accent" />
+                    <Check className="mt-0.5 h-3 w-3 shrink-0 text-brand-deep" />
                     {h}
                   </li>
                 ))}
@@ -214,14 +214,14 @@ export default async function CourseDetailPage({
               <div className="mt-8 flex flex-col gap-3">
                 <Link
                   href="/trial"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-medium text-ink-950 hover:bg-accent-soft transition"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-warm px-5 py-3 text-sm font-medium text-white hover:bg-warm-deep transition"
                 >
                   体験授業を申し込む
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-paper/20 px-5 py-3 text-sm text-paper hover:border-accent hover:text-accent transition"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-900/15 px-5 py-3 text-sm text-ink-900 hover:border-brand hover:text-brand transition"
                 >
                   この講座について問い合わせる
                 </Link>
@@ -234,21 +234,21 @@ export default async function CourseDetailPage({
       <Section
         eyebrow="OTHER COURSES"
         title="他の講座"
-        className="bg-ink-900/40"
+        className="bg-paper-soft"
       >
         <div className="grid gap-6 md:grid-cols-3">
           {others.map((c) => (
             <Link
               key={c.slug}
               href={`/courses/${c.slug}`}
-              className="group rounded-2xl border border-paper/10 bg-ink-900/60 p-7 transition hover:border-accent/40 hover:bg-ink-800/60"
+              className="group rounded-2xl border border-ink-900/10 bg-white p-7 transition hover:border-brand/40 hover:bg-paper-soft"
             >
-              <p className="text-[10px] tracking-[0.28em] uppercase text-accent">
+              <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
                 {c.category}
               </p>
-              <h3 className="mt-3 font-serif text-lg text-paper">{c.title}</h3>
-              <p className="mt-2 text-xs text-paper/60">{c.subtitle}</p>
-              <p className="mt-4 inline-flex items-center gap-1 text-sm text-accent transition group-hover:translate-x-0.5">
+              <h3 className="mt-3 font-serif text-lg text-ink-900">{c.title}</h3>
+              <p className="mt-2 text-xs text-ink-600">{c.subtitle}</p>
+              <p className="mt-4 inline-flex items-center gap-1 text-sm text-brand-deep transition group-hover:translate-x-0.5">
                 詳しく見る
                 <ArrowRight className="h-4 w-4" />
               </p>

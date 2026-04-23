@@ -16,36 +16,72 @@ const config: Config = {
     },
     extend: {
       colors: {
-        ink: {
-          950: "#05060a",
-          900: "#0a0c14",
-          800: "#10131d",
-          700: "#151a27",
-          600: "#1c2233",
-        },
-        navy: {
-          900: "#070c1c",
-          800: "#0b1328",
-          700: "#132044",
-          600: "#1b2d5b",
-        },
+        // Primary body backgrounds (warm paper tones)
         paper: {
-          DEFAULT: "#f5f5f7",
-          muted: "#d4d4d8",
-        },
-        accent: {
-          DEFAULT: "#6ea8ff",
-          soft: "#a4c3ff",
-          deep: "#3a6bd8",
-        },
-        gold: {
-          DEFAULT: "#e8c57a",
-          soft: "#f2d99a",
-          deep: "#b88a3e",
+          DEFAULT: "#fdfbf5",
+          soft: "#f6f2e8",
+          muted: "#ebe5d5",
         },
         cream: {
           DEFAULT: "#f6efe2",
-          muted: "#e8e0cf",
+          muted: "#e8dfc9",
+        },
+
+        // Text colors (ink on paper)
+        ink: {
+          950: "#0a1528",
+          900: "#142341",
+          800: "#1e3056",
+          700: "#36456a",
+          600: "#5a6886",
+          500: "#7f8ca6",
+          400: "#a9b2c5",
+          300: "#cfd5e1",
+        },
+
+        // Primary brand — friendly, approachable blue
+        brand: {
+          DEFAULT: "#3b7cd9",
+          soft: "#c5daf5",
+          bg: "#e9f0fb",
+          deep: "#1f5aa6",
+        },
+        // Keep accent as alias (less migration pain)
+        accent: {
+          DEFAULT: "#3b7cd9",
+          soft: "#c5daf5",
+          deep: "#1f5aa6",
+        },
+
+        // Warm coral — for CTAs and emphasis
+        warm: {
+          DEFAULT: "#e28040",
+          soft: "#fbddc4",
+          bg: "#fef4eb",
+          deep: "#b35f27",
+        },
+
+        // Forest green — subtle 森 echo
+        forest: {
+          DEFAULT: "#597a5b",
+          soft: "#d8e4d9",
+          bg: "#eff4ef",
+          deep: "#2f4b31",
+        },
+
+        // Gold — credentials and book accents (darkened for light bg)
+        gold: {
+          DEFAULT: "#caa34b",
+          soft: "#f3e4b6",
+          deep: "#8e6c2a",
+        },
+
+        // Deep surfaces (used sparingly for dark accent cards)
+        navy: {
+          900: "#0a1528",
+          800: "#142341",
+          700: "#1e3056",
+          600: "#2e4474",
         },
       },
       fontFamily: {
@@ -54,6 +90,7 @@ const config: Config = {
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
+          "'Hiragino Sans'",
           "'Hiragino Kaku Gothic ProN'",
           "'Noto Sans JP'",
           "'Yu Gothic'",
@@ -69,16 +106,23 @@ const config: Config = {
         ],
       },
       fontSize: {
-        "display-lg": ["clamp(2.4rem, 6vw, 4.4rem)", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
-        "display-md": ["clamp(1.9rem, 4vw, 2.8rem)", { lineHeight: "1.15", letterSpacing: "-0.015em" }],
+        "display-lg": [
+          "clamp(2.2rem, 5.5vw, 4.2rem)",
+          { lineHeight: "1.12", letterSpacing: "-0.015em" },
+        ],
+        "display-md": [
+          "clamp(1.8rem, 3.8vw, 2.6rem)",
+          { lineHeight: "1.18", letterSpacing: "-0.01em" },
+        ],
       },
       boxShadow: {
-        soft: "0 10px 40px -20px rgba(110, 168, 255, 0.25)",
-        card: "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 20px 60px -30px rgba(0,0,0,0.8)",
+        soft: "0 10px 30px -15px rgba(31, 90, 166, 0.15)",
+        card: "0 1px 0 0 rgba(255,255,255,0.6) inset, 0 18px 40px -30px rgba(10,21,40,0.25)",
+        warm: "0 12px 30px -15px rgba(226, 128, 64, 0.35)",
       },
       backgroundImage: {
-        "grid-fade":
-          "linear-gradient(to bottom, rgba(5,6,10,0) 0%, rgba(5,6,10,1) 80%), radial-gradient(circle at 50% 0%, rgba(110,168,255,0.18), transparent 60%)",
+        "paper-texture":
+          "radial-gradient(1400px 700px at 50% -200px, rgba(59,124,217,0.06), transparent 60%), linear-gradient(180deg, #fdfbf5 0%, #f7f2e5 100%)",
       },
       keyframes: {
         fadeUp: {

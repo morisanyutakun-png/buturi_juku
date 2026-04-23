@@ -9,7 +9,7 @@ export function BookShowcase() {
       eyebrow="PUBLISHED WORK"
       title={<>書籍を執筆した講師が、<br className="sm:hidden" />授業をそのまま担当します。</>}
       description="主宰講師 森祐太(名古屋大学 工学部 電気電子情報工学科)が手がけた電磁気の書籍。書籍で体系化した指導観を、そのままオンライン授業に持ち込みます。"
-      className="relative overflow-hidden bg-gradient-to-b from-cream via-cream to-cream-muted text-ink-900"
+      className="relative overflow-hidden bg-gradient-to-b from-cream via-cream to-cream-muted text-ink-900 border-y border-ink-900/10"
     >
       <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1fr]">
         <div className="relative">
@@ -111,7 +111,7 @@ export function BookShowcase() {
               href={featuredBook.amazonUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-paper transition hover:bg-navy-900"
+              className="group inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-ink-800"
             >
               Amazonで書籍を見る
               <ExternalLink className="h-4 w-4 transition group-hover:translate-x-0.5" />

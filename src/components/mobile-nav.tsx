@@ -25,14 +25,14 @@ export function MobileNav() {
         aria-label={open ? "メニューを閉じる" : "メニューを開く"}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-paper/10 text-paper hover:border-accent/60 hover:text-accent transition"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink-900/15 bg-white text-ink-800 hover:border-brand hover:text-brand transition"
       >
         {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>
 
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-ink-950/95 backdrop-blur-md transition-opacity",
+          "fixed inset-0 z-40 bg-paper/90 backdrop-blur-md transition-opacity",
           open ? "opacity-100" : "pointer-events-none opacity-0",
         )}
         onClick={() => setOpen(false)}
@@ -41,21 +41,21 @@ export function MobileNav() {
       <nav
         aria-label="モバイルメニュー"
         className={cn(
-          "fixed inset-x-0 top-[72px] z-50 origin-top bg-ink-950/95 backdrop-blur-md border-t border-paper/10 transition-transform duration-300 ease-out",
+          "fixed inset-x-0 top-[72px] z-50 origin-top bg-paper/95 backdrop-blur-md border-t border-ink-900/10 transition-transform duration-300 ease-out",
           open ? "translate-y-0" : "-translate-y-4 pointer-events-none opacity-0",
         )}
       >
         <div className="container py-8">
-          <ul className="flex flex-col divide-y divide-paper/10">
+          <ul className="flex flex-col divide-y divide-ink-900/10">
             {mainNav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-between py-4 font-serif text-lg text-paper hover:text-accent transition"
+                  className="flex items-center justify-between py-4 font-serif text-lg text-ink-900 hover:text-brand transition"
                 >
                   {item.label}
-                  <span aria-hidden className="text-paper/40">
+                  <span aria-hidden className="text-ink-400">
                     →
                   </span>
                 </Link>
@@ -66,14 +66,14 @@ export function MobileNav() {
             <Link
               href="/trial"
               onClick={() => setOpen(false)}
-              className="rounded-full border border-paper/20 px-4 py-3 text-center text-sm text-paper hover:border-accent"
+              className="rounded-full border border-ink-900/15 bg-white px-4 py-3 text-center text-sm text-ink-800 hover:border-brand hover:text-brand"
             >
               体験授業
             </Link>
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="rounded-full bg-accent px-4 py-3 text-center text-sm font-medium text-ink-950 hover:bg-accent-soft"
+              className="rounded-full bg-warm px-4 py-3 text-center text-sm font-medium text-white hover:bg-warm-deep"
             >
               お問い合わせ
             </Link>

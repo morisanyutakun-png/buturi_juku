@@ -4,10 +4,6 @@ type Props = {
   className?: string;
 };
 
-/**
- * Orbital physics illustration — electron orbits + nucleus + faint waveform.
- * Pure SVG, no image assets required.
- */
 export function PhysicsOrbital({ className }: Props) {
   return (
     <svg
@@ -17,13 +13,17 @@ export function PhysicsOrbital({ className }: Props) {
     >
       <defs>
         <radialGradient id="nucleus" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#f2d99a" stopOpacity="0.9" />
-          <stop offset="70%" stopColor="#e8c57a" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#b88a3e" stopOpacity="0" />
+          <stop offset="0%" stopColor="#fbdfaf" stopOpacity="0.95" />
+          <stop offset="70%" stopColor="#e8b864" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#caa34b" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="orbit-stroke" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#6ea8ff" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#6ea8ff" stopOpacity="0.1" />
+          <stop offset="0%" stopColor="#3b7cd9" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#3b7cd9" stopOpacity="0.15" />
+        </linearGradient>
+        <linearGradient id="orbit-warm" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#e28040" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#e28040" stopOpacity="0.15" />
         </linearGradient>
       </defs>
 
@@ -35,7 +35,7 @@ export function PhysicsOrbital({ className }: Props) {
           ry="70"
           fill="none"
           stroke="url(#orbit-stroke)"
-          strokeWidth="0.8"
+          strokeWidth="1.2"
           transform="rotate(15)"
         />
         <ellipse
@@ -44,8 +44,8 @@ export function PhysicsOrbital({ className }: Props) {
           rx="160"
           ry="60"
           fill="none"
-          stroke="url(#orbit-stroke)"
-          strokeWidth="0.8"
+          stroke="url(#orbit-warm)"
+          strokeWidth="1.2"
           transform="rotate(-30)"
         />
         <ellipse
@@ -55,14 +55,14 @@ export function PhysicsOrbital({ className }: Props) {
           ry="80"
           fill="none"
           stroke="url(#orbit-stroke)"
-          strokeWidth="0.8"
+          strokeWidth="1.2"
           transform="rotate(75)"
         />
 
         <circle cx="0" cy="0" r="36" fill="url(#nucleus)" />
-        <circle cx="0" cy="0" r="5" fill="#f2d99a" />
+        <circle cx="0" cy="0" r="5" fill="#caa34b" />
 
-        <circle cx="180" cy="0" r="4" fill="#6ea8ff" transform="rotate(15)">
+        <circle cx="180" cy="0" r="5" fill="#3b7cd9" transform="rotate(15)">
           <animateTransform
             attributeName="transform"
             type="rotate"
@@ -72,7 +72,7 @@ export function PhysicsOrbital({ className }: Props) {
             repeatCount="indefinite"
           />
         </circle>
-        <circle cx="160" cy="0" r="3" fill="#a4c3ff" transform="rotate(-30)">
+        <circle cx="160" cy="0" r="4" fill="#e28040" transform="rotate(-30)">
           <animateTransform
             attributeName="transform"
             type="rotate"
@@ -82,7 +82,7 @@ export function PhysicsOrbital({ className }: Props) {
             repeatCount="indefinite"
           />
         </circle>
-        <circle cx="140" cy="0" r="3.5" fill="#e8c57a" transform="rotate(75)">
+        <circle cx="140" cy="0" r="4" fill="#597a5b" transform="rotate(75)">
           <animateTransform
             attributeName="transform"
             type="rotate"
@@ -107,23 +107,23 @@ export function PhysicsWave({ className }: Props) {
     >
       <defs>
         <linearGradient id="wave-stroke" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#6ea8ff" stopOpacity="0" />
-          <stop offset="50%" stopColor="#6ea8ff" stopOpacity="0.7" />
-          <stop offset="100%" stopColor="#6ea8ff" stopOpacity="0" />
+          <stop offset="0%" stopColor="#3b7cd9" stopOpacity="0" />
+          <stop offset="50%" stopColor="#3b7cd9" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#3b7cd9" stopOpacity="0" />
         </linearGradient>
       </defs>
       <path
         d="M0,60 C150,20 250,100 400,60 C550,20 650,100 800,60 C950,20 1050,100 1200,60"
         fill="none"
         stroke="url(#wave-stroke)"
-        strokeWidth="1.2"
+        strokeWidth="1.4"
       />
       <path
         d="M0,70 C150,40 250,110 400,70 C550,40 650,110 800,70 C950,40 1050,110 1200,70"
         fill="none"
         stroke="url(#wave-stroke)"
-        strokeWidth="0.8"
-        opacity="0.5"
+        strokeWidth="0.9"
+        opacity="0.45"
       />
     </svg>
   );
@@ -134,7 +134,7 @@ export function PhysicsFormula({ className }: { className?: string }) {
     <div
       aria-hidden
       className={cn(
-        "pointer-events-none select-none font-serif text-paper/[0.04] leading-none",
+        "pointer-events-none select-none font-serif text-ink-900/[0.04] leading-none",
         className,
       )}
     >

@@ -12,16 +12,21 @@ export function BrandMark({ className, asLink = true }: Props) {
     <span className={cn("inline-flex items-center gap-3", className)}>
       <span
         aria-hidden
-        className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-accent/40 bg-navy-900/60"
+        className="relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand/15 to-forest/20 ring-1 ring-brand/30"
       >
-        <span className="absolute inset-1 rounded-full border border-accent/20" />
-        <span className="absolute h-1 w-1 rounded-full bg-accent shadow-[0_0_12px_rgba(110,168,255,0.9)]" />
+        {/* small atomic leaf mark */}
+        <svg viewBox="0 0 32 32" className="h-6 w-6">
+          <ellipse cx="16" cy="16" rx="12" ry="4.5" fill="none" stroke="currentColor" strokeWidth="1.4" className="text-brand" />
+          <ellipse cx="16" cy="16" rx="12" ry="4.5" fill="none" stroke="currentColor" strokeWidth="1.4" className="text-forest" transform="rotate(60 16 16)" />
+          <ellipse cx="16" cy="16" rx="12" ry="4.5" fill="none" stroke="currentColor" strokeWidth="1.4" className="text-warm" transform="rotate(-60 16 16)" />
+          <circle cx="16" cy="16" r="2.2" className="fill-gold" />
+        </svg>
       </span>
       <span className="flex flex-col leading-none">
-        <span className="text-[10px] tracking-[0.32em] uppercase text-accent/80">
-          Physics Academy
+        <span className="text-[9px] font-semibold tracking-[0.3em] uppercase text-brand">
+          {siteConfig.nameEn}
         </span>
-        <span className="mt-1 font-serif text-base text-paper">
+        <span className="mt-1.5 font-serif text-lg text-ink-900">
           {siteConfig.name}
         </span>
       </span>

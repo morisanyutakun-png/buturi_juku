@@ -12,7 +12,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "塾について",
   description:
-    "森祐太 物理専門塾の理念、学習思想、なぜ物理専門塾なのか、総合塾との違いについて。物理を『わかる』まで追いかける塾の姿勢を解説します。",
+    "物理の森(森祐太 物理専門塾)の理念、学習思想、なぜ物理専門塾なのか、総合塾との違いについて。物理を『わかる』まで追いかける塾の姿勢を解説します。",
   path: "/about",
 });
 
@@ -32,27 +32,28 @@ export default function AboutPage() {
         eyebrow="ABOUT US"
         title={<>物理を『わかる』まで、<br className="sm:hidden" />追いかける塾。</>}
         description="高校物理は、わかったふりで止まると最も損をする科目です。私たちは『わかったふり』を許さず、あなたの手が勝手に動くところまで伴走します。"
+        className="bg-paper"
       >
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-paper/10 bg-ink-900/60 p-8">
-            <p className="text-xs tracking-[0.28em] uppercase text-accent">
+          <div className="rounded-2xl border border-ink-900/10 bg-white p-8 shadow-soft">
+            <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
               OUR MISSION
             </p>
-            <h3 className="mt-4 font-serif text-2xl text-paper">
+            <h3 className="mt-4 font-serif text-2xl text-ink-900">
               物理を、暗記ではなく理解へ。
             </h3>
-            <p className="mt-6 text-paper/70 leading-relaxed">
+            <p className="mt-6 text-ink-700 leading-relaxed">
               公式に当てはめる学習は、問題の前提が少しずれた瞬間に崩れます。私たちは物理を『現象を数式に翻訳する営み』として捉え直し、原理からの立式ができる状態を作ることを使命としています。
             </p>
           </div>
-          <div className="rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-ink-900/80 to-ink-900 p-8">
-            <p className="text-xs tracking-[0.28em] uppercase text-gold">
+          <div className="rounded-2xl border border-warm/30 bg-gradient-to-br from-warm-bg via-white to-paper-soft p-8 shadow-soft">
+            <p className="text-xs tracking-[0.28em] uppercase text-warm-deep">
               OUR PROMISE
             </p>
-            <h3 className="mt-4 font-serif text-2xl text-paper">
+            <h3 className="mt-4 font-serif text-2xl text-ink-900">
               物理だけを、深く、丁寧に。
             </h3>
-            <p className="mt-6 text-paper/70 leading-relaxed">
+            <p className="mt-6 text-ink-700 leading-relaxed">
               私たちは物理しか扱いません。だからこそ、あらゆる分野のあらゆる問題を『なぜそう立式するのか』のレベルまで解きほぐすことができます。
             </p>
           </div>
@@ -67,7 +68,7 @@ export default function AboutPage() {
         eyebrow="WHY PHYSICS-ONLY"
         title="なぜ物理専門塾なのか"
         description="総合塾ではなく物理専門塾であることに、はっきりとした意味があります。"
-        className="bg-ink-900/40"
+        className="bg-paper-soft"
       >
         <div className="grid gap-8 md:grid-cols-3">
           {[
@@ -86,10 +87,10 @@ export default function AboutPage() {
           ].map((x) => (
             <div
               key={x.title}
-              className="rounded-2xl border border-paper/10 bg-ink-900/60 p-8"
+              className="rounded-2xl border border-ink-900/10 bg-white p-8 shadow-soft"
             >
-              <h3 className="font-serif text-xl text-paper">{x.title}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-paper/70">
+              <h3 className="font-serif text-xl text-ink-900">{x.title}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-ink-700">
                 {x.body}
               </p>
             </div>
@@ -101,6 +102,7 @@ export default function AboutPage() {
         eyebrow="TEACHING ORDER"
         title="授業の進行順序"
         description="私たちの授業には、明確な順序があります。"
+        className="bg-paper"
       >
         <ol className="space-y-4">
           {[
@@ -127,15 +129,15 @@ export default function AboutPage() {
           ].map((x) => (
             <li
               key={x.step}
-              className="rounded-2xl border border-paper/10 bg-ink-900/60 p-8"
+              className="rounded-2xl border border-ink-900/10 bg-white p-8 shadow-soft"
             >
               <div className="flex flex-col gap-6 md:flex-row md:items-start">
-                <p className="font-mono text-xs text-accent md:pt-1">
+                <p className="font-mono text-xs text-warm-deep md:pt-1">
                   STEP {x.step}
                 </p>
                 <div>
-                  <h3 className="font-serif text-xl text-paper">{x.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-paper/70">
+                  <h3 className="font-serif text-xl text-ink-900">{x.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-700">
                     {x.body}
                   </p>
                 </div>

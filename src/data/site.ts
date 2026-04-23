@@ -4,16 +4,18 @@ export type NavItem = {
 };
 
 export const siteConfig = {
-  name: "森祐太 物理専門塾",
-  shortName: "物理専門塾",
-  tagline: "物理を、暗記ではなく理解へ。",
+  name: "物理の森",
+  nameSub: "森祐太の物理専門塾",
+  nameEn: "MORI Physics Forest",
+  shortName: "物理の森",
+  tagline: "考える力を育てる、物理専門塾。",
   description:
-    "森祐太 物理専門塾は、高校物理に特化した完全オンラインの個別指導塾です。物理が初めての初学者から、中堅大志望、難関大・医学部志望まで、一人ひとりに合わせたカリキュラムで『現象理解から得点できる物理』へ導きます。",
+    "「物理の森」は、名古屋大学 工学部 電気電子情報工学科所属・書籍執筆実績を持つ森祐太が主宰するオンライン物理専門塾です。物理が初めての初学者から、中堅大、難関大・医学部志望まで、一人ひとりに合わせたカリキュラムで『考える力を育てる物理』へ導きます。",
   // カスタムドメイン設定後、ここを差し替える
   url: "https://example.com",
   locale: "ja_JP",
   ogImage: "/og-default.svg",
-  twitter: "@buturi_juku",
+  twitter: "@butsuri_no_mori",
   author: {
     name: "森 祐太",
     role: "主宰講師",
@@ -24,7 +26,7 @@ export const siteConfig = {
   },
   address: {
     region: "日本",
-    note: "オンライン指導中心（全国対応）",
+    note: "オンライン指導中心(全国対応)",
   },
 } as const;
 
