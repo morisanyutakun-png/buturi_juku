@@ -80,11 +80,11 @@ export function ComparisonTable() {
         {/* mobile: stacked */}
         <div className="divide-y divide-ink-900/10 md:hidden">
           {rows.map((r) => (
-            <div key={r.criterion} className="p-5">
-              <p className="text-xs tracking-[0.22em] uppercase text-ink-500">
+            <div key={r.criterion} className="p-6">
+              <p className="text-[12px] tracking-[0.2em] uppercase text-ink-500 font-medium">
                 {r.criterion}
               </p>
-              <div className="mt-4 grid grid-cols-3 gap-3 text-[11px]">
+              <div className="mt-5 grid grid-cols-3 gap-2.5 text-[12px]">
                 <MobileCell label="高校物理専門塾" cell={r.specialty} highlight />
                 <MobileCell label="総合塾" cell={r.general} />
                 <MobileCell label="独学" cell={r.solo} />
@@ -146,17 +146,17 @@ function MobileCell({
 }) {
   return (
     <div
-      className={`rounded-lg border p-3 text-center ${
+      className={`rounded-xl border p-3 text-center ${
         highlight ? "border-brand/30 bg-brand-bg" : "border-ink-900/10 bg-paper-soft"
       }`}
     >
-      <p className="text-[9px] tracking-[0.2em] uppercase text-ink-500">
+      <p className="text-[10.5px] tracking-[0.16em] uppercase text-ink-500 leading-tight">
         {label}
       </p>
-      <div className="mt-2 flex justify-center">
+      <div className="mt-3 flex justify-center">
         <Mark type={cell.mark} />
       </div>
-      <p className="mt-2 text-[10px] leading-snug text-ink-700">{cell.note}</p>
+      <p className="mt-3 text-[11px] leading-[1.65] text-ink-700">{cell.note}</p>
     </div>
   );
 }

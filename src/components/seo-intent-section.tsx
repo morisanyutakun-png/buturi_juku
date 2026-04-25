@@ -49,25 +49,25 @@ export function SeoIntentSection() {
         {intents.map((intent) => (
           <article
             key={intent.keyword}
-            className="group rounded-2xl border border-ink-900/10 bg-white p-7 shadow-soft transition hover:-translate-y-0.5 hover:border-brand/35 hover:shadow-card"
+            className="group rounded-2xl border border-ink-900/10 bg-white p-7 sm:p-7 shadow-soft transition hover:-translate-y-0.5 hover:border-brand/35 hover:shadow-card"
           >
             <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-brand/25 bg-brand-bg text-brand-deep">
+              <span className="flex h-12 w-12 sm:h-11 sm:w-11 items-center justify-center rounded-xl border border-brand/25 bg-brand-bg text-brand-deep">
                 <intent.icon className="h-5 w-5" aria-hidden />
               </span>
-              <p className="text-[10px] tracking-[0.25em] uppercase text-ink-500">
+              <p className="text-[11px] sm:text-[10px] tracking-[0.22em] sm:tracking-[0.25em] uppercase text-ink-500">
                 {intent.keyword}
               </p>
             </div>
-            <h3 className="mt-6 font-serif text-xl leading-snug text-ink-900">
+            <h3 className="mt-6 font-serif text-[1.25rem] sm:text-xl leading-[1.55] sm:leading-snug text-ink-900">
               {intent.title}
             </h3>
-            <p className="mt-4 text-sm leading-relaxed text-ink-700">
+            <p className="mt-4 text-[15px] sm:text-sm leading-[2] sm:leading-relaxed text-ink-700">
               {intent.body}
             </p>
             <Link
               href={intent.href}
-              className="mt-6 inline-flex items-center gap-1 text-sm text-brand-deep transition group-hover:translate-x-0.5"
+              className="mt-6 inline-flex min-h-[44px] items-center gap-1 text-[15px] sm:text-sm text-brand-deep transition group-hover:translate-x-0.5"
             >
               {intent.cta}
               <ArrowRight className="h-4 w-4" />

@@ -38,19 +38,19 @@ export function FeatureCard({
   return (
     <article
       className={cn(
-        "group relative h-full overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/80 p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card",
+        "group relative h-full overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/80 p-7 sm:p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card",
         className,
       )}
     >
       <div
-        className={`flex h-11 w-11 items-center justify-center rounded-2xl ring-1 ${t.ring} ${t.bg} ${t.text}`}
+        className={`flex h-12 w-12 sm:h-11 sm:w-11 items-center justify-center rounded-2xl ring-1 ${t.ring} ${t.bg} ${t.text}`}
       >
-        <Icon className="h-[18px] w-[18px]" aria-hidden strokeWidth={1.6} />
+        <Icon className="h-5 w-5 sm:h-[18px] sm:w-[18px]" aria-hidden strokeWidth={1.6} />
       </div>
-      <h3 className="mt-7 font-serif text-[1.2rem] leading-snug tracking-[-0.008em] text-ink-900">
+      <h3 className="mt-6 sm:mt-7 font-serif text-[1.3rem] sm:text-[1.2rem] leading-[1.55] sm:leading-snug tracking-[-0.008em] text-ink-900">
         {title}
       </h3>
-      <p className="mt-3.5 text-[14px] leading-[1.75] text-ink-600">
+      <p className="mt-4 sm:mt-3.5 text-[15px] sm:text-[14px] leading-[2] sm:leading-[1.75] text-ink-600">
         {description}
       </p>
     </article>

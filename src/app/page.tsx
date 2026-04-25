@@ -168,20 +168,20 @@ export default function HomePage() {
         aria-labelledby="lead-heading"
         className="border-b border-ink-900/[0.06] bg-paper"
       >
-        <div className="container py-14 sm:py-16">
-          <p className="text-[10px] font-medium tracking-[0.32em] uppercase text-brand-deep">
+        <div className="container py-12 sm:py-16">
+          <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.28em] sm:tracking-[0.32em] uppercase text-brand-deep">
             HIGH-SCHOOL PHYSICS SPECIALTY
           </p>
           <h2
             id="lead-heading"
-            className="mt-4 max-w-3xl font-serif text-[1.55rem] leading-[1.55] tracking-[-0.012em] text-ink-900 sm:text-[1.85rem]"
+            className="mt-5 max-w-3xl font-serif text-[1.7rem] leading-[1.6] tracking-[-0.012em] text-ink-900 sm:text-[1.85rem] sm:leading-[1.55]"
           >
             高校物理専門塾「物理の森」は、
             <br className="sm:hidden" />
             <span className="text-brand-deep">高校物理だけ</span>を、
             <span className="text-warm-deep">オンライン1対1</span>で深く教える塾です。
           </h2>
-          <p className="mt-6 max-w-3xl text-[15px] leading-[1.95] text-ink-700">
+          <p className="mt-7 sm:mt-6 max-w-3xl text-[16px] sm:text-[15px] leading-[2.05] sm:leading-[1.95] text-ink-700">
             高校物理専門塾として、全国どこからでも受講できるオンライン個別指導を提供します。高校物理の初学者から、共通テスト・難関大・医学部の大学受験物理志望者まで、一人ひとりの志望校と現状に合わせて、力学・電磁気・波動・熱力学・原子の全分野を体系的に組み立て直します。総合塾ではなく<strong className="font-medium text-ink-900">高校物理専門塾</strong>だからこそ、『公式に当てはめる物理』ではなく『現象から立式できる物理』まで、最後の一歩まで伴走します。
           </p>
         </div>
@@ -196,14 +196,14 @@ export default function HomePage() {
             { k: "指導実績", v: "名大合格生を輩出", s: "塾講師としての実績", color: "text-forest-deep" },
             { k: "対応エリア", v: "全国 Online", s: "初学者〜難関大まで", color: "text-brand-deep" },
           ].map((x) => (
-            <div key={x.k} className="px-5 py-8 text-center md:py-10">
-              <p className="text-[10px] font-medium tracking-[0.28em] uppercase text-ink-500">
+            <div key={x.k} className="px-4 py-9 text-center md:px-5 md:py-10">
+              <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.22em] sm:tracking-[0.28em] uppercase text-ink-500">
                 {x.k}
               </p>
-              <p className={`mt-3.5 font-serif text-[1.4rem] tracking-[-0.012em] md:text-[1.55rem] ${x.color}`}>
+              <p className={`mt-3.5 font-serif text-[1.5rem] sm:text-[1.4rem] tracking-[-0.012em] md:text-[1.55rem] leading-snug ${x.color}`}>
                 {x.v}
               </p>
-              <p className="mt-1.5 text-[11.5px] text-ink-600">{x.s}</p>
+              <p className="mt-2 text-[12.5px] sm:text-[11.5px] leading-relaxed text-ink-600">{x.s}</p>
             </div>
           ))}
         </div>
@@ -225,16 +225,16 @@ export default function HomePage() {
           {subjects.map((s, i) => (
             <div
               key={s.name}
-              className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+              className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
             >
-              <span className="font-mono text-[11px] text-ink-400">
+              <span className="font-mono text-[12px] sm:text-[11px] text-ink-400">
                 0{i + 1}
               </span>
-              <h3 className={`mt-5 font-serif text-[1.6rem] tracking-[-0.012em] ${s.accent}`}>{s.name}</h3>
-              <p className="mt-1.5 text-[10px] tracking-[0.22em] uppercase text-ink-500">
+              <h3 className={`mt-5 font-serif text-[1.75rem] sm:text-[1.6rem] tracking-[-0.012em] ${s.accent}`}>{s.name}</h3>
+              <p className="mt-2 text-[11px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase text-ink-500">
                 {s.kana}
               </p>
-              <p className="mt-5 text-[12.5px] leading-[1.75] text-ink-600">
+              <p className="mt-5 text-[14px] sm:text-[12.5px] leading-[2] sm:leading-[1.75] text-ink-600">
                 {s.description}
               </p>
             </div>
@@ -273,20 +273,20 @@ export default function HomePage() {
           {teachingSteps.map((s) => (
             <article
               key={s.step}
-              className="group relative h-full overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+              className="group relative h-full overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
             >
-              <div className="flex items-baseline gap-3">
-                <span className="font-mono text-[11px] tracking-[0.18em] text-ink-400">
+              <div className="flex items-baseline gap-3 flex-wrap">
+                <span className="font-mono text-[12px] sm:text-[11px] tracking-[0.18em] text-ink-400">
                   STEP {s.step}
                 </span>
-                <span className={`font-serif text-[1.45rem] tracking-[-0.012em] ${s.accent}`}>
+                <span className={`font-serif text-[1.55rem] sm:text-[1.45rem] tracking-[-0.012em] ${s.accent}`}>
                   {s.label}
                 </span>
               </div>
-              <h3 className="mt-7 font-serif text-[1.15rem] leading-snug tracking-[-0.008em] text-ink-900">
+              <h3 className="mt-6 sm:mt-7 font-serif text-[1.25rem] sm:text-[1.15rem] leading-[1.6] sm:leading-snug tracking-[-0.008em] text-ink-900">
                 {s.title}
               </h3>
-              <p className="mt-4 text-[13.5px] leading-[1.85] text-ink-600">
+              <p className="mt-4 text-[15px] sm:text-[13.5px] leading-[2] sm:leading-[1.85] text-ink-600">
                 {s.body}
               </p>
             </article>
@@ -294,21 +294,21 @@ export default function HomePage() {
         </div>
 
         <div className="mt-10 rounded-3xl border border-ink-900/[0.07] bg-paper-soft/70 p-7 sm:p-8">
-          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <div>
-              <p className="text-[10px] font-medium tracking-[0.32em] uppercase text-warm-deep">
+              <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.28em] sm:tracking-[0.32em] uppercase text-warm-deep">
                 FIRST 30 MIN
               </p>
-              <p className="mt-3 font-serif text-[1.15rem] tracking-[-0.008em] text-ink-900">
+              <p className="mt-4 sm:mt-3 font-serif text-[1.25rem] sm:text-[1.15rem] leading-[1.6] sm:leading-snug tracking-[-0.008em] text-ink-900">
                 体験授業の冒頭30分は、現状ヒアリングに使います。
               </p>
-              <p className="mt-2 text-[13px] leading-[1.8] text-ink-600">
+              <p className="mt-3 sm:mt-2 text-[14.5px] sm:text-[13px] leading-[2] sm:leading-[1.8] text-ink-600">
                 模試・志望校・使用教材・つまずきを丁寧に整理してから、診断ミニ授業に進みます。
               </p>
             </div>
             <Link
               href="/trial"
-              className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/80 px-5 py-3 text-[13px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/80 px-5 py-3.5 sm:py-3 text-[14px] sm:text-[13px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white min-h-[48px] sm:min-h-0"
             >
               体験授業の流れを見る
               <ArrowRight className="h-3.5 w-3.5 opacity-60" />
@@ -384,21 +384,21 @@ export default function HomePage() {
             <Link
               key={c.slug}
               href={`/courses/${c.slug}`}
-              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
             >
               <div>
-                <p className="text-[10px] font-medium tracking-[0.28em] uppercase text-brand-deep">
+                <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
                   {c.category}
                 </p>
-                <h3 className="mt-5 font-serif text-[1.55rem] tracking-[-0.012em] text-ink-900">
+                <h3 className="mt-5 font-serif text-[1.7rem] sm:text-[1.55rem] tracking-[-0.012em] leading-[1.4] text-ink-900">
                   {c.title}
                 </h3>
-                <p className="mt-2.5 text-[13.5px] text-ink-600">{c.subtitle}</p>
-                <p className="mt-7 text-[14px] leading-[1.8] text-ink-600">
+                <p className="mt-3 text-[14.5px] sm:text-[13.5px] leading-[1.65] text-ink-600">{c.subtitle}</p>
+                <p className="mt-6 sm:mt-7 text-[15px] sm:text-[14px] leading-[2] sm:leading-[1.8] text-ink-600">
                   {c.summary}
                 </p>
               </div>
-              <div className="mt-9 flex items-center justify-between text-[13px]">
+              <div className="mt-8 sm:mt-9 flex items-center justify-between text-[14px] sm:text-[13px]">
                 <span className="text-ink-500">{c.duration}</span>
                 <span className="inline-flex items-center gap-1.5 text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
                   詳しく見る
@@ -433,15 +433,15 @@ export default function HomePage() {
           {flow.map((s) => (
             <li
               key={s.step}
-              className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+              className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
             >
-              <p className="font-mono text-[10.5px] tracking-[0.18em] text-warm-deep">
+              <p className="font-mono text-[12px] sm:text-[10.5px] tracking-[0.18em] text-warm-deep">
                 STEP {s.step}
               </p>
-              <h3 className="mt-5 font-serif text-[1.15rem] tracking-[-0.008em] text-ink-900">
+              <h3 className="mt-5 font-serif text-[1.25rem] sm:text-[1.15rem] leading-[1.55] sm:leading-snug tracking-[-0.008em] text-ink-900">
                 {s.title}
               </h3>
-              <p className="mt-4 text-[13.5px] leading-[1.8] text-ink-600">
+              <p className="mt-4 text-[15px] sm:text-[13.5px] leading-[2] sm:leading-[1.8] text-ink-600">
                 {s.description}
               </p>
             </li>
@@ -461,28 +461,28 @@ export default function HomePage() {
             const isExternal = Boolean(a.externalUrl);
             const href = articleHref(a);
             const className =
-              "group flex h-full flex-col justify-between rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card";
+              "group flex h-full flex-col justify-between rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card";
 
             const inner = (
               <>
                 <div>
-                  <div className="flex items-center gap-2 text-[10px] font-medium tracking-[0.28em] uppercase text-brand-deep">
+                  <div className="flex items-center gap-2 text-[11px] sm:text-[10px] font-medium tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
                     <span>{a.category}</span>
                     {isExternal && (
-                      <span className="inline-flex items-center gap-0.5 rounded-full border border-ink-900/[0.08] bg-paper px-1.5 py-0.5 text-[8.5px] tracking-[0.18em] text-ink-500 normal-case">
+                      <span className="inline-flex items-center gap-0.5 rounded-full border border-ink-900/[0.08] bg-paper px-1.5 py-0.5 text-[9.5px] sm:text-[8.5px] tracking-[0.18em] text-ink-500 normal-case">
                         yuta-eng
                         <ArrowUpRight className="h-2 w-2" />
                       </span>
                     )}
                   </div>
-                  <h3 className="mt-4 font-serif text-[1.05rem] leading-snug tracking-[-0.005em] text-ink-900">
+                  <h3 className="mt-4 font-serif text-[1.15rem] sm:text-[1.05rem] leading-[1.55] sm:leading-snug tracking-[-0.005em] text-ink-900">
                     {a.title}
                   </h3>
-                  <p className="mt-3.5 text-[13px] leading-[1.75] text-ink-600 line-clamp-4">
+                  <p className="mt-4 sm:mt-3.5 text-[14.5px] sm:text-[13px] leading-[1.95] sm:leading-[1.75] text-ink-600 line-clamp-4">
                     {a.description}
                   </p>
                 </div>
-                <p className="mt-6 inline-flex items-center gap-1.5 text-[12px] text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
+                <p className="mt-6 inline-flex items-center gap-1.5 text-[13.5px] sm:text-[12px] text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
                   続きを読む
                   {isExternal ? (
                     <ArrowUpRight className="h-3 w-3" />

@@ -6,7 +6,7 @@ const config: Config = {
     container: {
       center: true,
       padding: {
-        DEFAULT: "1.25rem",
+        DEFAULT: "1.15rem",
         sm: "1.5rem",
         lg: "2rem",
       },
@@ -120,26 +120,26 @@ const config: Config = {
         widest: "0.32em",
       },
       fontSize: {
-        // Apple-style display sizes — tighter tracking, generous line-height
+        // Apple-style display sizes — clamp lifted on the low end so mobile hits a comfortably large size
         "display-2xl": [
-          "clamp(2.6rem, 7vw, 5.6rem)",
-          { lineHeight: "1.04", letterSpacing: "-0.025em", fontWeight: "500" },
+          "clamp(2.85rem, 7vw, 5.6rem)",
+          { lineHeight: "1.12", letterSpacing: "-0.025em", fontWeight: "500" },
         ],
         "display-xl": [
-          "clamp(2.4rem, 6vw, 4.6rem)",
-          { lineHeight: "1.08", letterSpacing: "-0.022em" },
+          "clamp(2.55rem, 6vw, 4.6rem)",
+          { lineHeight: "1.18", letterSpacing: "-0.022em" },
         ],
         "display-lg": [
-          "clamp(2.1rem, 5.2vw, 4rem)",
-          { lineHeight: "1.1", letterSpacing: "-0.018em" },
+          "clamp(2.25rem, 5.2vw, 4rem)",
+          { lineHeight: "1.2", letterSpacing: "-0.018em" },
         ],
         "display-md": [
-          "clamp(1.7rem, 3.6vw, 2.5rem)",
-          { lineHeight: "1.18", letterSpacing: "-0.012em" },
+          "clamp(1.95rem, 3.6vw, 2.5rem)",
+          { lineHeight: "1.32", letterSpacing: "-0.012em" },
         ],
         "display-sm": [
-          "clamp(1.3rem, 2.4vw, 1.7rem)",
-          { lineHeight: "1.25", letterSpacing: "-0.008em" },
+          "clamp(1.45rem, 2.4vw, 1.7rem)",
+          { lineHeight: "1.45", letterSpacing: "-0.008em" },
         ],
       },
       boxShadow: {

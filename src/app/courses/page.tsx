@@ -49,35 +49,35 @@ export default function CoursesIndexPage() {
             <Link
               key={c.slug}
               href={`/courses/${c.slug}`}
-              className="group flex h-full flex-col justify-between rounded-2xl border border-ink-900/10 bg-white p-8 transition hover:border-brand/40 hover:bg-paper-soft"
+              className="group flex h-full flex-col justify-between rounded-2xl border border-ink-900/10 bg-white p-7 sm:p-8 transition hover:border-brand/40 hover:bg-paper-soft"
             >
               <div>
-                <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
+                <p className="text-[11px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
                   {c.category}
                 </p>
-                <h2 className="mt-4 font-serif text-2xl text-ink-900">
+                <h2 className="mt-4 font-serif text-[1.6rem] sm:text-2xl leading-[1.4] text-ink-900">
                   {c.title}
                 </h2>
-                <p className="mt-2 text-sm text-ink-600">{c.subtitle}</p>
-                <p className="mt-6 text-sm leading-relaxed text-ink-700">
+                <p className="mt-3 text-[14.5px] sm:text-sm leading-[1.7] text-ink-600">{c.subtitle}</p>
+                <p className="mt-6 text-[15px] sm:text-sm leading-[2] sm:leading-relaxed text-ink-700">
                   {c.summary}
                 </p>
               </div>
-              <div className="mt-8 grid grid-cols-2 gap-3 text-xs">
-                <div className="rounded-lg border border-ink-900/10 bg-white p-3">
-                  <p className="text-[10px] tracking-widest uppercase text-ink-400">
+              <div className="mt-8 grid grid-cols-2 gap-3 text-[12.5px] sm:text-xs">
+                <div className="rounded-lg border border-ink-900/10 bg-white p-3.5 sm:p-3">
+                  <p className="text-[11px] sm:text-[10px] tracking-[0.18em] sm:tracking-widest uppercase text-ink-400">
                     TIME
                   </p>
-                  <p className="mt-1 text-ink-800">{c.duration}</p>
+                  <p className="mt-1.5 text-ink-800">{c.duration}</p>
                 </div>
-                <div className="rounded-lg border border-ink-900/10 bg-white p-3">
-                  <p className="text-[10px] tracking-widest uppercase text-ink-400">
+                <div className="rounded-lg border border-ink-900/10 bg-white p-3.5 sm:p-3">
+                  <p className="text-[11px] sm:text-[10px] tracking-[0.18em] sm:tracking-widest uppercase text-ink-400">
                     PRICE
                   </p>
-                  <p className="mt-1 text-ink-800">{c.price.value}</p>
+                  <p className="mt-1.5 text-ink-800">{c.price.value}</p>
                 </div>
               </div>
-              <p className="mt-6 inline-flex items-center gap-1 text-sm text-brand-deep transition group-hover:translate-x-0.5">
+              <p className="mt-6 inline-flex min-h-[44px] items-center gap-1 text-[15px] sm:text-sm text-brand-deep transition group-hover:translate-x-0.5">
                 コース詳細を見る
                 <ArrowRight className="h-4 w-4" />
               </p>

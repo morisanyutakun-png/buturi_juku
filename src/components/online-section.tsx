@@ -65,17 +65,17 @@ export function OnlineSection() {
         {items.map((item) => (
           <article
             key={item.title}
-            className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+            className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
           >
             <div
-              className={`flex h-11 w-11 items-center justify-center rounded-2xl ring-1 ${toneMap[item.tone]}`}
+              className={`flex h-12 w-12 sm:h-11 sm:w-11 items-center justify-center rounded-2xl ring-1 ${toneMap[item.tone]}`}
             >
-              <item.icon className="h-[18px] w-[18px]" aria-hidden strokeWidth={1.6} />
+              <item.icon className="h-5 w-5 sm:h-[18px] sm:w-[18px]" aria-hidden strokeWidth={1.6} />
             </div>
-            <h3 className="mt-7 font-serif text-[1.15rem] leading-snug tracking-[-0.008em] text-ink-900">
+            <h3 className="mt-6 sm:mt-7 font-serif text-[1.25rem] sm:text-[1.15rem] leading-[1.55] sm:leading-snug tracking-[-0.008em] text-ink-900">
               {item.title}
             </h3>
-            <p className="mt-3 text-[13.5px] leading-[1.75] text-ink-600">
+            <p className="mt-4 sm:mt-3 text-[15px] sm:text-[13.5px] leading-[2] sm:leading-[1.75] text-ink-600">
               {item.body}
             </p>
           </article>
@@ -83,21 +83,21 @@ export function OnlineSection() {
       </div>
 
       <div className="mt-14 overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 shadow-soft backdrop-blur-sm">
-        <div className="grid divide-y divide-ink-900/[0.06] md:grid-cols-4 md:divide-x md:divide-y-0">
+        <div className="grid grid-cols-2 divide-y divide-ink-900/[0.06] md:grid-cols-4 md:divide-x md:divide-y-0">
           {[
             { k: "通塾時間の削減", v: "週 3〜6h", sub: "その分を演習に転用" },
             { k: "対応時間帯", v: "10:00–22:00", sub: "前後要相談" },
             { k: "録画の視聴期限", v: "無期限", sub: "在籍中いつでも" },
             { k: "質問チャット", v: "24h 投稿可", sub: "24–48h 内に回答" },
           ].map((x) => (
-            <div key={x.k} className="p-7 text-center">
-              <p className="text-[10px] font-medium tracking-[0.28em] uppercase text-ink-500">
+            <div key={x.k} className="p-6 sm:p-7 text-center">
+              <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.22em] sm:tracking-[0.28em] uppercase text-ink-500">
                 {x.k}
               </p>
-              <p className="mt-3.5 font-serif text-[1.55rem] tracking-[-0.012em] text-brand-deep">
+              <p className="mt-3.5 font-serif text-[1.4rem] sm:text-[1.55rem] tracking-[-0.012em] text-brand-deep">
                 {x.v}
               </p>
-              <p className="mt-2 text-[12px] text-ink-600">{x.sub}</p>
+              <p className="mt-2 text-[13px] sm:text-[12px] leading-relaxed text-ink-600">{x.sub}</p>
             </div>
           ))}
         </div>

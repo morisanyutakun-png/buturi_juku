@@ -53,32 +53,32 @@ export default function ArticlesIndexPage() {
             const isExternal = Boolean(a.externalUrl);
             const href = articleHref(a);
             const className =
-              "group flex h-full flex-col justify-between rounded-3xl border border-ink-900/[0.07] bg-white/85 p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.14] hover:shadow-card";
+              "group flex h-full flex-col justify-between rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.14] hover:shadow-card";
 
             const inner = (
               <>
                 <div>
-                  <div className="flex flex-wrap items-center gap-3 text-[10px] font-medium tracking-[0.28em] uppercase text-brand-deep">
+                  <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-[11px] sm:text-[10px] font-medium tracking-[0.22em] sm:tracking-[0.28em] uppercase text-brand-deep">
                     <span>{a.category}</span>
                     <span className="h-px w-5 bg-ink-900/15" aria-hidden />
                     <time dateTime={a.publishedAt} className="text-ink-400">
                       {formatDate(a.publishedAt)}
                     </time>
                     {isExternal && (
-                      <span className="inline-flex items-center gap-1 rounded-full border border-ink-900/[0.08] bg-paper px-2 py-0.5 text-[9px] tracking-[0.22em] text-ink-500 normal-case">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-ink-900/[0.08] bg-paper px-2 py-0.5 text-[10px] sm:text-[9px] tracking-[0.18em] sm:tracking-[0.22em] text-ink-500 normal-case">
                         yuta-eng.com
                         <ArrowUpRight className="h-2.5 w-2.5" />
                       </span>
                     )}
                   </div>
-                  <h2 className="mt-5 font-serif text-[1.35rem] leading-snug tracking-[-0.012em] text-ink-900">
+                  <h2 className="mt-5 font-serif text-[1.45rem] sm:text-[1.35rem] leading-[1.5] sm:leading-snug tracking-[-0.012em] text-ink-900">
                     {a.title}
                   </h2>
-                  <p className="mt-5 text-[14px] leading-[1.85] text-ink-600">
+                  <p className="mt-5 text-[15px] sm:text-[14px] leading-[2] sm:leading-[1.85] text-ink-600">
                     {a.description}
                   </p>
                 </div>
-                <div className="mt-9 flex items-center justify-between text-[12px] text-ink-500">
+                <div className="mt-8 sm:mt-9 flex items-center justify-between text-[13px] sm:text-[12px] text-ink-500">
                   <span>{a.readingTime}</span>
                   <span className="inline-flex items-center gap-1.5 text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
                     続きを読む

@@ -189,20 +189,20 @@ export default async function CourseDetailPage({
           </div>
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-2xl border border-ink-900/10 bg-gradient-to-br from-paper-soft to-white p-8">
-              <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
+            <div className="rounded-2xl border border-ink-900/10 bg-gradient-to-br from-paper-soft to-white p-7 sm:p-8">
+              <p className="text-[11px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
                 {course.price.label}
               </p>
-              <p className="mt-4 font-serif text-3xl text-ink-900">
+              <p className="mt-4 font-serif text-[2.4rem] sm:text-3xl leading-tight text-ink-900">
                 {course.price.value}
               </p>
               {course.price.note && (
-                <p className="mt-3 text-xs text-ink-600 leading-relaxed">
+                <p className="mt-3 text-[13.5px] sm:text-xs leading-[1.85] sm:leading-relaxed text-ink-600">
                   {course.price.note}
                 </p>
               )}
 
-              <dl className="mt-8 space-y-3 text-sm">
+              <dl className="mt-8 space-y-4 sm:space-y-3 text-[14.5px] sm:text-sm">
                 <div className="flex justify-between gap-3">
                   <dt className="text-ink-500">形式</dt>
                   <dd className="text-right text-ink-800">{course.format}</dd>
@@ -213,10 +213,10 @@ export default async function CourseDetailPage({
                 </div>
               </dl>
 
-              <ul className="mt-6 space-y-2 text-xs text-ink-700">
+              <ul className="mt-7 sm:mt-6 space-y-3 sm:space-y-2 text-[14px] sm:text-xs leading-[1.7] text-ink-700">
                 {course.highlights.map((h) => (
-                  <li key={h} className="flex items-start gap-2">
-                    <Check className="mt-0.5 h-3 w-3 shrink-0 text-brand-deep" />
+                  <li key={h} className="flex items-start gap-2.5 sm:gap-2">
+                    <Check className="mt-1 sm:mt-0.5 h-4 w-4 sm:h-3 sm:w-3 shrink-0 text-brand-deep" />
                     {h}
                   </li>
                 ))}
@@ -225,14 +225,14 @@ export default async function CourseDetailPage({
               <div className="mt-8 flex flex-col gap-3">
                 <Link
                   href="/trial"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-warm px-5 py-3 text-sm font-medium text-white hover:bg-warm-deep transition"
+                  className="inline-flex min-h-[52px] sm:min-h-0 items-center justify-center gap-2 rounded-full bg-warm px-5 py-4 sm:py-3 text-[15px] sm:text-sm font-medium text-white hover:bg-warm-deep transition"
                 >
                   体験授業を申し込む
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-900/15 px-5 py-3 text-sm text-ink-900 hover:border-brand hover:text-brand transition"
+                  className="inline-flex min-h-[52px] sm:min-h-0 items-center justify-center gap-2 rounded-full border border-ink-900/15 px-5 py-4 sm:py-3 text-[15px] sm:text-sm text-ink-900 hover:border-brand hover:text-brand transition"
                 >
                   この講座について問い合わせる
                 </Link>

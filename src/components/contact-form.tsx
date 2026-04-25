@@ -123,12 +123,12 @@ export function ContactForm() {
         />
       </Field>
 
-      <label className="flex items-start gap-3 text-xs text-ink-600">
+      <label className="flex items-start gap-3 text-[14px] sm:text-xs leading-[1.7] text-ink-600">
         <input
           type="checkbox"
           name="agree"
           required
-          className="mt-1 accent-brand"
+          className="mt-1.5 h-5 w-5 sm:h-4 sm:w-4 accent-brand"
         />
         <span>
           <a href="/privacy" className="text-brand hover:underline">
@@ -139,7 +139,7 @@ export function ContactForm() {
       </label>
 
       {error && (
-        <p className="text-sm text-red-600" role="alert">
+        <p className="text-[15px] sm:text-sm text-red-600" role="alert">
           {error}
         </p>
       )}
@@ -147,7 +147,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-warm px-6 py-3.5 text-sm font-medium text-white shadow-warm transition hover:bg-warm-deep disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-warm px-6 py-4 sm:py-3.5 text-[15px] sm:text-sm font-medium text-white shadow-warm transition hover:bg-warm-deep disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto min-h-[52px] sm:min-h-0"
       >
         {status === "submitting" ? (
           <>
@@ -163,7 +163,7 @@ export function ContactForm() {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-ink-900/15 bg-white px-4 py-3 text-sm text-ink-900 placeholder:text-ink-400 outline-none focus:border-brand focus:ring-1 focus:ring-brand/60 transition";
+  "w-full rounded-xl border border-ink-900/15 bg-white px-4 py-3.5 sm:py-3 text-[16px] sm:text-sm text-ink-900 placeholder:text-ink-400 outline-none focus:border-brand focus:ring-1 focus:ring-brand/60 transition";
 
 function Field({
   label,
@@ -180,7 +180,7 @@ function Field({
     <div>
       <label
         htmlFor={htmlFor}
-        className="mb-2 block text-xs tracking-widest uppercase text-ink-600"
+        className="mb-2.5 sm:mb-2 block text-[12px] sm:text-xs tracking-[0.18em] sm:tracking-widest uppercase text-ink-600 font-medium"
       >
         {label}
         {required && <span className="ml-1 text-warm">*</span>}

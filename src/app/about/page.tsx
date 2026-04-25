@@ -44,25 +44,25 @@ export default function AboutPage() {
         className="bg-paper"
       >
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-ink-900/10 bg-white p-8 shadow-soft">
-            <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
+          <div className="rounded-2xl border border-ink-900/10 bg-white p-7 sm:p-8 shadow-soft">
+            <p className="text-[12px] sm:text-xs tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep font-medium">
               OUR MISSION
             </p>
-            <h3 className="mt-4 font-serif text-2xl text-ink-900">
+            <h3 className="mt-4 font-serif text-[1.55rem] sm:text-2xl leading-[1.45] text-ink-900">
               物理を、暗記ではなく理解へ。
             </h3>
-            <p className="mt-6 text-ink-700 leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-[15.5px] sm:text-base leading-[2] sm:leading-relaxed text-ink-700">
               公式に当てはめる学習は、問題の前提が少しずれた瞬間に崩れます。私たちは物理を『現象を数式に翻訳する営み』として捉え直し、原理からの立式ができる状態を作ることを使命としています。
             </p>
           </div>
-          <div className="rounded-2xl border border-warm/30 bg-gradient-to-br from-warm-bg via-white to-paper-soft p-8 shadow-soft">
-            <p className="text-xs tracking-[0.28em] uppercase text-warm-deep">
+          <div className="rounded-2xl border border-warm/30 bg-gradient-to-br from-warm-bg via-white to-paper-soft p-7 sm:p-8 shadow-soft">
+            <p className="text-[12px] sm:text-xs tracking-[0.24em] sm:tracking-[0.28em] uppercase text-warm-deep font-medium">
               OUR PROMISE
             </p>
-            <h3 className="mt-4 font-serif text-2xl text-ink-900">
+            <h3 className="mt-4 font-serif text-[1.55rem] sm:text-2xl leading-[1.45] text-ink-900">
               物理だけを、深く、丁寧に。
             </h3>
-            <p className="mt-6 text-ink-700 leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-[15.5px] sm:text-base leading-[2] sm:leading-relaxed text-ink-700">
               私たちは物理しか扱いません。だからこそ、あらゆる分野のあらゆる問題を『なぜそう立式するのか』のレベルまで解きほぐすことができます。
             </p>
           </div>
@@ -96,10 +96,10 @@ export default function AboutPage() {
           ].map((x) => (
             <div
               key={x.title}
-              className="rounded-2xl border border-ink-900/10 bg-white p-8 shadow-soft"
+              className="rounded-2xl border border-ink-900/10 bg-white p-7 sm:p-8 shadow-soft"
             >
-              <h3 className="font-serif text-xl text-ink-900">{x.title}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-ink-700">
+              <h3 className="font-serif text-[1.3rem] sm:text-xl leading-[1.55] sm:leading-normal text-ink-900">{x.title}</h3>
+              <p className="mt-4 text-[15px] sm:text-sm leading-[2] sm:leading-relaxed text-ink-700">
                 {x.body}
               </p>
             </div>
@@ -138,15 +138,15 @@ export default function AboutPage() {
           ].map((x) => (
             <li
               key={x.step}
-              className="rounded-2xl border border-ink-900/10 bg-white p-8 shadow-soft"
+              className="rounded-2xl border border-ink-900/10 bg-white p-7 sm:p-8 shadow-soft"
             >
-              <div className="flex flex-col gap-6 md:flex-row md:items-start">
-                <p className="font-mono text-xs text-warm-deep md:pt-1">
+              <div className="flex flex-col gap-4 sm:gap-6 md:flex-row md:items-start">
+                <p className="font-mono text-[12.5px] sm:text-xs text-warm-deep md:pt-1 tracking-wider">
                   STEP {x.step}
                 </p>
                 <div>
-                  <h3 className="font-serif text-xl text-ink-900">{x.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink-700">
+                  <h3 className="font-serif text-[1.3rem] sm:text-xl leading-[1.5] sm:leading-normal text-ink-900">{x.title}</h3>
+                  <p className="mt-3 text-[15px] sm:text-sm leading-[2] sm:leading-relaxed text-ink-700">
                     {x.body}
                   </p>
                 </div>

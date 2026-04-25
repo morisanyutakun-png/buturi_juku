@@ -42,12 +42,12 @@ export default function FaqPage() {
         title="高校物理専門塾のよくある質問"
         description="高校物理専門塾「物理の森」の受講前に、よく寄せられるご質問をまとめました。ここにない内容は、お問い合わせフォームからお気軽にお送りください。"
       >
-        <div className="space-y-14">
+        <div className="space-y-12 sm:space-y-14">
           {categories.map((category) => {
             const items = faqItems.filter((f) => f.category === category);
             return (
               <div key={category}>
-                <h2 className="mb-6 font-serif text-xl text-ink-900">
+                <h2 className="mb-6 font-serif text-[1.4rem] sm:text-xl text-ink-900">
                   <span className="mr-3 text-brand-deep">—</span>
                   {category}
                 </h2>
@@ -55,18 +55,18 @@ export default function FaqPage() {
                   {items.map((q) => (
                     <details
                       key={q.question}
-                      className="group rounded-2xl border border-ink-900/10 bg-white p-6 [&_summary::-webkit-details-marker]:hidden"
+                      className="group rounded-2xl border border-ink-900/10 bg-white p-6 sm:p-6 [&_summary::-webkit-details-marker]:hidden"
                     >
-                      <summary className="flex cursor-pointer items-center justify-between gap-4 font-serif text-ink-900">
+                      <summary className="flex cursor-pointer items-center justify-between gap-4 font-serif text-[1.05rem] sm:text-base leading-[1.55] text-ink-900 min-h-[40px]">
                         <span>{q.question}</span>
                         <span
                           aria-hidden
-                          className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-ink-900/15 text-xs transition group-open:rotate-45"
+                          className="inline-flex h-8 w-8 sm:h-6 sm:w-6 items-center justify-center rounded-full border border-ink-900/15 text-base sm:text-xs transition group-open:rotate-45 shrink-0"
                         >
                           +
                         </span>
                       </summary>
-                      <p className="mt-4 text-sm leading-relaxed text-ink-700">
+                      <p className="mt-4 text-[15px] sm:text-sm leading-[2.05] sm:leading-relaxed text-ink-700">
                         {q.answer}
                       </p>
                     </details>

@@ -5,8 +5,8 @@ import { MobileNav } from "@/components/mobile-nav";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-30 border-b border-ink-900/[0.06] bg-paper/70 backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-paper/55">
-      <div className="container flex h-[68px] items-center justify-between">
+    <header className="sticky top-0 z-30 border-b border-ink-900/[0.06] bg-paper/85 backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-paper/65">
+      <div className="container flex h-[64px] sm:h-[68px] items-center justify-between">
         <BrandMark />
 
         <nav aria-label="メインナビゲーション" className="hidden md:block">
