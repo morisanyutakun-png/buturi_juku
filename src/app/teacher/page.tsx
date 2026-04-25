@@ -15,13 +15,14 @@ import { books } from "@/data/books";
 import { instructor } from "@/data/instructor";
 
 export const metadata: Metadata = buildMetadata({
-  title: "講師紹介",
+  title: "高校物理専門塾の主宰講師 森祐太 — 講師紹介",
   description:
-    "森祐太 物理専門塾の主宰講師・森祐太(名古屋大学 工学部 電気電子情報工学科)のプロフィール。共通テスト物理満点、二次試験9割、電磁気書籍の執筆実績、塾講師経験など、講師の強みと指導スタンスをご紹介します。",
+    "高校物理専門塾「物理の森」の主宰講師・森祐太(名古屋大学 工学部 電気電子情報工学科)のプロフィール。共通テスト物理満点、二次試験9割、電磁気書籍の執筆実績、高校物理専門塾の塾講師経験など、講師の強みと指導スタンスをご紹介します。",
   path: "/teacher",
   keywords: [
+    "高校物理専門塾 講師",
+    "高校物理 講師",
     "森祐太 物理",
-    "物理 講師",
     "名古屋大学 物理 講師",
     "電磁気 書籍",
     "大学受験物理 講師",
@@ -43,7 +44,7 @@ export default function TeacherPage() {
 
       <Section
         eyebrow="INSTRUCTOR"
-        title={<>物理を『わかる』まで、<br className="sm:hidden" />言語化する人。</>}
+        title={<>高校物理を『わかる』まで、<br className="sm:hidden" />言語化する高校物理専門塾講師。</>}
         description={instructor.leadline}
       >
         <div className="grid gap-10 rounded-3xl border border-ink-900/10 bg-gradient-to-br from-paper-soft via-white to-paper-soft p-8 md:grid-cols-[1fr_1.3fr] md:p-14">
@@ -307,7 +308,7 @@ export default function TeacherPage() {
       <JsonLd
         id="ld-webpage-teacher"
         data={webPageJsonLd({
-          name: "講師紹介",
+          name: "高校物理専門塾の主宰講師 森祐太 — 講師紹介",
           description: instructor.leadline,
           path: "/teacher",
         })}

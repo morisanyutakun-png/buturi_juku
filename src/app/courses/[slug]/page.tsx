@@ -33,10 +33,12 @@ export async function generateMetadata(
   const course = getCourseBySlug(slug);
   if (!course) return {};
   return buildMetadata({
-    title: course.title,
-    description: `${course.subtitle} — ${course.summary}`,
+    title: `${course.title} | 高校物理専門塾の講座`,
+    description: `高校物理専門塾「物理の森」の${course.title}。${course.subtitle} — ${course.summary}`,
     path: `/courses/${course.slug}`,
     keywords: [
+      "高校物理専門塾",
+      `高校物理専門塾 ${course.category}`,
       course.title,
       course.subtitle,
       course.category,

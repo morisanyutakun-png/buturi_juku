@@ -33,15 +33,19 @@ import { itemListJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "大学受験物理のオンライン専門塾",
+  title: "高校物理専門塾「物理の森」| オンライン全国対応・大学受験物理の個別指導",
   description:
-    "大学受験物理・高校物理に特化したオンライン物理専門塾。名古屋大学 工学部 電気電子情報工学科所属の森祐太が、初学者から難関大・医学部志望まで1対1で指導します。",
+    "高校物理専門塾「物理の森」は、高校物理・大学受験物理だけを扱うオンライン専門塾です。名古屋大学 工学部 電気電子情報工学科所属・大学受験物理の書籍執筆実績を持つ森祐太が、高校物理の初学者から難関大・医学部志望まで1対1で個別指導。全国どこからでも、高校物理専門塾の指導が受けられます。",
   path: "/",
   keywords: [
-    "大学受験 物理 塾",
-    "高校物理 オンライン",
-    "物理 個別指導 オンライン",
-    "医学部 物理 対策",
+    "高校物理専門塾",
+    "高校物理専門塾 オンライン",
+    "高校物理専門塾 個別指導",
+    "高校物理専門塾 大学受験",
+    "高校物理 オンライン 専門塾",
+    "高校物理 個別指導",
+    "大学受験 物理 専門塾",
+    "医学部 物理 専門塾",
   ],
   category: "education",
 });
@@ -159,6 +163,30 @@ export default function HomePage() {
     <>
       <Hero />
 
+      {/* KEYWORD LEAD — primary SEO anchor */}
+      <section
+        aria-labelledby="lead-heading"
+        className="border-b border-ink-900/[0.06] bg-paper"
+      >
+        <div className="container py-14 sm:py-16">
+          <p className="text-[10px] font-medium tracking-[0.32em] uppercase text-brand-deep">
+            HIGH-SCHOOL PHYSICS SPECIALTY
+          </p>
+          <h2
+            id="lead-heading"
+            className="mt-4 max-w-3xl font-serif text-[1.55rem] leading-[1.55] tracking-[-0.012em] text-ink-900 sm:text-[1.85rem]"
+          >
+            高校物理専門塾「物理の森」は、
+            <br className="sm:hidden" />
+            <span className="text-brand-deep">高校物理だけ</span>を、
+            <span className="text-warm-deep">オンライン1対1</span>で深く教える塾です。
+          </h2>
+          <p className="mt-6 max-w-3xl text-[15px] leading-[1.95] text-ink-700">
+            高校物理専門塾として、全国どこからでも受講できるオンライン個別指導を提供します。高校物理の初学者から、共通テスト・難関大・医学部の大学受験物理志望者まで、一人ひとりの志望校と現状に合わせて、力学・電磁気・波動・熱力学・原子の全分野を体系的に組み立て直します。総合塾ではなく<strong className="font-medium text-ink-900">高校物理専門塾</strong>だからこそ、『公式に当てはめる物理』ではなく『現象から立式できる物理』まで、最後の一歩まで伴走します。
+          </p>
+        </div>
+      </section>
+
       {/* STATS RIBBON */}
       <section className="border-b border-ink-900/[0.06] bg-white/60 backdrop-blur-sm">
         <div className="container grid grid-cols-2 divide-y divide-ink-900/[0.06] md:grid-cols-4 md:divide-x md:divide-y-0">
@@ -189,8 +217,8 @@ export default function HomePage() {
       {/* SUBJECTS */}
       <Section
         eyebrow="SUBJECTS"
-        title="高校物理の全分野を、体系的に"
-        description="単元ごとに分断して教えるのではなく、分野をまたぐ共通構造から指導します。"
+        title="高校物理専門塾として、高校物理の全分野を体系的に"
+        description="高校物理専門塾の指導は、単元ごとに分断して教えるのではなく、分野をまたぐ共通構造から組み立てます。力学・電磁気・波動・熱力学・原子の5分野を、1人の専門講師が一貫して扱います。"
         className="bg-paper-soft"
       >
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
@@ -219,9 +247,9 @@ export default function HomePage() {
 
       {/* FEATURES */}
       <Section
-        eyebrow="WHY PHYSICS ACADEMY"
-        title={<>物理専門塾である、<br className="sm:hidden" />6つの理由。</>}
-        description="物理を伸ばす近道は、物理だけを深く教える環境にいること。総合塾では実現しにくい、専門塾としての価値をお伝えします。"
+        eyebrow="WHY HIGH-SCHOOL PHYSICS SPECIALTY"
+        title={<>高校物理専門塾を選ぶ、<br className="sm:hidden" />6つの理由。</>}
+        description="高校物理を伸ばす近道は、高校物理だけを深く教える環境にいることです。総合塾では実現しにくい、高校物理専門塾としての価値をお伝えします。"
         className="bg-paper"
       >
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -515,7 +543,7 @@ export default function HomePage() {
       <JsonLd
         id="ld-webpage-home"
         data={webPageJsonLd({
-          name: `${siteConfig.name} | 大学受験物理のオンライン専門塾`,
+          name: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
           description: siteConfig.description,
           path: "/",
         })}
@@ -523,8 +551,8 @@ export default function HomePage() {
       <JsonLd
         id="ld-home-courses"
         data={itemListJsonLd({
-          name: "物理の森の主要講座",
-          description: "大学受験物理・高校物理に対応するオンライン講座の一覧です。",
+          name: "高校物理専門塾「物理の森」の主要講座",
+          description: "高校物理専門塾として、大学受験物理・高校物理に対応するオンライン講座の一覧です。",
           path: "/",
           items: courses.map((course) => ({
             name: course.title,

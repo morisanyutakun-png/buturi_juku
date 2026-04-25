@@ -13,7 +13,13 @@ export function organizationJsonLd() {
     "@type": "EducationalOrganization",
     "@id": organizationId,
     name: siteConfig.name,
-    alternateName: [siteConfig.nameSub, siteConfig.nameEn],
+    alternateName: [
+      "高校物理専門塾 物理の森",
+      "高校物理専門塾",
+      siteConfig.nameSub,
+      siteConfig.nameEn,
+    ],
+    slogan: siteConfig.tagline,
     url: siteConfig.url,
     description: siteConfig.description,
     logo: {
@@ -53,8 +59,13 @@ export function websiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": websiteId,
-    name: siteConfig.name,
-    alternateName: siteConfig.nameSub,
+    name: `高校物理専門塾「${siteConfig.name}」`,
+    alternateName: [
+      "高校物理専門塾 物理の森",
+      "高校物理専門塾",
+      siteConfig.nameSub,
+    ],
+    description: siteConfig.description,
     url: siteConfig.url,
     publisher: {
       "@id": organizationId,

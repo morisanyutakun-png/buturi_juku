@@ -63,7 +63,11 @@ export function BrandMark({ className, asLink = true }: Props) {
 
   if (!asLink) return inner;
   return (
-    <Link href="/" aria-label={siteConfig.name} className="group inline-flex">
+    <Link
+      href="/"
+      aria-label={`高校物理専門塾「${siteConfig.name}」トップへ`}
+      className="group inline-flex"
+    >
       {inner}
     </Link>
   );

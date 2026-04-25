@@ -9,11 +9,17 @@ import { buildMetadata } from "@/lib/metadata";
 import { faqItems } from "@/data/faq";
 
 export const metadata: Metadata = buildMetadata({
-  title: "よくある質問",
+  title: "高校物理専門塾のよくある質問 — 体験授業・料金・オンライン受講",
   description:
-    "森祐太 物理専門塾に寄せられるよくある質問をまとめました。体験授業、授業形式、料金、オンライン受講についてお答えしています。",
+    "高校物理専門塾「物理の森」によくある質問をまとめました。高校物理専門塾の体験授業、授業形式、料金、オンライン受講についてお答えしています。",
   path: "/faq",
-  keywords: ["物理塾 FAQ", "物理塾 料金", "オンライン物理 授業", "物理 体験授業 無料"],
+  keywords: [
+    "高校物理専門塾 FAQ",
+    "高校物理専門塾 料金",
+    "高校物理専門塾 体験授業",
+    "オンライン物理 授業",
+    "物理 体験授業 無料",
+  ],
   category: "education",
 });
 
@@ -33,8 +39,8 @@ export default function FaqPage() {
 
       <Section
         eyebrow="FAQ"
-        title="よくある質問"
-        description="受講前によく寄せられるご質問をまとめました。ここにない内容は、お問い合わせフォームからお気軽にお送りください。"
+        title="高校物理専門塾のよくある質問"
+        description="高校物理専門塾「物理の森」の受講前に、よく寄せられるご質問をまとめました。ここにない内容は、お問い合わせフォームからお気軽にお送りください。"
       >
         <div className="space-y-14">
           {categories.map((category) => {
@@ -93,9 +99,9 @@ export default function FaqPage() {
       <JsonLd
         id="ld-webpage-faq"
         data={webPageJsonLd({
-          name: "よくある質問",
+          name: "高校物理専門塾のよくある質問",
           description:
-            "物理の森の体験授業、料金、授業形式、オンライン受講についてのFAQページです。",
+            "高校物理専門塾「物理の森」の体験授業、料金、授業形式、オンライン受講についてのFAQページです。",
           path: "/faq",
         })}
       />

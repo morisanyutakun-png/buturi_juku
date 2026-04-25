@@ -57,8 +57,8 @@ export function OnlineSection() {
   return (
     <Section
       eyebrow="ONLINE ADVANTAGE"
-      title={<>通塾ではなく、<br className="sm:hidden" />オンラインだからできること。</>}
-      description="『オンラインは対面の代替』ではありません。移動時間を学習時間に変え、録画で復習し、チャットで質問する。物理の学習は、オンラインのほうが加速します。"
+      title={<>高校物理専門塾 × オンライン、<br className="sm:hidden" />だからできること。</>}
+      description="高校物理専門塾「物理の森」のオンライン授業は、対面の代替ではありません。移動時間を学習時間に変え、録画で復習し、チャットで質問する。高校物理の学習は、オンラインの高校物理専門塾のほうが加速します。"
       className="bg-paper"
     >
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">

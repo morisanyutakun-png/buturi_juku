@@ -12,8 +12,8 @@ export function ForEveryoneSection() {
   return (
     <Section
       eyebrow="FOR EVERY LEARNER"
-      title={<>物理を高めたい人、<br className="sm:hidden" />みんなウェルカム。</>}
-      description="初学者から難関大志望まで、物理を伸ばしたい全ての方のための塾です。『苦手だから無理かも』『自分のレベルでは申し込めない』ということは、一切ありません。あなたに合ったルートを、体験授業で一緒に設計します。"
+      title={<>高校物理を高めたい人、<br className="sm:hidden" />みんなウェルカム。</>}
+      description="高校物理専門塾として、初学者から難関大志望まで、高校物理を伸ばしたい全ての方を受け入れます。『苦手だから無理かも』『自分のレベルでは申し込めない』ということは、一切ありません。あなたに合ったルートを、体験授業で一緒に設計します。"
       className="bg-paper"
     >
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">

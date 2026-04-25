@@ -9,8 +9,8 @@ import { siteConfig } from "@/data/site";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | ${siteConfig.tagline}`,
-    template: `%s | ${siteConfig.name}`,
+    default: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
+    template: `%s | 高校物理専門塾「${siteConfig.name}」`,
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    title: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
     description: siteConfig.description,
     images: [
       {
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: siteConfig.twitter,
     creator: siteConfig.twitter,
-    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    title: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
@@ -76,6 +76,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
+      <head>
+        <link rel="dns-prefetch" href="https://yuta-eng.com" />
+        <link rel="preconnect" href="https://yuta-eng.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://amzn.asia" />
+      </head>
       <body>
         <a
           href="#main"

@@ -11,12 +11,14 @@ import { buildMetadata } from "@/lib/metadata";
 import { courses } from "@/data/courses";
 
 export const metadata: Metadata = buildMetadata({
-  title: "講座一覧",
+  title: "高校物理専門塾の講座一覧 — オンライン個別指導・共通テスト・分野別",
   description:
-    "森祐太 物理専門塾の講座一覧。体験授業、1対1個別指導、共通テスト対策、力学・電磁気の集中講座まで、目的に応じた講座をご用意しています。",
+    "高校物理専門塾「物理の森」の講座一覧です。高校物理専門塾の体験授業、1対1個別指導、共通テスト対策、力学・電磁気の集中講座まで、目的に応じた高校物理専門塾の講座をご用意しています。",
   path: "/courses",
   keywords: [
-    "物理 講座",
+    "高校物理専門塾 講座",
+    "高校物理 個別指導 講座",
+    "高校物理 オンライン 講座",
     "大学受験 物理 個別指導",
     "共通テスト 物理 講座",
     "力学 集中講座",
@@ -39,8 +41,8 @@ export default function CoursesIndexPage() {
 
       <Section
         eyebrow="COURSES"
-        title="講座一覧"
-        description="個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。すべての講座はオンラインで全国からご受講いただけます。"
+        title="高校物理専門塾の講座一覧"
+        description="高校物理専門塾「物理の森」では、個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。すべての講座はオンラインで全国からご受講いただけます。"
       >
         <div className="grid gap-6 md:grid-cols-2">
           {courses.map((c) => (
@@ -96,17 +98,17 @@ export default function CoursesIndexPage() {
       <JsonLd
         id="ld-webpage-courses"
         data={webPageJsonLd({
-          name: "講座一覧",
+          name: "高校物理専門塾の講座一覧",
           description:
-            "体験授業、1対1個別指導、共通テスト対策、分野別集中講座を比較できる講座一覧ページです。",
+            "高校物理専門塾「物理の森」の体験授業、1対1個別指導、共通テスト対策、分野別集中講座を比較できる講座一覧ページです。",
           path: "/courses",
         })}
       />
       <JsonLd
         id="ld-courses-itemlist"
         data={itemListJsonLd({
-          name: "物理の森 講座一覧",
-          description: "目的別に選べる大学受験物理・高校物理の講座一覧です。",
+          name: "高校物理専門塾「物理の森」 講座一覧",
+          description: "高校物理専門塾として目的別に選べる大学受験物理・高校物理の講座一覧です。",
           path: "/courses",
           items: courses.map((course) => ({
             name: course.title,

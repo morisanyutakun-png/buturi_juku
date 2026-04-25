@@ -10,11 +10,18 @@ import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "塾について",
+  title: "高校物理専門塾「物理の森」とは — 塾について",
   description:
-    "物理の森(森祐太 物理専門塾)の理念、学習思想、なぜ物理専門塾なのか、総合塾との違いについて。物理を『わかる』まで追いかける塾の姿勢を解説します。",
+    "高校物理専門塾「物理の森」の理念・指導思想・総合塾との違いをまとめたページです。なぜ高校物理専門塾なのか、物理を『わかる』まで追いかける高校物理専門塾の姿勢を解説します。",
   path: "/about",
-  keywords: ["物理専門塾", "オンライン物理塾", "物理 総合塾 違い", "物理 苦手 克服"],
+  keywords: [
+    "高校物理専門塾",
+    "高校物理専門塾 とは",
+    "高校物理専門塾 オンライン",
+    "高校物理 個別指導",
+    "高校物理 総合塾 違い",
+    "高校物理 苦手 克服",
+  ],
   category: "education",
 });
 
@@ -32,8 +39,8 @@ export default function AboutPage() {
 
       <Section
         eyebrow="ABOUT US"
-        title={<>物理を『わかる』まで、<br className="sm:hidden" />追いかける塾。</>}
-        description="高校物理は、わかったふりで止まると最も損をする科目です。私たちは『わかったふり』を許さず、あなたの手が勝手に動くところまで伴走します。"
+        title={<>高校物理を『わかる』まで、<br className="sm:hidden" />追いかける高校物理専門塾。</>}
+        description="高校物理は、わかったふりで止まると最も損をする科目です。高校物理専門塾「物理の森」は『わかったふり』を許さず、あなたの手が勝手に動くところまで伴走します。"
         className="bg-paper"
       >
         <div className="grid gap-6 md:grid-cols-2">
@@ -68,8 +75,8 @@ export default function AboutPage() {
 
       <Section
         eyebrow="WHY PHYSICS-ONLY"
-        title="なぜ物理専門塾なのか"
-        description="総合塾ではなく物理専門塾であることに、はっきりとした意味があります。"
+        title="なぜ高校物理専門塾なのか"
+        description="総合塾ではなく高校物理専門塾であることに、はっきりとした意味があります。高校物理専門塾だからこそ提供できる価値を3点でお伝えします。"
         className="bg-paper-soft"
       >
         <div className="grid gap-8 md:grid-cols-3">
@@ -164,9 +171,9 @@ export default function AboutPage() {
       <JsonLd
         id="ld-webpage-about"
         data={webPageJsonLd({
-          name: "塾について",
+          name: "高校物理専門塾「物理の森」とは — 塾について",
           description:
-            "物理の森の理念、物理専門塾としての指導方針、総合塾との違いをまとめたページです。",
+            "高校物理専門塾「物理の森」の理念、高校物理専門塾としての指導方針、総合塾との違いをまとめたページです。",
           path: "/about",
         })}
       />

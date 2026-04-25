@@ -23,7 +23,7 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-1.5">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.08] bg-white/70 px-3 py-1 text-[11px] tracking-[0.18em] text-ink-700 backdrop-blur">
                 <Atom className="h-3 w-3 text-brand" aria-hidden />
-                物理専門
+                高校物理専門塾
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.08] bg-white/70 px-3 py-1 text-[11px] tracking-[0.18em] text-ink-700 backdrop-blur">
                 <Wifi className="h-3 w-3 text-warm-deep" aria-hidden />
@@ -35,8 +35,11 @@ export function Hero() {
               </span>
             </div>
 
-            <h1 className="mt-10 font-serif text-display-xl text-ink-900">
-              物理を、<span className="text-brand">暗記</span>ではなく<br className="hidden sm:block" />
+            <p className="mt-10 text-[12px] font-medium tracking-[0.32em] uppercase text-brand-deep">
+              高校物理専門塾「物理の森」
+            </p>
+            <h1 className="mt-3 font-serif text-display-xl text-ink-900">
+              高校物理を、<span className="text-brand">暗記</span>ではなく<br className="hidden sm:block" />
               <span className="relative inline-block">
                 <span className="text-warm">理解</span>
                 <span
@@ -48,7 +51,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-9 max-w-xl text-[17px] leading-[1.75] text-ink-700">
-              <strong className="text-ink-900 font-medium">「{siteConfig.name}」</strong>は、森祐太(名古屋大学 工学部 電気電子情報工学科)が主宰するオンライン物理専門塾です。<strong className="text-ink-900 font-medium">物理が初めての人も、難関大を目指す人も</strong>。あなたのレベルに合わせて、物理を一から丁寧に組み立て直します。
+              <strong className="text-ink-900 font-medium">高校物理専門塾「{siteConfig.name}」</strong>は、森祐太(名古屋大学 工学部 電気電子情報工学科)が主宰する、全国オンライン対応の高校物理専門塾です。<strong className="text-ink-900 font-medium">高校物理が初めての人も、難関大の大学受験物理を目指す人も</strong>。あなたのレベルに合わせて、高校物理を一から丁寧に組み立て直します。
             </p>
 
             <p className="mt-4 text-[11px] tracking-[0.22em] text-ink-500">

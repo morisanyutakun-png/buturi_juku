@@ -10,14 +10,14 @@ import { breadcrumbJsonLd, serviceJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "体験授業",
+  title: "高校物理専門塾の無料体験授業(60分)",
   description:
-    "森祐太 物理専門塾の無料体験授業(60分)のご案内。現状の学習診断から学習戦略の提案までをその場で行います。",
+    "高校物理専門塾「物理の森」の無料体験授業(60分)のご案内。高校物理の現状診断から学習戦略の提案までをその場で行う、高校物理専門塾のオンライン体験授業です。",
   path: "/trial",
   keywords: [
-    "物理 体験授業",
-    "無料 物理 体験",
-    "オンライン 物理 体験授業",
+    "高校物理専門塾 体験授業",
+    "高校物理 体験授業 無料",
+    "オンライン 高校物理 体験授業",
     "大学受験 物理 学習相談",
   ],
   category: "education",
@@ -58,8 +58,8 @@ export default function TrialPage() {
 
       <Section
         eyebrow="FREE TRIAL SESSION"
-        title={<>60分で、<br className="sm:hidden" />あなたの物理を診断します。</>}
-        description="体験授業は、入塾を前提としない学習相談としてご利用いただけます。現状の苦手分野と残り期間を踏まえた学習戦略を、その場でお渡しします。"
+        title={<>高校物理専門塾の体験授業 — <br className="sm:hidden" />60分で、あなたの高校物理を診断します。</>}
+        description="高校物理専門塾「物理の森」の体験授業は、入塾を前提としない学習相談としてご利用いただけます。高校物理の現状の苦手分野と残り期間を踏まえた学習戦略を、その場でお渡しします。"
       >
         <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <div className="space-y-10">
@@ -191,20 +191,20 @@ export default function TrialPage() {
       <JsonLd
         id="ld-webpage-trial"
         data={webPageJsonLd({
-          name: "体験授業",
+          name: "高校物理専門塾の無料体験授業(60分)",
           description:
-            "60分で現在の物理の理解度を診断し、学習戦略を提案する無料体験授業の案内ページです。",
+            "高校物理専門塾「物理の森」の60分無料体験授業。現在の高校物理の理解度を診断し、学習戦略を提案します。",
           path: "/trial",
         })}
       />
       <JsonLd
         id="ld-service-trial"
         data={serviceJsonLd({
-          name: "無料体験授業",
+          name: "高校物理専門塾「物理の森」の無料体験授業",
           description:
-            "高校物理・大学受験物理の現状診断と学習戦略提案を行う60分のオンライン体験授業です。",
+            "高校物理専門塾「物理の森」が行う、高校物理・大学受験物理の現状診断と学習戦略提案の60分オンライン体験授業です。",
           path: "/trial",
-          serviceType: "オンライン物理学習相談 / 体験授業",
+          serviceType: "高校物理専門塾のオンライン学習相談 / 体験授業",
           price: "0",
         })}
       />
