@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  ArrowUpRight,
   Atom,
   BookMarked,
   Brain,
@@ -25,7 +26,7 @@ import { InstructorPortrait } from "@/components/instructor-portrait";
 import { JsonLd } from "@/components/json-ld";
 import { SeoIntentSection } from "@/components/seo-intent-section";
 import { courses } from "@/data/courses";
-import { articles } from "@/data/articles";
+import { articles, articleHref } from "@/data/articles";
 import { instructor } from "@/data/instructor";
 import { siteConfig } from "@/data/site";
 import { itemListJsonLd, webPageJsonLd } from "@/lib/jsonld";
@@ -349,29 +350,58 @@ export default function HomePage() {
         className="bg-paper"
       >
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {latestArticles.map((a) => (
-            <Link
-              key={a.slug}
-              href={`/articles/${a.slug}`}
-              className="group flex h-full flex-col justify-between rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
-            >
-              <div>
-                <p className="text-[10px] font-medium tracking-[0.28em] uppercase text-brand-deep">
-                  {a.category}
+          {latestArticles.map((a) => {
+            const isExternal = Boolean(a.externalUrl);
+            const href = articleHref(a);
+            const className =
+              "group flex h-full flex-col justify-between rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card";
+
+            const inner = (
+              <>
+                <div>
+                  <div className="flex items-center gap-2 text-[10px] font-medium tracking-[0.28em] uppercase text-brand-deep">
+                    <span>{a.category}</span>
+                    {isExternal && (
+                      <span className="inline-flex items-center gap-0.5 rounded-full border border-ink-900/[0.08] bg-paper px-1.5 py-0.5 text-[8.5px] tracking-[0.18em] text-ink-500 normal-case">
+                        yuta-eng
+                        <ArrowUpRight className="h-2 w-2" />
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-4 font-serif text-[1.05rem] leading-snug tracking-[-0.005em] text-ink-900">
+                    {a.title}
+                  </h3>
+                  <p className="mt-3.5 text-[13px] leading-[1.75] text-ink-600 line-clamp-4">
+                    {a.description}
+                  </p>
+                </div>
+                <p className="mt-6 inline-flex items-center gap-1.5 text-[12px] text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
+                  続きを読む
+                  {isExternal ? (
+                    <ArrowUpRight className="h-3 w-3" />
+                  ) : (
+                    <ArrowRight className="h-3 w-3" />
+                  )}
                 </p>
-                <h3 className="mt-4 font-serif text-[1.05rem] leading-snug tracking-[-0.005em] text-ink-900">
-                  {a.title}
-                </h3>
-                <p className="mt-3.5 text-[13px] leading-[1.75] text-ink-600 line-clamp-4">
-                  {a.description}
-                </p>
-              </div>
-              <p className="mt-6 inline-flex items-center gap-1.5 text-[12px] text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
-                続きを読む
-                <ArrowRight className="h-3 w-3" />
-              </p>
-            </Link>
-          ))}
+              </>
+            );
+
+            return isExternal ? (
+              <a
+                key={a.slug}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={className}
+              >
+                {inner}
+              </a>
+            ) : (
+              <Link key={a.slug} href={href} className={className}>
+                {inner}
+              </Link>
+            );
+          })}
         </div>
         <div className="mt-12 text-center">
           <Link

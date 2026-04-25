@@ -10,6 +10,7 @@ import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
 import {
   allArticleSlugs,
+  articleHref,
   getArticleBySlug,
   getRelatedArticles,
 } from "@/data/articles";
@@ -165,27 +166,46 @@ export default async function ArticleDetailPage({
           className="bg-paper-soft"
         >
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {related.map((a) => (
-              <Link
-                key={a.slug}
-                href={`/articles/${a.slug}`}
-                className="group rounded-2xl border border-ink-900/10 bg-white p-7 transition hover:border-brand/40 hover:bg-paper-soft"
-              >
-                <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
-                  {a.category}
-                </p>
-                <h3 className="mt-3 font-serif text-lg leading-snug text-ink-900">
-                  {a.title}
-                </h3>
-                <p className="mt-3 text-xs leading-relaxed text-ink-600">
-                  {a.description}
-                </p>
-                <p className="mt-4 inline-flex items-center gap-1 text-xs text-brand-deep transition group-hover:translate-x-0.5">
-                  続きを読む
-                  <ArrowRight className="h-3 w-3" />
-                </p>
-              </Link>
-            ))}
+            {related.map((a) => {
+              const isExternal = Boolean(a.externalUrl);
+              const href = articleHref(a);
+              const className =
+                "group rounded-2xl border border-ink-900/10 bg-white p-7 transition hover:border-brand/40 hover:bg-paper-soft";
+
+              const inner = (
+                <>
+                  <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
+                    {a.category}
+                  </p>
+                  <h3 className="mt-3 font-serif text-lg leading-snug text-ink-900">
+                    {a.title}
+                  </h3>
+                  <p className="mt-3 text-xs leading-relaxed text-ink-600">
+                    {a.description}
+                  </p>
+                  <p className="mt-4 inline-flex items-center gap-1 text-xs text-brand-deep transition group-hover:translate-x-0.5">
+                    続きを読む
+                    <ArrowRight className="h-3 w-3" />
+                  </p>
+                </>
+              );
+
+              return isExternal ? (
+                <a
+                  key={a.slug}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
+                >
+                  {inner}
+                </a>
+              ) : (
+                <Link key={a.slug} href={href} className={className}>
+                  {inner}
+                </Link>
+              );
+            })}
           </div>
         </Section>
       )}

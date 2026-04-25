@@ -16,11 +16,14 @@ export type Article = {
   lead: string;
   sections: ArticleSection[];
   related?: string[];
+  externalUrl?: string;
 };
 
 export const articles: Article[] = [
   {
     slug: "high-school-physics-electromagnetism-systematic-textbook",
+    externalUrl:
+      "https://yuta-eng.com/blog/high-school-physics-electromagnetism-systematic-textbook",
     title: "高校物理 電磁気を「体系」で学ぶための完全ガイド",
     description:
       "電磁気が『公式が多くて難しい』と感じる本質的な原因は、見取り図の不在にあります。ガウスの法則を起点に組み直す『考える力を育てる電磁気』の設計思想を、著者・森祐太が解説します。",
@@ -95,6 +98,7 @@ export const articles: Article[] = [
   },
   {
     slug: "common-test-physics-2027-strategy",
+    externalUrl: "https://yuta-eng.com/blog/common-test-physics-2027-strategy",
     title: "共通テスト 物理 対策 2027|配点別優先度と直前2ヶ月の学習計画",
     description:
       "2027年度共通テスト物理の対策を、出題傾向分析・配点別優先度・月別学習計画の3軸で整理。力学・電磁気・波動・熱・原子の単元別重みづけと、現象読解問題への対応策を解説します。",
@@ -160,6 +164,8 @@ export const articles: Article[] = [
   },
   {
     slug: "high-school-physics-electromagnetism-weak",
+    externalUrl:
+      "https://yuta-eng.com/blog/high-school-physics-electromagnetism-weak",
     title: "高校物理 電磁気 苦手を単元別に克服する完全マップ",
     description:
       "電磁気の困難は『見えない量』を扱うことにあり、図とことばの翻訳訓練が不足していることが根本原因です。5段構造マップでつまずき箇所を特定し、最短距離で克服する道筋を解説します。",
@@ -233,6 +239,7 @@ export const articles: Article[] = [
   },
   {
     slug: "doppler-effect-formula",
+    externalUrl: "https://yuta-eng.com/blog/doppler-effect-formula",
     title: "ドップラー効果の公式 完全ガイド|f' = f(V±v₀)/(V∓vs) を符号で迷わない",
     description:
       "ドップラー効果の公式を、観測者基準で波長が縮む/伸びるという1つの原理から導出。符号ルールの覚え方、観測者・音源・風速・反射音の組み合わせまで、例題付きで解説します。",
@@ -301,6 +308,7 @@ export const articles: Article[] = [
   },
   {
     slug: "simple-harmonic-motion-energy",
+    externalUrl: "https://yuta-eng.com/blog/simple-harmonic-motion-energy",
     title: "単振動 高校物理 完全ガイド|微分方程式なしでエネルギー保存から解く",
     description:
       "単振動を『等速円運動の射影』と『エネルギー保存』で理解し、微分方程式を使わずに公式を導出。ばね振り子・単振り子の周期、振幅・速度・加速度の関係を直感的につかむための完全ガイドです。",
@@ -363,6 +371,7 @@ export const articles: Article[] = [
   },
   {
     slug: "circular-motion-centripetal-force",
+    externalUrl: "https://yuta-eng.com/blog/circular-motion-centripetal-force",
     title: "円運動の向心力はなぜ中心向きか|F = mv²/r = mrω² を図と式で完全に導く",
     description:
       "等速円運動の向心力 F = mv²/r = mrω² の公式を、速度ベクトルの差分から加速度の向きを導く手順で解説。中心向きである理由、遠心力との違い、場面別の使い分けまで網羅した完全ガイドです。",
@@ -417,6 +426,7 @@ export const articles: Article[] = [
   },
   {
     slug: "equations-of-uniform-acceleration",
+    externalUrl: "https://yuta-eng.com/blog/equations-of-uniform-acceleration",
     title: "等加速度運動の公式 完全ガイド|v-tグラフから3公式を導き「覚え方」を卒業する",
     description:
       "等加速度運動の3公式(v=v₀+at、x=v₀t+½at²、v²−v₀²=2ax)を、v-tグラフの面積=変位という1つの原理から導出。暗記ではなく導き方で理解する高校物理の完全ガイドです。",
@@ -680,17 +690,21 @@ export const articles: Article[] = [
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
-  return articles.find((a) => a.slug === slug);
+  return articles.find((a) => a.slug === slug && !a.externalUrl);
 }
 
 export function allArticleSlugs(): string[] {
-  return articles.map((a) => a.slug);
+  return articles.filter((a) => !a.externalUrl).map((a) => a.slug);
+}
+
+export function articleHref(article: Article): string {
+  return article.externalUrl ?? `/articles/${article.slug}`;
 }
 
 export function getRelatedArticles(slug: string): Article[] {
-  const article = getArticleBySlug(slug);
+  const article = articles.find((a) => a.slug === slug);
   if (!article?.related) return [];
   return article.related
-    .map((s) => getArticleBySlug(s))
+    .map((s) => articles.find((a) => a.slug === s))
     .filter((a): a is Article => Boolean(a));
 }

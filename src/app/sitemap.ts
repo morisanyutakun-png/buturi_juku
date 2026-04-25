@@ -27,12 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const articleUrls: MetadataRoute.Sitemap = articles.map((a) => ({
-    url: `${base}/articles/${a.slug}`,
-    lastModified: a.updatedAt ? new Date(a.updatedAt) : new Date(a.publishedAt),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const articleUrls: MetadataRoute.Sitemap = articles
+    .filter((a) => !a.externalUrl)
+    .map((a) => ({
+      url: `${base}/articles/${a.slug}`,
+      lastModified: a.updatedAt ? new Date(a.updatedAt) : new Date(a.publishedAt),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }));
 
   return [...staticPages, ...courseUrls, ...articleUrls];
 }
