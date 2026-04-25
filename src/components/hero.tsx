@@ -103,19 +103,19 @@ export function Hero() {
                 <span className="absolute inline-flex h-1.5 w-1.5 animate-ping rounded-full bg-warm/70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-warm" />
               </span>
-              ZOOM LIVE LESSON
+              LIVE LESSON
             </div>
 
             <div className="absolute bottom-7 left-7 right-7 rounded-2xl border border-ink-900/[0.08] bg-white/90 p-6 shadow-soft backdrop-blur-md">
               <p className="text-[10px] tracking-[0.28em] uppercase text-warm-deep">
-                NOW STREAMING
+                FIRST 30 MIN
               </p>
               <p className="mt-2.5 font-serif text-[1.05rem] tracking-[-0.005em] text-ink-900">
-                電磁気 #03:電場とガウスの法則
+                現状ヒアリングから始まる、体験授業
               </p>
               <div className="mt-3 flex items-center gap-2 text-[11px] text-ink-600">
                 <span className="h-1 w-1 rounded-full bg-forest" />
-                現象の言語化 → 立式 → 演習
+                模試 / 志望校 / 教材 / つまずき
               </div>
             </div>
           </div>

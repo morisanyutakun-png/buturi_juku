@@ -31,9 +31,13 @@ export const courses: Course[] = [
       { heading: "診断ミニ授業", body: "苦手分野の中から1テーマを選び、実際の指導を体験していただきます。" },
       { heading: "学習戦略の提案", body: "残り期間から逆算した学習ロードマップをその場で提示します。" },
     ],
-    price: { label: "受講料", value: "無料", note: "初回のみ。オンライン(Zoom)で実施します。" },
+    price: {
+      label: "受講料",
+      value: "無料",
+      note: "初回のみ。オンラインで実施します(使用ツールは受講開始時にご案内)。",
+    },
     duration: "60分",
-    format: "オンライン(Zoom)",
+    format: "オンライン(ライブ授業)",
     highlights: [
       "無理な勧誘は行いません",
       "ご家庭からの参加も可能",
@@ -71,7 +75,7 @@ export const courses: Course[] = [
     ],
     price: { label: "受講料", value: "月額 38,000円〜", note: "週1回・月4回の授業を含む標準プラン。回数・時間はご相談可。" },
     duration: "1回 90分",
-    format: "オンライン(Zoom) / 対面(応相談)",
+    format: "オンライン / 対面(応相談)",
     highlights: [
       "完全1対1・講師固定",
       "志望校別カリキュラム",
@@ -107,7 +111,7 @@ export const courses: Course[] = [
     ],
     price: { label: "受講料", value: "全8回 48,000円", note: "週1ペースでの進行を想定。個別日程調整可。" },
     duration: "1回 90分 × 全8回",
-    format: "オンライン(Zoom)",
+    format: "オンライン(ライブ授業)",
     highlights: [
       "共通テスト特化のカリキュラム",
       "過去問演習 + 解説付き",
@@ -139,7 +143,7 @@ export const courses: Course[] = [
     ],
     price: { label: "受講料", value: "全6回 36,000円" },
     duration: "1回 90分 × 全6回",
-    format: "オンライン(Zoom)",
+    format: "オンライン(ライブ授業)",
     highlights: [
       "力学の立式ロジックを体系化",
       "難関大の典型問題を網羅",
@@ -171,7 +175,7 @@ export const courses: Course[] = [
     ],
     price: { label: "受講料", value: "全6回 36,000円" },
     duration: "1回 90分 × 全6回",
-    format: "オンライン(Zoom)",
+    format: "オンライン(ライブ授業)",
     highlights: [
       "場の概念からビジュアルで理解",
       "回路問題の立式パターンを網羅",

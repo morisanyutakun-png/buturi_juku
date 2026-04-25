@@ -139,7 +139,7 @@ export default async function CourseDetailPage({
               <ol className="mt-6 grid gap-4 sm:grid-cols-2">
                 {[
                   { step: "01", title: "お申し込み", body: "フォームから3分で申し込み可能です。" },
-                  { step: "02", title: "面談・日程調整", body: "Zoomで簡単な面談を行い、カリキュラムを確定します。" },
+                  { step: "02", title: "面談・日程調整", body: "オンラインで簡単な面談を行い、カリキュラムを確定します。" },
                   { step: "03", title: "授業開始", body: "受講開始。週次で進捗を共有しながら進めます。" },
                   { step: "04", title: "到達確認", body: "到達度を見ながら、追加施策をご提案します。" },
                 ].map((s) => (

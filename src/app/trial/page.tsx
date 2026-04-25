@@ -24,10 +24,24 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const flow = [
-  { step: "01", time: "0 – 10分", title: "ヒアリング", body: "志望校・模試成績・現在の学習状況を伺います。" },
-  { step: "02", time: "10 – 40分", title: "診断ミニ授業", body: "苦手分野からテーマを選び、実際の指導を体験いただきます。" },
-  { step: "03", time: "40 – 55分", title: "戦略提案", body: "残り期間から逆算した学習ロードマップをその場でお渡しします。" },
-  { step: "04", time: "55 – 60分", title: "質疑応答", body: "受講形式・料金・今後の進め方についてお答えします。" },
+  {
+    step: "01",
+    time: "0 – 30分",
+    title: "現状ヒアリング",
+    body: "志望校・模試成績・使用教材・つまずきポイントを丁寧に整理します。前半をしっかり使うことで、後半の診断と提案の精度が上がります。",
+  },
+  {
+    step: "02",
+    time: "30 – 55分",
+    title: "診断ミニ授業",
+    body: "苦手分野の中から1テーマを選び、『言語化 → 立式 → 演習』の3ステップで指導を体験いただきます。",
+  },
+  {
+    step: "03",
+    time: "55 – 60分",
+    title: "学習戦略の提案",
+    body: "残り期間から逆算した学習ロードマップと、受講形式・料金についてお答えします。その場でお渡しできるよう構成しています。",
+  },
 ];
 
 export default function TrialPage() {
@@ -129,7 +143,10 @@ export default function TrialPage() {
               </p>
               <p className="mt-4 font-serif text-3xl text-ink-900">無料</p>
               <p className="mt-3 text-xs text-ink-600">
-                初回のみ。Zoomによるオンライン実施。
+                初回のみ。オンラインで実施します。
+              </p>
+              <p className="mt-1.5 text-[11px] text-ink-500">
+                使用ツールは受講開始時にご案内します。
               </p>
 
               <ul className="mt-6 space-y-2 text-xs text-ink-700">

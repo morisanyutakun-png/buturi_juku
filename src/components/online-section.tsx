@@ -11,7 +11,7 @@ import { Section } from "@/components/section";
 const items = [
   {
     icon: MonitorPlay,
-    title: "Zoom + 手書きボード",
+    title: "ライブ授業 + 手書きボード",
     body: "画面共有とリアルタイムの手書き板書で、対面と遜色ない双方向授業を実現します。",
     tone: "brand",
   },

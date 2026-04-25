@@ -91,8 +91,32 @@ const features: {
     icon: Compass,
     title: "オンラインで全国対応",
     description:
-      "Zoomベースの双方向授業。地方在住・海外在住の受験生もそのまま受講できます。",
+      "双方向のライブ授業。地方在住・海外在住の受験生もそのまま受講できます。",
     tone: "warm",
+  },
+];
+
+const teachingSteps = [
+  {
+    step: "01",
+    label: "言語化",
+    title: "現象を、自分の言葉で説明できるようにする",
+    body: "公式の前に、何が起きているかを日本語で語れるか。図と矢印で現象を捉える訓練からはじめます。",
+    accent: "text-brand-deep",
+  },
+  {
+    step: "02",
+    label: "立式",
+    title: "言語化したものを、数式に翻訳する",
+    body: "系の選び方、座標の取り方、力の列挙、立式。この順序を機械的になぞれる状態を作ります。",
+    accent: "text-warm-deep",
+  },
+  {
+    step: "03",
+    label: "演習",
+    title: "立式の型を、実戦で固める",
+    body: "標準問題で型を固め、過去問で志望校の出題傾向に合わせて磨き込みます。",
+    accent: "text-forest-deep",
   },
 ];
 
@@ -209,6 +233,61 @@ export default function HomePage() {
 
       {/* ONLINE */}
       <OnlineSection />
+
+      {/* TEACHING METHOD */}
+      <Section
+        eyebrow="TEACHING METHOD"
+        title={<>授業は、<br className="sm:hidden" />言語化 → 立式 → 演習。</>}
+        description="どの分野・どのレベルでも、授業の組み立てはこの3ステップで一貫しています。問題を解く前に、現象が自分の言葉で語れるか。語れたら、機械的に立式できるか。立式できたら、実戦の型が固まっているか。"
+        className="bg-paper"
+      >
+        <div className="grid gap-5 md:grid-cols-3">
+          {teachingSteps.map((s) => (
+            <article
+              key={s.step}
+              className="group relative h-full overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+            >
+              <div className="flex items-baseline gap-3">
+                <span className="font-mono text-[11px] tracking-[0.18em] text-ink-400">
+                  STEP {s.step}
+                </span>
+                <span className={`font-serif text-[1.45rem] tracking-[-0.012em] ${s.accent}`}>
+                  {s.label}
+                </span>
+              </div>
+              <h3 className="mt-7 font-serif text-[1.15rem] leading-snug tracking-[-0.008em] text-ink-900">
+                {s.title}
+              </h3>
+              <p className="mt-4 text-[13.5px] leading-[1.85] text-ink-600">
+                {s.body}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-10 rounded-3xl border border-ink-900/[0.07] bg-paper-soft/70 p-7 sm:p-8">
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-[10px] font-medium tracking-[0.32em] uppercase text-warm-deep">
+                FIRST 30 MIN
+              </p>
+              <p className="mt-3 font-serif text-[1.15rem] tracking-[-0.008em] text-ink-900">
+                体験授業の冒頭30分は、現状ヒアリングに使います。
+              </p>
+              <p className="mt-2 text-[13px] leading-[1.8] text-ink-600">
+                模試・志望校・使用教材・つまずきを丁寧に整理してから、診断ミニ授業に進みます。
+              </p>
+            </div>
+            <Link
+              href="/trial"
+              className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/80 px-5 py-3 text-[13px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
+            >
+              体験授業の流れを見る
+              <ArrowRight className="h-3.5 w-3.5 opacity-60" />
+            </Link>
+          </div>
+        </div>
+      </Section>
 
       {/* COMPARISON */}
       <ComparisonTable />
