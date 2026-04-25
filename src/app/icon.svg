@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#142341"/>
+      <stop offset="0.55" stop-color="#0a1528"/>
+      <stop offset="1" stop-color="#1f5aa6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="32" cy="32" r="22" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#caa34b" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#caa34b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <circle cx="32" cy="32" r="22" fill="url(#glow)"/>
+  <g transform="translate(32 32)" stroke-width="2" fill="none" stroke-linecap="round">
+    <ellipse rx="22" ry="8" stroke="#3b7cd9"/>
+    <ellipse rx="22" ry="8" stroke="#e28040" transform="rotate(60)"/>
+    <ellipse rx="22" ry="8" stroke="#597a5b" transform="rotate(-60)"/>
+  </g>
+  <circle cx="32" cy="32" r="3.6" fill="#caa34b"/>
+  <circle cx="32" cy="32" r="1.6" fill="#fdfbf5"/>
+</svg>
