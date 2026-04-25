@@ -128,29 +128,29 @@ const flow = [
 
 export default function HomePage() {
   const featuredCourses = courses.filter((c) => c.slug !== "trial").slice(0, 4);
-  const latestArticles = articles.slice(0, 3);
+  const latestArticles = articles.slice(0, 4);
 
   return (
     <>
       <Hero />
 
       {/* STATS RIBBON */}
-      <section className="border-b border-ink-900/10 bg-white">
-        <div className="container grid grid-cols-2 divide-ink-900/10 md:grid-cols-4 md:divide-x">
+      <section className="border-b border-ink-900/[0.06] bg-white/60 backdrop-blur-sm">
+        <div className="container grid grid-cols-2 divide-y divide-ink-900/[0.06] md:grid-cols-4 md:divide-x md:divide-y-0">
           {[
             { k: "共通テスト 物理", v: "満点", s: "講師の受験実績", color: "text-warm-deep" },
             { k: "二次試験 物理", v: "9割", s: "難関大レベル", color: "text-brand-deep" },
             { k: "指導実績", v: "名大合格生を輩出", s: "塾講師としての実績", color: "text-forest-deep" },
             { k: "対応エリア", v: "全国 Online", s: "初学者〜難関大まで", color: "text-brand-deep" },
           ].map((x) => (
-            <div key={x.k} className="px-4 py-6 text-center md:py-8">
-              <p className="text-[10px] tracking-[0.28em] uppercase text-ink-500">
+            <div key={x.k} className="px-5 py-8 text-center md:py-10">
+              <p className="text-[10px] font-medium tracking-[0.28em] uppercase text-ink-500">
                 {x.k}
               </p>
-              <p className={`mt-3 font-serif text-xl md:text-2xl ${x.color}`}>
+              <p className={`mt-3.5 font-serif text-[1.4rem] tracking-[-0.012em] md:text-[1.55rem] ${x.color}`}>
                 {x.v}
               </p>
-              <p className="mt-1 text-[11px] text-ink-600">{x.s}</p>
+              <p className="mt-1.5 text-[11.5px] text-ink-600">{x.s}</p>
             </div>
           ))}
         </div>
@@ -172,16 +172,16 @@ export default function HomePage() {
           {subjects.map((s, i) => (
             <div
               key={s.name}
-              className="group relative overflow-hidden rounded-2xl border border-ink-900/10 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card"
+              className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
             >
-              <span className="font-mono text-xs text-ink-400">
+              <span className="font-mono text-[11px] text-ink-400">
                 0{i + 1}
               </span>
-              <h3 className={`mt-4 font-serif text-2xl ${s.accent}`}>{s.name}</h3>
-              <p className="mt-1 text-[11px] tracking-widest uppercase text-ink-500">
+              <h3 className={`mt-5 font-serif text-[1.6rem] tracking-[-0.012em] ${s.accent}`}>{s.name}</h3>
+              <p className="mt-1.5 text-[10px] tracking-[0.22em] uppercase text-ink-500">
                 {s.kana}
               </p>
-              <p className="mt-4 text-xs leading-relaxed text-ink-700">
+              <p className="mt-5 text-[12.5px] leading-[1.75] text-ink-600">
                 {s.description}
               </p>
             </div>
@@ -222,31 +222,31 @@ export default function HomePage() {
         description="書籍を手がけた主宰講師が、体験授業からカリキュラム設計・授業まですべてを担当します。"
         className="bg-paper"
       >
-        <div className="grid gap-10 rounded-3xl border border-ink-900/10 bg-white p-8 shadow-card md:grid-cols-[1fr_1.4fr] md:p-14">
+        <div className="grid gap-12 rounded-[2rem] border border-ink-900/[0.07] bg-white/85 p-10 shadow-card backdrop-blur-sm md:grid-cols-[1fr_1.4fr] md:p-16">
           <InstructorPortrait />
           <div>
-            <div className="flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-brand-deep">
-              <GraduationCap className="h-4 w-4" aria-hidden />
+            <div className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-brand-deep">
+              <GraduationCap className="h-3.5 w-3.5" aria-hidden strokeWidth={1.6} />
               PROFILE
             </div>
-            <h3 className="mt-4 font-serif text-display-md text-ink-900">
+            <h3 className="mt-5 font-serif text-display-md tracking-[-0.012em] text-ink-900">
               初学者にも、難関大志望にも、<br className="sm:hidden" />
               あなた専用のルートを。
             </h3>
-            <p className="mt-6 text-ink-700 leading-relaxed">
-              名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導にあたる。自身も共通テスト物理 満点・二次試験物理 9割を達成し、これまでの指導で<strong className="text-warm-deep">名古屋大学合格生</strong>も輩出。書籍執筆の経験とあわせ、一人ひとりに合わせた学習ルートを設計します。
+            <p className="mt-7 text-[15px] leading-[1.85] text-ink-600">
+              名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導にあたる。自身も共通テスト物理 満点・二次試験物理 9割を達成し、これまでの指導で<strong className="text-warm-deep font-medium">名古屋大学合格生</strong>も輩出。書籍執筆の経験とあわせ、一人ひとりに合わせた学習ルートを設計します。
             </p>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-4">
+            <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-ink-900/[0.07] bg-ink-900/[0.06] sm:grid-cols-4">
               {instructor.achievements.map((a) => (
                 <div
                   key={a.label}
-                  className="rounded-xl border border-ink-900/10 bg-paper-soft p-3 text-center"
+                  className="bg-paper/85 p-4 text-center"
                 >
-                  <p className="text-[9px] tracking-[0.22em] uppercase text-ink-500">
+                  <p className="text-[9px] font-medium tracking-[0.22em] uppercase text-ink-500">
                     {a.label}
                   </p>
-                  <p className="mt-1 font-serif text-sm text-warm-deep">
+                  <p className="mt-1.5 font-serif text-[14px] tracking-[-0.005em] text-warm-deep">
                     {a.value}
                   </p>
                 </div>
@@ -255,10 +255,10 @@ export default function HomePage() {
 
             <Link
               href="/teacher"
-              className="mt-8 inline-flex items-center gap-2 text-sm text-brand hover:text-brand-deep transition"
+              className="mt-9 inline-flex items-center gap-2 text-[13.5px] text-ink-900 transition hover:text-brand-deep"
             >
               講師紹介を詳しく見る
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
@@ -276,37 +276,37 @@ export default function HomePage() {
             <Link
               key={c.slug}
               href={`/courses/${c.slug}`}
-              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-ink-900/10 bg-white p-8 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card"
+              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
             >
               <div>
-                <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
+                <p className="text-[10px] font-medium tracking-[0.28em] uppercase text-brand-deep">
                   {c.category}
                 </p>
-                <h3 className="mt-4 font-serif text-2xl text-ink-900">
+                <h3 className="mt-5 font-serif text-[1.55rem] tracking-[-0.012em] text-ink-900">
                   {c.title}
                 </h3>
-                <p className="mt-2 text-sm text-ink-600">{c.subtitle}</p>
-                <p className="mt-6 text-sm leading-relaxed text-ink-700">
+                <p className="mt-2.5 text-[13.5px] text-ink-600">{c.subtitle}</p>
+                <p className="mt-7 text-[14px] leading-[1.8] text-ink-600">
                   {c.summary}
                 </p>
               </div>
-              <div className="mt-8 flex items-center justify-between text-sm">
+              <div className="mt-9 flex items-center justify-between text-[13px]">
                 <span className="text-ink-500">{c.duration}</span>
-                <span className="inline-flex items-center gap-1 text-brand transition group-hover:translate-x-0.5">
+                <span className="inline-flex items-center gap-1.5 text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
                   詳しく見る
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </div>
             </Link>
           ))}
         </div>
-        <div className="mt-10 text-center">
+        <div className="mt-12 text-center">
           <Link
             href="/courses"
-            className="inline-flex items-center gap-2 rounded-full border border-ink-900/15 bg-white px-6 py-3 text-sm text-ink-800 hover:border-brand hover:text-brand transition"
+            className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/70 px-6 py-3.5 text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
           >
             講座一覧をすべて見る
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-3.5 w-3.5 opacity-60" />
           </Link>
         </div>
       </Section>
@@ -321,15 +321,19 @@ export default function HomePage() {
         description="お申し込みから受講開始までの流れはシンプルです。"
         className="bg-paper-soft"
       >
-        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {flow.map((s) => (
             <li
               key={s.step}
-              className="relative rounded-2xl border border-ink-900/10 bg-white p-8 shadow-soft"
+              className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
             >
-              <p className="font-mono text-xs text-warm-deep">STEP {s.step}</p>
-              <h3 className="mt-4 font-serif text-lg text-ink-900">{s.title}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-ink-700">
+              <p className="font-mono text-[10.5px] tracking-[0.18em] text-warm-deep">
+                STEP {s.step}
+              </p>
+              <h3 className="mt-5 font-serif text-[1.15rem] tracking-[-0.008em] text-ink-900">
+                {s.title}
+              </h3>
+              <p className="mt-4 text-[13.5px] leading-[1.8] text-ink-600">
                 {s.description}
               </p>
             </li>
@@ -344,51 +348,56 @@ export default function HomePage() {
         description="物理の学び方・分野別の躓き方・受験戦略について、現場から発信します。"
         className="bg-paper"
       >
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {latestArticles.map((a) => (
             <Link
               key={a.slug}
               href={`/articles/${a.slug}`}
-              className="group flex h-full flex-col justify-between rounded-2xl border border-ink-900/10 bg-white p-7 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card"
+              className="group flex h-full flex-col justify-between rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
             >
               <div>
-                <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
+                <p className="text-[10px] font-medium tracking-[0.28em] uppercase text-brand-deep">
                   {a.category}
                 </p>
-                <h3 className="mt-4 font-serif text-lg text-ink-900 leading-snug">
+                <h3 className="mt-4 font-serif text-[1.05rem] leading-snug tracking-[-0.005em] text-ink-900">
                   {a.title}
                 </h3>
-                <p className="mt-3 text-sm text-ink-700 leading-relaxed">
+                <p className="mt-3.5 text-[13px] leading-[1.75] text-ink-600 line-clamp-4">
                   {a.description}
                 </p>
               </div>
-              <p className="mt-6 inline-flex items-center gap-1 text-xs text-brand transition group-hover:translate-x-0.5">
+              <p className="mt-6 inline-flex items-center gap-1.5 text-[12px] text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
                 続きを読む
                 <ArrowRight className="h-3 w-3" />
               </p>
             </Link>
           ))}
         </div>
-        <div className="mt-10 text-center">
+        <div className="mt-12 text-center">
           <Link
             href="/articles"
-            className="inline-flex items-center gap-2 rounded-full border border-ink-900/15 bg-white px-6 py-3 text-sm text-ink-800 hover:border-brand hover:text-brand transition"
+            className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/70 px-6 py-3.5 text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
           >
             コラム一覧を見る
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-3.5 w-3.5 opacity-60" />
           </Link>
         </div>
       </Section>
 
       <CtaBlock />
 
-      <Section className="py-20 text-center bg-paper">
+      <Section className="py-24 text-center bg-paper">
         <div className="mx-auto flex max-w-xl flex-col items-center">
-          <Sparkles className="h-5 w-5 text-warm-deep" aria-hidden />
-          <p className="mt-4 font-serif text-xl text-ink-900 leading-relaxed">
+          <span
+            aria-hidden
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-warm-bg ring-1 ring-warm/30"
+          >
+            <Sparkles className="h-4 w-4 text-warm-deep" aria-hidden strokeWidth={1.6} />
+          </span>
+          <p className="mt-7 font-serif text-[1.5rem] tracking-[-0.012em] text-ink-900 leading-relaxed">
             物理を、<span className="text-warm-deep">わかる</span>に変える。
           </p>
-          <p className="mt-3 text-sm text-ink-600">
+          <p className="mt-4 text-[14px] leading-[1.85] text-ink-600">
             一人ひとりの『わからない』と、最後まで向き合います。
           </p>
         </div>

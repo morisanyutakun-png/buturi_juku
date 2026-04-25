@@ -46,7 +46,6 @@ const config: Config = {
           bg: "#e9f0fb",
           deep: "#1f5aa6",
         },
-        // Keep accent as alias (less migration pain)
         accent: {
           DEFAULT: "#3b7cd9",
           soft: "#c5daf5",
@@ -69,14 +68,14 @@ const config: Config = {
           deep: "#2f4b31",
         },
 
-        // Gold — credentials and book accents (darkened for light bg)
+        // Gold — credentials and book accents
         gold: {
           DEFAULT: "#caa34b",
           soft: "#f3e4b6",
           deep: "#8e6c2a",
         },
 
-        // Deep surfaces (used sparingly for dark accent cards)
+        // Deep surfaces
         navy: {
           900: "#0a1528",
           800: "#142341",
@@ -104,34 +103,87 @@ const config: Config = {
           "'Yu Mincho'",
           "serif",
         ],
+        mono: [
+          "ui-monospace",
+          "SFMono-Regular",
+          "'SF Mono'",
+          "Menlo",
+          "monospace",
+        ],
+      },
+      letterSpacing: {
+        tightest: "-0.04em",
+        tighter: "-0.025em",
+        tight: "-0.015em",
+        wide: "0.02em",
+        wider: "0.08em",
+        widest: "0.32em",
       },
       fontSize: {
+        // Apple-style display sizes — tighter tracking, generous line-height
+        "display-2xl": [
+          "clamp(2.6rem, 7vw, 5.6rem)",
+          { lineHeight: "1.04", letterSpacing: "-0.025em", fontWeight: "500" },
+        ],
+        "display-xl": [
+          "clamp(2.4rem, 6vw, 4.6rem)",
+          { lineHeight: "1.08", letterSpacing: "-0.022em" },
+        ],
         "display-lg": [
-          "clamp(2.2rem, 5.5vw, 4.2rem)",
-          { lineHeight: "1.12", letterSpacing: "-0.015em" },
+          "clamp(2.1rem, 5.2vw, 4rem)",
+          { lineHeight: "1.1", letterSpacing: "-0.018em" },
         ],
         "display-md": [
-          "clamp(1.8rem, 3.8vw, 2.6rem)",
-          { lineHeight: "1.18", letterSpacing: "-0.01em" },
+          "clamp(1.7rem, 3.6vw, 2.5rem)",
+          { lineHeight: "1.18", letterSpacing: "-0.012em" },
+        ],
+        "display-sm": [
+          "clamp(1.3rem, 2.4vw, 1.7rem)",
+          { lineHeight: "1.25", letterSpacing: "-0.008em" },
         ],
       },
       boxShadow: {
-        soft: "0 10px 30px -15px rgba(31, 90, 166, 0.15)",
-        card: "0 1px 0 0 rgba(255,255,255,0.6) inset, 0 18px 40px -30px rgba(10,21,40,0.25)",
-        warm: "0 12px 30px -15px rgba(226, 128, 64, 0.35)",
+        // Apple-like layered shadows (light, refined)
+        soft: "0 1px 2px rgba(10,21,40,0.04), 0 12px 28px -20px rgba(10,21,40,0.18)",
+        card: "0 1px 0 rgba(255,255,255,0.75) inset, 0 1px 2px rgba(10,21,40,0.04), 0 24px 48px -28px rgba(10,21,40,0.22)",
+        warm: "0 1px 2px rgba(179,95,39,0.12), 0 14px 32px -16px rgba(226,128,64,0.32)",
+        ring: "0 0 0 1px rgba(20,35,65,0.06), 0 1px 2px rgba(10,21,40,0.04)",
+        elevate:
+          "0 1px 0 rgba(255,255,255,0.6) inset, 0 2px 8px rgba(10,21,40,0.06), 0 32px 64px -28px rgba(10,21,40,0.28)",
       },
       backgroundImage: {
         "paper-texture":
           "radial-gradient(1400px 700px at 50% -200px, rgba(59,124,217,0.06), transparent 60%), linear-gradient(180deg, #fdfbf5 0%, #f7f2e5 100%)",
+        "hairline-x":
+          "linear-gradient(to right, transparent, rgba(20,35,65,0.12), transparent)",
+        "hairline-y":
+          "linear-gradient(to bottom, transparent, rgba(20,35,65,0.12), transparent)",
+      },
+      borderRadius: {
+        "4xl": "2rem",
+        "5xl": "2.5rem",
       },
       keyframes: {
         fadeUp: {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        revealUp: {
+          "0%": { opacity: "0", transform: "translateY(10px)", filter: "blur(2px)" },
+          "100%": { opacity: "1", transform: "translateY(0)", filter: "blur(0)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
       },
       animation: {
         fadeUp: "fadeUp 0.6s ease-out both",
+        revealUp: "revealUp 0.7s cubic-bezier(0.2,0.7,0.2,1) both",
+      },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "spring-soft": "cubic-bezier(0.2, 0.7, 0.2, 1)",
       },
     },
   },

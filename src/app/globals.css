@@ -7,6 +7,7 @@
     "Noto Sans JP", "Yu Gothic", sans-serif;
   --font-serif: "Shippori Mincho", "Hiragino Mincho ProN", "Noto Serif JP",
     "Yu Mincho", serif;
+  --hairline: 0.5px;
   color-scheme: light;
 }
 
@@ -15,27 +16,34 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1, "cv11" 1;
 }
 
 body {
   @apply bg-paper text-ink-900 font-sans antialiased;
   background-image:
     radial-gradient(
-      1400px 700px at 50% -240px,
-      rgba(59, 124, 217, 0.07),
+      1600px 800px at 50% -300px,
+      rgba(59, 124, 217, 0.08),
       transparent 55%
     ),
     radial-gradient(
-      900px 500px at 100% 10%,
-      rgba(226, 128, 64, 0.05),
+      1000px 560px at 100% 8%,
+      rgba(226, 128, 64, 0.045),
       transparent 60%
+    ),
+    radial-gradient(
+      900px 600px at 0% 95%,
+      rgba(89, 122, 91, 0.04),
+      transparent 65%
     ),
     linear-gradient(180deg, #fdfbf5 0%, #f7f2e5 100%);
   min-height: 100vh;
+  letter-spacing: -0.003em;
 }
 
 ::selection {
-  background: rgba(59, 124, 217, 0.22);
+  background: rgba(59, 124, 217, 0.18);
   color: #142341;
 }
 
@@ -43,17 +51,59 @@ body {
   @apply outline-none ring-2 ring-brand/70 ring-offset-2 ring-offset-paper;
 }
 
+/* Apple-style fine hairline divider — works on any DPI */
+.hairline {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    rgba(20, 35, 65, 0.12),
+    transparent
+  );
+  height: 1px;
+}
+
+/* Subtle, durable card */
+.card-subtle {
+  @apply rounded-3xl border border-ink-900/[0.08] bg-white;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.75) inset,
+    0 1px 2px rgba(10, 21, 40, 0.04),
+    0 24px 48px -28px rgba(10, 21, 40, 0.18);
+}
+
+/* Eyebrow label — used across sections */
+.eyebrow {
+  @apply inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-brand-deep;
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* Display headings — Apple-style tight tracking on serif */
+.display-serif {
+  @apply font-serif text-ink-900;
+  font-feature-settings: "palt" 1, "kern" 1;
+  letter-spacing: -0.012em;
+}
+
 /* Prose-like styling for article body */
 .article-content h2 {
-  @apply mt-16 mb-4 font-serif text-2xl text-ink-900 scroll-mt-24;
+  @apply mt-20 mb-5 font-serif text-[1.7rem] leading-tight tracking-[-0.012em] text-ink-900 scroll-mt-24;
 }
 
 .article-content h3 {
-  @apply mt-10 mb-3 font-serif text-xl text-ink-900 scroll-mt-24;
+  @apply mt-12 mb-3 font-serif text-xl leading-snug text-ink-900 scroll-mt-24;
 }
 
 .article-content p {
   @apply my-5 leading-[1.95] text-ink-700;
+  letter-spacing: -0.002em;
 }
 
 .article-content a {
@@ -66,4 +116,32 @@ body {
 
 .article-content strong {
   @apply text-ink-900;
+}
+
+/* Hide scrollbar where appropriate */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* Refined entry animation respecting motion preference */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: revealUp 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+}
+
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }

@@ -22,29 +22,34 @@ export function Section({
 }: SectionProps) {
   return (
     <section
-      className={cn("relative py-20 sm:py-28", className)}
+      className={cn("relative py-24 sm:py-32", className)}
       {...props}
     >
       <Container>
         {(eyebrow || title || description) && (
           <div
             className={cn(
-              "mb-12 sm:mb-16 max-w-3xl",
+              "mb-14 sm:mb-20 max-w-3xl",
               align === "center" && "mx-auto text-center",
             )}
           >
             {eyebrow && (
-              <p className="mb-4 text-xs tracking-[0.28em] uppercase text-brand-deep">
+              <p
+                className={cn(
+                  "mb-5 inline-flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.32em] text-brand-deep",
+                  align === "left" && "before:inline-block before:h-px before:w-5 before:bg-current before:opacity-50",
+                )}
+              >
                 {eyebrow}
               </p>
             )}
             {title && (
-              <h2 className="font-serif text-display-md text-ink-900">
+              <h2 className="font-serif text-display-md text-ink-900 tracking-[-0.012em]">
                 {title}
               </h2>
             )}
             {description && (
-              <p className="mt-5 text-ink-700 leading-relaxed">
+              <p className="mt-6 text-[15px] leading-[1.8] text-ink-600">
                 {description}
               </p>
             )}

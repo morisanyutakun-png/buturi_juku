@@ -52,26 +52,26 @@ export default function ArticlesIndexPage() {
             <Link
               key={a.slug}
               href={`/articles/${a.slug}`}
-              className="group flex h-full flex-col justify-between rounded-2xl border border-ink-900/10 bg-white p-8 transition hover:border-brand/40 hover:bg-paper-soft"
+              className="group flex h-full flex-col justify-between rounded-3xl border border-ink-900/[0.07] bg-white/85 p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.14] hover:shadow-card"
             >
               <div>
-                <div className="flex items-center gap-3 text-[10px] tracking-[0.28em] uppercase text-brand-deep">
+                <div className="flex items-center gap-3 text-[10px] font-medium tracking-[0.28em] uppercase text-brand-deep">
                   <span>{a.category}</span>
-                  <span className="h-px w-6 bg-warm/40" aria-hidden />
+                  <span className="h-px w-5 bg-ink-900/15" aria-hidden />
                   <time dateTime={a.publishedAt} className="text-ink-400">
                     {formatDate(a.publishedAt)}
                   </time>
                 </div>
-                <h2 className="mt-4 font-serif text-xl leading-snug text-ink-900">
+                <h2 className="mt-5 font-serif text-[1.35rem] leading-snug tracking-[-0.012em] text-ink-900">
                   {a.title}
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-ink-700">
+                <p className="mt-5 text-[14px] leading-[1.85] text-ink-600">
                   {a.description}
                 </p>
               </div>
-              <div className="mt-8 flex items-center justify-between text-xs text-ink-500">
+              <div className="mt-9 flex items-center justify-between text-[12px] text-ink-500">
                 <span>{a.readingTime}</span>
-                <span className="inline-flex items-center gap-1 text-brand-deep transition group-hover:translate-x-0.5">
+                <span className="inline-flex items-center gap-1.5 text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
                   続きを読む
                   <ArrowRight className="h-3 w-3" />
                 </span>

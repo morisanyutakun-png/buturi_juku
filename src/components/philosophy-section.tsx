@@ -13,38 +13,37 @@ export function PhilosophySection() {
         {principles.map((p) => (
           <li
             key={p.number}
-            className="group relative overflow-hidden rounded-2xl border border-ink-900/10 bg-white p-8 shadow-soft transition hover:-translate-y-0.5 hover:border-warm/40 hover:shadow-card"
+            className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-warm/30 hover:shadow-card"
           >
             <div
               aria-hidden
-              className="pointer-events-none absolute -right-10 -top-10 select-none font-serif text-[8rem] leading-none text-warm/10 transition group-hover:text-warm/20"
+              className="pointer-events-none absolute -right-12 -top-14 select-none font-serif text-[9rem] leading-none text-warm/[0.08] transition-all duration-700 group-hover:text-warm/[0.16]"
             >
               {p.kanji}
             </div>
-            <p className="relative font-mono text-xs tracking-[0.3em] text-warm-deep">
+            <p className="relative font-mono text-[10.5px] tracking-[0.28em] text-warm-deep">
               PRINCIPLE {p.number}
             </p>
-            <h3 className="relative mt-4 font-serif text-xl leading-snug text-ink-900">
+            <h3 className="relative mt-5 font-serif text-[1.2rem] leading-snug tracking-[-0.008em] text-ink-900">
               {p.title}
             </h3>
-            <p className="relative mt-4 text-sm leading-relaxed text-ink-700">
+            <p className="relative mt-4 text-[13.5px] leading-[1.85] text-ink-600">
               {p.description}
             </p>
           </li>
         ))}
 
-        <li className="relative flex flex-col justify-center overflow-hidden rounded-2xl border border-warm/30 bg-gradient-to-br from-warm-bg via-paper to-brand-bg p-8 shadow-soft">
-          <p className="font-mono text-xs tracking-[0.3em] text-warm-deep">
+        <li className="relative flex flex-col justify-center overflow-hidden rounded-3xl border border-warm/25 bg-gradient-to-br from-warm-bg/70 via-paper to-brand-bg/70 p-9 shadow-soft">
+          <p className="font-mono text-[10.5px] tracking-[0.32em] text-warm-deep">
             OUR BELIEF
           </p>
-          <p className="mt-5 font-serif text-xl leading-relaxed text-ink-900">
+          <p className="mt-6 font-serif text-[1.25rem] leading-relaxed tracking-[-0.012em] text-ink-900">
             物理の伸び悩みは、<br />
             才能ではなく、<br />
             <span className="text-warm-deep">学び方</span>の問題です。
           </p>
-          <p className="mt-5 text-xs text-ink-700 leading-relaxed">
-            正しい順序で、正しい姿勢で学べば、物理は必ず伸びます。
-            私たちは、そのための伴走者です。
+          <p className="mt-6 text-[12.5px] leading-[1.85] text-ink-600">
+            正しい順序で、正しい姿勢で学べば、物理は必ず伸びます。私たちは、そのための伴走者です。
           </p>
         </li>
       </ol>

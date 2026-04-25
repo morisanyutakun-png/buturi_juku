@@ -2,10 +2,10 @@ import { Section } from "@/components/section";
 import { audiences } from "@/data/audiences";
 
 const toneClasses: Record<string, string> = {
-  beginner: "border-brand/25 bg-brand-bg",
-  mid: "border-ink-900/10 bg-white",
-  advanced: "border-warm/30 bg-warm-bg",
-  independent: "border-forest/25 bg-forest-bg",
+  beginner: "border-brand/20 bg-brand-bg/60",
+  mid: "border-ink-900/[0.08] bg-white/85",
+  advanced: "border-warm/25 bg-warm-bg/60",
+  independent: "border-forest/20 bg-forest-bg/60",
 };
 
 export function ForEveryoneSection() {
@@ -20,29 +20,29 @@ export function ForEveryoneSection() {
         {audiences.map((a) => (
           <article
             key={a.level}
-            className={`group relative overflow-hidden rounded-2xl border p-7 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card ${toneClasses[a.tone]}`}
+            className={`group relative overflow-hidden rounded-3xl border p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:shadow-card ${toneClasses[a.tone]}`}
           >
-            <p className="font-mono text-[10px] tracking-[0.3em] text-ink-500">
+            <p className="font-mono text-[10px] tracking-[0.28em] text-ink-500">
               {a.level}
             </p>
-            <h3 className="mt-4 font-serif text-lg leading-snug text-ink-900">
+            <h3 className="mt-4 font-serif text-[1.15rem] leading-snug tracking-[-0.008em] text-ink-900">
               {a.label}
             </h3>
-            <p className="mt-4 text-sm leading-relaxed text-ink-700">
+            <p className="mt-4 text-[13.5px] leading-[1.8] text-ink-600">
               {a.body}
             </p>
           </article>
         ))}
       </div>
 
-      <div className="mt-10 rounded-2xl border border-warm/30 bg-gradient-to-br from-warm-bg via-paper to-brand-bg p-8 text-center shadow-soft md:p-10">
-        <p className="font-mono text-xs tracking-[0.3em] text-warm-deep">
+      <div className="mt-12 rounded-[2rem] border border-warm/25 bg-gradient-to-br from-warm-bg/70 via-paper to-brand-bg/70 p-10 text-center shadow-soft md:p-12">
+        <p className="font-mono text-[10.5px] tracking-[0.32em] text-warm-deep">
           OUR STANCE
         </p>
-        <p className="mt-4 font-serif text-xl leading-relaxed text-ink-900 sm:text-2xl">
+        <p className="mt-5 font-serif text-[1.35rem] tracking-[-0.012em] leading-relaxed text-ink-900 sm:text-[1.55rem]">
           『<span className="text-warm-deep">あなたのレベルに合うルート</span>』は、必ず存在します。
         </p>
-        <p className="mt-4 text-sm text-ink-700 leading-relaxed">
+        <p className="mt-5 text-[14px] leading-[1.85] text-ink-600">
           体験授業では、今のあなたの現在地を丁寧にヒアリングしたうえで、
           <br className="hidden sm:block" />
           合うと感じられたときだけ、受講を選んでください。

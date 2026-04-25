@@ -18,29 +18,43 @@ export function CtaBlock({
   secondary = { label: "お問い合わせ", href: "/contact" },
 }: Props) {
   return (
-    <section className="relative overflow-hidden border-y border-ink-900/10 bg-gradient-to-br from-brand-bg via-paper to-warm-bg">
+    <section className="relative isolate overflow-hidden border-y border-ink-900/[0.06]">
       <div
         aria-hidden
-        className="absolute inset-0 opacity-90 [background-image:radial-gradient(circle_at_10%_0%,rgba(59,124,217,0.18),transparent_55%),radial-gradient(circle_at_90%_100%,rgba(226,128,64,0.18),transparent_55%)]"
+        className="absolute inset-0 bg-gradient-to-br from-paper via-brand-bg/40 to-warm-bg/60"
       />
-      <Container className="relative py-20 sm:py-24">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-end">
+      <div
+        aria-hidden
+        className="absolute inset-0 [background-image:radial-gradient(circle_at_15%_10%,rgba(59,124,217,0.18),transparent_50%),radial-gradient(circle_at_85%_90%,rgba(226,128,64,0.18),transparent_50%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-px bg-hairline-x"
+      />
+      <Container className="relative py-24 sm:py-28">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr] md:items-end">
           <div>
-            <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">{eyebrow}</p>
-            <h2 className="mt-6 font-serif text-display-md text-ink-900">{title}</h2>
-            <p className="mt-6 max-w-xl text-ink-700 leading-relaxed">{description}</p>
+            <p className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-5 before:bg-current before:opacity-50">
+              {eyebrow}
+            </p>
+            <h2 className="mt-7 font-serif text-display-md tracking-[-0.012em] text-ink-900">
+              {title}
+            </h2>
+            <p className="mt-6 max-w-xl text-[15px] leading-[1.8] text-ink-600">
+              {description}
+            </p>
           </div>
           <div className="flex flex-wrap gap-3 md:justify-end">
             <Link
               href={primary.href}
-              className="group inline-flex items-center gap-2 rounded-full bg-warm px-6 py-3.5 text-sm font-medium text-white shadow-warm transition hover:bg-warm-deep"
+              className="group inline-flex items-center gap-2 rounded-full bg-ink-900 px-7 py-4 text-[14px] font-medium text-paper transition duration-300 hover:bg-ink-800"
             >
               {primary.label}
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </Link>
             <Link
               href={secondary.href}
-              className="inline-flex items-center gap-2 rounded-full border border-ink-900/15 bg-white px-6 py-3.5 text-sm text-ink-800 hover:border-brand hover:text-brand transition"
+              className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/80 px-7 py-4 text-[14px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
             >
               {secondary.label}
             </Link>

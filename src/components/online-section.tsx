@@ -48,9 +48,9 @@ const items = [
 ] as const;
 
 const toneMap = {
-  brand: "border-brand/30 bg-brand-bg text-brand-deep",
-  warm: "border-warm/30 bg-warm-bg text-warm-deep",
-  forest: "border-forest/30 bg-forest-bg text-forest-deep",
+  brand: "ring-brand/20 bg-brand-bg text-brand-deep",
+  warm: "ring-warm/20 bg-warm-bg text-warm-deep",
+  forest: "ring-forest/20 bg-forest-bg text-forest-deep",
 };
 
 export function OnlineSection() {
@@ -65,35 +65,39 @@ export function OnlineSection() {
         {items.map((item) => (
           <article
             key={item.title}
-            className="group relative overflow-hidden rounded-2xl border border-ink-900/10 bg-white p-7 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card"
+            className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
           >
-            <div className={`flex h-12 w-12 items-center justify-center rounded-xl border ${toneMap[item.tone]}`}>
-              <item.icon className="h-5 w-5" aria-hidden />
+            <div
+              className={`flex h-11 w-11 items-center justify-center rounded-2xl ring-1 ${toneMap[item.tone]}`}
+            >
+              <item.icon className="h-[18px] w-[18px]" aria-hidden strokeWidth={1.6} />
             </div>
-            <h3 className="mt-6 font-serif text-lg text-ink-900">
+            <h3 className="mt-7 font-serif text-[1.15rem] leading-snug tracking-[-0.008em] text-ink-900">
               {item.title}
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-700">
+            <p className="mt-3 text-[13.5px] leading-[1.75] text-ink-600">
               {item.body}
             </p>
           </article>
         ))}
       </div>
 
-      <div className="mt-12 overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-soft">
-        <div className="grid divide-ink-900/10 md:grid-cols-4 md:divide-x">
+      <div className="mt-14 overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 shadow-soft backdrop-blur-sm">
+        <div className="grid divide-y divide-ink-900/[0.06] md:grid-cols-4 md:divide-x md:divide-y-0">
           {[
             { k: "通塾時間の削減", v: "週 3〜6h", sub: "その分を演習に転用" },
             { k: "対応時間帯", v: "10:00–22:00", sub: "前後要相談" },
             { k: "録画の視聴期限", v: "無期限", sub: "在籍中いつでも" },
             { k: "質問チャット", v: "24h 投稿可", sub: "24–48h 内に回答" },
           ].map((x) => (
-            <div key={x.k} className="p-6 text-center">
-              <p className="text-[10px] tracking-[0.28em] uppercase text-ink-500">
+            <div key={x.k} className="p-7 text-center">
+              <p className="text-[10px] font-medium tracking-[0.28em] uppercase text-ink-500">
                 {x.k}
               </p>
-              <p className="mt-3 font-serif text-2xl text-brand-deep">{x.v}</p>
-              <p className="mt-2 text-xs text-ink-600">{x.sub}</p>
+              <p className="mt-3.5 font-serif text-[1.55rem] tracking-[-0.012em] text-brand-deep">
+                {x.v}
+              </p>
+              <p className="mt-2 text-[12px] text-ink-600">{x.sub}</p>
             </div>
           ))}
         </div>
