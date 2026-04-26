@@ -527,6 +527,7 @@ export default function HomePage() {
       </Section>
       </div>
 
+      <div className="cv-auto">
       <CtaBlock />
 
       <Section className="py-24 text-center bg-paper">
@@ -545,6 +546,7 @@ export default function HomePage() {
           </p>
         </div>
       </Section>
+      </div>
 
       <JsonLdGraph
         id="ld-graph-home"

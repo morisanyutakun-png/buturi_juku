@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
   experimental: {
     optimizePackageImports: ["lucide-react"],
+    // Inline critical CSS, defer the rest. Saves the ~450ms render-blocking
+    // CSS request flagged by Lighthouse.
+    optimizeCss: true,
   },
   images: {
     formats: ["image/avif", "image/webp"],

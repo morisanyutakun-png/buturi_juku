@@ -149,30 +149,64 @@ export function Hero() {
               </Link>
             </div>
 
-            <div className="mt-10 lg:hidden">
-              <HeroVisual />
+            {/* Lightweight mobile hero card — replaces the full HeroVisual SVG
+                on phones for faster LCP / smaller DOM. */}
+            <div
+              className="relative mt-10 overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-br from-white via-warm-bg/45 to-brand-bg/45 p-7 shadow-soft lg:hidden"
+              aria-hidden
+            >
+              <span
+                className="pointer-events-none absolute -right-6 -bottom-12 select-none font-serif text-[14rem] leading-[0.8] tracking-tighter text-warm-deep/[0.10]"
+              >
+                森
+              </span>
+              <p className="relative text-[10.5px] tracking-[0.32em] uppercase text-brand-deep">
+                MORI PHYSICS FOREST
+              </p>
+              <p className="relative mt-3 font-serif text-[1.35rem] leading-[1.45] tracking-[-0.012em] text-ink-900">
+                高校物理を、構造で。
+              </p>
+              <ul
+                className="relative mt-5 grid grid-cols-2 gap-2.5 font-mono text-[13px] text-ink-800"
+              >
+                <li className="rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                  F = ma
+                </li>
+                <li className="rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                  v = f λ
+                </li>
+                <li className="rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                  ε = − dΦ/dt
+                </li>
+                <li className="rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                  E₁ = E₂
+                </li>
+              </ul>
+              <p className="relative mt-5 text-[12px] tracking-[0.24em] uppercase text-gold-deep">
+                FREE TRIAL · 60 MIN
+              </p>
             </div>
 
-            <dl className="mt-12 sm:mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.10] bg-ink-900/[0.06] sm:grid-cols-4">
+            <ul className="mt-12 sm:mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.10] bg-ink-900/[0.06] sm:grid-cols-4">
               {[
                 { k: "指導分野", v: "物理のみ", c: "text-brand-deep" },
                 { k: "授業形式", v: "1対1", c: "text-forest-deep" },
                 { k: "対応地域", v: "全国", c: "text-brand-deep" },
                 { k: "入塾金", v: "0円", c: "text-warm-deep" },
               ].map((item) => (
-                <div
+                <li
                   key={item.k}
-                  className="bg-white/85 px-5 py-6 sm:py-5 backdrop-blur"
+                  className="bg-white/85 px-5 py-6 sm:py-5"
                 >
-                  <dt className="text-[11px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase text-ink-500">
+                  <p className="text-[11px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase text-ink-500">
                     {item.k}
-                  </dt>
-                  <dd className={`mt-2.5 font-serif text-[1.3rem] sm:text-[1.15rem] tracking-[-0.01em] ${item.c}`}>
+                  </p>
+                  <p className={`mt-2.5 font-serif text-[1.3rem] sm:text-[1.15rem] tracking-[-0.01em] ${item.c}`}>
                     {item.v}
-                  </dd>
-                </div>
+                  </p>
+                </li>
               ))}
-            </dl>
+            </ul>
 
             <p className="mt-10 max-w-xl font-serif text-[1.2rem] sm:text-[1.35rem] leading-[1.7] tracking-[-0.005em] text-ink-700">
               <span className="text-brand-deep">わからない</span>が、
