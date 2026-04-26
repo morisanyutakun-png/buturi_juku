@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
-import { Breadcrumb } from "@/components/breadcrumb";
-import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { PageHero } from "@/components/page-hero";
 import { breadcrumbJsonLd, faqPageJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { faqItems } from "@/data/faq";
@@ -28,19 +27,30 @@ export default function FaqPage() {
 
   return (
     <>
-      <Container className="pt-10">
-        <Breadcrumb
-          items={[
-            { label: "ホーム", href: "/" },
-            { label: "よくある質問", href: "/faq" },
-          ]}
-        />
-      </Container>
+      <PageHero
+        eyebrow="FAQ — よくある質問"
+        watermark="問"
+        tone="ink"
+        breadcrumb={[
+          { label: "ホーム", href: "/" },
+          { label: "よくある質問", href: "/faq" },
+        ]}
+        title={
+          <>
+            <span className="block">受講前の</span>
+            <span className="block">
+              <span className="text-brand-deep">疑問</span>に、
+            </span>
+            <span className="block">先回りで答えます。</span>
+          </>
+        }
+        description="高校物理専門塾「物理の森」の受講前によく寄せられるご質問をまとめました。ここにない内容は、お問い合わせフォームからお気軽にお送りください。"
+      />
 
       <Section
-        eyebrow="FAQ"
-        title="高校物理専門塾のよくある質問"
-        description="高校物理専門塾「物理の森」の受講前に、よく寄せられるご質問をまとめました。ここにない内容は、お問い合わせフォームからお気軽にお送りください。"
+        eyebrow="QUESTIONS"
+        title="カテゴリ別 — よくある質問"
+        description="受講・授業形式・料金・オンライン環境など、カテゴリ別に整理しています。"
       >
         <div className="space-y-12 sm:space-y-14">
           {categories.map((category) => {

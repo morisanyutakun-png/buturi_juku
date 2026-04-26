@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { BookOpen, ExternalLink, GraduationCap, Trophy, Users } from "lucide-react";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
-import { Breadcrumb } from "@/components/breadcrumb";
-import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { PageHero } from "@/components/page-hero";
 import { BookShowcase } from "@/components/book-showcase";
 import { InstructorPortrait } from "@/components/instructor-portrait";
 import { breadcrumbJsonLd, personJsonLd, webPageJsonLd } from "@/lib/jsonld";
@@ -33,19 +32,30 @@ export const metadata: Metadata = buildMetadata({
 export default function TeacherPage() {
   return (
     <>
-      <Container className="pt-10">
-        <Breadcrumb
-          items={[
-            { label: "ホーム", href: "/" },
-            { label: "講師紹介", href: "/teacher" },
-          ]}
-        />
-      </Container>
+      <PageHero
+        eyebrow="INSTRUCTOR — 主宰講師 森祐太"
+        watermark="師"
+        tone="warm"
+        breadcrumb={[
+          { label: "ホーム", href: "/" },
+          { label: "講師紹介", href: "/teacher" },
+        ]}
+        title={
+          <>
+            <span className="block">高校物理を</span>
+            <span className="block">
+              『<span className="text-warm">言語化</span>』する、
+            </span>
+            <span className="block">高校物理専門塾講師。</span>
+          </>
+        }
+        description={instructor.leadline}
+      />
 
       <Section
-        eyebrow="INSTRUCTOR"
-        title={<>高校物理を『わかる』まで、<br className="sm:hidden" />言語化する高校物理専門塾講師。</>}
-        description={instructor.leadline}
+        eyebrow="PROFILE"
+        title="主宰講師のプロフィール"
+        description="名古屋大学で電磁気を専攻しながら、高校物理専門塾として大学受験物理の指導にあたっています。"
       >
         <div className="grid gap-10 rounded-3xl border border-ink-900/10 bg-gradient-to-br from-paper-soft via-white to-paper-soft p-8 md:grid-cols-[1fr_1.3fr] md:p-14">
           <InstructorPortrait />

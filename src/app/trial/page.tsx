@@ -3,9 +3,8 @@ import type { Metadata } from "next";
 import { ArrowRight, Check } from "lucide-react";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
-import { Breadcrumb } from "@/components/breadcrumb";
-import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { PageHero } from "@/components/page-hero";
 import { breadcrumbJsonLd, serviceJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -47,19 +46,47 @@ const flow = [
 export default function TrialPage() {
   return (
     <>
-      <Container className="pt-10">
-        <Breadcrumb
-          items={[
-            { label: "ホーム", href: "/" },
-            { label: "体験授業", href: "/trial" },
-          ]}
-        />
-      </Container>
+      <PageHero
+        eyebrow="FREE TRIAL — 60分の体験授業"
+        watermark="試"
+        tone="warm"
+        breadcrumb={[
+          { label: "ホーム", href: "/" },
+          { label: "体験授業", href: "/trial" },
+        ]}
+        title={
+          <>
+            <span className="block">
+              <span className="text-warm">60分</span>で、
+            </span>
+            <span className="block">あなたの高校物理を</span>
+            <span className="block">診断します。</span>
+          </>
+        }
+        description="高校物理専門塾「物理の森」の体験授業は、入塾を前提としない学習相談としてご利用いただけます。高校物理の現状の苦手分野と残り期間を踏まえた学習戦略を、その場でお渡しします。"
+      >
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/contact"
+            className="group inline-flex items-center gap-2 rounded-full bg-warm px-7 py-4 text-[15px] sm:text-[14px] font-medium text-white shadow-warm transition hover:bg-warm-deep min-h-[52px] sm:min-h-0"
+          >
+            無料体験授業を申し込む
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </Link>
+          <Link
+            href="/courses"
+            className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/80 px-7 py-4 text-[15px] sm:text-[14px] text-ink-800 transition hover:border-ink-900/30 hover:bg-white min-h-[52px] sm:min-h-0"
+          >
+            高校物理専門塾の講座を見る
+            <ArrowRight className="h-3.5 w-3.5 opacity-50" />
+          </Link>
+        </div>
+      </PageHero>
 
       <Section
-        eyebrow="FREE TRIAL SESSION"
-        title={<>高校物理専門塾の体験授業 — <br className="sm:hidden" />60分で、あなたの高校物理を診断します。</>}
-        description="高校物理専門塾「物理の森」の体験授業は、入塾を前提としない学習相談としてご利用いただけます。高校物理の現状の苦手分野と残り期間を踏まえた学習戦略を、その場でお渡しします。"
+        eyebrow="OVERVIEW"
+        title="体験授業の中身"
+        description="ヒアリング → 診断ミニ授業 → 学習戦略提案。60分のなかで密度高く進めます。"
       >
         <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <div className="space-y-10">

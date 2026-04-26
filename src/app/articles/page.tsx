@@ -3,9 +3,8 @@ import type { Metadata } from "next";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
-import { Breadcrumb } from "@/components/breadcrumb";
-import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { PageHero } from "@/components/page-hero";
 import { breadcrumbJsonLd, collectionPageJsonLd, itemListJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { articles, articleHref } from "@/data/articles";
@@ -34,19 +33,30 @@ export default function ArticlesIndexPage() {
 
   return (
     <>
-      <Container className="pt-10">
-        <Breadcrumb
-          items={[
-            { label: "ホーム", href: "/" },
-            { label: "物理学習コラム", href: "/articles" },
-          ]}
-        />
-      </Container>
+      <PageHero
+        eyebrow="INSIGHTS — 高校物理の学習コラム"
+        watermark="解"
+        tone="forest"
+        breadcrumb={[
+          { label: "ホーム", href: "/" },
+          { label: "物理学習コラム", href: "/articles" },
+        ]}
+        title={
+          <>
+            <span className="block">高校物理を</span>
+            <span className="block">
+              <span className="text-forest-deep">解きほぐす</span>、
+            </span>
+            <span className="block">学習コラム。</span>
+          </>
+        }
+        description="高校物理専門塾「物理の森」から、高校物理の学び方・分野別の躓きやすいポイント・大学受験物理の戦略を、指導現場の視点で発信します。"
+      />
 
       <Section
-        eyebrow="INSIGHTS"
-        title="高校物理の学習コラム"
-        description="高校物理専門塾「物理の森」から、高校物理の学び方・分野別の躓きやすいポイント・大学受験物理の戦略を、指導現場の視点で発信します。"
+        eyebrow="ALL ARTICLES"
+        title="記事一覧"
+        description="新着順 — 学習法・分野別・受験戦略のカテゴリで読み分けできます。"
       >
         <div className="grid gap-6 md:grid-cols-2">
           {sorted.map((a) => {

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
-import { Breadcrumb } from "@/components/breadcrumb";
-import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { PageHero } from "@/components/page-hero";
 import { PhilosophySection } from "@/components/philosophy-section";
 import { ForEveryoneSection } from "@/components/for-everyone-section";
 import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
@@ -28,19 +27,30 @@ export const metadata: Metadata = buildMetadata({
 export default function AboutPage() {
   return (
     <>
-      <Container className="pt-10">
-        <Breadcrumb
-          items={[
-            { label: "ホーム", href: "/" },
-            { label: "塾について", href: "/about" },
-          ]}
-        />
-      </Container>
+      <PageHero
+        eyebrow="ABOUT — 高校物理専門塾の理念"
+        watermark="森"
+        tone="brand"
+        breadcrumb={[
+          { label: "ホーム", href: "/" },
+          { label: "塾について", href: "/about" },
+        ]}
+        title={
+          <>
+            <span className="block">高校物理を</span>
+            <span className="block">
+              『<span className="text-brand">わかる</span>』まで、
+            </span>
+            <span className="block">追いかける高校物理専門塾。</span>
+          </>
+        }
+        description="高校物理は、わかったふりで止まると最も損をする科目です。高校物理専門塾「物理の森」は『わかったふり』を許さず、あなたの手が勝手に動くところまで伴走します。"
+      />
 
       <Section
-        eyebrow="ABOUT US"
-        title={<>高校物理を『わかる』まで、<br className="sm:hidden" />追いかける高校物理専門塾。</>}
-        description="高校物理は、わかったふりで止まると最も損をする科目です。高校物理専門塾「物理の森」は『わかったふり』を許さず、あなたの手が勝手に動くところまで伴走します。"
+        eyebrow="MISSION & PROMISE"
+        title="塾の使命と、約束。"
+        description="物理を『わかる』まで追いかけるために、私たちが掲げる2つの軸。"
         className="bg-paper"
       >
         <div className="grid gap-6 md:grid-cols-2">

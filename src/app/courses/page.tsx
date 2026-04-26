@@ -3,9 +3,8 @@ import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
-import { Breadcrumb } from "@/components/breadcrumb";
-import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { PageHero } from "@/components/page-hero";
 import { breadcrumbJsonLd, collectionPageJsonLd, itemListJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { courses } from "@/data/courses";
@@ -30,19 +29,29 @@ export const metadata: Metadata = buildMetadata({
 export default function CoursesIndexPage() {
   return (
     <>
-      <Container className="pt-10">
-        <Breadcrumb
-          items={[
-            { label: "ホーム", href: "/" },
-            { label: "講座一覧", href: "/courses" },
-          ]}
-        />
-      </Container>
+      <PageHero
+        eyebrow="COURSES — 高校物理専門塾の全講座"
+        watermark="講"
+        tone="brand"
+        breadcrumb={[
+          { label: "ホーム", href: "/" },
+          { label: "講座一覧", href: "/courses" },
+        ]}
+        title={
+          <>
+            <span className="block">高校物理専門塾の</span>
+            <span className="block">
+              <span className="text-brand">講座一覧</span>。
+            </span>
+          </>
+        }
+        description="高校物理専門塾「物理の森」では、1対1個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。すべての講座はオンラインで全国からご受講いただけます。"
+      />
 
       <Section
-        eyebrow="COURSES"
-        title="高校物理専門塾の講座一覧"
-        description="高校物理専門塾「物理の森」では、個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。すべての講座はオンラインで全国からご受講いただけます。"
+        eyebrow="ALL COURSES"
+        title="目的別 — コース一覧"
+        description="体験授業から志望校別カリキュラム、共通テスト対策、分野別集中講座まで。"
       >
         <div className="grid gap-6 md:grid-cols-2">
           {courses.map((c) => (

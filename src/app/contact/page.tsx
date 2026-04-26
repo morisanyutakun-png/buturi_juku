@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Mail, Clock, MapPin } from "lucide-react";
 import { Section } from "@/components/section";
-import { Breadcrumb } from "@/components/breadcrumb";
-import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { PageHero } from "@/components/page-hero";
 import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { ContactForm } from "@/components/contact-form";
@@ -25,19 +24,29 @@ export const metadata: Metadata = buildMetadata({
 export default function ContactPage() {
   return (
     <>
-      <Container className="pt-10">
-        <Breadcrumb
-          items={[
-            { label: "ホーム", href: "/" },
-            { label: "お問い合わせ", href: "/contact" },
-          ]}
-        />
-      </Container>
+      <PageHero
+        eyebrow="CONTACT — お問い合わせ"
+        watermark="縁"
+        tone="brand"
+        breadcrumb={[
+          { label: "ホーム", href: "/" },
+          { label: "お問い合わせ", href: "/contact" },
+        ]}
+        title={
+          <>
+            <span className="block">高校物理専門塾と、</span>
+            <span className="block">
+              <span className="text-brand">最初の一歩</span>を。
+            </span>
+          </>
+        }
+        description="高校物理専門塾「物理の森」では、体験授業のお申し込み・受講前のご相談・料金に関するご質問などをお受けしています。2営業日以内にご返信します。"
+      />
 
       <Section
-        eyebrow="CONTACT"
-        title="高校物理専門塾へのお問い合わせ"
-        description="高校物理専門塾「物理の森」では、体験授業のお申し込み・受講前のご相談・料金に関するご質問などをお受けしています。2営業日以内にご返信します。"
+        eyebrow="CONTACT FORM"
+        title="お問い合わせフォーム"
+        description="ご相談内容に応じて、最適な学習プランをご案内します。"
       >
         <div className="grid gap-10 lg:grid-cols-[1fr_1.5fr]">
           <div className="space-y-6">

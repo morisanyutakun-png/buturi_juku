@@ -9,9 +9,8 @@ import {
 } from "lucide-react";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
-import { Breadcrumb } from "@/components/breadcrumb";
-import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { PageHero } from "@/components/page-hero";
 import { OnlineSection } from "@/components/online-section";
 import { PricePreview } from "@/components/price-preview";
 import { Testimonials } from "@/components/testimonials";
@@ -98,28 +97,26 @@ const advantages = [
 export default function OnlinePage() {
   return (
     <>
-      <Container className="pt-10">
-        <Breadcrumb
-          items={[
-            { label: "ホーム", href: "/" },
-            { label: "高校物理専門塾 オンライン", href: "/online" },
-          ]}
-        />
-      </Container>
-
-      <Section
-        eyebrow="ONLINE — 高校物理専門塾"
+      <PageHero
+        eyebrow="ONLINE — 全国どこからでも1対1"
+        watermark="繋"
+        tone="gold"
+        breadcrumb={[
+          { label: "ホーム", href: "/" },
+          { label: "高校物理専門塾 オンライン", href: "/online" },
+        ]}
         title={
           <>
-            高校物理専門塾、
-            <br className="sm:hidden" />
-            オンラインで全国対応。
+            <span className="block">高校物理専門塾、</span>
+            <span className="block">
+              <span className="text-brand">オンライン</span>で
+            </span>
+            <span className="block">全国対応。</span>
           </>
         }
         description="高校物理専門塾「物理の森」のオンライン指導は、通塾不要・全国対応・1対1の個別指導です。高校物理が苦手な受験生を、得点源まで引き上げることに特化しています。地方・海外からでも、都市部と同じ授業をそのまま受講できます。"
-        className="bg-paper"
       >
-        <div className="mt-2 flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3">
           <Link
             href="/trial"
             className="group inline-flex items-center gap-2 rounded-full bg-warm px-7 py-4 text-[15px] sm:text-[14px] font-medium text-white shadow-warm transition hover:bg-warm-deep min-h-[52px] sm:min-h-0"
@@ -135,7 +132,7 @@ export default function OnlinePage() {
             <ArrowRight className="h-3.5 w-3.5 opacity-50" />
           </Link>
         </div>
-      </Section>
+      </PageHero>
 
       <Section
         eyebrow="WHY ONLINE"
