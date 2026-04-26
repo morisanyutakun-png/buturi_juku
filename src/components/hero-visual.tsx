@@ -53,12 +53,6 @@ export function HeroVisual({ className }: Props) {
       >
         森
       </span>
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -left-6 top-6 select-none font-serif text-[10rem] leading-[0.8] tracking-tighter text-brand-deep/[0.10]"
-      >
-        物
-      </span>
 
       {/* central orbital atom */}
       <svg
@@ -98,7 +92,6 @@ export function HeroVisual({ className }: Props) {
           <ellipse rx="170" ry="62" fill="none" stroke="url(#hv-orbit-1)" strokeWidth="1.6" transform="rotate(20)" />
           <ellipse rx="155" ry="58" fill="none" stroke="url(#hv-orbit-2)" strokeWidth="1.6" transform="rotate(-30)" />
           <ellipse rx="140" ry="78" fill="none" stroke="url(#hv-orbit-3)" strokeWidth="1.6" transform="rotate(80)" />
-          <ellipse rx="100" ry="100" fill="none" stroke="#caa34b" strokeWidth="0.8" strokeDasharray="2 6" opacity="0.55" />
 
           {/* nucleus */}
           <circle r="42" fill="url(#hv-core)" />
@@ -114,18 +107,6 @@ export function HeroVisual({ className }: Props) {
         </g>
         <g className="orbit-28">
           <circle cx="340" cy="250" r="5" fill="#597a5b" />
-        </g>
-
-        {/* radial sparkle rays from core */}
-        <g stroke="#caa34b" strokeOpacity="0.55" strokeWidth="0.8" strokeLinecap="round">
-          <line x1="200" y1="170" x2="200" y2="120" />
-          <line x1="200" y1="330" x2="200" y2="380" />
-          <line x1="120" y1="250" x2="70" y2="250" />
-          <line x1="280" y1="250" x2="330" y2="250" />
-          <line x1="142" y1="192" x2="106" y2="156" />
-          <line x1="258" y1="192" x2="294" y2="156" />
-          <line x1="142" y1="308" x2="106" y2="344" />
-          <line x1="258" y1="308" x2="294" y2="344" />
         </g>
       </svg>
 

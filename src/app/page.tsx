@@ -23,7 +23,7 @@ import { BookShowcase } from "@/components/book-showcase";
 import { Testimonials } from "@/components/testimonials";
 import { ForEveryoneSection } from "@/components/for-everyone-section";
 import { InstructorPortrait } from "@/components/instructor-portrait";
-import { JsonLd } from "@/components/json-ld";
+import { JsonLdGraph } from "@/components/json-ld";
 import { SeoIntentSection } from "@/components/seo-intent-section";
 import { ManifestoBand } from "@/components/manifesto-band";
 import { ProofShowcase } from "@/components/proof-showcase";
@@ -546,30 +546,27 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <JsonLd
-        id="ld-breadcrumb-home"
-        data={breadcrumbJsonLd([{ name: "ホーム", href: "/" }])}
-      />
-      <JsonLd
-        id="ld-webpage-home"
-        data={webPageJsonLd({
-          name: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
-          description: siteConfig.description,
-          path: "/",
-        })}
-      />
-      <JsonLd
-        id="ld-home-courses"
-        data={itemListJsonLd({
-          name: "高校物理専門塾「物理の森」の主要講座",
-          description: "高校物理専門塾として、大学受験物理・高校物理に対応するオンライン講座の一覧です。",
-          path: "/",
-          items: courses.map((course) => ({
-            name: course.title,
-            href: `/courses/${course.slug}`,
-            description: course.summary,
-          })),
-        })}
+      <JsonLdGraph
+        id="ld-graph-home"
+        nodes={[
+          breadcrumbJsonLd([{ name: "ホーム", href: "/" }]),
+          webPageJsonLd({
+            name: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
+            description: siteConfig.description,
+            path: "/",
+          }),
+          itemListJsonLd({
+            name: "高校物理専門塾「物理の森」の主要講座",
+            description:
+              "高校物理専門塾として、大学受験物理・高校物理に対応するオンライン講座の一覧です。",
+            path: "/",
+            items: courses.map((course) => ({
+              name: course.title,
+              href: `/courses/${course.slug}`,
+              description: course.summary,
+            })),
+          }),
+        ]}
       />
     </>
   );
