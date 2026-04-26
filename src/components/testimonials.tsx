@@ -5,9 +5,9 @@ import { testimonials } from "@/data/testimonials";
 export function Testimonials() {
   return (
     <Section
-      eyebrow="STUDENTS' VOICES"
-      title="受講生・保護者の声"
-      description="物理が苦手だった受講生が、どのように考え方を変えていったのか。匿名で一部をご紹介します。"
+      eyebrow="CASE STUDIES — 指導事例"
+      title="高校物理が苦手だった受講生の、指導事例"
+      description="高校物理専門塾「物理の森」で、物理に苦手意識を持っていた受講生が、どのように考え方を変えていったかをご紹介します。掲載は本人の同意を得た範囲で、特定を避けるため一部情報を加工した『指導事例』です。"
       className="bg-paper"
     >
       <div className="grid gap-6 md:grid-cols-3">
@@ -33,9 +33,14 @@ export function Testimonials() {
               <p className="mt-1.5 text-[11.5px] sm:text-[11px] tracking-widest uppercase text-ink-500">
                 {t.role}
               </p>
+              {t.context && (
+                <p className="mt-3 text-[12.5px] sm:text-[12px] leading-relaxed text-ink-600">
+                  {t.context}
+                </p>
+              )}
               {t.score && (
                 <p className="mt-3 inline-flex rounded-full border border-warm/30 bg-warm-bg px-3 py-1.5 text-[12.5px] sm:text-xs text-warm-deep">
-                  {t.score}
+                  指導の到達点：{t.score}
                 </p>
               )}
             </figcaption>

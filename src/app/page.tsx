@@ -30,6 +30,7 @@ import { ManifestoBand } from "@/components/manifesto-band";
 import { ProofShowcase } from "@/components/proof-showcase";
 import { WhiteboardFlow } from "@/components/whiteboard-flow";
 import { PullQuote } from "@/components/pull-quote";
+import { PricePreview } from "@/components/price-preview";
 import { courses } from "@/data/courses";
 import { articles, articleHref } from "@/data/articles";
 import { instructor } from "@/data/instructor";
@@ -184,13 +185,13 @@ export default function HomePage() {
             id="lead-heading"
             className="mt-5 max-w-3xl font-serif text-[1.7rem] leading-[1.6] tracking-[-0.012em] text-ink-900 sm:text-[1.85rem] sm:leading-[1.55]"
           >
-            高校物理専門塾「物理の森」は、
+            <span className="text-brand-deep">高校物理が苦手な受験生</span>を、
             <br className="sm:hidden" />
-            <span className="text-brand-deep">高校物理だけ</span>を、
-            <span className="text-warm-deep">オンライン1対1</span>で深く教える塾です。
+            <span className="text-warm-deep">得点源</span>まで引き上げる、
+            オンライン高校物理専門塾。
           </h2>
           <p className="mt-7 sm:mt-6 max-w-3xl text-[16px] sm:text-[15px] leading-[2.05] sm:leading-[1.95] text-ink-700">
-            高校物理専門塾として、全国どこからでも受講できるオンライン個別指導を提供します。高校物理の初学者から、共通テスト・難関大・医学部の大学受験物理志望者まで、一人ひとりの志望校と現状に合わせて、力学・電磁気・波動・熱力学・原子の全分野を体系的に組み立て直します。総合塾ではなく<strong className="font-medium text-ink-900">高校物理専門塾</strong>だからこそ、『公式に当てはめる物理』ではなく『現象から立式できる物理』まで、最後の一歩まで伴走します。
+            高校物理専門塾「物理の森」は、<strong className="font-medium text-ink-900">高校物理が苦手で止まっている受験生</strong>を、得点源まで引き上げることに特化したオンライン専門塾です。高校物理だけを扱うので、『公式に当てはめる物理』ではなく『現象から立式できる物理』に組み直すところまで、最後の一歩まで伴走します。初学者から共通テスト・難関大・医学部の大学受験物理志望者まで、力学・電磁気・波動・熱力学・原子の全分野を体系的にカバーします。
           </p>
         </div>
       </section>
@@ -200,6 +201,9 @@ export default function HomePage() {
 
       {/* PROOF — giant numbers showcase */}
       <ProofShowcase />
+
+      {/* PRICE PREVIEW — surface fees on TOP */}
+      <PricePreview />
 
       {/* FOR EVERYONE */}
       <ForEveryoneSection />

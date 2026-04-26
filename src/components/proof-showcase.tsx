@@ -76,18 +76,18 @@ export function ProofShowcase() {
       <Container className="relative py-24 sm:py-32">
         <div className="max-w-3xl">
           <p className="inline-flex items-center gap-2 text-[11px] sm:text-[10px] font-medium uppercase tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-6 before:bg-current before:opacity-50">
-            PROOF — 数字で示す高校物理専門塾の実績
+            INSTRUCTOR RECORD — 講師の受験・執筆・指導実績
           </p>
           <h2
             id="proof-heading"
             className="mt-6 font-serif text-display-md tracking-[-0.012em] text-ink-900"
           >
-            高校物理専門塾を選ぶ根拠は、
+            『教える側』の<span className="text-warm-deep">数字</span>で、
             <br className="hidden sm:block" />
-            <span className="text-warm-deep">数字</span>で語れます。
+            高校物理専門塾を選ぶ根拠を示します。
           </h2>
           <p className="mt-5 max-w-2xl text-[16px] sm:text-[15px] leading-[2] sm:leading-[1.85] text-ink-700">
-            高校物理専門塾「物理の森」の主宰講師・森祐太の受験実績と、塾講師としての指導実績を、4つの数字で示します。
+            以下は、すべて<strong className="font-medium text-ink-900">主宰講師・森祐太自身の実績</strong>です。受験生本人の点数の伸びは個人差があるため、ここでは『教える側がどこまで物理を理解しているか』を数字で開示します。
           </p>
         </div>
 
