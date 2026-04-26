@@ -208,41 +208,58 @@ export function BrandVision({ className }: Props) {
           <line x1="20" y1="20" x2="60" y2="120" stroke="#0d0d10" strokeWidth="6" />
         </g>
 
-        {/* floating formulas — labels */}
-        <g fill="#dcefcf" fontFamily="serif" opacity="0.92">
-          <text x="170" y="320" fontSize="26" fill="#c5daf5">∑F⃗ = 0</text>
-          <text x="120" y="358" fontSize="13" fill="#9bbcff" opacity="0.85">力のつり合い</text>
+        {/* floating formulas — labels (left & top cluster, kept clear of tagline area) */}
+        <g fontFamily="ui-monospace, 'SF Mono', Menlo, monospace" opacity="0.95">
+          <text x="170" y="300" fontSize="26" fill="#c5daf5">ΣF = 0</text>
+          <text x="170" y="324" fontSize="12" fill="#9bbcff" fontFamily="serif" opacity="0.85">力のつり合い</text>
 
           <text x="320" y="430" fontSize="22" fill="#dbe7ff">ma = F − μmg cosθ</text>
 
-          <text x="440" y="295" fontSize="22" fill="#fbecc4">v = √(GM/r)</text>
-          <text x="440" y="328" fontSize="14" fill="#caa34b" opacity="0.85">円運動 / 万有引力</text>
+          <text x="600" y="270" fontSize="22" fill="#fbecc4">v = √(GM / r)</text>
+          <text x="600" y="294" fontSize="12" fill="#caa34b" fontFamily="serif" opacity="0.85">円運動 / 万有引力</text>
 
-          <text x="700" y="240" fontSize="26" fill="#fff5d6">E⃗ = k Q/r² r̂</text>
+          <text x="880" y="220" fontSize="26" fill="#fff5d6">E = k Q / r²</text>
+          <text x="880" y="246" fontSize="12" fill="#caa34b" fontFamily="serif" opacity="0.85">クーロンの法則</text>
 
-          <text x="700" y="500" fontSize="22" fill="#c5daf5">y = x tanθ − g/(2v₀² cos²θ) x²</text>
-          <text x="700" y="528" fontSize="13" fill="#9bbcff" opacity="0.85">放物運動</text>
+          <text x="500" y="540" fontSize="20" fill="#c5daf5">y = x tanθ − g x² / (2 v₀² cos²θ)</text>
+          <text x="500" y="566" fontSize="12" fill="#9bbcff" fontFamily="serif" opacity="0.85">放物運動</text>
 
-          <text x="980" y="290" fontSize="22" fill="#fbecc4">y(x,t) = A sin(kx − ωt)</text>
-          <text x="980" y="318" fontSize="13" fill="#caa34b" opacity="0.85">波の重ね合わせ</text>
+          <text x="180" y="500" fontSize="22" fill="#fbecc4">v = f λ</text>
+          <text x="180" y="524" fontSize="12" fill="#caa34b" fontFamily="serif" opacity="0.85">波の基本式</text>
 
-          <text x="1080" y="430" fontSize="22" fill="#dbe7ff">ε = − dΦ/dt</text>
-          <text x="1080" y="458" fontSize="13" fill="#9bbcff" opacity="0.85">電磁誘導</text>
+          <text x="180" y="640" fontSize="22" fill="#dbe7ff">y(x, t) = A sin(kx − ωt)</text>
+          <text x="180" y="664" fontSize="12" fill="#9bbcff" fontFamily="serif" opacity="0.85">波の重ね合わせ</text>
 
-          <text x="320" y="560" fontSize="22" fill="#fbecc4">E₁ = E₂</text>
-          <text x="320" y="588" fontSize="13" fill="#caa34b" opacity="0.85">エネルギー保存</text>
+          <text x="500" y="640" fontSize="22" fill="#fbecc4">ε = − dΦ / dt</text>
+          <text x="500" y="664" fontSize="12" fill="#caa34b" fontFamily="serif" opacity="0.85">電磁誘導</text>
 
-          <text x="1240" y="540" fontSize="22" fill="#dbe7ff">1/f = 1/u + 1/v</text>
-
-          <text x="1300" y="350" fontSize="20" fill="#fbecc4">等加速度運動</text>
+          <text x="120" y="200" fontSize="22" fill="#fbecc4">E₁ = E₂</text>
+          <text x="120" y="224" fontSize="12" fill="#caa34b" fontFamily="serif" opacity="0.85">エネルギー保存</text>
         </g>
 
-        {/* tagline overlay */}
-        <g transform="translate(1130 580)" fill="#fbecc4" fontFamily="serif">
-          <text fontSize="44" letterSpacing="-1.5">わからないが、</text>
-          <text y="56" fontSize="44" letterSpacing="-1.5">わかるに変わる瞬間を。</text>
-          <text y="100" fontSize="14" fill="#caa34b" letterSpacing="3">構造で理解する高校物理専門塾</text>
-          <text y="124" fontSize="18" fill="#fff5d6" letterSpacing="1.5">物理の森 / Physics Forest</text>
+        {/* tagline panel — solid backdrop so it never collides with formulas */}
+        <g transform="translate(1080 200)">
+          <rect
+            x="0"
+            y="0"
+            width="500"
+            height="240"
+            rx="20"
+            fill="#070d1c"
+            fillOpacity="0.62"
+            stroke="#caa34b"
+            strokeOpacity="0.35"
+          />
+          <g fontFamily="serif" fill="#fff5d6">
+            <text x="32" y="84" fontSize="42" letterSpacing="-1.5">わからないが、</text>
+            <text x="32" y="138" fontSize="42" letterSpacing="-1.5">わかるに変わる</text>
+            <text x="32" y="184" fontSize="14" fill="#caa34b" letterSpacing="3">
+              構造で理解する高校物理専門塾
+            </text>
+            <text x="32" y="212" fontSize="18" fill="#fff5d6" letterSpacing="1.5">
+              物理の森 / Physics Forest
+            </text>
+          </g>
         </g>
 
         {/* very subtle vignette */}

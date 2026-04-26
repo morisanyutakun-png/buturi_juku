@@ -21,21 +21,23 @@ export function Hero() {
       {/* ambient formula constellation */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 select-none font-serif leading-none text-ink-900/[0.045] hidden sm:block"
+        className="pointer-events-none absolute inset-0 select-none leading-none text-ink-900/[0.045] hidden sm:block"
+        style={{ fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}
       >
-        <p className="absolute left-[3%] top-[12%] text-[5.5rem] tracking-[-0.02em]">F = ma</p>
-        <p className="absolute right-[6%] top-[8%] text-[4.5rem] tracking-[-0.02em]">E = mc²</p>
-        <p className="absolute left-[42%] top-[6%] text-[3.6rem] tracking-[-0.02em]">λf = v</p>
-        <p className="absolute left-[6%] bottom-[18%] text-[5rem] tracking-[-0.02em]">∮E·dA</p>
-        <p className="absolute right-[10%] bottom-[10%] text-[4.2rem] tracking-[-0.02em]">∇×B = μ₀J</p>
-        <p className="absolute left-[36%] bottom-[6%] text-[3.4rem] tracking-[-0.02em]">pV = nRT</p>
+        <p className="absolute left-[3%] top-[12%] text-[5.5rem] tracking-[-0.01em]">F = ma</p>
+        <p className="absolute right-[6%] top-[8%] text-[4.5rem] tracking-[-0.01em]">E = mc²</p>
+        <p className="absolute left-[42%] top-[6%] text-[3.6rem] tracking-[-0.01em]">v = f λ</p>
+        <p className="absolute left-[6%] bottom-[18%] text-[5rem] tracking-[-0.01em]">∮ E · dA = Q / ε₀</p>
+        <p className="absolute right-[10%] bottom-[10%] text-[4.2rem] tracking-[-0.01em]">∇ × B = μ₀ J</p>
+        <p className="absolute left-[36%] bottom-[6%] text-[3.4rem] tracking-[-0.01em]">pV = nRT</p>
       </div>
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 select-none font-serif leading-none text-ink-900/[0.05] sm:hidden"
+        className="pointer-events-none absolute inset-0 select-none leading-none text-ink-900/[0.05] sm:hidden"
+        style={{ fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}
       >
-        <p className="absolute right-[4%] top-[10%] text-[3rem] tracking-[-0.02em]">F=ma</p>
-        <p className="absolute left-[4%] bottom-[14%] text-[2.6rem] tracking-[-0.02em]">∮E·dA</p>
+        <p className="absolute right-[4%] top-[10%] text-[3rem]">F = ma</p>
+        <p className="absolute left-[4%] bottom-[14%] text-[2.6rem]">∮ E · dA</p>
       </div>
 
       <Container className="relative py-20 sm:py-32 lg:py-40">
@@ -125,25 +127,12 @@ export function Hero() {
           <div className="relative mx-auto hidden w-full max-w-[640px] lg:block">
             <BrandVision />
 
-            <div className="pointer-events-none absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-paper/20 bg-ink-950/55 px-3 py-1.5 text-[10px] tracking-[0.26em] text-paper backdrop-blur-md">
+            <div className="pointer-events-none absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-paper/20 bg-ink-950/65 px-3 py-1.5 text-[10px] tracking-[0.26em] text-paper backdrop-blur-md">
               <span className="relative inline-flex h-1.5 w-1.5" aria-hidden>
                 <span className="absolute inline-flex h-1.5 w-1.5 animate-ping rounded-full bg-warm/70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-warm" />
               </span>
               LIVE LESSON
-            </div>
-
-            <div className="pointer-events-none absolute bottom-6 left-6 right-6 rounded-2xl border border-paper/15 bg-ink-950/75 p-5 backdrop-blur-md">
-              <p className="text-[10px] tracking-[0.28em] uppercase text-gold/90">
-                FIRST 30 MIN
-              </p>
-              <p className="mt-2.5 font-serif text-[1.05rem] tracking-[-0.005em] text-paper">
-                現状ヒアリングから始まる、体験授業
-              </p>
-              <div className="mt-3 flex items-center gap-2 text-[11px] text-paper/75">
-                <span className="h-1 w-1 rounded-full bg-warm" />
-                模試 / 志望校 / 教材 / つまずき
-              </div>
             </div>
           </div>
         </div>

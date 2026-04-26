@@ -126,19 +126,19 @@ export function WhiteboardFlow() {
             {/* equation (center bubble) */}
             <g transform="translate(600 240)">
               <rect
-                x="-138"
-                y="-90"
+                x="-150"
+                y="-100"
                 rx="20"
                 ry="20"
-                width="276"
-                height="180"
+                width="300"
+                height="200"
                 fill="#fef4eb"
                 stroke="#e28040"
                 strokeWidth="1.5"
               />
               <text
                 textAnchor="middle"
-                y="-46"
+                y="-58"
                 fontFamily="serif"
                 fontSize="22"
                 fill="#b35f27"
@@ -148,30 +148,30 @@ export function WhiteboardFlow() {
               </text>
               <text
                 textAnchor="middle"
-                y="-14"
-                fontFamily="serif"
-                fontSize="20"
+                y="-22"
+                fontFamily="ui-monospace, 'SF Mono', Menlo, monospace"
+                fontSize="19"
                 fill="#142341"
               >
                 F = ma
               </text>
               <text
                 textAnchor="middle"
-                y="14"
-                fontFamily="serif"
-                fontSize="20"
+                y="6"
+                fontFamily="ui-monospace, 'SF Mono', Menlo, monospace"
+                fontSize="19"
                 fill="#142341"
               >
-                ∮E·dA = Q/ε₀
+                ∮ E · dA = Q / ε₀
               </text>
               <text
                 textAnchor="middle"
-                y="42"
-                fontFamily="serif"
-                fontSize="20"
+                y="34"
+                fontFamily="ui-monospace, 'SF Mono', Menlo, monospace"
+                fontSize="19"
                 fill="#142341"
               >
-                λf = v
+                v = f λ
               </text>
               <text
                 textAnchor="middle"
@@ -262,7 +262,7 @@ export function WhiteboardFlow() {
 
             {/* hand-drawn underline near "立式" */}
             <path
-              d="M540,330 C580,344 620,344 660,332"
+              d="M540,360 C580,374 620,374 660,362"
               stroke="#caa34b"
               strokeWidth="2.5"
               fill="none"
@@ -270,7 +270,7 @@ export function WhiteboardFlow() {
             />
             <text
               x="600"
-              y="368"
+              y="394"
               textAnchor="middle"
               fontFamily="serif"
               fontSize="13"

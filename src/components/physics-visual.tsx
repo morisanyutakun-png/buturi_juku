@@ -142,7 +142,7 @@ export function PhysicsFormula({ className }: { className?: string }) {
       <p>E = mc²</p>
       <p>∮ E · dA = Q/ε₀</p>
       <p>∇ × B = μ₀J</p>
-      <p>λf = v</p>
+      <p>v = fλ</p>
     </div>
   );
 }
