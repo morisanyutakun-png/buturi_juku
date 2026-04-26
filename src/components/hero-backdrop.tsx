@@ -5,31 +5,28 @@ type Props = {
 };
 
 const formulas = [
-  { x: "8%", y: "18%", t: "ΣF = 0", c: "#c5daf5" },
-  { x: "78%", y: "12%", t: "E = k Q / r²", c: "#fbecc4" },
-  { x: "82%", y: "32%", t: "ε = − dΦ / dt", c: "#c5daf5" },
-  { x: "10%", y: "44%", t: "v = f λ", c: "#fbecc4" },
-  { x: "12%", y: "72%", t: "E₁ = E₂", c: "#c5daf5" },
-  { x: "74%", y: "60%", t: "ma = F − μmg cosθ", c: "#fbecc4" },
-  { x: "78%", y: "78%", t: "y(x,t) = A sin(kx − ωt)", c: "#c5daf5" },
+  { x: "5%", y: "16%", t: "ΣF = 0" },
+  { x: "78%", y: "10%", t: "E = k Q / r²" },
+  { x: "82%", y: "32%", t: "ε = − dΦ / dt" },
+  { x: "6%", y: "44%", t: "v = f λ" },
+  { x: "8%", y: "72%", t: "E₁ = E₂" },
+  { x: "70%", y: "60%", t: "ma = F − μmg cosθ" },
+  { x: "72%", y: "82%", t: "y(x,t) = A sin(kx − ωt)" },
 ];
 
-const stars: Array<[string, string, number, number]> = [
-  ["12%", "16%", 1.4, 0.55], ["18%", "10%", 1.1, 0.45], ["28%", "22%", 1.2, 0.6],
-  ["38%", "14%", 1.4, 0.55], ["48%", "9%", 1.1, 0.45], ["58%", "16%", 1.3, 0.55],
-  ["66%", "12%", 1, 0.5], ["76%", "22%", 1.4, 0.65], ["86%", "18%", 1.2, 0.5],
-  ["94%", "24%", 1.3, 0.55], ["12%", "46%", 1.1, 0.5], ["24%", "50%", 1.3, 0.55],
-  ["46%", "38%", 1.2, 0.6], ["62%", "32%", 1.4, 0.55], ["76%", "38%", 1.1, 0.5],
-  ["88%", "42%", 1.3, 0.55], ["6%", "66%", 1, 0.5], ["18%", "78%", 1.2, 0.55],
-  ["84%", "72%", 1.2, 0.55], ["92%", "82%", 1.1, 0.5], ["32%", "8%", 1, 0.5],
-  ["6%", "32%", 1.1, 0.5], ["86%", "13%", 1.2, 0.55], ["78%", "5%", 1, 0.5],
+const dots: Array<[string, string, number, number]> = [
+  ["12%", "16%", 1.6, 0.18], ["18%", "10%", 1.2, 0.14], ["28%", "22%", 1.4, 0.18],
+  ["38%", "14%", 1.4, 0.16], ["48%", "9%", 1.2, 0.14], ["58%", "16%", 1.4, 0.18],
+  ["66%", "12%", 1.1, 0.14], ["76%", "22%", 1.4, 0.2], ["86%", "18%", 1.3, 0.16],
+  ["94%", "24%", 1.4, 0.18], ["12%", "46%", 1.2, 0.14], ["24%", "50%", 1.4, 0.18],
+  ["46%", "38%", 1.3, 0.16], ["62%", "32%", 1.4, 0.18], ["76%", "38%", 1.2, 0.14],
+  ["88%", "42%", 1.4, 0.18], ["6%", "66%", 1.1, 0.14], ["18%", "78%", 1.3, 0.16],
+  ["84%", "72%", 1.3, 0.16], ["92%", "82%", 1.2, 0.14], ["32%", "8%", 1.1, 0.14],
 ];
 
 /**
- * Full-bleed atmospheric backdrop for the hero.
- * CSS-first: layered radial gradients render in one paint pass with no SVG filters.
- * Only the tree silhouette + stars + formulas are real DOM/SVG. Much faster than
- * the previous all-SVG version with feGaussianBlur layers.
+ * Light pastel atmospheric backdrop for the hero.
+ * Cream paper base with soft brand/warm/forest washes — airy, not dark.
  */
 export function HeroBackdrop({ className }: Props) {
   return (
@@ -37,57 +34,87 @@ export function HeroBackdrop({ className }: Props) {
       aria-hidden
       className={cn(
         "absolute inset-0 overflow-hidden",
-        // base sky
-        "bg-[linear-gradient(180deg,#070d1c_0%,#0d1832_55%,#13243f_100%)]",
+        // base — warm paper, slightly lifted at the top
+        "bg-[linear-gradient(180deg,#fefcf6_0%,#fbf5e6_55%,#f7f0de_100%)]",
         className,
       )}
     >
-      {/* lamp glow — top-left */}
+      {/* brand wash — top-left */}
       <div
-        className="absolute -left-[12%] -top-[18%] h-[60%] w-[60%] rounded-full opacity-70"
+        className="absolute -left-[18%] -top-[22%] h-[80%] w-[70%] opacity-90"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(255,212,154,0.55), rgba(232,184,100,0.18) 45%, transparent 75%)",
+            "radial-gradient(closest-side, rgba(155,188,255,0.55), rgba(59,124,217,0.18) 50%, transparent 78%)",
         }}
       />
-      {/* forest light — right */}
+      {/* warm wash — top-right */}
       <div
-        className="absolute right-[-8%] top-[-6%] h-[80%] w-[55%] opacity-80"
+        className="absolute right-[-15%] top-[-15%] h-[75%] w-[65%] opacity-90"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(220,239,207,0.5), rgba(90,138,74,0.25) 50%, transparent 78%)",
+            "radial-gradient(closest-side, rgba(251,221,196,0.7), rgba(226,128,64,0.18) 50%, transparent 80%)",
         }}
       />
-      {/* book light pillar — bottom center */}
+      {/* gold halo — center */}
       <div
-        className="absolute left-1/2 bottom-[-30%] h-[110%] w-[70%] -translate-x-1/2 opacity-70"
+        className="absolute left-1/2 top-1/3 h-[55%] w-[55%] -translate-x-1/2 opacity-70"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(255,233,184,0.55), rgba(155,188,255,0.30) 45%, transparent 78%)",
+            "radial-gradient(closest-side, rgba(243,228,182,0.5), rgba(202,163,75,0.10) 55%, transparent 80%)",
         }}
       />
-      {/* warm ambient floor */}
-      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0d2014]/95 via-[#0d2014]/55 to-transparent" />
+      {/* forest mist — bottom-left */}
+      <div
+        className="absolute -left-[10%] bottom-[-20%] h-[65%] w-[55%] opacity-80"
+        style={{
+          background:
+            "radial-gradient(closest-side, rgba(216,228,217,0.6), rgba(89,122,91,0.12) 55%, transparent 82%)",
+        }}
+      />
+      {/* very subtle paper grain via tiny noise gradient */}
+      <div
+        className="absolute inset-0 opacity-[0.05] mix-blend-multiply"
+        style={{
+          backgroundImage:
+            "linear-gradient(45deg, rgba(20,35,65,0.06) 1px, transparent 1px), linear-gradient(-45deg, rgba(20,35,65,0.04) 1px, transparent 1px)",
+          backgroundSize: "26px 26px, 26px 26px",
+        }}
+      />
 
-      {/* tree silhouettes — small inline SVG */}
+      {/* gentle physics wave near the bottom */}
       <svg
-        viewBox="0 0 1600 1000"
-        preserveAspectRatio="xMidYEnd slice"
-        className="absolute inset-x-0 bottom-0 h-[55%] w-full"
+        viewBox="0 0 1600 200"
+        preserveAspectRatio="none"
+        className="absolute bottom-0 left-0 h-[18%] w-full opacity-50"
       >
-        <g fill="#0c1f15" opacity="0.85">
-          <path d="M1140,1000 L1140,560 C1180,540 1210,500 1230,460 C1250,500 1280,540 1320,560 L1320,1000 Z" />
-          <path d="M1280,1000 L1280,500 C1320,478 1356,440 1378,395 C1400,440 1438,478 1478,500 L1478,1000 Z" />
-          <path d="M1430,1000 L1430,470 C1470,450 1504,410 1524,366 C1544,410 1582,450 1600,468 L1600,1000 Z" />
-        </g>
+        <defs>
+          <linearGradient id="hb-wave" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#3b7cd9" stopOpacity="0" />
+            <stop offset="50%" stopColor="#3b7cd9" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="#e28040" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M0,110 C200,40 380,180 600,110 C820,40 1000,180 1200,110 C1380,50 1500,150 1600,110"
+          stroke="url(#hb-wave)"
+          strokeWidth="1.4"
+          fill="none"
+        />
+        <path
+          d="M0,130 C200,60 380,200 600,130 C820,60 1000,200 1200,130 C1380,70 1500,170 1600,130"
+          stroke="url(#hb-wave)"
+          strokeWidth="0.9"
+          fill="none"
+          opacity="0.55"
+        />
       </svg>
 
-      {/* starfield */}
+      {/* constellation dots */}
       <div className="absolute inset-0">
-        {stars.map(([x, y, r, o], i) => (
+        {dots.map(([x, y, r, o], i) => (
           <span
             key={i}
-            className="absolute rounded-full bg-white"
+            className="absolute rounded-full bg-ink-900"
             style={{
               left: x,
               top: y,
@@ -99,30 +126,28 @@ export function HeroBackdrop({ className }: Props) {
         ))}
       </div>
 
-      {/* floating formulas — HTML overlay so they never overflow the container */}
+      {/* floating formulas — soft ink, kept inside the safe gutters */}
       <div
-        className="absolute inset-0 hidden lg:block"
+        className="absolute inset-0 hidden lg:block text-ink-900"
         style={{ fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}
       >
         {formulas.map((f) => (
           <span
             key={f.t}
-            className="absolute whitespace-nowrap text-[clamp(13px,1.2vw,20px)] tracking-tight"
-            style={{ left: f.x, top: f.y, color: f.c, opacity: 0.6 }}
+            className="absolute whitespace-nowrap text-[clamp(13px,1.15vw,19px)] tracking-tight opacity-[0.18]"
+            style={{ left: f.x, top: f.y }}
           >
             {f.t}
           </span>
         ))}
       </div>
 
-      {/* readability scrim */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950/40 via-transparent to-ink-950/55" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-950/65 via-ink-950/15 to-transparent" />
+      {/* very subtle vignette to keep edges grounded */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.5) 100%)",
+            "radial-gradient(ellipse at center, transparent 60%, rgba(20,35,65,0.07) 100%)",
         }}
       />
     </div>
