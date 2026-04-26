@@ -1,4 +1,5 @@
 import { siteConfig } from "@/data/site";
+import { courses } from "@/data/courses";
 import { absoluteUrl } from "@/lib/utils";
 
 type Crumb = { name: string; href: string };
@@ -7,7 +8,41 @@ type ListItem = { name: string; href: string; description?: string };
 const organizationId = `${siteConfig.url}/#organization`;
 const websiteId = `${siteConfig.url}/#website`;
 
+function extractPrice(value: string): string {
+  const match = value.match(/[\d,]+/);
+  if (!match) return "0";
+  return match[0].replace(/,/g, "");
+}
+
+function twitterHandleToUrl(handle: string): string | undefined {
+  const trimmed = handle.replace(/^@/, "").trim();
+  return trimmed ? `https://twitter.com/${trimmed}` : undefined;
+}
+
 export function organizationJsonLd() {
+  const sameAs = [twitterHandleToUrl(siteConfig.twitter)].filter(
+    (u): u is string => Boolean(u),
+  );
+
+  const hasOfferCatalog = {
+    "@type": "OfferCatalog",
+    name: `高校物理専門塾「${siteConfig.name}」の講座カタログ`,
+    itemListElement: courses.map((c) => ({
+      "@type": "Offer",
+      url: absoluteUrl(`/courses/${c.slug}`, siteConfig.url),
+      price: extractPrice(c.price.value),
+      priceCurrency: "JPY",
+      availability: "https://schema.org/InStock",
+      itemOffered: {
+        "@type": "Course",
+        name: c.title,
+        description: c.summary,
+        url: absoluteUrl(`/courses/${c.slug}`, siteConfig.url),
+        provider: { "@id": organizationId },
+      },
+    })),
+  };
+
   return {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -29,7 +64,7 @@ export function organizationJsonLd() {
       height: 630,
     },
     image: absoluteUrl(siteConfig.ogImage, siteConfig.url),
-    email: `mailto:${siteConfig.contact.email}`,
+    email: siteConfig.contact.email,
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
@@ -49,7 +84,8 @@ export function organizationJsonLd() {
       audienceType: audience,
     })),
     areaServed: siteConfig.seo.serviceAreas,
-    sameAs: [] as string[],
+    sameAs,
+    hasOfferCatalog,
     inLanguage: "ja",
   };
 }
@@ -172,6 +208,8 @@ export function articleJsonLd(params: {
   author?: string;
   image?: string;
   keywords?: readonly string[];
+  articleSection?: string;
+  wordCount?: number;
 }) {
   const url = absoluteUrl(`/articles/${params.slug}`, siteConfig.url);
   return {
@@ -185,7 +223,9 @@ export function articleJsonLd(params: {
     datePublished: params.publishedAt,
     dateModified: params.updatedAt ?? params.publishedAt,
     image: absoluteUrl(params.image ?? siteConfig.ogImage, siteConfig.url),
-    keywords: params.keywords,
+    keywords: params.keywords?.join(", "),
+    articleSection: params.articleSection,
+    wordCount: params.wordCount,
     inLanguage: "ja",
     isPartOf: {
       "@id": websiteId,
@@ -197,6 +237,37 @@ export function articleJsonLd(params: {
     },
     publisher: {
       "@id": organizationId,
+    },
+  };
+}
+
+export function collectionPageJsonLd(params: {
+  name: string;
+  description: string;
+  path: string;
+  items: readonly ListItem[];
+}) {
+  const url = absoluteUrl(params.path, siteConfig.url);
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${url}#collection`,
+    url,
+    name: params.name,
+    description: params.description,
+    isPartOf: { "@id": websiteId },
+    about: { "@id": organizationId },
+    inLanguage: "ja",
+    mainEntity: {
+      "@type": "ItemList",
+      name: params.name,
+      itemListElement: params.items.map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: absoluteUrl(item.href, siteConfig.url),
+        name: item.name,
+        description: item.description,
+      })),
     },
   };
 }
@@ -223,6 +294,8 @@ export function courseJsonLd(params: {
   category?: string;
   format?: string;
   targets?: readonly string[];
+  price?: string;
+  priceCurrency?: string;
 }) {
   const url = absoluteUrl(`/courses/${params.slug}`, siteConfig.url);
   return {
@@ -242,6 +315,17 @@ export function courseJsonLd(params: {
     provider: {
       "@id": organizationId,
     },
+    offers:
+      params.price !== undefined
+        ? {
+            "@type": "Offer",
+            price: params.price,
+            priceCurrency: params.priceCurrency ?? "JPY",
+            url,
+            availability: "https://schema.org/InStock",
+            category: params.category,
+          }
+        : undefined,
     inLanguage: "ja",
   };
 }

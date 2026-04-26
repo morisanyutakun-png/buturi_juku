@@ -49,15 +49,15 @@ export function Hero() {
         <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
           <div className="relative">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/80 px-3.5 py-1.5 text-[12px] sm:text-[11px] tracking-[0.18em] text-ink-700 backdrop-blur">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3.5 py-1.5 text-[12px] sm:text-[11px] tracking-[0.18em] text-ink-700">
                 <Atom className="h-3.5 w-3.5 sm:h-3 sm:w-3 text-brand" aria-hidden />
                 高校物理専門塾
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/80 px-3.5 py-1.5 text-[12px] sm:text-[11px] tracking-[0.18em] text-ink-700 backdrop-blur">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3.5 py-1.5 text-[12px] sm:text-[11px] tracking-[0.18em] text-ink-700">
                 <Wifi className="h-3.5 w-3.5 sm:h-3 sm:w-3 text-warm-deep" aria-hidden />
                 全国オンライン対応
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/80 px-3.5 py-1.5 text-[12px] sm:text-[11px] tracking-[0.18em] text-ink-700 backdrop-blur">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3.5 py-1.5 text-[12px] sm:text-[11px] tracking-[0.18em] text-ink-700">
                 <Sparkles className="h-3.5 w-3.5 sm:h-3 sm:w-3 text-gold-deep" aria-hidden />
                 初学者 〜 難関大
               </span>
@@ -190,14 +190,14 @@ export function Hero() {
             {/* Decorative scattered chips around the visual */}
             <div
               aria-hidden
-              className="pointer-events-none absolute -left-6 -top-4 inline-flex items-center gap-2 rounded-full border border-ink-900/[0.10] bg-white/85 px-3.5 py-2 text-[11px] tracking-[0.22em] text-brand-deep shadow-soft backdrop-blur"
+              className="pointer-events-none absolute -left-6 -top-4 inline-flex items-center gap-2 rounded-full border border-ink-900/[0.10] bg-white/90 px-3.5 py-2 text-[11px] tracking-[0.22em] text-brand-deep shadow-soft"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
               FREE TRIAL · 60 MIN
             </div>
             <div
               aria-hidden
-              className="pointer-events-none absolute -right-3 bottom-10 inline-flex items-center gap-2 rounded-full border border-warm/35 bg-warm-bg/80 px-3.5 py-2 text-[11px] tracking-[0.22em] text-warm-deep shadow-soft backdrop-blur"
+              className="pointer-events-none absolute -right-3 bottom-10 inline-flex items-center gap-2 rounded-full border border-warm/35 bg-warm-bg/95 px-3.5 py-2 text-[11px] tracking-[0.22em] text-warm-deep shadow-soft"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-warm" />
               月 ¥38,000〜

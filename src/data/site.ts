@@ -15,8 +15,8 @@ export const siteConfig = {
     "高校物理専門塾「物理の森」は、名古屋大学 工学部 電気電子情報工学科所属・大学受験物理の書籍執筆実績を持つ森祐太が主宰する、全国オンライン対応の高校物理専門塾です。高校物理の初学者から、中堅大、難関大・医学部志望まで、一人ひとりに合わせたカリキュラムで『考える力を育てる高校物理』へ導きます。",
   url: siteUrl,
   locale: "ja_JP",
-  ogImage: "/og-default.svg",
-  ogImageAlt: "物理の森 - 森祐太の物理専門塾",
+  ogImage: "/og-default.png",
+  ogImageAlt: "高校物理専門塾「物理の森」 — 森祐太の物理専門塾",
   twitter: "@butsuri_no_mori",
   version: "2026.04.23",
   author: {
@@ -105,6 +105,12 @@ export const footerNav: { heading: string; items: NavItem[] }[] = [
       { label: "塾の理念", href: "/about" },
       { label: "講師紹介", href: "/teacher" },
       { label: "講座一覧", href: "/courses" },
+    ],
+  },
+  {
+    heading: "目的別",
+    items: [
+      { label: "オンライン受講", href: "/online" },
     ],
   },
   {

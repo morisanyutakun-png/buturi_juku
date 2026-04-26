@@ -31,13 +31,13 @@ export async function generateMetadata(
   const article = getArticleBySlug(slug);
   if (!article) return {};
   return buildMetadata({
-    title: article.title,
+    title: `${article.title} | 高校物理専門塾の学習コラム`,
     description: article.description,
     path: `/articles/${article.slug}`,
     type: "article",
     publishedTime: article.publishedAt,
     modifiedTime: article.updatedAt ?? article.publishedAt,
-    keywords: [article.category, ...article.tags],
+    keywords: ["高校物理専門塾", article.category, ...article.tags],
     category: article.category,
   });
 }
@@ -228,7 +228,11 @@ export default async function ArticleDetailPage({
           slug: article.slug,
           publishedAt: article.publishedAt,
           updatedAt: article.updatedAt,
-          keywords: article.tags,
+          keywords: ["高校物理専門塾", article.category, ...article.tags],
+          articleSection: article.category,
+          wordCount: article.sections
+            .flatMap((s) => s.paragraphs)
+            .reduce((total, p) => total + p.length, 0),
         })}
       />
       <JsonLd

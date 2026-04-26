@@ -83,6 +83,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://yuta-eng.com" />
         <link rel="preconnect" href="https://yuta-eng.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://amzn.asia" />
+        <link rel="preload" as="image" href="/og-default.png" type="image/png" />
       </head>
       <body>
         <a

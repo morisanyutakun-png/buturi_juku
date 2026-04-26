@@ -93,7 +93,7 @@ export function HeroVisual({ className }: Props) {
         {/* central glow */}
         <circle cx="200" cy="250" r="180" fill="url(#hv-glow)" />
 
-        {/* orbital ellipses */}
+        {/* orbital ellipses + nucleus, centered at (200,250) */}
         <g transform="translate(200 250)">
           <ellipse rx="170" ry="62" fill="none" stroke="url(#hv-orbit-1)" strokeWidth="1.6" transform="rotate(20)" />
           <ellipse rx="155" ry="58" fill="none" stroke="url(#hv-orbit-2)" strokeWidth="1.6" transform="rotate(-30)" />
@@ -103,19 +103,17 @@ export function HeroVisual({ className }: Props) {
           {/* nucleus */}
           <circle r="42" fill="url(#hv-core)" />
           <circle r="6" fill="#caa34b" />
+        </g>
 
-          {/* electrons */}
-          <g>
-            <circle cx="170" cy="0" r="6" fill="#3b7cd9" transform="rotate(20)">
-              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="22s" repeatCount="indefinite" />
-            </circle>
-            <circle cx="155" cy="0" r="5" fill="#e28040" transform="rotate(-30)">
-              <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="18s" repeatCount="indefinite" />
-            </circle>
-            <circle cx="140" cy="0" r="5" fill="#597a5b" transform="rotate(80)">
-              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="28s" repeatCount="indefinite" />
-            </circle>
-          </g>
+        {/* electrons — separated so CSS transform-origin: 200px 250px works in viewBox coords */}
+        <g className="orbit-22">
+          <circle cx="370" cy="250" r="6" fill="#3b7cd9" />
+        </g>
+        <g className="orbit-18">
+          <circle cx="355" cy="250" r="5" fill="#e28040" />
+        </g>
+        <g className="orbit-28">
+          <circle cx="340" cy="250" r="5" fill="#597a5b" />
         </g>
 
         {/* radial sparkle rays from core */}
@@ -134,7 +132,7 @@ export function HeroVisual({ className }: Props) {
       {/* floating equation chips */}
       <div className="pointer-events-none absolute inset-0">
         <div
-          className="absolute left-5 top-10 rounded-2xl border border-ink-900/[0.10] bg-white/80 px-4 py-3 shadow-soft backdrop-blur-md"
+          className="absolute left-5 top-10 rounded-2xl border border-ink-900/[0.10] bg-white/90 px-4 py-3 shadow-soft"
           style={{ fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}
         >
           <p className="text-[10px] tracking-[0.24em] uppercase text-brand-deep">Mechanics</p>
@@ -142,7 +140,7 @@ export function HeroVisual({ className }: Props) {
         </div>
 
         <div
-          className="absolute right-5 top-[34%] rounded-2xl border border-ink-900/[0.10] bg-white/80 px-4 py-3 shadow-soft backdrop-blur-md"
+          className="absolute right-5 top-[34%] rounded-2xl border border-ink-900/[0.10] bg-white/90 px-4 py-3 shadow-soft"
           style={{ fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}
         >
           <p className="text-[10px] tracking-[0.24em] uppercase text-warm-deep">EM</p>
@@ -150,14 +148,14 @@ export function HeroVisual({ className }: Props) {
         </div>
 
         <div
-          className="absolute left-6 bottom-10 rounded-2xl border border-ink-900/[0.10] bg-white/80 px-4 py-3 shadow-soft backdrop-blur-md"
+          className="absolute left-6 bottom-10 rounded-2xl border border-ink-900/[0.10] bg-white/90 px-4 py-3 shadow-soft"
           style={{ fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}
         >
           <p className="text-[10px] tracking-[0.24em] uppercase text-forest-deep">Wave</p>
           <p className="mt-1.5 text-[16px] text-ink-900">v = f λ</p>
         </div>
 
-        <div className="absolute right-7 bottom-12 inline-flex items-center gap-2 rounded-full border border-ink-900/[0.10] bg-white/85 px-3.5 py-1.5 text-[10.5px] tracking-[0.26em] text-ink-700 shadow-soft backdrop-blur">
+        <div className="absolute right-7 bottom-12 inline-flex items-center gap-2 rounded-full border border-ink-900/[0.10] bg-white/90 px-3.5 py-1.5 text-[10.5px] tracking-[0.26em] text-ink-700 shadow-soft">
           <span className="relative inline-flex h-1.5 w-1.5" aria-hidden>
             <span className="absolute inline-flex h-1.5 w-1.5 animate-ping rounded-full bg-warm/70" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-warm" />

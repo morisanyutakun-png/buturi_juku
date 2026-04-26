@@ -34,7 +34,7 @@ import { courses } from "@/data/courses";
 import { articles, articleHref } from "@/data/articles";
 import { instructor } from "@/data/instructor";
 import { siteConfig } from "@/data/site";
-import { itemListJsonLd, webPageJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, itemListJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -208,6 +208,7 @@ export default function HomePage() {
         <SeoIntentSection />
       </div>
 
+      <div className="cv-auto">
       {/* SUBJECTS */}
       <Section
         eyebrow="SUBJECTS"
@@ -236,13 +237,11 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <div className="cv-auto">
-        {/* PHILOSOPHY */}
-        <PhilosophySection />
+      {/* PHILOSOPHY */}
+      <PhilosophySection />
 
-        {/* WHITEBOARD —授業設計図 */}
-        <WhiteboardFlow />
-      </div>
+      {/* WHITEBOARD —授業設計図 */}
+      <WhiteboardFlow />
 
       {/* FEATURES */}
       <Section
@@ -316,15 +315,16 @@ export default function HomePage() {
         </div>
       </Section>
 
+      {/* COMPARISON */}
+      <ComparisonTable />
+      </div>
+
       <div className="cv-auto">
-        {/* COMPARISON */}
-        <ComparisonTable />
+      {/* PULL QUOTE — emotional pivot */}
+      <PullQuote />
 
-        {/* PULL QUOTE — emotional pivot */}
-        <PullQuote />
-
-        {/* BOOK */}
-        <BookShowcase />
+      {/* BOOK */}
+      <BookShowcase />
       </div>
 
       {/* TEACHER */}
@@ -417,7 +417,7 @@ export default function HomePage() {
             href="/courses"
             className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/70 px-6 py-3.5 text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
           >
-            講座一覧をすべて見る
+            高校物理専門塾の講座を見る
             <ArrowRight className="h-3.5 w-3.5 opacity-60" />
           </Link>
         </div>
@@ -520,7 +520,7 @@ export default function HomePage() {
             href="/articles"
             className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/70 px-6 py-3.5 text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
           >
-            コラム一覧を見る
+            高校物理の学習コラム一覧
             <ArrowRight className="h-3.5 w-3.5 opacity-60" />
           </Link>
         </div>
@@ -546,6 +546,10 @@ export default function HomePage() {
         </div>
       </Section>
 
+      <JsonLd
+        id="ld-breadcrumb-home"
+        data={breadcrumbJsonLd([{ name: "ホーム", href: "/" }])}
+      />
       <JsonLd
         id="ld-webpage-home"
         data={webPageJsonLd({

@@ -6,7 +6,7 @@ import { CtaBlock } from "@/components/cta-block";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbJsonLd, itemListJsonLd, webPageJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, collectionPageJsonLd, itemListJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { courses } from "@/data/courses";
 
@@ -96,12 +96,17 @@ export default function CoursesIndexPage() {
         ])}
       />
       <JsonLd
-        id="ld-webpage-courses"
-        data={webPageJsonLd({
+        id="ld-collection-courses"
+        data={collectionPageJsonLd({
           name: "高校物理専門塾の講座一覧",
           description:
             "高校物理専門塾「物理の森」の体験授業、1対1個別指導、共通テスト対策、分野別集中講座を比較できる講座一覧ページです。",
           path: "/courses",
+          items: courses.map((course) => ({
+            name: course.title,
+            href: `/courses/${course.slug}`,
+            description: course.summary,
+          })),
         })}
       />
       <JsonLd

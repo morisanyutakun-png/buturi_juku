@@ -19,12 +19,9 @@ export function SiteFooter() {
             </p>
             <div className="mt-7 sm:mt-8 inline-flex items-center gap-3 rounded-full border border-ink-900/[0.08] bg-white/70 px-4 py-2.5 sm:py-2 text-[12px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.18em] text-ink-600 backdrop-blur">
               <span
-                className="relative inline-flex h-1.5 w-1.5"
+                className="inline-flex h-1.5 w-1.5 rounded-full bg-forest"
                 aria-hidden
-              >
-                <span className="absolute inline-flex h-1.5 w-1.5 animate-ping rounded-full bg-forest/60" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-forest" />
-              </span>
+              />
               {siteConfig.contact.hours}
             </div>
           </div>

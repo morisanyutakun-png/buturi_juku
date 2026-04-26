@@ -6,7 +6,7 @@ import { CtaBlock } from "@/components/cta-block";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbJsonLd, itemListJsonLd, webPageJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, collectionPageJsonLd, itemListJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { articles, articleHref } from "@/data/articles";
 import { formatDate } from "@/lib/utils";
@@ -121,12 +121,17 @@ export default function ArticlesIndexPage() {
         ])}
       />
       <JsonLd
-        id="ld-webpage-articles"
-        data={webPageJsonLd({
+        id="ld-collection-articles"
+        data={collectionPageJsonLd({
           name: "高校物理の学習コラム — 高校物理専門塾「物理の森」",
           description:
             "高校物理専門塾「物理の森」が発信する、高校物理の学び方・分野別の苦手克服・大学受験物理の戦略をまとめた記事一覧です。",
           path: "/articles",
+          items: sorted.map((article) => ({
+            name: article.title,
+            href: articleHref(article),
+            description: article.description,
+          })),
         })}
       />
       <JsonLd

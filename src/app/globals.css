@@ -166,6 +166,27 @@ body {
   contain-intrinsic-size: 1px 800px;
 }
 
+/* SVG electron orbits — CSS-driven so prefers-reduced-motion can pause them */
+@keyframes orbit-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-ccw {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+.orbit-22, .orbit-18, .orbit-28 {
+  transform-origin: 200px 250px;
+  transform-box: view-box;
+  will-change: transform;
+}
+.orbit-22 { animation: orbit-cw 22s linear infinite; }
+.orbit-18 { animation: orbit-ccw 18s linear infinite; }
+.orbit-28 { animation: orbit-cw 28s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .orbit-22, .orbit-18, .orbit-28 { animation: none; }
+}
+
 /* Refined entry animation respecting motion preference */
 @media (prefers-reduced-motion: no-preference) {
   .reveal {

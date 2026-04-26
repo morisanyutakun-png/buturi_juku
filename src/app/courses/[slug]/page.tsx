@@ -287,6 +287,8 @@ export default async function CourseDetailPage({
           category: course.category,
           format: course.format,
           targets: course.targets,
+          price: (course.price.value.match(/[\d,]+/) ?? ["0"])[0].replace(/,/g, ""),
+          priceCurrency: "JPY",
         })}
       />
       <JsonLd
