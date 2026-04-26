@@ -160,6 +160,12 @@ body {
   scrollbar-width: none;
 }
 
+/* Defer painting of below-the-fold sections — major TBT/INP win */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
 /* Refined entry animation respecting motion preference */
 @media (prefers-reduced-motion: no-preference) {
   .reveal {

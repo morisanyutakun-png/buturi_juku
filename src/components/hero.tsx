@@ -37,16 +37,23 @@ export function Hero() {
           <p className="mt-9 sm:mt-10 text-[13px] sm:text-[12px] font-medium tracking-[0.28em] sm:tracking-[0.32em] uppercase text-gold">
             高校物理専門塾「物理の森」
           </p>
-          <h1 className="mt-4 font-serif text-display-xl text-paper">
-            高校物理が<span className="text-brand">苦手</span>な受験生を、<br className="hidden sm:block" />
-            <span className="relative inline-block">
-              <span className="text-warm">得点源</span>
-              <span
-                aria-hidden
-                className="absolute inset-x-0 -bottom-1 h-[7px] -z-10 rounded-full bg-warm/30"
-              />
+          <h1
+            className="mt-4 font-serif text-display-xl text-paper"
+            style={{ wordBreak: "keep-all", overflowWrap: "break-word", lineBreak: "strict" }}
+          >
+            <span className="block">
+              高校物理が<span className="text-brand">苦手</span>な
             </span>
-            まで引き上げる。
+            <span className="block">受験生を、得点源まで</span>
+            <span className="block">
+              <span className="relative inline-block">
+                <span className="text-warm">引き上げる。</span>
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 -bottom-1 h-[7px] -z-10 rounded-full bg-warm/30"
+                />
+              </span>
+            </span>
           </h1>
 
           <p className="mt-8 sm:mt-9 max-w-xl text-[17px] leading-[2] sm:leading-[1.85] text-paper/85">

@@ -192,19 +192,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MANIFESTO — dark contrast pivot */}
-      <ManifestoBand />
+      <div className="cv-auto">
+        {/* MANIFESTO — dark contrast pivot */}
+        <ManifestoBand />
 
-      {/* PROOF — giant numbers showcase */}
-      <ProofShowcase />
+        {/* PROOF — giant numbers showcase */}
+        <ProofShowcase />
 
-      {/* PRICE PREVIEW — surface fees on TOP */}
-      <PricePreview />
+        {/* PRICE PREVIEW — surface fees on TOP */}
+        <PricePreview />
 
-      {/* FOR EVERYONE */}
-      <ForEveryoneSection />
+        {/* FOR EVERYONE */}
+        <ForEveryoneSection />
 
-      <SeoIntentSection />
+        <SeoIntentSection />
+      </div>
 
       {/* SUBJECTS */}
       <Section
@@ -234,11 +236,13 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* PHILOSOPHY */}
-      <PhilosophySection />
+      <div className="cv-auto">
+        {/* PHILOSOPHY */}
+        <PhilosophySection />
 
-      {/* WHITEBOARD —授業設計図 */}
-      <WhiteboardFlow />
+        {/* WHITEBOARD —授業設計図 */}
+        <WhiteboardFlow />
+      </div>
 
       {/* FEATURES */}
       <Section
@@ -312,14 +316,16 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* COMPARISON */}
-      <ComparisonTable />
+      <div className="cv-auto">
+        {/* COMPARISON */}
+        <ComparisonTable />
 
-      {/* PULL QUOTE — emotional pivot */}
-      <PullQuote />
+        {/* PULL QUOTE — emotional pivot */}
+        <PullQuote />
 
-      {/* BOOK */}
-      <BookShowcase />
+        {/* BOOK */}
+        <BookShowcase />
+      </div>
 
       {/* TEACHER */}
       <Section
@@ -417,6 +423,7 @@ export default function HomePage() {
         </div>
       </Section>
 
+      <div className="cv-auto">
       {/* TESTIMONIALS */}
       <Testimonials />
 
@@ -518,6 +525,7 @@ export default function HomePage() {
           </Link>
         </div>
       </Section>
+      </div>
 
       <CtaBlock />
 
