@@ -131,7 +131,7 @@ export default function OnlinePage() {
             href="/courses"
             className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/80 px-7 py-4 text-[15px] sm:text-[14px] text-ink-800 transition hover:border-ink-900/30 hover:bg-white min-h-[52px] sm:min-h-0"
           >
-            講座を見る
+            高校物理専門塾の講座を見る
             <ArrowRight className="h-3.5 w-3.5 opacity-50" />
           </Link>
         </div>

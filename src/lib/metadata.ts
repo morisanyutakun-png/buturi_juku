@@ -6,7 +6,6 @@ type BuildMetadataInput = {
   title: string;
   description?: string;
   path: string;
-  ogImage?: string;
   noIndex?: boolean;
   type?: "website" | "article";
   publishedTime?: string;
@@ -23,7 +22,6 @@ export function buildMetadata({
   title,
   description,
   path,
-  ogImage,
   noIndex,
   type = "website",
   publishedTime,
@@ -34,15 +32,15 @@ export function buildMetadata({
   const fullTitle = `${title} | ${siteConfig.name}`;
   const desc = description ?? siteConfig.description;
   const canonical = absoluteUrl(path, siteConfig.url);
-  const image = absoluteUrl(ogImage ?? siteConfig.ogImage, siteConfig.url);
   const mergedKeywords = uniqueKeywords([
     ...siteConfig.seo.defaultKeywords,
     ...siteConfig.seo.highIntentKeywords,
     ...keywords,
   ]);
 
-  const images = [{ url: image, width: 1200, height: 630, alt: siteConfig.ogImageAlt }];
-
+  // Note: og:image / twitter:image are auto-filled by Next.js from
+  // src/app/opengraph-image.tsx (file-based convention). We deliberately
+  // omit `images` here so the dynamic image is used on every page.
   const openGraph: Metadata["openGraph"] =
     type === "article"
       ? {
@@ -52,7 +50,6 @@ export function buildMetadata({
           url: canonical,
           siteName: siteConfig.name,
           locale: siteConfig.locale,
-          images,
           publishedTime,
           modifiedTime: modifiedTime ?? publishedTime,
         }
@@ -63,7 +60,6 @@ export function buildMetadata({
           url: canonical,
           siteName: siteConfig.name,
           locale: siteConfig.locale,
-          images,
         };
 
   return {
@@ -101,7 +97,6 @@ export function buildMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description: desc,
-      images: [image],
       site: siteConfig.twitter,
       creator: siteConfig.twitter,
     },

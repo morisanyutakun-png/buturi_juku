@@ -120,7 +120,7 @@ export function BookShowcase() {
               href="/teacher"
               className="inline-flex items-center gap-2 rounded-full border border-ink-900/20 px-6 py-3.5 text-sm text-ink-900 hover:border-ink-900/50 transition"
             >
-              講師プロフィールを見る
+              高校物理専門塾の講師プロフィールを見る
             </a>
           </div>
         </div>

@@ -129,7 +129,7 @@ export default async function ArticleDetailPage({
                     href="/courses"
                     className="inline-flex items-center gap-2 rounded-full border border-ink-900/15 px-5 py-3 text-sm text-ink-900 hover:border-brand hover:text-brand transition"
                   >
-                    講座を見る
+                    高校物理専門塾の講座を見る
                   </Link>
                 </div>
               </div>
@@ -150,7 +150,7 @@ export default async function ArticleDetailPage({
                   href="/teacher"
                   className="mt-4 inline-flex items-center gap-1 text-xs text-brand-deep hover:text-brand transition"
                 >
-                  プロフィールを見る
+                  講師・森祐太のプロフィールを見る
                   <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>
@@ -184,7 +184,7 @@ export default async function ArticleDetailPage({
                     {a.description}
                   </p>
                   <p className="mt-4 inline-flex items-center gap-1 text-xs text-brand-deep transition group-hover:translate-x-0.5">
-                    続きを読む
+                    高校物理の関連コラムを読む
                     <ArrowRight className="h-3 w-3" />
                   </p>
                 </>

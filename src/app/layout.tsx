@@ -29,14 +29,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
     description: siteConfig.description,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.ogImageAlt,
-      },
-    ],
+    // og:image is auto-injected by Next.js from src/app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
@@ -44,7 +37,7 @@ export const metadata: Metadata = {
     creator: siteConfig.twitter,
     title: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    // twitter:image is auto-injected from the same opengraph-image convention
   },
   alternates: {
     canonical: siteConfig.url,
@@ -83,7 +76,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://yuta-eng.com" />
         <link rel="preconnect" href="https://yuta-eng.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://amzn.asia" />
-        <link rel="preload" as="image" href="/og-default.png" type="image/png" />
       </head>
       <body>
         <a

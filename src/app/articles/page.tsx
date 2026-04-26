@@ -81,7 +81,7 @@ export default function ArticlesIndexPage() {
                 <div className="mt-8 sm:mt-9 flex items-center justify-between text-[13px] sm:text-[12px] text-ink-500">
                   <span>{a.readingTime}</span>
                   <span className="inline-flex items-center gap-1.5 text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
-                    続きを読む
+                    高校物理の学習コラムを読む
                     {isExternal ? (
                       <ArrowUpRight className="h-3 w-3" />
                     ) : (

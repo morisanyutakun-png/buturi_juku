@@ -405,7 +405,7 @@ export default function HomePage() {
               <div className="mt-8 sm:mt-9 flex items-center justify-between text-[14px] sm:text-[13px]">
                 <span className="text-ink-500">{c.duration}</span>
                 <span className="inline-flex items-center gap-1.5 text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
-                  詳しく見る
+                  高校物理専門塾のコース詳細を見る
                   <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </div>
@@ -488,7 +488,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <p className="mt-6 inline-flex items-center gap-1.5 text-[13.5px] sm:text-[12px] text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
-                  続きを読む
+                  高校物理の学習コラムを読む
                   {isExternal ? (
                     <ArrowUpRight className="h-3 w-3" />
                   ) : (

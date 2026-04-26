@@ -178,7 +178,7 @@ export default function TrialPage() {
 
       <CtaBlock
         primary={{ label: "体験授業を申し込む", href: "/contact" }}
-        secondary={{ label: "講座を見る", href: "/courses" }}
+        secondary={{ label: "高校物理専門塾の講座を見る", href: "/courses" }}
       />
 
       <JsonLd

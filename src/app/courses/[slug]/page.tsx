@@ -260,7 +260,7 @@ export default async function CourseDetailPage({
               <h3 className="mt-3 font-serif text-lg text-ink-900">{c.title}</h3>
               <p className="mt-2 text-xs text-ink-600">{c.subtitle}</p>
               <p className="mt-4 inline-flex items-center gap-1 text-sm text-brand-deep transition group-hover:translate-x-0.5">
-                詳しく見る
+                高校物理専門塾の他コースを見る
                 <ArrowRight className="h-4 w-4" />
               </p>
             </Link>
