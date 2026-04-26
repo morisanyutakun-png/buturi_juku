@@ -202,16 +202,16 @@ export default async function CourseDetailPage({
                 </p>
               )}
 
-              <dl className="mt-8 space-y-4 sm:space-y-3 text-[14.5px] sm:text-sm">
-                <div className="flex justify-between gap-3">
-                  <dt className="text-ink-500">形式</dt>
-                  <dd className="text-right text-ink-800">{course.format}</dd>
-                </div>
-                <div className="flex justify-between gap-3">
-                  <dt className="text-ink-500">時間</dt>
-                  <dd className="text-right text-ink-800">{course.duration}</dd>
-                </div>
-              </dl>
+              <ul className="mt-8 space-y-4 sm:space-y-3 text-[14.5px] sm:text-sm">
+                <li className="flex justify-between gap-3">
+                  <span className="text-ink-600">形式</span>
+                  <span className="text-right text-ink-800">{course.format}</span>
+                </li>
+                <li className="flex justify-between gap-3">
+                  <span className="text-ink-600">時間</span>
+                  <span className="text-right text-ink-800">{course.duration}</span>
+                </li>
+              </ul>
 
               <ul className="mt-7 sm:mt-6 space-y-3 sm:space-y-2 text-[14px] sm:text-xs leading-[1.7] text-ink-700">
                 {course.highlights.map((h) => (

@@ -180,7 +180,7 @@ export default function OnlinePage() {
         className="bg-paper"
       >
         <div className="overflow-hidden rounded-2xl border border-ink-900/[0.10] bg-white shadow-soft">
-          <dl className="divide-y divide-ink-900/10 text-[15px] sm:text-sm">
+          <ul className="divide-y divide-ink-900/10 text-[15px] sm:text-sm">
             {[
               { k: "対応エリア", v: "日本全国 / 海外（時差は要相談）" },
               { k: "推奨デバイス", v: "PC（Mac/Windows） + Webカメラ + マイク" },
@@ -190,17 +190,17 @@ export default function OnlinePage() {
               { k: "録画視聴", v: "在籍中は無期限視聴可能" },
               { k: "質問チャット", v: "24h 投稿可 / 24〜48h 内に回答" },
             ].map((row) => (
-              <div
+              <li
                 key={row.k}
                 className="grid grid-cols-1 gap-1 p-5 sm:grid-cols-[14rem_1fr] sm:gap-6 sm:p-6"
               >
-                <dt className="text-[12.5px] sm:text-xs font-medium tracking-[0.18em] sm:tracking-[0.22em] uppercase text-ink-500">
+                <span className="text-[12.5px] sm:text-xs font-medium tracking-[0.18em] sm:tracking-[0.22em] uppercase text-ink-600">
                   {row.k}
-                </dt>
-                <dd className="text-ink-800 leading-[1.85] sm:leading-relaxed">{row.v}</dd>
-              </div>
+                </span>
+                <span className="text-ink-800 leading-[1.85] sm:leading-relaxed">{row.v}</span>
+              </li>
             ))}
-          </dl>
+          </ul>
         </div>
       </Section>
 

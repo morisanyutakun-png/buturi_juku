@@ -27,16 +27,16 @@ const config: Config = {
           muted: "#e8dfc9",
         },
 
-        // Text colors (ink on paper) — tuned so 500/600 hit WCAG AA on paper
+        // Text colors (ink on paper) — tuned so 400/500/600 hit WCAG AA on paper
         ink: {
           950: "#0a1528",
           900: "#142341",
           800: "#1e3056",
           700: "#36456a",
-          600: "#4f5d7a",
-          500: "#606e8a",
-          400: "#7c8aa3",
-          300: "#aab3c5",
+          600: "#4a586f",
+          500: "#586780",
+          400: "#697792",
+          300: "#9aa4ba",
         },
 
         // Primary brand — friendly, approachable blue

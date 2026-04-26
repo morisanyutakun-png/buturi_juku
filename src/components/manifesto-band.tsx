@@ -69,25 +69,25 @@ export function ManifestoBand() {
             『なぜそう立式するのか』を語れる状態まで、最後の一歩まで伴走します。物理は才能ではなく、学び方の問題。正しい順序で組み直せば、必ず伸びます。
           </p>
 
-          <dl className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-paper/15 bg-paper/10">
+          <ol className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-paper/15 bg-paper/10">
             {[
               { k: "言語化", v: "現象を語る" },
               { k: "立式", v: "数式に翻訳" },
               { k: "演習", v: "型を固める" },
             ].map((x, i) => (
-              <div key={x.k} className="bg-ink-950/85 px-4 py-6 text-center">
+              <li key={x.k} className="bg-ink-950/85 px-4 py-6 text-center">
                 <p className="font-mono text-[10px] tracking-[0.32em] text-gold/90">
                   STEP 0{i + 1}
                 </p>
                 <p className="mt-3 font-serif text-[1.1rem] sm:text-[1.25rem] tracking-[-0.008em] text-paper">
                   {x.k}
                 </p>
-                <p className="mt-1.5 text-[11.5px] leading-relaxed text-paper/60">
+                <p className="mt-1.5 text-[12px] leading-relaxed text-paper/75">
                   {x.v}
                 </p>
-              </div>
+              </li>
             ))}
-          </dl>
+          </ol>
         </div>
       </Container>
     </section>

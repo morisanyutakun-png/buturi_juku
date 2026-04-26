@@ -64,9 +64,10 @@ export default function TokushohoPage() {
             {rows.map((row) => (
               <div
                 key={row.label}
+                role="group"
                 className="grid gap-2 px-6 py-5 sm:grid-cols-[10rem_1fr] sm:items-start"
               >
-                <dt className="text-[10px] tracking-[0.28em] uppercase text-ink-500">
+                <dt className="text-[11px] tracking-[0.24em] uppercase text-ink-600">
                   {row.label}
                 </dt>
                 <dd className="text-sm leading-relaxed text-ink-800">
