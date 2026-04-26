@@ -17,6 +17,26 @@ export function Hero() {
         <div className="absolute bottom-[-22%] left-[28%] h-[26rem] w-[26rem] rounded-full bg-forest/12 blur-[120px]" />
       </div>
 
+      {/* ambient formula constellation */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 select-none font-serif leading-none text-ink-900/[0.045] hidden sm:block"
+      >
+        <p className="absolute left-[3%] top-[12%] text-[5.5rem] tracking-[-0.02em]">F = ma</p>
+        <p className="absolute right-[6%] top-[8%] text-[4.5rem] tracking-[-0.02em]">E = mc²</p>
+        <p className="absolute left-[42%] top-[6%] text-[3.6rem] tracking-[-0.02em]">λf = v</p>
+        <p className="absolute left-[6%] bottom-[18%] text-[5rem] tracking-[-0.02em]">∮E·dA</p>
+        <p className="absolute right-[10%] bottom-[10%] text-[4.2rem] tracking-[-0.02em]">∇×B = μ₀J</p>
+        <p className="absolute left-[36%] bottom-[6%] text-[3.4rem] tracking-[-0.02em]">pV = nRT</p>
+      </div>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 select-none font-serif leading-none text-ink-900/[0.05] sm:hidden"
+      >
+        <p className="absolute right-[4%] top-[10%] text-[3rem] tracking-[-0.02em]">F=ma</p>
+        <p className="absolute left-[4%] bottom-[14%] text-[2.6rem] tracking-[-0.02em]">∮E·dA</p>
+      </div>
+
       <Container className="relative py-20 sm:py-32 lg:py-40">
         <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_1fr]">
           <div>

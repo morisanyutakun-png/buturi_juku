@@ -25,6 +25,11 @@ import { ForEveryoneSection } from "@/components/for-everyone-section";
 import { InstructorPortrait } from "@/components/instructor-portrait";
 import { JsonLd } from "@/components/json-ld";
 import { SeoIntentSection } from "@/components/seo-intent-section";
+import { KeywordMarquee } from "@/components/keyword-marquee";
+import { ManifestoBand } from "@/components/manifesto-band";
+import { ProofShowcase } from "@/components/proof-showcase";
+import { WhiteboardFlow } from "@/components/whiteboard-flow";
+import { PullQuote } from "@/components/pull-quote";
 import { courses } from "@/data/courses";
 import { articles, articleHref } from "@/data/articles";
 import { instructor } from "@/data/instructor";
@@ -163,6 +168,9 @@ export default function HomePage() {
     <>
       <Hero />
 
+      {/* MARQUEE — kinetic SEO keyword tape */}
+      <KeywordMarquee />
+
       {/* KEYWORD LEAD — primary SEO anchor */}
       <section
         aria-labelledby="lead-heading"
@@ -187,27 +195,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* STATS RIBBON */}
-      <section className="border-b border-ink-900/[0.06] bg-white/60 backdrop-blur-sm">
-        <div className="container grid grid-cols-2 divide-y divide-ink-900/[0.06] md:grid-cols-4 md:divide-x md:divide-y-0">
-          {[
-            { k: "共通テスト 物理", v: "満点", s: "講師の受験実績", color: "text-warm-deep" },
-            { k: "二次試験 物理", v: "9割", s: "難関大レベル", color: "text-brand-deep" },
-            { k: "指導実績", v: "名大合格生を輩出", s: "塾講師としての実績", color: "text-forest-deep" },
-            { k: "対応エリア", v: "全国 Online", s: "初学者〜難関大まで", color: "text-brand-deep" },
-          ].map((x) => (
-            <div key={x.k} className="px-4 py-9 text-center md:px-5 md:py-10">
-              <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.22em] sm:tracking-[0.28em] uppercase text-ink-500">
-                {x.k}
-              </p>
-              <p className={`mt-3.5 font-serif text-[1.5rem] sm:text-[1.4rem] tracking-[-0.012em] md:text-[1.55rem] leading-snug ${x.color}`}>
-                {x.v}
-              </p>
-              <p className="mt-2 text-[12.5px] sm:text-[11.5px] leading-relaxed text-ink-600">{x.s}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* MANIFESTO — dark contrast pivot */}
+      <ManifestoBand />
+
+      {/* PROOF — giant numbers showcase */}
+      <ProofShowcase />
 
       {/* FOR EVERYONE */}
       <ForEveryoneSection />
@@ -244,6 +236,9 @@ export default function HomePage() {
 
       {/* PHILOSOPHY */}
       <PhilosophySection />
+
+      {/* WHITEBOARD —授業設計図 */}
+      <WhiteboardFlow />
 
       {/* FEATURES */}
       <Section
@@ -319,6 +314,9 @@ export default function HomePage() {
 
       {/* COMPARISON */}
       <ComparisonTable />
+
+      {/* PULL QUOTE — emotional pivot */}
+      <PullQuote />
 
       {/* BOOK */}
       <BookShowcase />
