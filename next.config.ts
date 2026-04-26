@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   compress: true,
   productionBrowserSourceMaps: false,
   experimental: {
-    optimizePackageImports: ["lucide-react"],
+    optimizePackageImports: ["lucide-react", "clsx", "tailwind-merge"],
     // Inline critical CSS, defer the rest. Saves the ~450ms render-blocking
     // CSS request flagged by Lighthouse.
     optimizeCss: true,

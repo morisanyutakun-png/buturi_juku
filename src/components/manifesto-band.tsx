@@ -16,17 +16,15 @@ export function ManifestoBand() {
         <div className="absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-[120px]" />
       </div>
 
-      {/* big background formula constellation */}
+      {/* background formula constellation — trimmed for DOM weight */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 select-none text-paper/[0.07] leading-none"
         style={{ fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}
       >
         <p className="absolute left-[2%] top-[8%] text-[6rem] sm:text-[10rem]">F = ma</p>
-        <p className="absolute right-[3%] top-[18%] text-[5rem] sm:text-[8rem]">∮ E · dA</p>
-        <p className="absolute left-[8%] bottom-[12%] text-[5.5rem] sm:text-[9rem]">λ = h / p</p>
-        <p className="absolute right-[6%] bottom-[6%] text-[4.5rem] sm:text-[7rem]">∇ × B = μ₀ J</p>
-        <p className="absolute left-1/2 top-[45%] -translate-x-1/2 text-[4rem] sm:text-[6rem]">E = mc²</p>
+        <p className="absolute right-[3%] bottom-[10%] text-[5rem] sm:text-[8rem]">∮ E · dA</p>
+        <p className="absolute left-[8%] bottom-[14%] text-[5rem] sm:text-[8rem]">E = mc²</p>
       </div>
 
       {/* grid texture */}
