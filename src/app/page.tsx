@@ -25,7 +25,6 @@ import { ForEveryoneSection } from "@/components/for-everyone-section";
 import { InstructorPortrait } from "@/components/instructor-portrait";
 import { JsonLd } from "@/components/json-ld";
 import { SeoIntentSection } from "@/components/seo-intent-section";
-import { KeywordMarquee } from "@/components/keyword-marquee";
 import { ManifestoBand } from "@/components/manifesto-band";
 import { ProofShowcase } from "@/components/proof-showcase";
 import { WhiteboardFlow } from "@/components/whiteboard-flow";
@@ -168,9 +167,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-
-      {/* MARQUEE — kinetic SEO keyword tape */}
-      <KeywordMarquee />
 
       {/* KEYWORD LEAD — primary SEO anchor */}
       <section
