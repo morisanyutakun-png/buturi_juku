@@ -51,6 +51,18 @@ body {
   min-height: 100vh;
   letter-spacing: -0.003em;
   line-height: 1.8;
+  /* Belt-and-braces guard against accidental horizontal scroll on mobile —
+     `clip` (vs. `hidden`) preserves position:sticky. */
+  overflow-x: clip;
+}
+
+/* Make sure absolutely-positioned hero/page decorations never push the
+   document wider than the viewport on phones. Children with `overflow-hidden`
+   handle this normally, but `clip` on body is a final safety net. */
+@supports not (overflow-x: clip) {
+  body {
+    overflow-x: hidden;
+  }
 }
 
 @media (min-width: 768px) {
@@ -69,6 +81,23 @@ body {
   }
   .tap {
     min-height: 44px;
+  }
+  /* Prevent iOS auto-zoom on focus by ensuring inputs are at least 16px */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Bottom inset for sticky mobile CTA so content scroll terminates above it */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  /* Reserve space at the bottom of pages for the sticky CTA */
+  main {
+    padding-bottom: 88px;
   }
 }
 

@@ -22,21 +22,21 @@ export function Section({
 }: SectionProps) {
   return (
     <section
-      className={cn("relative py-20 sm:py-32", className)}
+      className={cn("relative py-16 sm:py-32", className)}
       {...props}
     >
       <Container>
         {(eyebrow || title || description) && (
           <div
             className={cn(
-              "mb-12 sm:mb-20 max-w-3xl",
+              "mb-10 sm:mb-20 max-w-3xl",
               align === "center" && "mx-auto text-center",
             )}
           >
             {eyebrow && (
               <p
                 className={cn(
-                  "mb-5 inline-flex items-center gap-2.5 text-[11px] sm:text-[10px] font-medium uppercase tracking-[0.28em] sm:tracking-[0.32em] text-brand-deep",
+                  "mb-4 sm:mb-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[10.5px] sm:text-[10px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.32em] text-brand-deep",
                   align === "left" && "before:inline-block before:h-px before:w-5 before:bg-current before:opacity-50",
                 )}
               >

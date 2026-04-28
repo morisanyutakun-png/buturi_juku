@@ -11,10 +11,11 @@ export function Hero() {
       {/* full-bleed pastel backdrop */}
       <HeroBackdrop />
 
-      {/* diagonal light beams across the whole hero */}
+      {/* diagonal light beams — desktop only; phones already have enough atmosphere
+          and these are pure paint cost on small viewports */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-1/4 -top-1/2 h-[200%] w-[60%] rotate-[24deg] opacity-50"
+        className="pointer-events-none absolute -left-1/4 -top-1/2 hidden h-[200%] w-[60%] rotate-[24deg] opacity-50 sm:block"
         style={{
           background:
             "linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent)",
@@ -22,7 +23,7 @@ export function Hero() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-1/3 -top-1/2 h-[200%] w-[55%] -rotate-[18deg] opacity-35"
+        className="pointer-events-none absolute -right-1/3 -top-1/2 hidden h-[200%] w-[55%] -rotate-[18deg] opacity-35 sm:block"
         style={{
           background:
             "linear-gradient(90deg, transparent, rgba(251,221,196,0.7), transparent)",
@@ -37,33 +38,34 @@ export function Hero() {
       >
         森
       </span>
+      {/* Mobile watermark — sized to vw and clipped at parent overflow-hidden */}
       <span
         aria-hidden
-        className="pointer-events-none absolute select-none font-serif leading-[0.8] tracking-[-0.05em] text-brand-deep/[0.06] lg:hidden"
-        style={{ fontSize: "clamp(18rem, 80vw, 32rem)", left: "-10%", top: "20%" }}
+        className="pointer-events-none absolute -right-[14vw] top-[18%] select-none font-serif leading-[0.8] tracking-[-0.05em] text-brand-deep/[0.06] lg:hidden"
+        style={{ fontSize: "min(60vw, 18rem)" }}
       >
         森
       </span>
 
-      <Container className="relative py-24 sm:py-32 lg:py-40">
+      <Container className="relative py-16 sm:py-24 lg:py-40">
         <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
           <div className="relative">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3.5 py-1.5 text-[12px] sm:text-[11px] tracking-[0.18em] text-ink-700">
-                <Atom className="h-3.5 w-3.5 sm:h-3 sm:w-3 text-brand" aria-hidden />
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-700">
+                <Atom className="h-3 w-3 sm:h-3 sm:w-3 text-brand" aria-hidden />
                 高校物理専門塾
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3.5 py-1.5 text-[12px] sm:text-[11px] tracking-[0.18em] text-ink-700">
-                <Wifi className="h-3.5 w-3.5 sm:h-3 sm:w-3 text-warm-deep" aria-hidden />
-                全国オンライン対応
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-700">
+                <Wifi className="h-3 w-3 sm:h-3 sm:w-3 text-warm-deep" aria-hidden />
+                全国オンライン
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3.5 py-1.5 text-[12px] sm:text-[11px] tracking-[0.18em] text-ink-700">
-                <Sparkles className="h-3.5 w-3.5 sm:h-3 sm:w-3 text-gold-deep" aria-hidden />
-                初学者 〜 難関大
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-700">
+                <Sparkles className="h-3 w-3 sm:h-3 sm:w-3 text-gold-deep" aria-hidden />
+                初学者〜難関大
               </span>
             </div>
 
-            <p className="mt-9 sm:mt-10 text-[13px] sm:text-[12px] font-medium tracking-[0.28em] sm:tracking-[0.32em] uppercase text-brand-deep">
+            <p className="mt-7 sm:mt-10 text-[12px] sm:text-[12px] font-medium tracking-[0.22em] sm:tracking-[0.32em] uppercase text-brand-deep">
               高校物理専門塾「物理の森」
             </p>
             <h1
@@ -114,15 +116,15 @@ export function Hero() {
               <span className="h-px flex-1 max-w-[12rem] bg-gradient-to-r from-warm/50 via-brand/40 to-transparent" />
             </div>
 
-            <p className="mt-7 sm:mt-8 max-w-xl text-[17px] leading-[2] sm:leading-[1.85] text-ink-700">
+            <p className="mt-6 sm:mt-8 max-w-xl text-[15.5px] sm:text-[17px] leading-[1.9] sm:leading-[1.85] text-ink-700">
               <strong className="text-ink-900 font-medium">高校物理専門塾「{siteConfig.name}」</strong>は、森祐太(名古屋大学 工学部 電気電子情報工学科)が主宰する、全国オンライン対応の高校物理専門塾です。<strong className="text-ink-900 font-medium">『高校物理だけ』を、暗記ではなく構造で教える</strong>ことに特化し、苦手で止まっている人を、得点源まで引き上げます。
             </p>
 
-            <p className="mt-5 text-[12px] sm:text-[11px] leading-[1.9] tracking-[0.18em] sm:tracking-[0.22em] text-ink-500">
+            <p className="mt-4 sm:mt-5 text-[11px] sm:text-[11px] leading-[1.85] tracking-[0.14em] sm:tracking-[0.22em] text-ink-500">
               中心読者：高校物理が苦手な高校生・受験生 — 初学者から難関大・医学部まで対応
             </p>
 
-            <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
+            <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
               <Link
                 href="/trial"
                 className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-4 text-[15px] sm:text-[14px] font-medium text-paper transition duration-300 ease-out min-h-[52px] sm:min-h-0"
@@ -152,42 +154,42 @@ export function Hero() {
             {/* Lightweight mobile hero card — replaces the full HeroVisual SVG
                 on phones for faster LCP / smaller DOM. */}
             <div
-              className="relative mt-10 overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-br from-white via-warm-bg/45 to-brand-bg/45 p-7 shadow-soft lg:hidden"
+              className="relative mt-9 overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-br from-white via-warm-bg/45 to-brand-bg/45 p-6 shadow-soft lg:hidden"
               aria-hidden
             >
               <span
-                className="pointer-events-none absolute -right-6 -bottom-12 select-none font-serif text-[14rem] leading-[0.8] tracking-tighter text-warm-deep/[0.10]"
+                className="pointer-events-none absolute -right-4 -bottom-10 select-none font-serif text-[10rem] leading-[0.8] tracking-tighter text-warm-deep/[0.10]"
               >
                 森
               </span>
-              <p className="relative text-[10.5px] tracking-[0.32em] uppercase text-brand-deep">
+              <p className="relative text-[10px] tracking-[0.28em] uppercase text-brand-deep">
                 MORI PHYSICS FOREST
               </p>
-              <p className="relative mt-3 font-serif text-[1.35rem] leading-[1.45] tracking-[-0.012em] text-ink-900">
+              <p className="relative mt-2.5 font-serif text-[1.3rem] leading-[1.45] tracking-[-0.012em] text-ink-900">
                 高校物理を、構造で。
               </p>
               <ul
-                className="relative mt-5 grid grid-cols-2 gap-2.5 font-mono text-[13px] text-ink-800"
+                className="relative mt-4 grid grid-cols-2 gap-2 font-mono text-[12.5px] text-ink-800"
               >
-                <li className="rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
                   F = ma
                 </li>
-                <li className="rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
                   v = f λ
                 </li>
-                <li className="rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
                   ε = − dΦ/dt
                 </li>
-                <li className="rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
                   E₁ = E₂
                 </li>
               </ul>
-              <p className="relative mt-5 text-[12px] tracking-[0.24em] uppercase text-gold-deep">
+              <p className="relative mt-4 text-[11px] tracking-[0.22em] uppercase text-gold-deep">
                 FREE TRIAL · 60 MIN
               </p>
             </div>
 
-            <ul className="mt-12 sm:mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.10] bg-ink-900/[0.06] sm:grid-cols-4">
+            <ul className="mt-10 sm:mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.10] bg-ink-900/[0.06] sm:grid-cols-4">
               {[
                 { k: "指導分野", v: "物理のみ", c: "text-brand-deep" },
                 { k: "授業形式", v: "1対1", c: "text-forest-deep" },
@@ -196,23 +198,23 @@ export function Hero() {
               ].map((item) => (
                 <li
                   key={item.k}
-                  className="bg-white/85 px-5 py-6 sm:py-5"
+                  className="bg-white/85 px-4 py-5 sm:px-5 sm:py-5"
                 >
-                  <p className="text-[11px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase text-ink-500">
+                  <p className="text-[10.5px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase text-ink-500">
                     {item.k}
                   </p>
-                  <p className={`mt-2.5 font-serif text-[1.3rem] sm:text-[1.15rem] tracking-[-0.01em] ${item.c}`}>
+                  <p className={`mt-2 font-serif text-[1.2rem] sm:text-[1.15rem] tracking-[-0.01em] ${item.c}`}>
                     {item.v}
                   </p>
                 </li>
               ))}
             </ul>
 
-            <p className="mt-10 max-w-xl font-serif text-[1.2rem] sm:text-[1.35rem] leading-[1.7] tracking-[-0.005em] text-ink-700">
+            <p className="mt-9 max-w-xl font-serif text-[1.15rem] sm:text-[1.35rem] leading-[1.7] tracking-[-0.005em] text-ink-700">
               <span className="text-brand-deep">わからない</span>が、
               <span className="text-warm-deep">わかる</span>に変わる瞬間を。
             </p>
-            <p className="mt-2 text-[11px] sm:text-[10.5px] tracking-[0.32em] uppercase text-gold-deep">
+            <p className="mt-2 text-[10.5px] sm:text-[10.5px] tracking-[0.24em] sm:tracking-[0.32em] uppercase text-gold-deep">
               構造で理解する高校物理専門塾 / Physics Forest
             </p>
           </div>

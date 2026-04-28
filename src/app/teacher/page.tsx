@@ -100,7 +100,7 @@ export default function TeacherPage() {
           aria-hidden
           className="absolute inset-0 opacity-50 [background-image:radial-gradient(circle_at_10%_30%,rgba(110,168,255,0.2),transparent_55%),radial-gradient(circle_at_90%_70%,rgba(232,197,122,0.15),transparent_55%)]"
         />
-        <div className="container relative grid gap-6 py-16 md:grid-cols-4">
+        <div className="container relative grid grid-cols-2 gap-3 py-12 sm:gap-6 sm:py-16 md:grid-cols-4">
           {[
             {
               value: "満点",
@@ -133,16 +133,16 @@ export default function TeacherPage() {
           ].map((x) => (
             <div
               key={x.label}
-              className="rounded-2xl border border-ink-900/10 bg-white p-6 text-center backdrop-blur"
+              className="rounded-2xl border border-ink-900/10 bg-white p-4 sm:p-6 text-center backdrop-blur"
             >
               <x.icon className={`mx-auto h-5 w-5 ${x.color}`} aria-hidden />
-              <p className={`mt-4 font-serif text-4xl ${x.color}`}>
+              <p className={`mt-3 sm:mt-4 font-serif text-[1.85rem] sm:text-4xl leading-tight ${x.color}`}>
                 {x.value}
               </p>
-              <p className="mt-3 text-[11px] tracking-[0.28em] uppercase text-ink-500">
+              <p className="mt-2.5 sm:mt-3 text-[10px] sm:text-[11px] tracking-[0.22em] sm:tracking-[0.28em] uppercase text-ink-500">
                 {x.label}
               </p>
-              <p className="mt-1 text-xs text-ink-600">{x.note}</p>
+              <p className="mt-1 text-[11.5px] sm:text-xs leading-[1.5] text-ink-600">{x.note}</p>
             </div>
           ))}
         </div>

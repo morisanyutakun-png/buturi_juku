@@ -173,20 +173,20 @@ export default function HomePage() {
         aria-labelledby="lead-heading"
         className="border-b border-ink-900/[0.06] bg-paper"
       >
-        <div className="container py-12 sm:py-16">
-          <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.28em] sm:tracking-[0.32em] uppercase text-brand-deep">
+        <div className="container py-10 sm:py-16">
+          <p className="text-[10.5px] sm:text-[10px] font-medium tracking-[0.22em] sm:tracking-[0.32em] uppercase text-brand-deep">
             HIGH-SCHOOL PHYSICS SPECIALTY
           </p>
           <h2
             id="lead-heading"
-            className="mt-5 max-w-3xl font-serif text-[1.7rem] leading-[1.6] tracking-[-0.012em] text-ink-900 sm:text-[1.85rem] sm:leading-[1.55]"
+            className="mt-4 sm:mt-5 max-w-3xl font-serif text-[1.45rem] leading-[1.55] tracking-[-0.012em] text-ink-900 sm:text-[1.85rem] sm:leading-[1.55]"
           >
             <span className="text-brand-deep">高校物理が苦手な受験生</span>を、
             <br className="sm:hidden" />
             <span className="text-warm-deep">得点源</span>まで引き上げる、
             オンライン高校物理専門塾。
           </h2>
-          <p className="mt-7 sm:mt-6 max-w-3xl text-[16px] sm:text-[15px] leading-[2.05] sm:leading-[1.95] text-ink-700">
+          <p className="mt-6 sm:mt-6 max-w-3xl text-[15px] sm:text-[15px] leading-[1.95] sm:leading-[1.95] text-ink-700">
             高校物理専門塾「物理の森」は、<strong className="font-medium text-ink-900">高校物理が苦手で止まっている受験生</strong>を、得点源まで引き上げることに特化したオンライン専門塾です。高校物理だけを扱うので、『公式に当てはめる物理』ではなく『現象から立式できる物理』に組み直すところまで、最後の一歩まで伴走します。初学者から共通テスト・難関大・医学部の大学受験物理志望者まで、力学・電磁気・波動・熱力学・原子の全分野を体系的にカバーします。
           </p>
         </div>
@@ -334,10 +334,10 @@ export default function HomePage() {
         description="書籍を手がけた主宰講師が、体験授業からカリキュラム設計・授業まですべてを担当します。"
         className="bg-paper"
       >
-        <div className="grid gap-12 rounded-[2rem] border border-ink-900/[0.07] bg-white/85 p-10 shadow-card backdrop-blur-sm md:grid-cols-[1fr_1.4fr] md:p-16">
+        <div className="grid gap-10 rounded-[1.5rem] sm:rounded-[2rem] border border-ink-900/[0.07] bg-white/85 p-6 shadow-card backdrop-blur-sm sm:p-10 md:grid-cols-[1fr_1.4fr] md:gap-12 md:p-16">
           <InstructorPortrait />
           <div>
-            <div className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-brand-deep">
+            <div className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.28em] sm:tracking-[0.32em] text-brand-deep">
               <GraduationCap className="h-3.5 w-3.5" aria-hidden strokeWidth={1.6} />
               PROFILE
             </div>
@@ -345,20 +345,20 @@ export default function HomePage() {
               初学者にも、難関大志望にも、<br className="sm:hidden" />
               あなた専用のルートを。
             </h3>
-            <p className="mt-7 text-[15px] leading-[1.85] text-ink-600">
+            <p className="mt-6 sm:mt-7 text-[15px] leading-[1.95] sm:leading-[1.85] text-ink-600">
               名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導にあたる。自身も共通テスト物理 満点・二次試験物理 9割を達成し、これまでの指導で<strong className="text-warm-deep font-medium">名古屋大学合格生</strong>も輩出。書籍執筆の経験とあわせ、一人ひとりに合わせた学習ルートを設計します。
             </p>
 
-            <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-ink-900/[0.07] bg-ink-900/[0.06] sm:grid-cols-4">
+            <div className="mt-7 sm:mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.07] bg-ink-900/[0.06] sm:grid-cols-4">
               {instructor.achievements.map((a) => (
                 <div
                   key={a.label}
-                  className="bg-paper/85 p-4 text-center"
+                  className="bg-paper/85 p-3.5 sm:p-4 text-center"
                 >
-                  <p className="text-[9px] font-medium tracking-[0.22em] uppercase text-ink-500">
+                  <p className="text-[9.5px] sm:text-[9px] font-medium tracking-[0.18em] sm:tracking-[0.22em] uppercase text-ink-500 leading-tight">
                     {a.label}
                   </p>
-                  <p className="mt-1.5 font-serif text-[14px] tracking-[-0.005em] text-warm-deep">
+                  <p className="mt-1.5 font-serif text-[13.5px] sm:text-[14px] leading-tight tracking-[-0.005em] text-warm-deep">
                     {a.value}
                   </p>
                 </div>
@@ -367,7 +367,7 @@ export default function HomePage() {
 
             <Link
               href="/teacher"
-              className="mt-9 inline-flex items-center gap-2 text-[13.5px] text-ink-900 transition hover:text-brand-deep"
+              className="mt-8 sm:mt-9 inline-flex min-h-[44px] items-center gap-2 text-[13.5px] text-ink-900 transition hover:text-brand-deep"
             >
               講師紹介を詳しく見る
               <ArrowRight className="h-3.5 w-3.5" />

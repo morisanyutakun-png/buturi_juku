@@ -73,9 +73,9 @@ export function ProofShowcase() {
         aria-hidden
         className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle_at_15%_20%,rgba(59,124,217,0.12),transparent_55%),radial-gradient(circle_at_85%_80%,rgba(226,128,64,0.12),transparent_55%)]"
       />
-      <Container className="relative py-24 sm:py-32">
+      <Container className="relative py-20 sm:py-32">
         <div className="max-w-3xl">
-          <p className="inline-flex items-center gap-2 text-[11px] sm:text-[10px] font-medium uppercase tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-6 before:bg-current before:opacity-50">
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10.5px] sm:text-[10px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-5 sm:before:w-6 before:bg-current before:opacity-50">
             INSTRUCTOR RECORD — 講師の受験・執筆・指導実績
           </p>
           <h2
@@ -91,13 +91,16 @@ export function ProofShowcase() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 sm:mt-14 grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-4">
           {proofs.map((p) => {
             const t = toneMap[p.tone];
+            // Multi-character Japanese (e.g. 電磁気・名大) needs a smaller mobile font
+            // so it never overflows narrow phones; 1–2 char values can stay big.
+            const isLongJa = /[぀-ヿ一-鿿]/.test(p.big) && p.big.length >= 2;
             return (
               <article
                 key={p.label}
-                className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border ${t.border} ${t.bg} p-7 sm:p-8 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card`}
+                className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border ${t.border} ${t.bg} p-6 sm:p-8 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card`}
               >
                 <div
                   aria-hidden
@@ -109,22 +112,26 @@ export function ProofShowcase() {
                   <p.icon className="h-5 w-5" aria-hidden strokeWidth={1.6} />
                 </div>
 
-                <div className="relative mt-9 flex items-baseline gap-1.5">
+                <div className="relative mt-8 sm:mt-9 flex items-baseline gap-1.5 flex-wrap">
                   <span
-                    className={`font-serif text-[5.4rem] leading-none tracking-[-0.04em] sm:text-[6rem] ${t.big}`}
+                    className={`font-serif leading-none tracking-[-0.04em] ${t.big} ${
+                      isLongJa
+                        ? "text-[3.6rem] sm:text-[5.2rem]"
+                        : "text-[4.6rem] sm:text-[6rem]"
+                    }`}
                   >
                     {p.big}
                   </span>
-                  <span className={`font-serif text-[1.4rem] sm:text-[1.55rem] ${t.big} opacity-80`}>
+                  <span className={`font-serif text-[1.25rem] sm:text-[1.55rem] ${t.big} opacity-80`}>
                     {p.unit}
                   </span>
                 </div>
 
-                <div className="relative mt-7">
-                  <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.24em] sm:tracking-[0.28em] uppercase text-ink-500">
+                <div className="relative mt-6 sm:mt-7">
+                  <p className="text-[10.5px] sm:text-[10px] font-medium tracking-[0.2em] sm:tracking-[0.28em] uppercase text-ink-500">
                     {p.label}
                   </p>
-                  <p className="mt-2.5 text-[14.5px] sm:text-[13.5px] leading-[1.7] text-ink-700">
+                  <p className="mt-2 text-[13.5px] sm:text-[13.5px] leading-[1.7] text-ink-700">
                     {p.sub}
                   </p>
                 </div>

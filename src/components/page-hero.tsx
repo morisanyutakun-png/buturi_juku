@@ -107,20 +107,20 @@ export function PageHero({
           background: `radial-gradient(closest-side, ${t.glowB}, transparent 78%)`,
         }}
       />
-      {/* gold halo — center */}
+      {/* gold halo — center; desktop only (saves paint cost on phones) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[55%] w-[55%] -translate-x-1/2 -translate-y-1/2 opacity-60"
+        className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[55%] w-[55%] -translate-x-1/2 -translate-y-1/2 opacity-60 sm:block"
         style={{
           background:
             "radial-gradient(closest-side, rgba(243,228,182,0.4), transparent 80%)",
         }}
       />
 
-      {/* diagonal light beams */}
+      {/* diagonal light beams — desktop only */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-1/4 -top-1/2 h-[200%] w-[55%] rotate-[24deg] opacity-40"
+        className="pointer-events-none absolute -left-1/4 -top-1/2 hidden h-[200%] w-[55%] rotate-[24deg] opacity-40 sm:block"
         style={{
           background:
             "linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)",
@@ -159,25 +159,25 @@ export function PageHero({
         </Container>
       )}
 
-      <Container className="relative py-20 sm:py-28 lg:py-32">
+      <Container className="relative py-16 sm:py-28 lg:py-32">
         <div className="max-w-3xl">
           <p
             className={cn(
-              "inline-flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.32em]",
-              "before:inline-block before:h-px before:w-6 before:bg-current before:opacity-50",
+              "flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10.5px] sm:text-[11px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.32em]",
+              "before:inline-block before:h-px before:w-5 sm:before:w-6 before:bg-current before:opacity-50",
               t.eyebrow,
             )}
           >
             {eyebrow}
           </p>
           <h1
-            className="mt-7 font-serif text-display-xl text-ink-900"
+            className="mt-6 sm:mt-7 font-serif text-display-xl text-ink-900"
             style={{ wordBreak: "keep-all", overflowWrap: "break-word", lineBreak: "strict" }}
           >
             {title}
           </h1>
 
-          <div className="mt-8 flex items-center gap-3" aria-hidden>
+          <div className="mt-7 sm:mt-8 flex items-center gap-3" aria-hidden>
             <span className="h-px w-12 bg-ink-900/20" />
             <span className={cn("h-1.5 w-1.5 rounded-full", t.dot)} />
             <span
@@ -189,12 +189,12 @@ export function PageHero({
           </div>
 
           {description && (
-            <p className="mt-7 max-w-2xl text-[16.5px] sm:text-[16px] leading-[2] sm:leading-[1.85] text-ink-700">
+            <p className="mt-6 sm:mt-7 max-w-2xl text-[15.5px] sm:text-[16px] leading-[1.95] sm:leading-[1.85] text-ink-700">
               {description}
             </p>
           )}
 
-          {children && <div className="mt-9 sm:mt-10">{children}</div>}
+          {children && <div className="mt-8 sm:mt-10">{children}</div>}
         </div>
       </Container>
     </section>

@@ -60,10 +60,10 @@ export function PricePreview() {
         aria-hidden
         className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle_at_85%_15%,rgba(202,163,75,0.12),transparent_55%),radial-gradient(circle_at_10%_85%,rgba(59,124,217,0.10),transparent_55%)]"
       />
-      <Container className="relative py-20 sm:py-28">
-        <div className="grid gap-10 md:grid-cols-[1fr_1.6fr] md:items-end">
+      <Container className="relative py-16 sm:py-28">
+        <div className="grid gap-8 md:grid-cols-[1fr_1.6fr] md:items-end">
           <div>
-            <p className="inline-flex items-center gap-2 text-[11px] sm:text-[10px] font-medium uppercase tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-6 before:bg-current before:opacity-50">
+            <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10.5px] sm:text-[10px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-5 sm:before:w-6 before:bg-current before:opacity-50">
               PRICING — 高校物理専門塾の料金
             </p>
             <h2

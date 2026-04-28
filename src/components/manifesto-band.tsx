@@ -38,8 +38,8 @@ export function ManifestoBand() {
         }}
       />
 
-      <Container className="relative py-24 sm:py-36">
-        <p className="inline-flex items-center gap-3 text-[11px] sm:text-[10px] font-medium uppercase tracking-[0.4em] text-gold before:inline-block before:h-px before:w-8 before:bg-gold/70">
+      <Container className="relative py-20 sm:py-36">
+        <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10.5px] sm:text-[10px] font-medium uppercase tracking-[0.28em] sm:tracking-[0.4em] text-gold before:inline-block before:h-px before:w-6 sm:before:w-8 before:bg-gold/70">
           MANIFESTO — 高校物理専門塾
         </p>
         <h2

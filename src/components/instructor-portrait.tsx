@@ -131,17 +131,17 @@ export function InstructorPortrait({ className }: Props) {
       </div>
 
       {/* NAME block */}
-      <div className="relative px-6 pt-7">
-        <p className="text-[10px] tracking-[0.3em] uppercase text-ink-500">
+      <div className="relative px-5 sm:px-6 pt-6 sm:pt-7">
+        <p className="text-[10px] tracking-[0.24em] sm:tracking-[0.3em] uppercase text-ink-500">
           Instructor
         </p>
-        <h3 className="mt-2 font-serif text-4xl leading-none text-ink-900">
+        <h3 className="mt-2 font-serif text-[2rem] sm:text-4xl leading-none text-ink-900">
           {instructor.name}
         </h3>
-        <p className="mt-2 font-mono text-[11px] tracking-[0.32em] text-ink-500">
+        <p className="mt-2 break-all font-mono text-[10.5px] sm:text-[11px] tracking-[0.22em] sm:tracking-[0.32em] text-ink-500">
           {instructor.nameEn.toUpperCase()}
         </p>
-        <p className="mt-4 text-xs leading-relaxed text-ink-700">
+        <p className="mt-4 text-[12.5px] sm:text-xs leading-[1.7] sm:leading-relaxed text-ink-700">
           電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導に携わる。
         </p>
       </div>
@@ -157,7 +157,7 @@ export function InstructorPortrait({ className }: Props) {
       </div>
 
       {/* Credentials list */}
-      <ul className="relative flex-1 space-y-2 px-6 py-5">
+      <ul className="relative flex-1 space-y-2 px-5 sm:px-6 py-5">
         {credentials.map((c) => {
           const t = toneClass(c.tone);
           return (
@@ -177,14 +177,14 @@ export function InstructorPortrait({ className }: Props) {
                 <c.icon className="h-3.5 w-3.5" aria-hidden />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-[9px] tracking-[0.22em] uppercase text-ink-500">
+                <p className="text-[9px] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-ink-500">
                   {c.label}
                 </p>
-                <p className={cn("mt-0.5 font-serif text-sm leading-tight", t.value)}>
+                <p className={cn("mt-0.5 font-serif text-[13px] sm:text-sm leading-tight", t.value)}>
                   {c.value}
                 </p>
               </div>
-              <p className="shrink-0 text-[10px] text-ink-500">{c.sub}</p>
+              <p className="hidden shrink-0 text-[10px] text-ink-500 sm:block">{c.sub}</p>
             </li>
           );
         })}

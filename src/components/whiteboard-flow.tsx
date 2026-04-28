@@ -16,24 +16,78 @@ export function WhiteboardFlow() {
         }}
       />
 
-      <Container className="relative py-24 sm:py-32">
-        <p className="inline-flex items-center gap-2 text-[11px] sm:text-[10px] font-medium uppercase tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-6 before:bg-current before:opacity-50">
+      <Container className="relative py-20 sm:py-32">
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10.5px] sm:text-[10px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-5 sm:before:w-6 before:bg-current before:opacity-50">
           WHITEBOARD — 高校物理専門塾の授業設計図
         </p>
         <h2
           id="whiteboard-heading"
-          className="mt-6 max-w-3xl font-serif text-display-md tracking-[-0.012em] text-ink-900"
+          className="mt-5 sm:mt-6 max-w-3xl font-serif text-display-md tracking-[-0.012em] text-ink-900"
         >
           高校物理専門塾の授業は、
           <br className="hidden sm:block" />
           こうやって組み立てます。
         </h2>
-        <p className="mt-5 max-w-2xl text-[16px] sm:text-[15px] leading-[2] sm:leading-[1.85] text-ink-700">
+        <p className="mt-5 max-w-2xl text-[15.5px] sm:text-[15px] leading-[1.95] sm:leading-[1.85] text-ink-700">
           ホワイトボードに描く、授業の設計図です。問題を解く前に現象を語り、語れたら立式し、立式できたら型を固める。高校物理専門塾の授業は、すべてこの順序で組み立てます。
         </p>
 
-        {/* The whiteboard diagram */}
-        <div className="relative mt-16 overflow-hidden rounded-[2rem] border border-ink-900/10 bg-white shadow-elevate">
+        {/* MOBILE — vertical flow card. The desktop SVG is too dense to read on
+            phones, so we render a stacked, plain-text version of the same flow. */}
+        <ol className="mt-12 grid gap-3 sm:hidden">
+          {[
+            {
+              step: "01",
+              label: "現象",
+              accent: "border-brand/30 bg-brand-bg text-brand-deep",
+              body: "ばね・電場・波・気体。まず日本語で記述する。",
+              tagAccent: "text-brand-deep",
+            },
+            {
+              step: "02",
+              label: "立式",
+              accent: "border-warm/35 bg-warm-bg text-warm-deep",
+              body: "F = ma / ∮ E·dA = Q/ε₀ / v = fλ — 機械的に式を立てる手順を再現可能に。",
+              tagAccent: "text-warm-deep",
+            },
+            {
+              step: "03",
+              label: "得点",
+              accent: "border-forest/35 bg-forest-bg text-forest-deep",
+              body: "共通テスト 満点 / 二次試験 9割 — 講師自身の到達点。",
+              tagAccent: "text-forest-deep",
+            },
+          ].map((s, i, arr) => (
+            <li key={s.step} className="relative">
+              <div className={`relative overflow-hidden rounded-2xl border bg-white p-5 ${s.accent}`}>
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-[10.5px] tracking-[0.24em] text-ink-500">
+                    STEP {s.step}
+                  </span>
+                  <span className={`font-serif text-[1.35rem] tracking-[-0.012em] ${s.tagAccent}`}>
+                    {s.label}
+                  </span>
+                </div>
+                <p className="mt-3 text-[14px] leading-[1.85] text-ink-700">
+                  {s.body}
+                </p>
+              </div>
+              {i < arr.length - 1 && (
+                <div
+                  aria-hidden
+                  className="mx-auto my-2 h-5 w-px bg-ink-900/15"
+                />
+              )}
+            </li>
+          ))}
+        </ol>
+
+        <p className="mt-6 sm:hidden text-center text-[12.5px] tracking-[0.18em] text-warm-deep">
+          ✱ ここを高校物理専門塾が伴走します
+        </p>
+
+        {/* DESKTOP — original whiteboard diagram */}
+        <div className="relative mt-16 hidden overflow-hidden rounded-[2rem] border border-ink-900/10 bg-white shadow-elevate sm:block">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle_at_85%_15%,rgba(226,128,64,0.10),transparent_55%),radial-gradient(circle_at_10%_85%,rgba(59,124,217,0.10),transparent_55%)]"

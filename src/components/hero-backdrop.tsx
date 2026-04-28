@@ -68,9 +68,10 @@ export function HeroBackdrop({ className }: Props) {
             "radial-gradient(closest-side, rgba(216,228,217,0.6), rgba(89,122,91,0.12) 55%, transparent 82%)",
         }}
       />
-      {/* very subtle paper grain via tiny noise gradient */}
+      {/* very subtle paper grain via tiny noise gradient — desktop only.
+          On mobile it's invisibly small but still costs paint time. */}
       <div
-        className="absolute inset-0 opacity-[0.05] mix-blend-multiply"
+        className="absolute inset-0 hidden opacity-[0.05] mix-blend-multiply sm:block"
         style={{
           backgroundImage:
             "linear-gradient(45deg, rgba(20,35,65,0.06) 1px, transparent 1px), linear-gradient(-45deg, rgba(20,35,65,0.04) 1px, transparent 1px)",
@@ -78,11 +79,11 @@ export function HeroBackdrop({ className }: Props) {
         }}
       />
 
-      {/* gentle physics wave near the bottom */}
+      {/* gentle physics wave near the bottom — desktop only */}
       <svg
         viewBox="0 0 1600 200"
         preserveAspectRatio="none"
-        className="absolute bottom-0 left-0 h-[18%] w-full opacity-50"
+        className="absolute bottom-0 left-0 hidden h-[18%] w-full opacity-50 sm:block"
       >
         <defs>
           <linearGradient id="hb-wave" x1="0" y1="0" x2="1" y2="0">
@@ -106,8 +107,8 @@ export function HeroBackdrop({ className }: Props) {
         />
       </svg>
 
-      {/* constellation dots */}
-      <div className="absolute inset-0">
+      {/* constellation dots — hidden on mobile (12 absolute spans we don't need) */}
+      <div className="absolute inset-0 hidden sm:block">
         {dots.map(([x, y, r, o], i) => (
           <span
             key={i}

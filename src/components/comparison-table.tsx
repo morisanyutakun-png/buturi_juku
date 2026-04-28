@@ -42,21 +42,24 @@ const rows: {
 ];
 
 function Mark({ type }: { type: Cell }) {
+  const base =
+    "inline-flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-full border";
+  const icon = "h-3.5 w-3.5 sm:h-4 sm:w-4";
   if (type === "good")
     return (
-      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-forest/30 bg-forest-bg text-forest-deep">
-        <Check className="h-4 w-4" aria-hidden />
+      <span className={`${base} border-forest/30 bg-forest-bg text-forest-deep`}>
+        <Check className={icon} aria-hidden />
       </span>
     );
   if (type === "bad")
     return (
-      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-ink-900/10 bg-paper-soft text-ink-400">
-        <X className="h-4 w-4" aria-hidden />
+      <span className={`${base} border-ink-900/10 bg-paper-soft text-ink-400`}>
+        <X className={icon} aria-hidden />
       </span>
     );
   return (
-    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-ink-900/10 bg-paper-soft text-ink-500">
-      <Minus className="h-4 w-4" aria-hidden />
+    <span className={`${base} border-ink-900/10 bg-paper-soft text-ink-500`}>
+      <Minus className={icon} aria-hidden />
     </span>
   );
 }
@@ -77,17 +80,27 @@ export function ComparisonTable() {
           <div className="p-5 text-center">独学</div>
         </div>
 
-        {/* mobile: stacked */}
+        {/* mobile: stacked — specialty card on top, alternatives in a 2-up row */}
         <div className="divide-y divide-ink-900/10 md:hidden">
           {rows.map((r) => (
-            <div key={r.criterion} className="p-6">
-              <p className="text-[12px] tracking-[0.2em] uppercase text-ink-500 font-medium">
+            <div key={r.criterion} className="p-5">
+              <p className="text-[11.5px] tracking-[0.18em] uppercase text-ink-500 font-medium">
                 {r.criterion}
               </p>
-              <div className="mt-5 grid grid-cols-3 gap-2.5 text-[12px]">
-                <MobileCell label="高校物理専門塾" cell={r.specialty} highlight />
-                <MobileCell label="総合塾" cell={r.general} />
-                <MobileCell label="独学" cell={r.solo} />
+              <div className="mt-4 rounded-xl border border-brand/30 bg-brand-bg p-4">
+                <div className="flex items-center gap-3">
+                  <Mark type={r.specialty.mark} />
+                  <p className="text-[10.5px] tracking-[0.18em] uppercase text-brand-deep font-medium">
+                    高校物理専門塾
+                  </p>
+                </div>
+                <p className="mt-2.5 text-[13px] leading-[1.75] text-ink-800">
+                  {r.specialty.note}
+                </p>
+              </div>
+              <div className="mt-2.5 grid grid-cols-2 gap-2.5">
+                <MobileCellLite label="総合塾" cell={r.general} />
+                <MobileCellLite label="独学" cell={r.solo} />
               </div>
             </div>
           ))}
@@ -135,28 +148,24 @@ function Cell({
   );
 }
 
-function MobileCell({
+function MobileCellLite({
   label,
   cell,
-  highlight,
 }: {
   label: string;
   cell: { mark: Cell; note: string };
-  highlight?: boolean;
 }) {
   return (
-    <div
-      className={`rounded-xl border p-3 text-center ${
-        highlight ? "border-brand/30 bg-brand-bg" : "border-ink-900/10 bg-paper-soft"
-      }`}
-    >
-      <p className="text-[10.5px] tracking-[0.16em] uppercase text-ink-500 leading-tight">
-        {label}
-      </p>
-      <div className="mt-3 flex justify-center">
+    <div className="rounded-xl border border-ink-900/10 bg-paper-soft px-3 py-3">
+      <div className="flex items-center gap-2">
         <Mark type={cell.mark} />
+        <p className="text-[10px] tracking-[0.16em] uppercase text-ink-500 leading-tight">
+          {label}
+        </p>
       </div>
-      <p className="mt-3 text-[11px] leading-[1.65] text-ink-700">{cell.note}</p>
+      <p className="mt-2 text-[11.5px] leading-[1.7] text-ink-700">
+        {cell.note}
+      </p>
     </div>
   );
 }

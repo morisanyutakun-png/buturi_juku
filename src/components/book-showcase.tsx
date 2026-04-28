@@ -11,18 +11,18 @@ export function BookShowcase() {
       description="主宰講師 森祐太(名古屋大学 工学部 電気電子情報工学科)が手がけた電磁気の書籍。書籍で体系化した指導観を、そのままオンライン授業に持ち込みます。"
       className="relative overflow-hidden bg-gradient-to-b from-cream via-cream to-cream-muted text-ink-900 border-y border-ink-900/10"
     >
-      <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1fr]">
+      <div className="grid items-center gap-10 sm:gap-14 lg:grid-cols-[0.85fr_1fr]">
         <div className="relative">
           <div
             aria-hidden
-            className="absolute -left-10 -top-10 h-56 w-56 rounded-full bg-gold/40 blur-3xl"
+            className="absolute -left-10 -top-10 hidden h-56 w-56 rounded-full bg-gold/40 blur-3xl sm:block"
           />
           <div
             aria-hidden
-            className="absolute -right-10 bottom-10 h-48 w-48 rounded-full bg-ink-900/10 blur-3xl"
+            className="absolute -right-10 bottom-10 hidden h-48 w-48 rounded-full bg-ink-900/10 blur-3xl sm:block"
           />
 
-          <figure className="relative mx-auto w-full max-w-[380px]">
+          <figure className="relative mx-auto w-full max-w-[280px] sm:max-w-[380px]">
             <div className="group relative overflow-hidden rounded-[6px] shadow-[0_50px_90px_-30px_rgba(0,0,0,0.5)] ring-1 ring-ink-900/20 transition duration-500 hover:-translate-y-1 hover:shadow-[0_60px_110px_-30px_rgba(0,0,0,0.55)]">
               <Image
                 src={featuredBook.coverImage}
@@ -31,6 +31,8 @@ export function BookShowcase() {
                 height={2655}
                 unoptimized
                 priority={false}
+                loading="lazy"
+                sizes="(max-width: 640px) 280px, 380px"
                 className="block h-auto w-full"
               />
               {/* subtle reflection / spine edge */}
@@ -44,12 +46,12 @@ export function BookShowcase() {
               />
             </div>
 
-            <figcaption className="mt-5 flex items-center justify-between text-xs">
+            <figcaption className="mt-4 sm:mt-5 flex flex-wrap items-center justify-between gap-2 text-[11.5px] sm:text-xs">
               <span className="inline-flex items-center gap-2 rounded-full border border-ink-900/15 bg-paper/50 px-3 py-1 text-ink-700">
                 <BookOpen className="h-3 w-3" aria-hidden />
                 {featuredBook.field} / {featuredBook.publishedYear}
               </span>
-              <span className="font-mono tracking-[0.22em] text-ink-700/60">
+              <span className="font-mono tracking-[0.18em] sm:tracking-[0.22em] text-ink-700/60">
                 NAGOYA UNIV. EEI
               </span>
             </figcaption>
@@ -71,54 +73,54 @@ export function BookShowcase() {
           <h3 className="mt-2 font-serif text-display-md text-ink-900">
             {featuredBook.title}
           </h3>
-          <p className="mt-4 font-serif text-ink-700">
+          <p className="mt-4 font-serif text-[15px] sm:text-base text-ink-700">
             <span className="text-gold-deep">—</span> {featuredBook.subtitle}
           </p>
 
-          <p className="mt-8 text-ink-700 leading-[1.9]">
+          <p className="mt-7 sm:mt-8 text-[15px] sm:text-base text-ink-700 leading-[1.95] sm:leading-[1.9]">
             {featuredBook.description}
           </p>
 
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-7 sm:mt-8 grid gap-2.5 sm:gap-3 sm:grid-cols-2">
             {featuredBook.highlights.map((h) => (
               <li
                 key={h}
-                className="flex items-start gap-3 rounded-xl border border-ink-900/10 bg-paper/60 p-4 text-sm text-ink-900"
+                className="flex items-start gap-3 rounded-xl border border-ink-900/10 bg-paper/60 p-3.5 sm:p-4 text-[13.5px] sm:text-sm leading-[1.7] text-ink-900"
               >
                 <span
                   aria-hidden
-                  className="mt-0.5 h-4 w-4 shrink-0 rounded-full border border-gold-deep/50 bg-gold/40"
+                  className="mt-1 h-4 w-4 shrink-0 rounded-full border border-gold-deep/50 bg-gold/40"
                 />
                 {h}
               </li>
             ))}
           </ul>
 
-          <figure className="mt-10 rounded-2xl border border-ink-900/10 bg-paper/60 p-6">
+          <figure className="mt-8 sm:mt-10 rounded-2xl border border-ink-900/10 bg-paper/60 p-5 sm:p-6">
             <Quote className="h-5 w-5 text-gold-deep" aria-hidden />
-            <blockquote className="mt-3 font-serif text-lg leading-relaxed text-ink-900">
+            <blockquote className="mt-3 font-serif text-[1.05rem] sm:text-lg leading-[1.7] sm:leading-relaxed text-ink-900">
               「電磁気で失点する本当の理由は、公式の暗記量ではなく、
               <span className="text-gold-deep">場のイメージの欠如</span>
               にある。」
             </blockquote>
-            <figcaption className="mt-3 text-xs tracking-widest uppercase text-ink-700/60">
+            <figcaption className="mt-3 text-[11px] sm:text-xs tracking-widest uppercase text-ink-700/60">
               — 本書より
             </figcaption>
           </figure>
 
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
             <a
               href={featuredBook.amazonUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-ink-800"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-[14.5px] sm:text-sm font-medium text-white transition hover:bg-ink-800 min-h-[48px] sm:min-h-0"
             >
               Amazonで書籍を見る
               <ExternalLink className="h-4 w-4 transition group-hover:translate-x-0.5" />
             </a>
             <a
               href="/teacher"
-              className="inline-flex items-center gap-2 rounded-full border border-ink-900/20 px-6 py-3.5 text-sm text-ink-900 hover:border-ink-900/50 transition"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-ink-900/20 px-6 py-3.5 text-[14.5px] sm:text-sm text-ink-900 hover:border-ink-900/50 transition min-h-[48px] sm:min-h-0"
             >
               高校物理専門塾の講師プロフィールを見る
             </a>
