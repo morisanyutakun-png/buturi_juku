@@ -43,7 +43,11 @@ export function Hero() {
       </span>
 
       <Container className="relative py-16 sm:py-24 lg:py-40">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
+        {/* Mobile uses default block flow (each child = container width); only
+            switch to grid on lg+. Using `grid` without an explicit
+            `grid-template-columns` on mobile lets the implicit auto column
+            size to content, which can leave inner cards visually off-center. */}
+        <div className="lg:grid lg:items-center lg:gap-14 lg:grid-cols-[1.15fr_1fr]">
           <div className="relative">
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-700">
@@ -150,7 +154,7 @@ export function Hero() {
                 on phones for faster LCP / smaller DOM. No decorative watermark:
                 pure symmetric layout so the card is unambiguously centered. */}
             <div
-              className="relative mx-auto mt-9 w-full overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-br from-white via-warm-bg/45 to-brand-bg/45 p-6 text-center shadow-soft lg:hidden"
+              className="relative mx-auto mt-9 block w-full overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-b from-white via-warm-bg/30 to-brand-bg/30 p-6 text-center shadow-soft lg:hidden"
               aria-hidden
             >
               <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
