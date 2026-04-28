@@ -21,6 +21,10 @@ html {
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1, "cv11" 1;
   /* Mobile-first: 17px base on phones, 16px on tablet+ — bumps default text comfortably */
   font-size: 17px;
+  /* Belt-and-braces: stop any decorative element from creating a horizontal
+     scrollbar at the document root. `clip` does not establish a containing
+     block, so it doesn't break position:sticky in the header. */
+  overflow-x: clip;
 }
 
 @media (min-width: 768px) {
