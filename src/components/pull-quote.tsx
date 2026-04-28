@@ -13,13 +13,13 @@ export function PullQuote() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-10 top-4 select-none font-serif text-[18rem] leading-none text-warm/[0.10] sm:-left-6 sm:top-2 sm:text-[28rem]"
+        className="pointer-events-none absolute -left-4 top-2 select-none font-serif text-[10rem] leading-none text-warm/[0.10] sm:-left-6 sm:top-2 sm:text-[28rem]"
       >
         &ldquo;
       </div>
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-10 bottom-0 select-none font-serif text-[18rem] leading-none text-brand/[0.08] sm:-right-6 sm:text-[28rem]"
+        className="pointer-events-none absolute -right-4 bottom-0 select-none font-serif text-[10rem] leading-none text-brand/[0.08] sm:-right-6 sm:text-[28rem]"
       >
         &rdquo;
       </div>

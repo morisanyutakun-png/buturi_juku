@@ -153,9 +153,11 @@ export function Hero() {
             </div>
 
             {/* Lightweight mobile hero card — replaces the full HeroVisual SVG
-                on phones for faster LCP / smaller DOM. */}
+                on phones for faster LCP / smaller DOM. Content is centered to
+                avoid the right-shift perception caused by left-aligned text +
+                right-side decorative bleed. */}
             <div
-              className="relative mt-9 overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-br from-white via-warm-bg/45 to-brand-bg/45 p-6 shadow-soft lg:hidden"
+              className="relative mt-9 overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-br from-white via-warm-bg/45 to-brand-bg/45 p-6 text-center shadow-soft lg:hidden"
               aria-hidden
             >
               {/* Centered watermark — keeps the card visually balanced left/right */}
@@ -173,16 +175,16 @@ export function Hero() {
               <ul
                 className="relative mt-4 grid grid-cols-2 gap-2 font-mono text-[12.5px] text-ink-800"
               >
-                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2 text-center">
                   F = ma
                 </li>
-                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2 text-center">
                   v = f λ
                 </li>
-                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2 text-center">
                   ε = − dΦ/dt
                 </li>
-                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2">
+                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2 text-center">
                   E₁ = E₂
                 </li>
               </ul>
@@ -200,7 +202,7 @@ export function Hero() {
               ].map((item) => (
                 <li
                   key={item.k}
-                  className="bg-white/85 px-4 py-5 sm:px-5 sm:py-5"
+                  className="bg-white/85 px-4 py-5 text-center sm:px-5 sm:py-5 sm:text-left"
                 >
                   <p className="text-[10.5px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase text-ink-500">
                     {item.k}

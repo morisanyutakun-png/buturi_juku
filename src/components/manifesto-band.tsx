@@ -6,20 +6,30 @@ export function ManifestoBand() {
       aria-labelledby="manifesto-heading"
       className="relative isolate overflow-hidden border-y border-ink-900/[0.2] bg-ink-950 text-paper"
     >
-      {/* ambient gradients */}
+      {/* ambient gradients — heavy blurs are desktop-only on mobile to save paint cost */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 hidden sm:block"
       >
         <div className="absolute -left-32 -top-32 h-[36rem] w-[36rem] rounded-full bg-brand/25 blur-[140px]" />
         <div className="absolute -right-24 bottom-[-12rem] h-[34rem] w-[34rem] rounded-full bg-warm/22 blur-[140px]" />
         <div className="absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-[120px]" />
       </div>
-
-      {/* background formula constellation — trimmed for DOM weight */}
+      {/* lightweight mobile gradient — single radial, no blur filter */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 select-none text-paper/[0.07] leading-none"
+        className="pointer-events-none absolute inset-0 sm:hidden"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 30%, rgba(59,124,217,0.25), transparent 55%), radial-gradient(circle at 50% 90%, rgba(226,128,64,0.18), transparent 55%)",
+        }}
+      />
+
+      {/* background formula constellation — desktop only (3 absolute monospace nodes
+          are noise on small screens and add layout cost) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden select-none text-paper/[0.07] leading-none sm:block"
         style={{ fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}
       >
         <p className="absolute left-[2%] top-[8%] text-[6rem] sm:text-[10rem]">F = ma</p>
@@ -27,10 +37,10 @@ export function ManifestoBand() {
         <p className="absolute left-[8%] bottom-[14%] text-[5rem] sm:text-[8rem]">E = mc²</p>
       </div>
 
-      {/* grid texture */}
+      {/* grid texture — desktop only */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        className="pointer-events-none absolute inset-0 hidden opacity-[0.07] sm:block"
         style={{
           backgroundImage:
             "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
