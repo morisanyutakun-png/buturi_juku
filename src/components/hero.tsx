@@ -30,20 +30,14 @@ export function Hero() {
         }}
       />
 
-      {/* HUGE watermark kanji behind everything (left edge, bleed off) */}
+      {/* HUGE watermark kanji behind everything — desktop only.
+          Removed entirely on mobile because any bleed creates the perception
+          of right-shifted cards (see related QA feedback). The hero card
+          carries its own centered watermark instead. */}
       <span
         aria-hidden
         className="pointer-events-none absolute -left-[6vw] top-[14%] hidden select-none font-serif leading-[0.8] tracking-[-0.05em] text-warm-deep/[0.07] lg:block"
         style={{ fontSize: "clamp(20rem, 36vw, 44rem)" }}
-      >
-        森
-      </span>
-      {/* Mobile watermark — centered behind the content so the right side
-          doesn't visually outweigh the left and pull the cards rightward. */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[26%] -translate-x-1/2 select-none font-serif leading-[0.8] tracking-[-0.05em] text-brand-deep/[0.05] lg:hidden"
-        style={{ fontSize: "min(58vw, 16rem)" }}
       >
         森
       </span>
@@ -153,27 +147,20 @@ export function Hero() {
             </div>
 
             {/* Lightweight mobile hero card — replaces the full HeroVisual SVG
-                on phones for faster LCP / smaller DOM. Content is centered to
-                avoid the right-shift perception caused by left-aligned text +
-                right-side decorative bleed. */}
+                on phones for faster LCP / smaller DOM. No decorative watermark:
+                pure symmetric layout so the card is unambiguously centered. */}
             <div
-              className="relative mt-9 overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-br from-white via-warm-bg/45 to-brand-bg/45 p-6 text-center shadow-soft lg:hidden"
+              className="relative mx-auto mt-9 w-full overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-br from-white via-warm-bg/45 to-brand-bg/45 p-6 text-center shadow-soft lg:hidden"
               aria-hidden
             >
-              {/* Centered watermark — keeps the card visually balanced left/right */}
-              <span
-                className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-serif text-[9rem] leading-[0.8] tracking-tighter text-warm-deep/[0.08]"
-              >
-                森
-              </span>
-              <p className="relative text-[10px] tracking-[0.28em] uppercase text-brand-deep">
+              <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
                 MORI PHYSICS FOREST
               </p>
-              <p className="relative mt-2.5 font-serif text-[1.3rem] leading-[1.45] tracking-[-0.012em] text-ink-900">
+              <p className="mt-2.5 font-serif text-[1.3rem] leading-[1.45] tracking-[-0.012em] text-ink-900">
                 高校物理を、構造で。
               </p>
               <ul
-                className="relative mt-4 grid grid-cols-2 gap-2 font-mono text-[12.5px] text-ink-800"
+                className="mt-4 grid grid-cols-2 gap-2 font-mono text-[12.5px] text-ink-800"
               >
                 <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2 text-center">
                   F = ma
@@ -188,12 +175,12 @@ export function Hero() {
                   E₁ = E₂
                 </li>
               </ul>
-              <p className="relative mt-4 text-[11px] tracking-[0.22em] uppercase text-gold-deep">
+              <p className="mt-4 text-[11px] tracking-[0.22em] uppercase text-gold-deep">
                 FREE TRIAL · 60 MIN
               </p>
             </div>
 
-            <ul className="mt-10 sm:mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.10] bg-ink-900/[0.06] sm:grid-cols-4">
+            <ul className="mx-auto mt-10 sm:mt-16 grid w-full grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.10] bg-ink-900/[0.06] sm:grid-cols-4">
               {[
                 { k: "指導分野", v: "物理のみ", c: "text-brand-deep" },
                 { k: "授業形式", v: "1対1", c: "text-forest-deep" },
