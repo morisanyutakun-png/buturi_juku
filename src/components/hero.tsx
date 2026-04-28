@@ -38,11 +38,12 @@ export function Hero() {
       >
         森
       </span>
-      {/* Mobile watermark — sized to vw and clipped at parent overflow-hidden */}
+      {/* Mobile watermark — centered behind the content so the right side
+          doesn't visually outweigh the left and pull the cards rightward. */}
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-[14vw] top-[18%] select-none font-serif leading-[0.8] tracking-[-0.05em] text-brand-deep/[0.06] lg:hidden"
-        style={{ fontSize: "min(60vw, 18rem)" }}
+        className="pointer-events-none absolute left-1/2 top-[26%] -translate-x-1/2 select-none font-serif leading-[0.8] tracking-[-0.05em] text-brand-deep/[0.05] lg:hidden"
+        style={{ fontSize: "min(58vw, 16rem)" }}
       >
         森
       </span>
@@ -157,8 +158,9 @@ export function Hero() {
               className="relative mt-9 overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-br from-white via-warm-bg/45 to-brand-bg/45 p-6 shadow-soft lg:hidden"
               aria-hidden
             >
+              {/* Centered watermark — keeps the card visually balanced left/right */}
               <span
-                className="pointer-events-none absolute -right-4 -bottom-10 select-none font-serif text-[10rem] leading-[0.8] tracking-tighter text-warm-deep/[0.10]"
+                className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-serif text-[9rem] leading-[0.8] tracking-tighter text-warm-deep/[0.08]"
               >
                 森
               </span>
