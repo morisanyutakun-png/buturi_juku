@@ -1,8 +1,8 @@
 import {
   CalendarClock,
+  ClipboardList,
   Globe2,
   History,
-  MessageSquareText,
   MonitorPlay,
   Waves,
 } from "lucide-react";
@@ -11,8 +11,8 @@ import { Section } from "@/components/section";
 const items = [
   {
     icon: MonitorPlay,
-    title: "ライブ授業 + 手書きボード",
-    body: "画面共有とリアルタイムの手書き板書で、対面と遜色ない双方向授業を実現します。",
+    title: "画面共有 × ライブ解説",
+    body: "問題用紙と図を画面共有し、力の取り方・座標の置き方・立式の順序を一緒になぞりながら進めます。",
     tone: "brand",
   },
   {
@@ -34,9 +34,9 @@ const items = [
     tone: "brand",
   },
   {
-    icon: MessageSquareText,
-    title: "質問チャット常設",
-    body: "授業外でも疑問をその場で投げられる専用チャットを用意。学習のテンポが止まりません。",
+    icon: ClipboardList,
+    title: "毎回の宿題と次回フィードバック",
+    body: "授業の最後に、次回までに解く問題を指定。次の授業で立式の手順までさかのぼって添削します。",
     tone: "warm",
   },
   {
@@ -58,7 +58,7 @@ export function OnlineSection() {
     <Section
       eyebrow="ONLINE ADVANTAGE"
       title={<>高校物理専門塾 × オンライン、<br className="sm:hidden" />だからできること。</>}
-      description="高校物理専門塾「物理の森」のオンライン授業は、対面の代替ではありません。移動時間を学習時間に変え、録画で復習し、チャットで質問する。高校物理の学習は、オンラインの高校物理専門塾のほうが加速します。"
+      description="高校物理専門塾「物理の森」のオンライン授業は、対面の代替ではありません。移動時間を学習時間に変え、録画で復習し、宿題で次回までの取り組みを設計する。高校物理の学習は、オンラインの高校物理専門塾のほうが加速します。"
       className="bg-paper"
     >
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -88,7 +88,7 @@ export function OnlineSection() {
             { k: "通塾時間の削減", v: "週 3〜6h", sub: "その分を演習に転用" },
             { k: "対応時間帯", v: "10:00–22:00", sub: "前後要相談" },
             { k: "録画の視聴期限", v: "無期限", sub: "在籍中いつでも" },
-            { k: "質問チャット", v: "24h 投稿可", sub: "24–48h 内に回答" },
+            { k: "授業形式", v: "完全1対1", sub: "講師固定 / 振替可" },
           ].map((x) => (
             <div key={x.k} className="p-6 sm:p-7 text-center">
               <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.22em] sm:tracking-[0.28em] uppercase text-ink-500">

@@ -75,7 +75,7 @@ export function PricePreview() {
               <span className="text-warm-deep">最初に</span>明示します。
             </h2>
             <p className="mt-5 max-w-md text-[15.5px] sm:text-[15px] leading-[2] sm:leading-[1.85] text-ink-700">
-              高校物理専門塾の入塾金は<strong className="font-medium text-ink-900">0円</strong>。教材費・システム利用料も別途いただきません。受講料の概算をTOPで先に示します。
+              高校物理専門塾の入塾金は<strong className="font-medium text-ink-900">0円</strong>。システム利用料も別途いただきません。受講料の概算をTOPで先に示します。<span className="text-ink-500">※ 指定教材（市販の問題集等）のみ、別途ご購入をお願いしています。</span>
             </p>
             <Link
               href="/courses"
@@ -122,7 +122,7 @@ export function PricePreview() {
         <ul className="mt-12 grid gap-3 sm:grid-cols-3">
           {[
             "入塾金 0円",
-            "教材費・システム利用料 0円",
+            "システム利用料 0円",
             "途中解約ペナルティなし",
           ].map((x) => (
             <li
