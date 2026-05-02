@@ -2,8 +2,8 @@ import {
   CalendarClock,
   ClipboardList,
   Globe2,
-  History,
   MonitorPlay,
+  PencilLine,
   Waves,
 } from "lucide-react";
 import { Section } from "@/components/section";
@@ -16,9 +16,9 @@ const items = [
     tone: "brand",
   },
   {
-    icon: History,
-    title: "録画で何度でも復習",
-    body: "授業はすべて録画データでお渡し。わからなかった瞬間を、当日のうちに見直せます。",
+    icon: PencilLine,
+    title: "授業ノートが残る形式",
+    body: "画面共有した問題用紙・板書はPDF/画像でお渡し。後から自分のノートに貼って復習に使えます。",
     tone: "warm",
   },
   {
@@ -58,7 +58,7 @@ export function OnlineSection() {
     <Section
       eyebrow="ONLINE ADVANTAGE"
       title={<>高校物理専門塾 × オンライン、<br className="sm:hidden" />だからできること。</>}
-      description="高校物理専門塾「物理の森」のオンライン授業は、対面の代替ではありません。移動時間を学習時間に変え、録画で復習し、宿題で次回までの取り組みを設計する。高校物理の学習は、オンラインの高校物理専門塾のほうが加速します。"
+      description="高校物理専門塾「物理の森」のオンライン授業は、対面の代替ではありません。移動時間を学習時間に変え、授業ノートを残し、宿題で次回までの取り組みを設計する。高校物理の学習は、オンラインの高校物理専門塾のほうが加速します。"
       className="bg-paper"
     >
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -87,7 +87,7 @@ export function OnlineSection() {
           {[
             { k: "通塾時間の削減", v: "週 3〜6h", sub: "その分を演習に転用" },
             { k: "対応時間帯", v: "10:00–22:00", sub: "前後要相談" },
-            { k: "録画の視聴期限", v: "無期限", sub: "在籍中いつでも" },
+            { k: "授業ノート", v: "PDF配布", sub: "板書・解説を毎回共有" },
             { k: "授業形式", v: "完全1対1", sub: "講師固定 / 振替可" },
           ].map((x) => (
             <div key={x.k} className="p-6 sm:p-7 text-center">

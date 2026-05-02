@@ -23,7 +23,7 @@ const rows: {
   },
   {
     criterion: "わからない瞬間への対応",
-    specialty: { mark: "good", note: "授業内+チャットで即解消" },
+    specialty: { mark: "good", note: "次回授業の冒頭で立式手順までさかのぼって添削" },
     general: { mark: "mid", note: "質問時間が限定的" },
     solo: { mark: "bad", note: "解決できず放置されやすい" },
   },

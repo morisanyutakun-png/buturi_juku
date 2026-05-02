@@ -79,7 +79,7 @@ export const courses: Course[] = [
     highlights: [
       "完全1対1・講師固定",
       "志望校別カリキュラム",
-      "質問は授業外でもチャット対応",
+      "授業ノート(板書・解説)を毎回PDFで配布",
     ],
     faq: [
       {
