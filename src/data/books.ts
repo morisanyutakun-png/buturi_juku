@@ -51,9 +51,10 @@ export const books: Book[] = [
       "高校物理を踏まえつつ、大学初年度レベルまでを射程に入れて力学を体系化した一冊。運動方程式・エネルギー・運動量という三つの道具の使い分けから、円運動・単振動・万有引力・剛体・流体までを、現象の本質と法則の成り立ちに踏み込んで解説。知識を暗記するのではなく、物理現象を論理的に解析し、応用問題に対応できる力を育てることを目指しています。",
     field: "力学",
     publishedYear: "2026",
-    coverImage: "/book/mechanics-cover.jpg",
-    coverWidth: 1500,
-    coverHeight: 2108,
+    amazonUrl: "https://amzn.asia/d/0efFqrcE",
+    coverImage: "/book/mechanics-cover.webp",
+    coverWidth: 1140,
+    coverHeight: 1602,
     badge: "著者による執筆書籍",
     highlights: [
       "運動方程式・エネルギー・運動量を『3つの道具』として整理",
