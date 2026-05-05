@@ -278,15 +278,21 @@ export default function TeacherPage() {
                 <p className="mt-1 font-serif text-lg text-ink-900">{b.title}</p>
                 <p className="mt-2 text-sm text-ink-700">{b.subtitle}</p>
               </div>
-              <a
-                href={b.amazonUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 bg-gold-soft/50 px-5 py-2.5 text-xs text-gold-deep hover:bg-gold-soft/60 transition"
-              >
-                Amazonで見る
-                <ExternalLink className="h-3 w-3 transition group-hover:translate-x-0.5" />
-              </a>
+              {b.amazonUrl ? (
+                <a
+                  href={b.amazonUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 bg-gold-soft/50 px-5 py-2.5 text-xs text-gold-deep hover:bg-gold-soft/60 transition"
+                >
+                  Amazonで見る
+                  <ExternalLink className="h-3 w-3 transition group-hover:translate-x-0.5" />
+                </a>
+              ) : (
+                <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-ink-900/15 bg-paper px-5 py-2.5 text-xs text-ink-600">
+                  {b.publishedYear} 刊行予定
+                </span>
+              )}
             </div>
           ))}
         </div>
@@ -312,7 +318,7 @@ export default function TeacherPage() {
           role: `${instructor.role} / ${instructor.affiliationShort}`,
           url: absoluteUrl("/teacher", siteConfig.url),
           description: instructor.bio,
-          sameAs: books.map((b) => b.amazonUrl),
+          sameAs: books.map((b) => b.amazonUrl).filter((u): u is string => Boolean(u)),
         })}
       />
       <JsonLd
