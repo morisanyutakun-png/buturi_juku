@@ -9,14 +9,14 @@ import { breadcrumbJsonLd, serviceJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "無料体験授業(60分) ｜ Solvora Learning Lab",
+  title: "体験授業（60分・¥3,000）｜ Solvora Learning Lab",
   description:
-    "Solvora Learning Lab（高校物理・理系個別指導 / AI復習プリント付き）の無料体験授業(60分)のご案内。現状診断から学習戦略の提案までをその場で行う、オンライン体験授業です（高校物理専門塾としての指導継続）。",
+    "Solvora Learning Lab の体験授業のご案内。60分・¥3,000 で、現状診断から学習戦略の提案までを講師（森祐太）が直接担当します。主力動線：体験 → 電磁気集中講座 → 1対1個別指導（高校物理・理系個別指導 / AI復習プリント付き）。",
   path: "/trial",
   keywords: [
     "Solvora Learning Lab 体験授業",
+    "高校物理 体験授業",
     "高校物理専門塾 体験授業",
-    "高校物理 体験授業 無料",
     "オンライン 高校物理 体験授業",
     "大学受験 物理 学習相談",
   ],
@@ -33,14 +33,14 @@ const flow = [
   {
     step: "02",
     time: "30 – 55分",
-    title: "診断ミニ授業",
-    body: "苦手分野の中から1テーマを選び、『言語化 → 立式 → 演習』の3ステップで指導を体験いただきます。",
+    title: "診断ミニ授業（電磁気の入口を試す）",
+    body: "苦手分野の中から1テーマを選び、『言語化 → 立式 → 演習』の3ステップで指導を体験いただきます。電磁気希望の方には、主力講座と同じ思考順序を圧縮して体験できます。",
   },
   {
     step: "03",
     time: "55 – 60分",
-    title: "学習戦略の提案",
-    body: "残り期間から逆算した学習ロードマップと、受講形式・料金についてお答えします。その場でお渡しできるよう構成しています。",
+    title: "学習戦略の提案 / 主力動線のご案内",
+    body: "残り期間から逆算した学習ロードマップに加え、電磁気集中講座 / 1対1個別指導 / テスト前集中など、合うコースをその場でご提案します。",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function TrialPage() {
   return (
     <>
       <PageHero
-        eyebrow="FREE TRIAL — 60分の体験授業"
+        eyebrow="TRIAL — 60分・¥3,000 の体験授業"
         watermark="試"
         tone="warm"
         breadcrumb={[
@@ -58,20 +58,20 @@ export default function TrialPage() {
         title={
           <>
             <span className="block">
-              <span className="text-warm">60分</span>で、
+              <span className="text-warm">60分・¥3,000</span>で、
             </span>
             <span className="block">あなたの高校物理を</span>
             <span className="block">診断します。</span>
           </>
         }
-        description="Solvora Learning Lab の体験授業は、入塾を前提としない学習相談としてご利用いただけます。高校物理の現状の苦手分野と残り期間を踏まえた学習戦略を、その場でお渡しします。体験授業内のミニ授業で解けなかった問題は、後日 AI復習プリントとして整理する流れもご紹介します。"
+        description="Solvora Learning Lab の体験授業は、入塾を前提としない学習相談としてご利用いただけます。本気で受験と向き合う方への軽い参加コストとして ¥3,000 をいただき、現状の苦手分野と残り期間を踏まえた学習戦略を、講師（森祐太）が直接お渡しします。主力動線は、ここから電磁気集中講座 → 1対1個別指導です。"
       >
         <div className="flex flex-wrap gap-3">
           <Link
             href="/contact"
             className="group inline-flex items-center gap-2 rounded-full bg-warm px-7 py-4 text-[15px] sm:text-[14px] font-medium text-white shadow-warm transition hover:bg-warm-deep min-h-[52px] sm:min-h-0"
           >
-            無料体験授業を申し込む
+            体験授業を申し込む（¥3,000）
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
           <Link
@@ -169,18 +169,18 @@ export default function TrialPage() {
               <p className="text-[11px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
                 FEE
               </p>
-              <p className="mt-4 font-serif text-[2.4rem] sm:text-3xl text-ink-900">無料</p>
+              <p className="mt-4 font-serif text-[2.4rem] sm:text-3xl text-ink-900">¥3,000</p>
               <p className="mt-3 text-[13.5px] sm:text-xs leading-relaxed text-ink-600">
-                初回のみ。オンラインで実施します。
+                60分・初回のみ／前払い／オンライン実施。
               </p>
               <p className="mt-2 sm:mt-1.5 text-[12.5px] sm:text-[11px] text-ink-500">
-                使用ツールは受講開始時にご案内します。
+                使用ツール・お支払い方法はお申し込み後にご案内します。
               </p>
 
               <ul className="mt-7 sm:mt-6 space-y-3 sm:space-y-2 text-[14px] sm:text-xs leading-[1.7] text-ink-700">
                 <li className="flex items-start gap-2.5 sm:gap-2">
                   <Check className="mt-1 sm:mt-0.5 h-4 w-4 sm:h-3 sm:w-3 shrink-0 text-brand-deep" />
-                  入塾前提ではありません
+                  入塾前提ではありません（無理な勧誘なし）
                 </li>
                 <li className="flex items-start gap-2.5 sm:gap-2">
                   <Check className="mt-1 sm:mt-0.5 h-4 w-4 sm:h-3 sm:w-3 shrink-0 text-brand-deep" />
@@ -188,7 +188,11 @@ export default function TrialPage() {
                 </li>
                 <li className="flex items-start gap-2.5 sm:gap-2">
                   <Check className="mt-1 sm:mt-0.5 h-4 w-4 sm:h-3 sm:w-3 shrink-0 text-brand-deep" />
-                  当日中に学習戦略をお渡しします
+                  当日中に学習戦略 + 主力動線（電磁気集中→個別）のご提案
+                </li>
+                <li className="flex items-start gap-2.5 sm:gap-2">
+                  <Check className="mt-1 sm:mt-0.5 h-4 w-4 sm:h-3 sm:w-3 shrink-0 text-brand-deep" />
+                  講師（森祐太）が直接担当
                 </li>
               </ul>
 
@@ -219,21 +223,21 @@ export default function TrialPage() {
       <JsonLd
         id="ld-webpage-trial"
         data={webPageJsonLd({
-          name: "無料体験授業(60分) ｜ Solvora Learning Lab",
+          name: "体験授業（60分・¥3,000）｜ Solvora Learning Lab",
           description:
-            "Solvora Learning Lab の60分無料体験授業。現在の高校物理の理解度を診断し、学習戦略を提案します（高校物理専門塾としての指導継続）。",
+            "Solvora Learning Lab の60分・¥3,000 体験授業。現在の高校物理の理解度を診断し、学習戦略と主力動線（電磁気集中講座→1対1個別指導）を提案します（高校物理専門塾としての指導継続）。",
           path: "/trial",
         })}
       />
       <JsonLd
         id="ld-service-trial"
         data={serviceJsonLd({
-          name: "Solvora Learning Lab の無料体験授業（高校物理・理系個別指導）",
+          name: "Solvora Learning Lab の体験授業（高校物理・理系個別指導）",
           description:
-            "Solvora Learning Lab が行う、高校物理・大学受験物理の現状診断と学習戦略提案の60分オンライン体験授業です（高校物理専門塾としての指導継続）。",
+            "Solvora Learning Lab が行う、高校物理・大学受験物理の現状診断と学習戦略提案の60分オンライン体験授業（¥3,000）です（高校物理専門塾としての指導継続）。",
           path: "/trial",
           serviceType: "オンライン学習相談 / 体験授業 / 高校物理・理系個別指導",
-          price: "0",
+          price: "3000",
         })}
       />
     </>

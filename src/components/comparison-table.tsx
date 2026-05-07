@@ -34,9 +34,9 @@ const rows: {
     solo: { mark: "bad", note: "そのまま放置になりがち" },
   },
   {
-    criterion: "物理5分野の体系性",
-    specialty: { mark: "good", note: "分野横断の構造から指導" },
-    general: { mark: "mid", note: "単元ごとの点取り重視" },
+    criterion: "単元ごとの考察の深さ",
+    specialty: { mark: "good", note: "著者本人講座で電磁気が特に強い／全分野を書籍ベースで深堀り" },
+    general: { mark: "mid", note: "単元ごとの点取り重視で深さは限定的" },
     solo: { mark: "mid", note: "教材の良し悪しに依存" },
   },
   {

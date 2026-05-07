@@ -1,10 +1,10 @@
 import {
+  BookMarked,
   CalendarClock,
   ClipboardList,
   FileText,
   Globe2,
   MonitorPlay,
-  PencilLine,
 } from "lucide-react";
 import { Section } from "@/components/section";
 
@@ -16,9 +16,9 @@ const items = [
     tone: "brand",
   },
   {
-    icon: PencilLine,
-    title: "授業ノートが残る形式",
-    body: "画面共有した問題用紙・板書はPDF/画像でお渡し。後から自分のノートに貼って復習に使えます。",
+    icon: BookMarked,
+    title: "オリジナル教材で本質から理解",
+    body: "授業の軸は、講師（森祐太）自身が執筆した『考える力を育てる』シリーズ。公式の暗記ではなく、現象と原理から立式できる状態を目指して組み立てます。",
     tone: "warm",
   },
   {
@@ -87,7 +87,7 @@ export function OnlineSection() {
           {[
             { k: "通塾時間の削減", v: "週 3〜6h", sub: "その分を演習に転用" },
             { k: "対応時間帯", v: "10:00–22:00", sub: "前後要相談" },
-            { k: "授業ノート", v: "PDF配布", sub: "板書・解説を毎回共有" },
+            { k: "授業教材", v: "著者本人の自作", sub: "『考える力を育てる』シリーズ" },
             { k: "授業形式", v: "完全1対1", sub: "講師固定 / 振替可" },
           ].map((x) => (
             <div key={x.k} className="p-6 sm:p-7 text-center">

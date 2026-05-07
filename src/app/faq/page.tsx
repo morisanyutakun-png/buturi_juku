@@ -19,7 +19,7 @@ export const metadata: Metadata = buildMetadata({
     "高校物理専門塾 料金",
     "高校物理専門塾 体験授業",
     "オンライン物理 授業",
-    "物理 体験授業 無料",
+    "物理 体験授業 オンライン",
   ],
   category: "education",
 });
