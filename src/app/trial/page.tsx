@@ -209,7 +209,7 @@ export default function TrialPage() {
       </Section>
 
       <CtaBlock
-        primary={{ label: "体験授業を申し込む（¥3,000）", href: "/contact?topic=trial" }}
+        primary={{ label: "体験授業を申し込む", href: "/contact?topic=trial" }}
         secondary={{ label: "高校物理・理系個別指導の講座を見る", href: "/courses" }}
       />
 

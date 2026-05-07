@@ -193,7 +193,7 @@ export function MobileNav() {
                   "linear-gradient(120deg, #b35f27 0%, #e28040 60%, #f3a86c 100%)",
               }}
             >
-              体験授業を申し込む（¥3,000）
+              体験授業を申し込む
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link

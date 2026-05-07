@@ -235,8 +235,8 @@ export default async function CourseDetailPage({
                   className="inline-flex min-h-[52px] sm:min-h-0 items-center justify-center gap-2 rounded-full bg-warm px-5 py-4 sm:py-3 text-[15px] sm:text-sm font-medium text-white hover:bg-warm-deep transition"
                 >
                   {course.slug === "trial"
-                    ? "体験授業を申し込む（¥3,000）"
-                    : "この講座を希望して体験授業を申し込む（¥3,000）"}
+                    ? "体験授業を申し込む"
+                    : "この講座を希望して体験授業を申し込む"}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 {course.slug !== "trial" && (
