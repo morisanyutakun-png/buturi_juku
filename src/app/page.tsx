@@ -140,18 +140,18 @@ const subjects = [
 const flow = [
   {
     step: "01",
-    title: "体験授業のお申し込み",
-    description: "Webフォームから3分でお申し込みいただけます。日程候補を複数お送りください。",
+    title: "無料体験のお申し込み",
+    description: "Webフォームから3分でお申し込みいただけます。気になる講座を選んでクリックすると、フォームに自動入力されます。日程候補を複数お送りください。",
   },
   {
     step: "02",
-    title: "体験授業（60分）",
-    description: "現在の理解度ヒアリング、診断ミニ授業、主力動線（電磁気集中→個別）のご提案までを、講師（森祐太）が直接担当します。",
+    title: "無料体験授業（60分）",
+    description: "現在の理解度ヒアリング、診断ミニ授業、おすすめコースのご提案までを、講師（森祐太）が直接担当します。",
   },
   {
     step: "03",
-    title: "カリキュラム設計",
-    description: "電磁気集中・1対1個別・分野別など、合うコースを提案。志望校・現状・残り期間から、投資対効果の高いカリキュラムをオーダーメイドで作成します。",
+    title: "コース選定 / カリキュラム設計",
+    description: "志望校・現状・残り期間から、合うコースを提案します。電磁気集中・分野別・テスト前は『考える力を育てる』シリーズに沿った定型カリキュラム。1対1 専用カリキュラム指導（最上位プロダクト）を選んだ場合のみ、毎回オーダーメイドで設計します。",
   },
   {
     step: "04",
@@ -390,12 +390,23 @@ export default function HomePage() {
         className="bg-paper-soft"
       >
         <div className="grid gap-6 md:grid-cols-2">
-          {featuredCourses.map((c) => (
+          {featuredCourses.map((c) => {
+            const isRecommended = c.slug === "electromagnetism";
+            return (
             <Link
               key={c.slug}
               href={`/courses/${c.slug}`}
-              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+              className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border bg-white/85 p-7 sm:p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:shadow-card ${
+                isRecommended
+                  ? "border-brand/40 ring-2 ring-brand/30 hover:border-brand/60"
+                  : "border-ink-900/[0.07] hover:border-ink-900/[0.12]"
+              }`}
             >
+              {isRecommended && (
+                <span className="absolute right-5 top-5 inline-flex rounded-full bg-brand px-3 py-1 text-[10.5px] font-medium tracking-[0.2em] text-white">
+                  おすすめ
+                </span>
+              )}
               <div>
                 <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
                   {c.category}
@@ -421,7 +432,8 @@ export default function HomePage() {
                 </span>
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
         <div className="mt-12 text-center">
           <Link

@@ -224,15 +224,28 @@ export default async function CourseDetailPage({
               </ul>
 
               <div className="mt-8 flex flex-col gap-3">
+                {/* 受講のスタートは必ず無料体験から。CTA は `/contact` フォームに
+                    クエリで講座情報を渡し、受講希望講座を自動入力する。 */}
                 <Link
-                  href="/trial"
+                  href={
+                    course.slug === "trial"
+                      ? "/contact?topic=trial"
+                      : `/contact?course=${course.slug}&topic=trial`
+                  }
                   className="inline-flex min-h-[52px] sm:min-h-0 items-center justify-center gap-2 rounded-full bg-warm px-5 py-4 sm:py-3 text-[15px] sm:text-sm font-medium text-white hover:bg-warm-deep transition"
                 >
-                  体験授業を申し込む
+                  {course.slug === "trial"
+                    ? "無料体験を申し込む"
+                    : "この講座を希望して無料体験を申し込む"}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
+                {course.slug !== "trial" && (
+                  <p className="text-center text-[12px] leading-[1.65] text-ink-500">
+                    受講のスタートは必ず無料体験から。フォームには本講座が自動でセットされます。
+                  </p>
+                )}
                 <Link
-                  href="/contact"
+                  href={`/contact?course=${course.slug}&topic=course`}
                   className="inline-flex min-h-[52px] sm:min-h-0 items-center justify-center gap-2 rounded-full border border-ink-900/15 px-5 py-4 sm:py-3 text-[15px] sm:text-sm text-ink-900 hover:border-brand hover:text-brand transition"
                 >
                   この講座について問い合わせる

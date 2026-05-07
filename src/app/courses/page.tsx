@@ -56,12 +56,23 @@ export default function CoursesIndexPage() {
         description="体験授業から志望校別カリキュラム、共通テスト対策、分野別集中講座まで。"
       >
         <div className="grid gap-6 md:grid-cols-2">
-          {courses.map((c) => (
+          {courses.map((c) => {
+            const isRecommended = c.slug === "electromagnetism";
+            return (
             <Link
               key={c.slug}
               href={`/courses/${c.slug}`}
-              className="group flex h-full flex-col justify-between rounded-2xl border border-ink-900/10 bg-white p-7 sm:p-8 transition hover:border-brand/40 hover:bg-paper-soft"
+              className={`group relative flex h-full flex-col justify-between rounded-2xl border bg-white p-7 sm:p-8 transition hover:bg-paper-soft ${
+                isRecommended
+                  ? "border-brand/40 ring-2 ring-brand/30 hover:border-brand/60"
+                  : "border-ink-900/10 hover:border-brand/40"
+              }`}
             >
+              {isRecommended && (
+                <span className="absolute right-5 top-5 inline-flex rounded-full bg-brand px-3 py-1 text-[10.5px] font-medium tracking-[0.2em] text-white">
+                  おすすめ
+                </span>
+              )}
               <div>
                 <p className="text-[11px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
                   {c.category}
@@ -93,7 +104,8 @@ export default function CoursesIndexPage() {
                 <ArrowRight className="h-4 w-4" />
               </p>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </Section>
 

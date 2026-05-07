@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Mail, Clock, MapPin } from "lucide-react";
 import { Section } from "@/components/section";
@@ -91,7 +92,11 @@ export default function ContactPage() {
           </div>
 
           <div className="rounded-2xl border border-ink-900/10 bg-white p-8">
-            <ContactForm />
+            {/* useSearchParams を使うクライアントコンポーネントは Suspense で
+                囲むことで、静的生成時に動的レンダリング扱いになるのを防ぐ。 */}
+            <Suspense fallback={<div className="h-96" aria-hidden />}>
+              <ContactForm />
+            </Suspense>
           </div>
         </div>
       </Section>

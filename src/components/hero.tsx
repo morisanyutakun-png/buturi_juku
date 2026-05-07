@@ -119,7 +119,7 @@ export function Hero() {
                 }}
               >
                 <span className="relative z-10 inline-flex items-center gap-2">
-                  体験授業を申し込む
+                  無料体験を申し込む
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                 </span>
                 <span

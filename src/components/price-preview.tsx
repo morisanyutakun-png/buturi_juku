@@ -5,7 +5,7 @@ import { courses, getCourseBySlug } from "@/data/courses";
 
 /**
  * 料金プレビュー（TOP）。
- * 主力動線：体験授業 (¥3,000) → 電磁気集中 → 個別指導。
+ * いちおし動線：体験授業 → 電磁気集中（おすすめ）→ 必要なら 1対1 専用カリキュラム。
  * カードに表示する 価格 / コース名 は data/courses.ts を単一情報源として参照。
  * これにより /courses ページや講座詳細ページとの表記ズレが起きない。
  */
@@ -21,8 +21,8 @@ type TierConfig = {
 const tierConfigs: TierConfig[] = [
   {
     slug: "trial",
-    unit: "60分 / 初回のみ",
-    note: "現状診断 + 学習戦略の提案までその場で実施。電磁気集中・個別指導への接続を前提にした、本気の体験。",
+    unit: "60分 / 初回のみ / 無料",
+    note: "受講のスタートは必ずここから。現状診断 + 学習戦略 + おすすめコースのご案内まで、その場で実施します。いきなり高額な講座にお金を払う必要はありません。",
     accent: "border-warm/35 bg-warm-bg/55",
     badge: "まずはここから",
   },
@@ -31,7 +31,7 @@ const tierConfigs: TierConfig[] = [
     unit: "1回 90分 × 全6回 / Solvora 主力講座",
     note: "森祐太が書いた『考える力を育てる 電磁気学』に沿って、場のイメージから回路までを書籍と同じ枠組みで一気通貫します。",
     accent: "border-brand/40 bg-brand-bg/65",
-    badge: "MAIN COURSE",
+    badge: "おすすめ",
     highlight: true,
   },
   {
@@ -94,7 +94,7 @@ export function PricePreview() {
               <span className="text-warm-deep">最初に</span>明示します。
             </h2>
             <p className="mt-5 max-w-md text-[15.5px] sm:text-[15px] leading-[2] sm:leading-[1.85] text-ink-700">
-              <strong className="font-medium text-ink-900">主力動線は、体験授業 → 電磁気集中講座</strong>。森祐太が書いた『考える力を育てる 電磁気学』に沿った電磁気集中を軸に、必要に応じて 1対1個別指導や分野別講座へ展開します。入塾金・システム利用料は<strong className="font-medium text-ink-900">0円</strong>です。
+              いま一番おすすめは、書籍に沿った <strong className="font-medium text-ink-900">電磁気集中講座</strong>。森祐太が書いた『考える力を育てる 電磁気学』を講座カリキュラムに落とし込んだ Solvora の主軸講座です。さらに専用カリキュラムが必要な方には 1対1 専用カリキュラム指導、ピンポイントの方は分野別講座をご用意しています。入塾金・システム利用料は<strong className="font-medium text-ink-900">0円</strong>です。
             </p>
             <p className="mt-3 max-w-md text-[12.5px] sm:text-[12px] leading-[1.75] text-ink-500">
               ※ 指定教材（『考える力を育てる』シリーズ等）のみ、別途ご購入をお願いしています。
