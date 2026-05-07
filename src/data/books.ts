@@ -76,6 +76,7 @@ export const books: Book[] = [
       "熱力学の基本概念から応用まで体系的に学べる構成。高校物理を踏まえつつ、大学初年度レベルまでを射程に入れて整理した一冊。公式の羅列ではなく、現象の本質と法則の成り立ちを理解することに重点を置き、マクロな状態量とミクロな分子運動を結ぶ『微小と積分』の視座から、熱の世界を読み解く共通言語を獲得することを目指します。",
     field: "熱力学",
     publishedYear: "2026",
+    amazonUrl: "https://amzn.asia/d/07jsS2MB",
     coverImage: "/book/thermodynamics-cover.webp",
     coverWidth: 1140,
     coverHeight: 1602,
