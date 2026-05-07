@@ -119,7 +119,7 @@ export function Hero() {
                 }}
               >
                 <span className="relative z-10 inline-flex items-center gap-2">
-                  体験授業を申し込む（¥3,000）
+                  体験授業を申し込む
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                 </span>
                 <span
@@ -213,14 +213,14 @@ export function Hero() {
               className="pointer-events-none absolute -left-6 -top-4 inline-flex items-center gap-2 rounded-full border border-ink-900/[0.10] bg-white/90 px-3.5 py-2 text-[11px] tracking-[0.22em] text-brand-deep shadow-soft"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-              FREE TRIAL · 60 MIN
+              TRIAL · 60 MIN
             </div>
             <div
               aria-hidden
               className="pointer-events-none absolute -right-3 bottom-10 inline-flex items-center gap-2 rounded-full border border-warm/35 bg-warm-bg/95 px-3.5 py-2 text-[11px] tracking-[0.22em] text-warm-deep shadow-soft"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-warm" />
-              月 ¥38,000〜
+              AI復習プリント付き
             </div>
           </div>
         </div>

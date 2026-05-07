@@ -86,7 +86,7 @@ const features: {
     icon: Users,
     title: "完全1対1指導",
     description:
-      "講師は固定制。あなたの思考のクセと分野別の苦手に、ピンポイントで介入します。",
+      "あなたの思考のクセと分野別の苦手に、ピンポイントで介入します。森祐太が一貫して担当します。",
     tone: "brand",
   },
   {
@@ -140,12 +140,12 @@ const subjects = [
 const flow = [
   {
     step: "01",
-    title: "体験授業のお申し込み（¥3,000）",
+    title: "体験授業のお申し込み",
     description: "Webフォームから3分でお申し込みいただけます。日程候補を複数お送りください。",
   },
   {
     step: "02",
-    title: "体験授業（60分・¥3,000）",
+    title: "体験授業（60分）",
     description: "現在の理解度ヒアリング、診断ミニ授業、主力動線（電磁気集中→個別）のご提案までを、講師（森祐太）が直接担当します。",
   },
   {
@@ -161,7 +161,12 @@ const flow = [
 ];
 
 export default function HomePage() {
-  const featuredCourses = courses.filter((c) => c.slug !== "trial").slice(0, 4);
+  // 体験以外の `featured` 講座を、データ定義順で並べる。
+  // /courses ページや TOP の price-preview と同じ courses.ts を参照することで、
+  // タイトル・価格表記がページ間でずれないことを保証する。
+  const featuredCourses = courses.filter(
+    (c) => c.featured && c.slug !== "trial",
+  );
   const latestArticles = articles.slice(0, 4);
 
   return (
@@ -403,9 +408,14 @@ export default function HomePage() {
                   {c.summary}
                 </p>
               </div>
-              <div className="mt-8 sm:mt-9 flex items-center justify-between text-[14px] sm:text-[13px]">
-                <span className="text-ink-500">{c.duration}</span>
-                <span className="inline-flex items-center gap-1.5 text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
+              <div className="mt-8 sm:mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-col gap-0.5 text-[13.5px] sm:text-[12.5px]">
+                  <span className="font-serif text-[1.05rem] sm:text-[1rem] text-ink-900">
+                    {c.price.value}
+                  </span>
+                  <span className="text-ink-500">{c.duration}</span>
+                </div>
+                <span className="inline-flex items-center gap-1.5 text-[14px] sm:text-[13px] text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
                   コース詳細を見る
                   <ArrowRight className="h-3.5 w-3.5" />
                 </span>

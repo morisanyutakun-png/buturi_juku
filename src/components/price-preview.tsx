@@ -1,62 +1,73 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Container } from "@/components/container";
+import { courses, getCourseBySlug } from "@/data/courses";
 
-type Tier = {
-  label: string;
-  price: string;
+/**
+ * 料金プレビュー（TOP）。
+ * 主力動線：体験授業 (¥3,000) → 電磁気集中 → 個別指導。
+ * カードに表示する 価格 / コース名 は data/courses.ts を単一情報源として参照。
+ * これにより /courses ページや講座詳細ページとの表記ズレが起きない。
+ */
+type TierConfig = {
+  slug: string;
   unit: string;
   note: string;
-  href: string;
-  /** カードのフレーム配色 */
   accent: string;
-  /** 主力訴求 (badge + 強調) */
   badge?: string;
   highlight?: boolean;
 };
 
-/**
- * 料金プレビュー（TOP）。
- * 主力動線：体験授業 (¥3,000) → 電磁気集中（著者本人講座）→ 個別指導。
- * 主力カード = 電磁気集中。体験は入口、個別と共通テスト・テスト前は補助。
- */
-const tiers: Tier[] = [
+const tierConfigs: TierConfig[] = [
   {
-    label: "体験授業（60分）",
-    price: "3,000円",
+    slug: "trial",
     unit: "60分 / 初回のみ",
     note: "現状診断 + 学習戦略の提案までその場で実施。電磁気集中・個別指導への接続を前提にした、本気の体験。",
-    href: "/trial",
     accent: "border-warm/35 bg-warm-bg/55",
     badge: "まずはここから",
   },
   {
-    label: "電磁気集中講座",
-    price: "全6回 58,000円",
-    unit: "90分 × 6回 / 著者本人講座",
-    note: "『考える力を育てる 電磁気学』の著者・森祐太が直接担当。場のイメージから回路までを書籍と同じ枠組みで一気通貫。Solvora の主力講座。",
-    href: "/courses/electromagnetism",
+    slug: "electromagnetism",
+    unit: "1回 90分 × 全6回 / Solvora 主力講座",
+    note: "森祐太が書いた『考える力を育てる 電磁気学』に沿って、場のイメージから回路までを書籍と同じ枠組みで一気通貫します。",
     accent: "border-brand/40 bg-brand-bg/65",
     badge: "MAIN COURSE",
     highlight: true,
   },
   {
-    label: "1対1個別指導",
-    price: "月 38,000円〜",
-    unit: "90分 × 月4回 / 講師固定",
-    note: "志望校から逆算したフルカスタム。AI復習プリント作成つき。難関大・医学部向けの上位プラン（月 58,000円）あり。",
-    href: "/courses/private",
+    slug: "private",
+    unit: "1回 90分 × 月4回 / Solvora 最上位プロダクト",
+    note: "毎回オーダーメイドの専用カリキュラムで、森祐太の指導時間を専有。難関大・医学部向けに、論述添削・過去問演習まで含む プレミアム（月額 88,000円）もご用意。",
     accent: "border-gold/40 bg-gold-soft/45",
   },
   {
-    label: "テスト前集中講座",
-    price: "全3回 18,000円",
-    unit: "90分 × 3回 / 駆け込み対応",
+    slug: "test-prep",
+    unit: "1回 90分 × 全3回 / 駆け込み対応",
     note: "学校テスト直前 7〜10日前から。出題範囲を絞って、立式の型と誤答パターンを一気に仕上げます。",
-    href: "/courses/test-prep",
     accent: "border-ink-900/15 bg-white/80",
   },
 ];
+
+const tiers = tierConfigs.map((cfg) => {
+  const course = getCourseBySlug(cfg.slug);
+  if (!course) {
+    throw new Error(
+      `[price-preview] courses.ts に slug="${cfg.slug}" の講座がありません。`,
+    );
+  }
+  return {
+    label: course.title,
+    price: course.price.value,
+    unit: cfg.unit,
+    note: cfg.note,
+    href: `/courses/${course.slug}`,
+    accent: cfg.accent,
+    badge: cfg.badge,
+    highlight: cfg.highlight,
+  };
+});
+
+const totalCourseCount = courses.length;
 
 export function PricePreview() {
   return (
@@ -83,7 +94,7 @@ export function PricePreview() {
               <span className="text-warm-deep">最初に</span>明示します。
             </h2>
             <p className="mt-5 max-w-md text-[15.5px] sm:text-[15px] leading-[2] sm:leading-[1.85] text-ink-700">
-              <strong className="font-medium text-ink-900">主力動線は、体験授業（¥3,000）→ 電磁気集中講座</strong>。著者本人が担当する電磁気を軸に、必要に応じて 1対1個別指導や分野別講座へ展開します。入塾金・システム利用料は<strong className="font-medium text-ink-900">0円</strong>です。
+              <strong className="font-medium text-ink-900">主力動線は、体験授業 → 電磁気集中講座</strong>。森祐太が書いた『考える力を育てる 電磁気学』に沿った電磁気集中を軸に、必要に応じて 1対1個別指導や分野別講座へ展開します。入塾金・システム利用料は<strong className="font-medium text-ink-900">0円</strong>です。
             </p>
             <p className="mt-3 max-w-md text-[12.5px] sm:text-[12px] leading-[1.75] text-ink-500">
               ※ 指定教材（『考える力を育てる』シリーズ等）のみ、別途ご購入をお願いしています。
@@ -92,7 +103,7 @@ export function PricePreview() {
               href="/courses"
               className="mt-7 inline-flex min-h-[48px] items-center gap-2 rounded-full border border-ink-900/15 bg-white/80 px-5 py-3 text-[14.5px] sm:text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
             >
-              全 8 講座・料金詳細を見る
+              全 {totalCourseCount} 講座・料金詳細を見る
               <ArrowRight className="h-3.5 w-3.5 opacity-60" />
             </Link>
           </div>

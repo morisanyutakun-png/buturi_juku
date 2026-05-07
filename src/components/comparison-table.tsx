@@ -35,7 +35,7 @@ const rows: {
   },
   {
     criterion: "単元ごとの考察の深さ",
-    specialty: { mark: "good", note: "著者本人講座で電磁気が特に強い／全分野を書籍ベースで深堀り" },
+    specialty: { mark: "good", note: "電磁気が特に強く、全分野を自作の書籍ベースで深堀り" },
     general: { mark: "mid", note: "単元ごとの点取り重視で深さは限定的" },
     solo: { mark: "mid", note: "教材の良し悪しに依存" },
   },

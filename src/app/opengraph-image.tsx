@@ -226,7 +226,7 @@ export default function OpengraphImage() {
                 display: "flex",
               }}
             >
-              FREE TRIAL · 60 MIN
+              TRIAL · 60 MIN
             </div>
             <div
               style={{
@@ -240,7 +240,7 @@ export default function OpengraphImage() {
                 display: "flex",
               }}
             >
-              月 ¥38,000〜
+              AI復習プリント付き
             </div>
           </div>
         </div>

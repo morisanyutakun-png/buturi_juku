@@ -87,8 +87,8 @@ export function OnlineSection() {
           {[
             { k: "通塾時間の削減", v: "週 3〜6h", sub: "その分を演習に転用" },
             { k: "対応時間帯", v: "10:00–22:00", sub: "前後要相談" },
-            { k: "授業教材", v: "著者本人の自作", sub: "『考える力を育てる』シリーズ" },
-            { k: "授業形式", v: "完全1対1", sub: "講師固定 / 振替可" },
+            { k: "授業教材", v: "森祐太の自作", sub: "『考える力を育てる』シリーズ" },
+            { k: "授業形式", v: "完全1対1", sub: "振替可" },
           ].map((x) => (
             <div key={x.k} className="p-6 sm:p-7 text-center">
               <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.22em] sm:tracking-[0.28em] uppercase text-ink-500">
