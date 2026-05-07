@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -6,6 +7,7 @@ import { MobileCtaBar } from "@/components/mobile-cta-bar";
 import { JsonLd } from "@/components/json-ld";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
 import { siteConfig } from "@/data/site";
+import { GA_ID } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -98,6 +100,26 @@ export default function RootLayout({
         <MobileCtaBar />
         <JsonLd id="ld-organization" data={organizationJsonLd()} />
         <JsonLd id="ld-website" data={websiteJsonLd()} />
+
+        {/* Google Analytics 4 (GA4) — gtag.js
+            ID は src/lib/analytics.ts で集中管理。`afterInteractive` で
+            インタラクティブ化後に読み込み、初回描画を阻害しない。 */}
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', { send_page_view: true });
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );

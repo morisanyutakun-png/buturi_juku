@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Mail, CalendarClock } from "lucide-react";
 import { courses } from "@/data/courses";
+import { trackTrialApplicationComplete } from "@/lib/analytics";
 
 const PENDING_KEY = "solvora-pending-application";
+/** 同じセッションで複数回 GA4 イベントを発火させないための flag。 */
+const FIRED_KEY = "solvora-thanks-event-fired";
 
 type Recovered = {
   name?: string;
@@ -27,15 +30,36 @@ export function ThanksConfirmation() {
   const [recovered, setRecovered] = useState<Recovered | null>(null);
 
   useEffect(() => {
+    let recoveredData: Recovered | null = null;
     try {
       const data = localStorage.getItem(PENDING_KEY);
       if (data) {
-        setRecovered(JSON.parse(data) as Recovered);
+        recoveredData = JSON.parse(data) as Recovered;
+        setRecovered(recoveredData);
         // 取得後に消す（同じ申込で再表示されないように）
         localStorage.removeItem(PENDING_KEY);
       }
     } catch {
       // localStorage が使えない / JSON 不正 — 黙ってフォールバック表示。
+    }
+
+    // GA4 計測：申込完了。Stripe success_url の `?session_id=` があれば
+    // transaction_id として送り、ブラウザ更新時の重複発火を sessionStorage で防ぐ。
+    try {
+      const alreadyFired = sessionStorage.getItem(FIRED_KEY);
+      if (!alreadyFired) {
+        const url = new URL(window.location.href);
+        const sessionId =
+          url.searchParams.get("session_id") ??
+          url.searchParams.get("checkout_session_id");
+        trackTrialApplicationComplete({
+          course: recoveredData?.course ?? null,
+          transactionId: sessionId,
+        });
+        sessionStorage.setItem(FIRED_KEY, "1");
+      }
+    } catch {
+      // sessionStorage / window.location が使えない場合も計測スキップで継続。
     }
   }, []);
 

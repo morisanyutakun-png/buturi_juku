@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Loader2, Check, CreditCard, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { courses } from "@/data/courses";
+import { trackTrialPaymentClick } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -116,6 +117,11 @@ export function ContactForm() {
       }
 
       if (requiresStripe) {
+        // GA4 計測：体験申込の決済ボタンクリック（リード獲得）。
+        trackTrialPaymentClick({
+          course: (payload.course as string) ?? "未定",
+          email: (payload.email as string) ?? null,
+        });
         // Stripe 決済ページへリダイレクト。
         // メールアドレスを prefill して、決済完了後に /thanks へ戻る前提。
         const email = (payload.email as string) ?? "";
