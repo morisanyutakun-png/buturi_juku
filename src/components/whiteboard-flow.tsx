@@ -42,19 +42,10 @@ const steps: Step[] = [
     step: "04",
     label: "復習プリント",
     subtitle: "REMで復習プリント作成",
-    body: "解けなかった1問をもとに、類題・解答・解説付きの復習PDFを作成します。AI（REM）が出力した内容は講師が確認したうえでお渡しします。",
+    body: "解けなかった1問をもとに、類題・解答・解説付きの復習PDFを作成します。AI（REM）が出力した内容は講師が確認したうえでお渡しします。次の授業の冒頭は、ここで作ったプリントを起点に、ふたたびステップ01「確認」から入ります。",
     accent: "border-brand/30 bg-brand-bg",
     ringAccent: "ring-brand/35 bg-brand-bg text-brand-deep",
     tagAccent: "text-brand-deep",
-  },
-  {
-    step: "05",
-    label: "再確認",
-    subtitle: "次回授業で再確認",
-    body: "同じつまずきが解消されたかを次回授業の冒頭で再確認します。必要があればさらに類題を追加し、定着するまで伴走します。",
-    accent: "border-warm/35 bg-warm-bg",
-    ringAccent: "ring-warm/40 bg-warm-bg text-warm-deep",
-    tagAccent: "text-warm-deep",
   },
 ];
 
@@ -90,12 +81,12 @@ export function WhiteboardFlow() {
         >
           解けなかった問題を、
           <br className="hidden sm:block" />
-          5つのステップで修復します。
+          4つのステップで修復します。
         </h2>
         <p className="mt-5 max-w-2xl text-[15.5px] sm:text-[15px] leading-[1.95] sm:leading-[1.85] text-ink-700">
           高校物理・理系個別指導として、ひとつのつまずきに対して同じ流れを繰り返します。
           講師がまず原因を特定し、構造から授業を組み立て、AI（REM）で復習プリントを作成。
-          次回授業で再確認するまでが、ひとつのサイクルです。
+          作ったプリントは、次の授業の冒頭でふたたび「確認」へ戻り、サイクルが続きます。
         </p>
 
         {/* DESKTOP — circular ring flow */}
@@ -132,12 +123,13 @@ export function WhiteboardFlow() {
               strokeWidth="1"
             />
             {/* arrows: arc segments between consecutive nodes (clockwise).
-                Each arc spans 72° on the ring of radius ~270 around (380,380).
-                We trim each arc by ~12° on each end so it doesn't visually
-                penetrate the node circles. */}
+                Each arc spans 90° on the ring of radius ~270 around (380,380).
+                We trim each arc by ~14° on each end so it doesn't visually
+                penetrate the node circles. The 4th arc loops back from
+                step 04 to step 01 — the cycle is intentionally closed. */}
             {steps.map((_, i) => {
-              const startAngle = -90 + i * 72 + 14;
-              const endAngle = -90 + (i + 1) * 72 - 14;
+              const startAngle = -90 + i * 90 + 14;
+              const endAngle = -90 + (i + 1) * 90 - 14;
               const r = 270;
               const x1 = 380 + r * Math.cos((startAngle * Math.PI) / 180);
               const y1 = 380 + r * Math.sin((startAngle * Math.PI) / 180);
@@ -174,9 +166,9 @@ export function WhiteboardFlow() {
             </p>
           </div>
 
-          {/* 5 satellite cards positioned around the hub */}
+          {/* 4 satellite cards positioned around the hub (top / right / bottom / left) */}
           {steps.map((s, i) => {
-            const angle = -90 + i * 72;
+            const angle = -90 + i * 90;
             const r = 270;
             const cx = 380 + r * Math.cos((angle * Math.PI) / 180);
             const cy = 380 + r * Math.sin((angle * Math.PI) / 180);
@@ -235,7 +227,7 @@ export function WhiteboardFlow() {
                 <div aria-hidden className="mx-auto my-2 h-5 w-px bg-ink-900/15" />
               ) : (
                 <div aria-hidden className="mx-auto my-2 flex items-center justify-center text-[11px] tracking-[0.18em] text-warm-deep">
-                  ↻ 次のつまずきへ循環
+                  ↻ 次の授業冒頭で、ふたたび 01「確認」へ
                 </div>
               )}
             </li>
