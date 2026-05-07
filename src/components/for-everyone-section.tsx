@@ -16,35 +16,34 @@ export function ForEveryoneSection() {
       description="Solvora Learning Lab は、初学者から難関大志望まで、高校物理を伸ばしたい全ての方を受け入れます（高校物理専門塾としての指導継続）。『苦手だから無理かも』『自分のレベルでは申し込めない』ということは、一切ありません。あなたに合ったルートを、体験授業で一緒に設計します。"
       className="bg-paper"
     >
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
         {audiences.map((a) => (
           <article
             key={a.level}
-            className={`group relative overflow-hidden rounded-3xl border p-7 sm:p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:shadow-card ${toneClasses[a.tone]}`}
+            className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl border p-5 sm:p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:shadow-card ${toneClasses[a.tone]}`}
           >
-            <p className="font-mono text-[11px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] text-ink-500">
+            <p className="font-mono text-[10px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.28em] text-ink-500">
               {a.level}
             </p>
-            <h3 className="mt-4 font-serif text-[1.25rem] sm:text-[1.15rem] leading-[1.55] sm:leading-snug tracking-[-0.008em] text-ink-900">
+            <h3 className="mt-3 sm:mt-4 font-serif text-[1.05rem] sm:text-[1.15rem] leading-[1.45] sm:leading-snug tracking-[-0.008em] text-ink-900">
               {a.label}
             </h3>
-            <p className="mt-4 text-[14.5px] sm:text-[13.5px] leading-[2] sm:leading-[1.8] text-ink-600">
+            <p className="mt-2.5 sm:mt-4 text-[13px] sm:text-[13.5px] leading-[1.85] sm:leading-[1.8] text-ink-600">
               {a.body}
             </p>
           </article>
         ))}
       </div>
 
-      <div className="mt-12 rounded-[2rem] border border-warm/25 bg-gradient-to-br from-warm-bg/70 via-paper to-brand-bg/70 p-8 sm:p-10 text-center shadow-soft md:p-12">
-        <p className="font-mono text-[11px] sm:text-[10.5px] tracking-[0.28em] sm:tracking-[0.32em] text-warm-deep">
+      <div className="mt-8 sm:mt-12 rounded-2xl sm:rounded-[2rem] border border-warm/25 bg-gradient-to-br from-warm-bg/70 via-paper to-brand-bg/70 p-6 sm:p-10 text-center shadow-soft md:p-12">
+        <p className="font-mono text-[10px] sm:text-[10.5px] tracking-[0.18em] sm:tracking-[0.32em] text-warm-deep">
           OUR STANCE
         </p>
-        <p className="mt-5 font-serif text-[1.5rem] sm:text-[1.35rem] tracking-[-0.012em] leading-[1.55] sm:leading-relaxed text-ink-900 sm:text-[1.55rem]">
-          『<span className="text-warm-deep">あなたのレベルに合うルート</span>』を、体験授業で一緒に見つけます。
+        <p className="mt-3 sm:mt-5 font-serif text-[1.15rem] sm:text-[1.35rem] tracking-[-0.012em] leading-[1.55] sm:leading-relaxed text-ink-900 sm:text-[1.55rem]">
+          『<span className="text-warm-deep">あなたのレベルに合うルート</span>』を、<br className="sm:hidden" />体験授業で一緒に見つけます。
         </p>
-        <p className="mt-5 text-[15px] sm:text-[14px] leading-[2] sm:leading-[1.85] text-ink-600">
-          体験授業では、今のあなたの現在地を丁寧にヒアリングしたうえで、
-          <br className="hidden sm:block" />
+        <p className="mt-3 sm:mt-5 text-[13px] sm:text-[14px] leading-[1.85] sm:leading-[1.85] text-ink-600">
+          体験授業では現在地を丁寧にヒアリングしたうえで、<br className="hidden sm:block" />
           合うと感じられたときだけ、受講を選んでください。
         </p>
       </div>

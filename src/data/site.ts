@@ -20,9 +20,9 @@ export const siteConfig = {
   url: siteUrl,
   locale: "ja_JP",
   // og:image / twitter:image are auto-generated from src/app/opengraph-image.tsx
-  // (Next.js file-based convention). The path below is used only for JSON-LD
-  // logo / primaryImageOfPage references, where SVG is acceptable.
-  ogImage: "/og-default.svg",
+  // (Next.js file-based convention). The path below is used by JSON-LD
+  // logo / primaryImageOfPage references — Solvora 公式ロックアップ PNG を使用。
+  ogImage: "/brand/solvora-lockup.png",
   ogImageAlt: "Solvora Learning Lab — AI復習プリント付き 高校物理・理系個別指導",
   twitter: "@butsuri_no_mori",
   version: "2026.05.07",

@@ -178,20 +178,32 @@ export default function HomePage() {
         aria-labelledby="lead-heading"
         className="border-b border-ink-900/[0.06] bg-paper"
       >
-        <div className="container py-10 sm:py-16">
-          <p className="text-[10.5px] sm:text-[10px] font-medium tracking-[0.22em] sm:tracking-[0.32em] uppercase text-brand-deep">
+        <div className="container py-8 sm:py-16">
+          <p className="text-[10px] sm:text-[10px] font-medium tracking-[0.18em] sm:tracking-[0.32em] uppercase text-brand-deep">
             REPAIR EVERY MISSED PROBLEM
           </p>
           <h2
             id="lead-heading"
-            className="mt-4 sm:mt-5 max-w-3xl font-serif text-[1.45rem] leading-[1.55] tracking-[-0.012em] text-ink-900 sm:text-[1.85rem] sm:leading-[1.55]"
+            className="mt-3 sm:mt-5 max-w-3xl font-serif text-[1.25rem] leading-[1.5] tracking-[-0.012em] text-ink-900 sm:text-[1.85rem] sm:leading-[1.55]"
           >
             <span className="text-brand-deep">解けなかった1問</span>を、
             <br className="sm:hidden" />
-            <span className="text-warm-deep">その子専用の復習プリント</span>に変える、
-            AI復習プリント付きの<wbr />高校物理・理系個別指導。
+            <span className="text-warm-deep">その子専用の復習プリント</span>に。
+            <span className="hidden sm:inline">AI復習プリント付きの 高校物理・理系個別指導。</span>
           </h2>
-          <p className="mt-6 sm:mt-6 max-w-3xl text-[15px] sm:text-[15px] leading-[1.95] sm:leading-[1.95] text-ink-700">
+          {/* モバイル：3 つの短文に分割。デスクトップ：従来の長文。 */}
+          <ul className="mt-5 sm:hidden space-y-2.5 text-[14px] leading-[1.85] text-ink-700">
+            <li>
+              <strong className="font-medium text-ink-900">Solvora Learning Lab</strong> は、高校物理が苦手で止まっている受験生を、つまずきの場所から修復するオンライン個別指導です。
+            </li>
+            <li>
+              授業は <strong className="font-medium text-ink-900">人間の講師（森祐太）</strong> が担当。解けなかった問題は AI（REM）と一緒に類題・解答・解説を整え、復習 PDF にします。
+            </li>
+            <li>
+              初学者〜難関大・医学部まで、力学・電磁気・波動・熱・原子の全分野をカバーします（高校物理専門塾としての指導継続）。
+            </li>
+          </ul>
+          <p className="mt-6 max-w-3xl text-[15px] leading-[1.95] text-ink-700 hidden sm:block">
             <strong className="font-medium text-ink-900">Solvora Learning Lab</strong> は、<strong className="font-medium text-ink-900">高校物理が苦手で止まっている受験生</strong>を、つまずきの場所から修復することに特化したオンライン個別指導サービスです。授業は人間の講師が担当し、解けなかった問題は AI（REM）と一緒に類題・解答・解説を整えて復習PDFに仕立てます。<br />
             初学者から共通テスト・難関大・医学部志望まで、力学・電磁気・波動・熱力学・原子の全分野を体系的にカバーする、高校物理専門塾としての指導も継続しています。
           </p>
@@ -222,20 +234,20 @@ export default function HomePage() {
         description="Solvora Learning Lab の高校物理指導は、単元ごとに分断して教えるのではなく、分野をまたぐ共通構造から組み立てます。力学・電磁気・波動・熱力学・原子の5分野を、1人の専門講師が一貫して扱います（高校物理専門塾としての指導継続）。"
         className="bg-paper-soft"
       >
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-5">
           {subjects.map((s, i) => (
             <div
               key={s.name}
-              className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink-900/[0.07] bg-white/85 p-5 sm:p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
             >
-              <span className="font-mono text-[12px] sm:text-[11px] text-ink-400">
+              <span className="font-mono text-[10.5px] sm:text-[11px] text-ink-400">
                 0{i + 1}
               </span>
-              <h3 className={`mt-5 font-serif text-[1.75rem] sm:text-[1.6rem] tracking-[-0.012em] ${s.accent}`}>{s.name}</h3>
-              <p className="mt-2 text-[11px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase text-ink-500">
+              <h3 className={`mt-3 sm:mt-5 font-serif text-[1.4rem] sm:text-[1.6rem] tracking-[-0.012em] ${s.accent}`}>{s.name}</h3>
+              <p className="mt-1.5 sm:mt-2 text-[10px] sm:text-[10px] tracking-[0.16em] sm:tracking-[0.22em] uppercase text-ink-500">
                 {s.kana}
               </p>
-              <p className="mt-5 text-[14px] sm:text-[12.5px] leading-[2] sm:leading-[1.75] text-ink-600">
+              <p className="mt-3 sm:mt-5 text-[12.5px] sm:text-[12.5px] leading-[1.75] sm:leading-[1.75] text-ink-600">
                 {s.description}
               </p>
             </div>
@@ -340,31 +352,43 @@ export default function HomePage() {
         description="書籍を手がけた主宰講師が、体験授業からカリキュラム設計・授業まですべてを担当します。"
         className="bg-paper"
       >
-        <div className="grid gap-10 rounded-[1.5rem] sm:rounded-[2rem] border border-ink-900/[0.07] bg-white/85 p-6 shadow-card backdrop-blur-sm sm:p-10 md:grid-cols-[1fr_1.4fr] md:gap-12 md:p-16">
+        <div className="grid gap-7 rounded-2xl sm:rounded-[2rem] border border-ink-900/[0.07] bg-white/85 p-5 shadow-card backdrop-blur-sm sm:gap-10 sm:p-10 md:grid-cols-[1fr_1.4fr] md:gap-12 md:p-16">
           <InstructorPortrait />
           <div>
-            <div className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.28em] sm:tracking-[0.32em] text-brand-deep">
+            <div className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.18em] sm:tracking-[0.32em] text-brand-deep">
               <GraduationCap className="h-3.5 w-3.5" aria-hidden strokeWidth={1.6} />
               PROFILE
             </div>
-            <h3 className="mt-5 font-serif text-display-md tracking-[-0.012em] text-ink-900">
+            <h3 className="mt-3 sm:mt-5 font-serif text-[1.45rem] leading-[1.4] sm:text-display-md sm:leading-tight tracking-[-0.012em] text-ink-900">
               初学者にも、難関大志望にも、<br className="sm:hidden" />
               あなた専用のルートを。
             </h3>
-            <p className="mt-6 sm:mt-7 text-[15px] leading-[1.95] sm:leading-[1.85] text-ink-600">
+            {/* モバイル：3 文に分割。デスクトップ：従来の長文。 */}
+            <ul className="mt-4 sm:hidden space-y-2.5 text-[13.5px] leading-[1.85] text-ink-700">
+              <li>
+                名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱う、現役の研究者・塾講師。
+              </li>
+              <li>
+                共通テスト物理 <strong className="font-medium text-ink-900">満点</strong>・二次試験 <strong className="font-medium text-ink-900">9割</strong> を自ら達成し、これまでに <strong className="text-warm-deep font-medium">名古屋大学合格生</strong> を輩出。
+              </li>
+              <li>
+                <strong className="font-medium text-ink-900">『考える力を育てる』シリーズ全6冊</strong>（力学・電磁気・熱・波動・原子・高校物理I/II）を自ら執筆し、自作教材で授業します。
+              </li>
+            </ul>
+            <p className="mt-6 sm:mt-7 text-[15px] leading-[1.85] text-ink-600 hidden sm:block">
               名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導にあたる。自身も共通テスト物理 満点・二次試験物理 9割を達成し、これまでの指導で<strong className="text-warm-deep font-medium">名古屋大学合格生</strong>も輩出。<strong className="text-ink-900 font-medium">『考える力を育てる』シリーズ（力学・電磁気・熱・波動・原子・高校物理I／II）</strong>を自ら執筆し、授業はこの自作教材を軸に、一人ひとりに合わせた学習ルートを設計します。
             </p>
 
-            <div className="mt-7 sm:mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.07] bg-ink-900/[0.06] sm:grid-cols-4">
+            <div className="mt-5 sm:mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl sm:rounded-2xl border border-ink-900/[0.07] bg-ink-900/[0.06] sm:grid-cols-4">
               {instructor.achievements.map((a) => (
                 <div
                   key={a.label}
-                  className="bg-paper/85 p-3.5 sm:p-4 text-center"
+                  className="bg-paper/85 p-3 sm:p-4 text-center"
                 >
-                  <p className="text-[9.5px] sm:text-[9px] font-medium tracking-[0.18em] sm:tracking-[0.22em] uppercase text-ink-500 leading-tight">
+                  <p className="text-[9px] sm:text-[9px] font-medium tracking-[0.14em] sm:tracking-[0.22em] uppercase text-ink-500 leading-tight">
                     {a.label}
                   </p>
-                  <p className="mt-1.5 font-serif text-[13.5px] sm:text-[14px] leading-tight tracking-[-0.005em] text-warm-deep">
+                  <p className="mt-1 sm:mt-1.5 font-serif text-[12px] sm:text-[14px] leading-tight tracking-[-0.005em] text-warm-deep">
                     {a.value}
                   </p>
                 </div>
@@ -373,7 +397,7 @@ export default function HomePage() {
 
             <Link
               href="/teacher"
-              className="mt-8 sm:mt-9 inline-flex min-h-[44px] items-center gap-2 text-[13.5px] text-ink-900 transition hover:text-brand-deep"
+              className="mt-6 sm:mt-9 inline-flex min-h-[44px] items-center gap-2 text-[13px] sm:text-[13.5px] text-ink-900 transition hover:text-brand-deep"
             >
               講師紹介を詳しく見る
               <ArrowRight className="h-3.5 w-3.5" />
@@ -389,44 +413,44 @@ export default function HomePage() {
         description="個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。"
         className="bg-paper-soft"
       >
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-3 sm:gap-6 md:grid-cols-2">
           {featuredCourses.map((c) => {
             const isRecommended = c.slug === "electromagnetism";
             return (
             <Link
               key={c.slug}
               href={`/courses/${c.slug}`}
-              className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border bg-white/85 p-7 sm:p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:shadow-card ${
+              className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl sm:rounded-3xl border bg-white/85 p-5 sm:p-9 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:shadow-card ${
                 isRecommended
                   ? "border-brand/40 ring-2 ring-brand/30 hover:border-brand/60"
                   : "border-ink-900/[0.07] hover:border-ink-900/[0.12]"
               }`}
             >
               {isRecommended && (
-                <span className="absolute right-5 top-5 inline-flex rounded-full bg-brand px-3 py-1 text-[10.5px] font-medium tracking-[0.2em] text-white">
+                <span className="absolute right-3 top-3 sm:right-5 sm:top-5 inline-flex rounded-full bg-brand px-2.5 sm:px-3 py-0.5 sm:py-1 text-[9.5px] sm:text-[10.5px] font-medium tracking-[0.16em] sm:tracking-[0.2em] text-white">
                   おすすめ
                 </span>
               )}
               <div>
-                <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
+                <p className="text-[10px] sm:text-[10px] font-medium tracking-[0.18em] sm:tracking-[0.28em] uppercase text-brand-deep pr-16 sm:pr-20">
                   {c.category}
                 </p>
-                <h3 className="mt-5 font-serif text-[1.7rem] sm:text-[1.55rem] tracking-[-0.012em] leading-[1.4] text-ink-900">
+                <h3 className="mt-3 sm:mt-5 font-serif text-[1.25rem] sm:text-[1.55rem] tracking-[-0.012em] leading-[1.35] sm:leading-[1.4] text-ink-900">
                   {c.title}
                 </h3>
-                <p className="mt-3 text-[14.5px] sm:text-[13.5px] leading-[1.65] text-ink-600">{c.subtitle}</p>
-                <p className="mt-6 sm:mt-7 text-[15px] sm:text-[14px] leading-[2] sm:leading-[1.8] text-ink-600">
+                <p className="mt-2 sm:mt-3 text-[13px] sm:text-[13.5px] leading-[1.55] sm:leading-[1.65] text-ink-600">{c.subtitle}</p>
+                <p className="mt-4 sm:mt-7 text-[13px] sm:text-[14px] leading-[1.85] sm:leading-[1.8] text-ink-600">
                   {c.summary}
                 </p>
               </div>
-              <div className="mt-8 sm:mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex flex-col gap-0.5 text-[13.5px] sm:text-[12.5px]">
-                  <span className="font-serif text-[1.05rem] sm:text-[1rem] text-ink-900">
+              <div className="mt-5 sm:mt-9 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-col gap-0.5 text-[12.5px] sm:text-[12.5px]">
+                  <span className="font-serif text-[0.95rem] sm:text-[1rem] text-ink-900">
                     {c.price.value}
                   </span>
                   <span className="text-ink-500">{c.duration}</span>
                 </div>
-                <span className="inline-flex items-center gap-1.5 text-[14px] sm:text-[13px] text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
+                <span className="inline-flex items-center gap-1.5 text-[13px] sm:text-[13px] text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
                   コース詳細を見る
                   <ArrowRight className="h-3.5 w-3.5" />
                 </span>
@@ -457,19 +481,19 @@ export default function HomePage() {
         description="お申し込みから受講開始までの流れはシンプルです。"
         className="bg-paper-soft"
       >
-        <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <ol className="grid gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-4">
           {flow.map((s) => (
             <li
               key={s.step}
-              className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink-900/[0.07] bg-white/85 p-5 sm:p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
             >
-              <p className="font-mono text-[12px] sm:text-[10.5px] tracking-[0.18em] text-warm-deep">
+              <p className="font-mono text-[10.5px] sm:text-[10.5px] tracking-[0.16em] sm:tracking-[0.18em] text-warm-deep">
                 STEP {s.step}
               </p>
-              <h3 className="mt-5 font-serif text-[1.25rem] sm:text-[1.15rem] leading-[1.55] sm:leading-snug tracking-[-0.008em] text-ink-900">
+              <h3 className="mt-3 sm:mt-5 font-serif text-[1.05rem] sm:text-[1.15rem] leading-[1.45] sm:leading-snug tracking-[-0.008em] text-ink-900">
                 {s.title}
               </h3>
-              <p className="mt-4 text-[15px] sm:text-[13.5px] leading-[2] sm:leading-[1.8] text-ink-600">
+              <p className="mt-2.5 sm:mt-4 text-[13px] sm:text-[13.5px] leading-[1.85] sm:leading-[1.8] text-ink-600">
                 {s.description}
               </p>
             </li>
@@ -484,29 +508,29 @@ export default function HomePage() {
         description="物理の学び方・分野別の躓き方・受験戦略について、現場から発信します。"
         className="bg-paper"
       >
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
           {latestArticles.map((a) => {
             const isExternal = Boolean(a.externalUrl);
             const href = articleHref(a);
             const className =
-              "group flex h-full flex-col justify-between rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card";
+              "group flex h-full flex-col justify-between rounded-2xl sm:rounded-3xl border border-ink-900/[0.07] bg-white/85 p-5 sm:p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card";
 
             const inner = (
               <>
                 <div>
-                  <div className="flex items-center gap-2 text-[11px] sm:text-[10px] font-medium tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
+                  <div className="flex items-center gap-2 text-[10px] sm:text-[10px] font-medium tracking-[0.18em] sm:tracking-[0.28em] uppercase text-brand-deep">
                     <span>{a.category}</span>
                     {isExternal && (
-                      <span className="inline-flex items-center gap-0.5 rounded-full border border-ink-900/[0.08] bg-paper px-1.5 py-0.5 text-[9.5px] sm:text-[8.5px] tracking-[0.18em] text-ink-500 normal-case">
+                      <span className="inline-flex items-center gap-0.5 rounded-full border border-ink-900/[0.08] bg-paper px-1.5 py-0.5 text-[9px] sm:text-[8.5px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-500 normal-case">
                         yuta-eng
                         <ArrowUpRight className="h-2 w-2" />
                       </span>
                     )}
                   </div>
-                  <h3 className="mt-4 font-serif text-[1.15rem] sm:text-[1.05rem] leading-[1.55] sm:leading-snug tracking-[-0.005em] text-ink-900">
+                  <h3 className="mt-3 sm:mt-4 font-serif text-[1rem] sm:text-[1.05rem] leading-[1.45] sm:leading-snug tracking-[-0.005em] text-ink-900">
                     {a.title}
                   </h3>
-                  <p className="mt-4 sm:mt-3.5 text-[14.5px] sm:text-[13px] leading-[1.95] sm:leading-[1.75] text-ink-600 line-clamp-4">
+                  <p className="mt-2.5 sm:mt-3.5 text-[12.5px] sm:text-[13px] leading-[1.75] sm:leading-[1.75] text-ink-600 line-clamp-4">
                     {a.description}
                   </p>
                 </div>

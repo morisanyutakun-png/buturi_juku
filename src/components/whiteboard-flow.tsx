@@ -71,22 +71,20 @@ export function WhiteboardFlow() {
         }}
       />
 
-      <Container className="relative py-20 sm:py-28 lg:py-32">
-        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10.5px] sm:text-[10px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-5 sm:before:w-6 before:bg-current before:opacity-50">
+      <Container className="relative py-14 sm:py-28 lg:py-32">
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] sm:text-[10px] font-medium uppercase tracking-[0.18em] sm:tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-5 sm:before:w-6 before:bg-current before:opacity-50">
           OUR METHOD — Solvora式 つまずき修復メソッド
         </p>
         <h2
           id="method-heading"
-          className="mt-5 sm:mt-6 max-w-3xl font-serif text-display-md tracking-[-0.012em] text-ink-900"
+          className="mt-4 sm:mt-6 max-w-3xl font-serif text-display-md tracking-[-0.012em] text-ink-900"
         >
           解けなかった問題を、
           <br className="hidden sm:block" />
-          4つのステップで修復します。
+          4つのステップで修復。
         </h2>
-        <p className="mt-5 max-w-2xl text-[15.5px] sm:text-[15px] leading-[1.95] sm:leading-[1.85] text-ink-700">
-          高校物理・理系個別指導として、ひとつのつまずきに対して同じ流れを繰り返します。
-          講師がまず原因を特定し、構造から授業を組み立て、AI（REM）で復習プリントを作成。
-          作ったプリントは、次の授業の冒頭でふたたび「確認」へ戻り、サイクルが続きます。
+        <p className="mt-4 sm:mt-5 max-w-2xl text-[14px] sm:text-[15px] leading-[1.85] sm:leading-[1.85] text-ink-700">
+          ひとつのつまずきに対し、講師が原因を特定 → 構造から授業 → AI（REM）で復習プリント作成、を繰り返します。作ったプリントは次の授業の冒頭でふたたび「確認」へ戻り、サイクルが続きます。
         </p>
 
         {/* DESKTOP — circular ring flow */}
@@ -202,31 +200,31 @@ export function WhiteboardFlow() {
         </div>
 
         {/* MOBILE / TABLET — vertical stack with downward arrows between cards */}
-        <ol className="mt-12 grid gap-3 lg:hidden">
+        <ol className="mt-8 grid gap-2.5 lg:hidden">
           {steps.map((s, i, arr) => (
             <li key={s.step} className="relative">
               <div
-                className={`relative overflow-hidden rounded-2xl border bg-white p-5 ${s.accent}`}
+                className={`relative overflow-hidden rounded-2xl border bg-white p-4 ${s.accent}`}
               >
-                <div className="flex items-baseline gap-3">
-                  <span className="font-mono text-[10.5px] tracking-[0.24em] text-ink-500">
+                <div className="flex items-baseline gap-2.5">
+                  <span className="font-mono text-[9.5px] tracking-[0.2em] text-ink-500">
                     STEP {s.step}
                   </span>
-                  <span className={`font-serif text-[1.35rem] tracking-[-0.012em] ${s.tagAccent}`}>
+                  <span className={`font-serif text-[1.15rem] tracking-[-0.012em] ${s.tagAccent}`}>
                     {s.label}
                   </span>
                 </div>
-                <p className="mt-2 text-[12.5px] tracking-[0.06em] text-ink-500">
+                <p className="mt-1.5 text-[11.5px] tracking-[0.04em] text-ink-500">
                   {s.subtitle}
                 </p>
-                <p className="mt-3 text-[14px] leading-[1.85] text-ink-700">
+                <p className="mt-2.5 text-[13px] leading-[1.75] text-ink-700">
                   {s.body}
                 </p>
               </div>
               {i < arr.length - 1 ? (
-                <div aria-hidden className="mx-auto my-2 h-5 w-px bg-ink-900/15" />
+                <div aria-hidden className="mx-auto my-1.5 h-4 w-px bg-ink-900/15" />
               ) : (
-                <div aria-hidden className="mx-auto my-2 flex items-center justify-center text-[11px] tracking-[0.18em] text-warm-deep">
+                <div aria-hidden className="mx-auto my-1.5 flex items-center justify-center text-[10.5px] tracking-[0.14em] text-warm-deep">
                   ↻ 次の授業冒頭で、ふたたび 01「確認」へ
                 </div>
               )}
@@ -234,8 +232,8 @@ export function WhiteboardFlow() {
           ))}
         </ol>
 
-        <p className="mt-8 text-center text-[12.5px] tracking-[0.18em] text-warm-deep">
-          ✱ Solvora Learning Lab が、このサイクル全体を伴走します
+        <p className="mt-6 sm:mt-8 text-center text-[11px] sm:text-[12.5px] tracking-[0.14em] sm:tracking-[0.18em] text-warm-deep">
+          ✱ Solvora Learning Lab がサイクル全体を伴走
         </p>
       </Container>
     </section>

@@ -30,30 +30,29 @@ export function Hero() {
         }}
       />
 
-      <Container className="relative py-16 sm:py-24 lg:py-40">
-        {/* Mobile uses default block flow (each child = container width); only
-            switch to grid on lg+. Using `grid` without an explicit
-            `grid-template-columns` on mobile lets the implicit auto column
-            size to content, which can leave inner cards visually off-center. */}
+      <Container className="relative py-12 sm:py-24 lg:py-40">
+        {/* Mobile-first: 単純なブロックフロー。lg+ で 2 カラムグリッドに切替。
+            余白・タイポも mobile を default とし、`sm:` `lg:` で desktop に拡張する。 */}
         <div className="lg:grid lg:items-center lg:gap-14 lg:grid-cols-[1.15fr_1fr]">
           <div className="relative">
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-700">
-                <FileText className="h-3 w-3 sm:h-3 sm:w-3 text-brand" aria-hidden />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10.5px] sm:text-[11px] tracking-[0.12em] sm:tracking-[0.18em] text-ink-700">
+                <FileText className="h-3 w-3 text-brand" aria-hidden />
                 AI復習プリント付き
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-700">
-                <Wifi className="h-3 w-3 sm:h-3 sm:w-3 text-warm-deep" aria-hidden />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10.5px] sm:text-[11px] tracking-[0.12em] sm:tracking-[0.18em] text-ink-700">
+                <Wifi className="h-3 w-3 text-warm-deep" aria-hidden />
                 全国オンライン 1対1
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-700">
-                <Sparkles className="h-3 w-3 sm:h-3 sm:w-3 text-gold-deep" aria-hidden />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10.5px] sm:text-[11px] tracking-[0.12em] sm:tracking-[0.18em] text-ink-700">
+                <Sparkles className="h-3 w-3 text-gold-deep" aria-hidden />
                 高校物理・理系個別指導
               </span>
             </div>
 
-            <p className="mt-7 sm:mt-10 text-[12px] sm:text-[12px] font-medium tracking-[0.22em] sm:tracking-[0.32em] uppercase text-brand-deep">
-              {siteConfig.nameEn} — AI復習プリント付き 理系個別指導
+            <p className="mt-5 sm:mt-10 text-[10.5px] sm:text-[12px] font-medium tracking-[0.18em] sm:tracking-[0.32em] uppercase text-brand-deep">
+              {siteConfig.nameEn}
+              <span className="hidden sm:inline"> — AI復習プリント付き 理系個別指導</span>
             </p>
             <h1
               className="mt-4 font-serif text-display-2xl text-ink-900"
@@ -94,22 +93,35 @@ export function Hero() {
             </h1>
 
             {/* under-the-headline accent rule */}
-            <div className="mt-8 flex items-center gap-3" aria-hidden>
-              <span className="h-px w-12 bg-ink-900/20" />
+            <div className="mt-6 sm:mt-8 flex items-center gap-3" aria-hidden>
+              <span className="h-px w-10 sm:w-12 bg-ink-900/20" />
               <span className="h-1.5 w-1.5 rounded-full bg-warm" />
-              <span className="h-px flex-1 max-w-[12rem] bg-gradient-to-r from-warm/50 via-brand/40 to-transparent" />
+              <span className="h-px flex-1 max-w-[10rem] sm:max-w-[12rem] bg-gradient-to-r from-warm/50 via-brand/40 to-transparent" />
             </div>
 
-            <p className="mt-6 sm:mt-8 max-w-xl text-[15.5px] sm:text-[17px] leading-[1.9] sm:leading-[1.85] text-ink-700">
+            {/* モバイルでは 3 行のキー文に分割、デスクトップでは1段落で見せる。 */}
+            <div className="mt-5 sm:mt-8 max-w-xl space-y-2.5 sm:space-y-0 sm:hidden">
+              <p className="text-[14.5px] leading-[1.85] text-ink-800">
+                <strong className="font-medium text-ink-900">{siteConfig.name}</strong> は、高校物理のつまずきを <strong className="font-medium text-ink-900">個別指導 × AI 復習プリント</strong> で修復するオンライン指導です。
+              </p>
+              <p className="text-[14.5px] leading-[1.85] text-ink-700">
+                授業で解けなかった1問を、講師が確認したうえで類題生成 AI「REM」と整理し、復習用 PDF にしてお渡しします。
+              </p>
+              <p className="text-[14.5px] leading-[1.85] text-ink-700">
+                公式暗記ではなく、現象の理解 → 立式 → 演習 → 復習までを一つの流れで。
+              </p>
+            </div>
+            <p className="mt-6 sm:mt-8 max-w-xl text-[17px] leading-[1.85] text-ink-700 hidden sm:block">
               <strong className="text-ink-900 font-medium">{siteConfig.name}</strong>は、高校物理・理系科目のつまずきを、個別指導と <strong className="text-ink-900 font-medium">AI 復習プリント</strong>で修復するオンライン指導サービスです。授業で解けなかった問題をもとに、講師が理解を確認し、類題生成 AI「REM」を活用して類題・解答・復習用 PDF を作成します。<br />
               公式暗記ではなく、現象の理解、立式、演習、復習までを一つの流れで支えます。
             </p>
 
-            <p className="mt-4 sm:mt-5 text-[11px] sm:text-[11px] leading-[1.85] tracking-[0.14em] sm:tracking-[0.22em] text-ink-500">
-              中心読者：高校物理が苦手な高校生・受験生 — 初学者から難関大・医学部まで対応 / 高校物理 個別指導
+            <p className="mt-4 sm:mt-5 text-[10.5px] sm:text-[11px] leading-[1.7] sm:leading-[1.85] tracking-[0.1em] sm:tracking-[0.22em] text-ink-500">
+              <span className="sm:hidden">高校物理が苦手な高校生・受験生 / 初学者〜難関大対応</span>
+              <span className="hidden sm:inline">中心読者：高校物理が苦手な高校生・受験生 — 初学者から難関大・医学部まで対応 / 高校物理 個別指導</span>
             </p>
 
-            <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
+            <div className="mt-6 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
               <Link
                 href="/trial"
                 className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-4 text-[15px] sm:text-[14px] font-medium text-paper transition duration-300 ease-out min-h-[52px] sm:min-h-0"
@@ -137,68 +149,67 @@ export function Hero() {
             </div>
 
             {/* Lightweight mobile hero card — replaces the full HeroVisual SVG
-                on phones for faster LCP / smaller DOM. No decorative watermark:
-                pure symmetric layout so the card is unambiguously centered. */}
+                on phones for faster LCP / smaller DOM. */}
             <div
-              className="relative mx-auto mt-9 block w-full overflow-hidden rounded-3xl border border-ink-900/[0.08] bg-gradient-to-b from-white via-warm-bg/30 to-brand-bg/30 p-6 text-center shadow-soft lg:hidden"
+              className="relative mx-auto mt-7 block w-full overflow-hidden rounded-2xl border border-ink-900/[0.08] bg-gradient-to-b from-white via-warm-bg/30 to-brand-bg/30 p-5 text-center shadow-soft lg:hidden"
               aria-hidden
             >
-              <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
+              <p className="text-[10px] tracking-[0.24em] uppercase text-brand-deep">
                 SOLVORA LEARNING LAB
               </p>
-              <p className="mt-2.5 font-serif text-[1.3rem] leading-[1.45] tracking-[-0.012em] text-ink-900">
+              <p className="mt-2 font-serif text-[1.15rem] leading-[1.4] tracking-[-0.012em] text-ink-900">
                 解けなかった1問を、復習プリントに。
               </p>
               <ul
-                className="mt-4 grid grid-cols-2 gap-2 font-mono text-[12.5px] text-ink-800"
+                className="mt-3.5 grid grid-cols-2 gap-1.5 font-mono text-[11.5px] text-ink-800"
               >
-                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2 text-center">
+                <li className="truncate rounded-lg border border-ink-900/[0.10] bg-white/85 px-2.5 py-1.5 text-center">
                   F = ma
                 </li>
-                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2 text-center">
+                <li className="truncate rounded-lg border border-ink-900/[0.10] bg-white/85 px-2.5 py-1.5 text-center">
                   v = f λ
                 </li>
-                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2 text-center">
+                <li className="truncate rounded-lg border border-ink-900/[0.10] bg-white/85 px-2.5 py-1.5 text-center">
                   ε = − dΦ/dt
                 </li>
-                <li className="truncate rounded-xl border border-ink-900/[0.10] bg-white/85 px-3 py-2 text-center">
+                <li className="truncate rounded-lg border border-ink-900/[0.10] bg-white/85 px-2.5 py-1.5 text-center">
                   E₁ = E₂
                 </li>
               </ul>
-              <p className="mt-4 text-[11px] tracking-[0.22em] uppercase text-gold-deep">
-                FREE TRIAL · 60 MIN
+              <p className="mt-3 text-[10.5px] tracking-[0.18em] uppercase text-gold-deep">
+                TRIAL · 60 MIN
               </p>
             </div>
 
-            <ul className="mx-auto mt-10 sm:mt-16 grid w-full grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.10] bg-ink-900/[0.06] sm:grid-cols-4">
+            <ul className="mx-auto mt-7 sm:mt-16 grid w-full grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.10] bg-ink-900/[0.06] sm:grid-cols-4">
               {[
-                { k: "指導分野", v: "高校物理 中心 / 理系", c: "text-brand-deep" },
+                { k: "指導分野", v: "高校物理 / 理系", c: "text-brand-deep" },
                 { k: "授業形式", v: "1対1", c: "text-ink-800" },
                 { k: "対応地域", v: "全国オンライン", c: "text-brand-deep" },
                 { k: "入塾金", v: "0円", c: "text-warm-deep" },
               ].map((item) => (
                 <li
                   key={item.k}
-                  className="bg-white/85 px-4 py-5 text-center sm:px-5 sm:py-5 sm:text-left"
+                  className="bg-white/85 px-3 py-4 text-center sm:px-5 sm:py-5 sm:text-left"
                 >
-                  <p className="text-[10.5px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase text-ink-500">
+                  <p className="text-[9.5px] sm:text-[10px] tracking-[0.16em] sm:tracking-[0.22em] uppercase text-ink-500">
                     {item.k}
                   </p>
-                  <p className={`mt-2 font-serif text-[1rem] sm:text-[1.05rem] tracking-[-0.01em] ${item.c}`}>
+                  <p className={`mt-1.5 sm:mt-2 font-serif text-[0.95rem] sm:text-[1.05rem] tracking-[-0.01em] ${item.c}`}>
                     {item.v}
                   </p>
                 </li>
               ))}
             </ul>
-            <p className="mt-3 max-w-xl text-[11.5px] sm:text-[12px] leading-[1.85] text-ink-500">
+            <p className="mt-2.5 sm:mt-3 max-w-xl text-[10.5px] sm:text-[12px] leading-[1.7] sm:leading-[1.85] text-ink-500">
               ※ 力学・電磁気・波動・熱力学・原子をはじめ、理系科目は段階的に拡張予定。
             </p>
 
-            <p className="mt-9 max-w-xl font-serif text-[1.15rem] sm:text-[1.35rem] leading-[1.7] tracking-[-0.005em] text-ink-700">
+            <p className="mt-7 sm:mt-9 max-w-xl font-serif text-[1.05rem] sm:text-[1.35rem] leading-[1.65] sm:leading-[1.7] tracking-[-0.005em] text-ink-700">
               <span className="text-brand-deep">解けなかった</span>が、
               <span className="text-warm-deep">次に解ける</span>に変わる仕組みを。
             </p>
-            <p className="mt-2 text-[10.5px] sm:text-[10.5px] tracking-[0.24em] sm:tracking-[0.32em] uppercase text-gold-deep">
+            <p className="mt-2 text-[9.5px] sm:text-[10.5px] tracking-[0.18em] sm:tracking-[0.32em] uppercase text-gold-deep">
               {siteConfig.name} / 高校物理・理系個別指導
             </p>
           </div>

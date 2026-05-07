@@ -6,32 +6,32 @@ import { books, type Book } from "@/data/books";
 export function BookShowcase() {
   return (
     <Section
-      eyebrow="OUR TEACHING MATERIALS — 講師制作の物理教材で授業します"
-      title={<>森祐太が作成した物理教材を使って、<br className="sm:hidden" />構造から学ぶ。</>}
-      description="授業では、森祐太が作成した高校物理教材・KDP教材・PDF教材を活用します。力学、電磁気、波動、熱力学、原子などを、公式暗記ではなく『なぜその式を立てるのか』から整理。授業で扱った内容と、解けなかった問題から作る AI 復習プリントが、自然につながる構成です。"
+      eyebrow="OUR TEACHING MATERIALS — 講師制作の物理教材で授業"
+      title={<>森祐太が作成した物理教材で、<br className="sm:hidden" />構造から学ぶ。</>}
+      description="授業では、森祐太が自作した高校物理教材を活用します。力学・電磁気・波動・熱力学・原子を、公式暗記ではなく『なぜその式を立てるのか』から整理。授業内容と AI 復習プリントが自然につながる構成です。"
       className="relative overflow-hidden bg-gradient-to-b from-cream via-cream to-cream-muted text-ink-900 border-y border-ink-900/10"
     >
-      <ul className="grid gap-3 sm:gap-4 mb-12 sm:mb-16 sm:grid-cols-2">
+      <ul className="grid gap-2 sm:gap-4 mb-10 sm:mb-16 sm:grid-cols-2">
         {[
           "市販教材だけに依存しない",
-          "講師自身が作成した教材で一貫指導",
+          "講師自作教材で一貫指導",
           "授業内容と AI復習プリントがつながる",
-          "物理のつまずきを教材側からも補強できる",
+          "つまずきを教材側からも補強",
         ].map((b) => (
           <li
             key={b}
-            className="flex items-start gap-3 rounded-2xl border border-ink-900/10 bg-paper/60 p-4 text-[14px] sm:text-[13.5px] leading-[1.7] text-ink-900"
+            className="flex items-start gap-2.5 sm:gap-3 rounded-xl sm:rounded-2xl border border-ink-900/10 bg-paper/60 p-3 sm:p-4 text-[13px] sm:text-[13.5px] leading-[1.6] sm:leading-[1.7] text-ink-900"
           >
             <span
               aria-hidden
-              className="mt-1 h-3.5 w-3.5 shrink-0 rounded-full border border-gold-deep/50 bg-gold/40"
+              className="mt-1 h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0 rounded-full border border-gold-deep/50 bg-gold/40"
             />
             {b}
           </li>
         ))}
       </ul>
 
-      <div className="space-y-16 sm:space-y-24">
+      <div className="space-y-12 sm:space-y-24">
         {books.map((book, idx) => (
           <BookEntry key={book.slug} book={book} flipped={idx % 2 === 1} />
         ))}
@@ -43,7 +43,7 @@ export function BookShowcase() {
 function BookEntry({ book, flipped }: { book: Book; flipped: boolean }) {
   return (
     <article
-      className={`grid items-center gap-10 sm:gap-14 lg:gap-16 ${
+      className={`grid items-center gap-7 sm:gap-14 lg:gap-16 ${
         flipped
           ? "lg:grid-cols-[1fr_0.85fr]"
           : "lg:grid-cols-[0.85fr_1fr]"
@@ -59,7 +59,7 @@ function BookEntry({ book, flipped }: { book: Book; flipped: boolean }) {
           className="absolute -right-10 bottom-10 hidden h-48 w-48 rounded-full bg-ink-900/10 blur-3xl sm:block"
         />
 
-        <figure className="relative mx-auto w-full max-w-[280px] sm:max-w-[380px]">
+        <figure className="relative mx-auto w-full max-w-[220px] sm:max-w-[380px]">
           <div className="group relative overflow-hidden rounded-[6px] shadow-[0_50px_90px_-30px_rgba(0,0,0,0.5)] ring-1 ring-ink-900/20 transition duration-500 hover:-translate-y-1 hover:shadow-[0_60px_110px_-30px_rgba(0,0,0,0.55)]">
             <Image
               src={book.coverImage}
@@ -106,26 +106,26 @@ function BookEntry({ book, flipped }: { book: Book; flipped: boolean }) {
           </p>
         )}
 
-        <h3 className="mt-2 font-serif text-display-md text-ink-900">
+        <h3 className="mt-2 font-serif text-[1.6rem] sm:text-display-md leading-[1.3] sm:leading-tight text-ink-900">
           {book.title}
         </h3>
-        <p className="mt-4 font-serif text-[15px] sm:text-base text-ink-700">
+        <p className="mt-3 sm:mt-4 font-serif text-[13.5px] sm:text-base leading-[1.65] text-ink-700">
           <span className="text-gold-deep">—</span> {book.subtitle}
         </p>
 
-        <p className="mt-7 sm:mt-8 text-[15px] sm:text-base text-ink-700 leading-[1.95] sm:leading-[1.9]">
+        <p className="mt-5 sm:mt-8 text-[13.5px] sm:text-base text-ink-700 leading-[1.9] sm:leading-[1.9]">
           {book.description}
         </p>
 
-        <ul className="mt-7 sm:mt-8 grid gap-2.5 sm:gap-3 sm:grid-cols-2">
+        <ul className="mt-5 sm:mt-8 grid gap-2 sm:gap-3 sm:grid-cols-2">
           {book.highlights.map((h) => (
             <li
               key={h}
-              className="flex items-start gap-3 rounded-xl border border-ink-900/10 bg-paper/60 p-3.5 sm:p-4 text-[13.5px] sm:text-sm leading-[1.7] text-ink-900"
+              className="flex items-start gap-2.5 sm:gap-3 rounded-lg sm:rounded-xl border border-ink-900/10 bg-paper/60 p-3 sm:p-4 text-[12.5px] sm:text-sm leading-[1.6] sm:leading-[1.7] text-ink-900"
             >
               <span
                 aria-hidden
-                className="mt-1 h-4 w-4 shrink-0 rounded-full border border-gold-deep/50 bg-gold/40"
+                className="mt-1 h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 rounded-full border border-gold-deep/50 bg-gold/40"
               />
               {h}
             </li>
@@ -133,22 +133,22 @@ function BookEntry({ book, flipped }: { book: Book; flipped: boolean }) {
         </ul>
 
         {book.pullQuote && (
-          <figure className="mt-8 sm:mt-10 rounded-2xl border border-ink-900/10 bg-paper/60 p-5 sm:p-6">
-            <Quote className="h-5 w-5 text-gold-deep" aria-hidden />
-            <blockquote className="mt-3 font-serif text-[1.05rem] sm:text-lg leading-[1.7] sm:leading-relaxed text-ink-900">
+          <figure className="mt-6 sm:mt-10 rounded-xl sm:rounded-2xl border border-ink-900/10 bg-paper/60 p-4 sm:p-6">
+            <Quote className="h-4 w-4 sm:h-5 sm:w-5 text-gold-deep" aria-hidden />
+            <blockquote className="mt-2 sm:mt-3 font-serif text-[0.95rem] sm:text-lg leading-[1.65] sm:leading-relaxed text-ink-900">
               「{book.pullQuote.body}
               {book.pullQuote.emphasis && (
                 <span className="text-gold-deep">{book.pullQuote.emphasis}</span>
               )}
               」
             </blockquote>
-            <figcaption className="mt-3 text-[11px] sm:text-xs tracking-widest uppercase text-ink-700/60">
+            <figcaption className="mt-2 sm:mt-3 text-[10px] sm:text-xs tracking-widest uppercase text-ink-700/60">
               — 本書より
             </figcaption>
           </figure>
         )}
 
-        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
+        <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3">
           {book.amazonUrl ? (
             <a
               href={book.amazonUrl}

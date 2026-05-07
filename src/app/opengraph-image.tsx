@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/data/site";
 
@@ -5,6 +7,18 @@ export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = siteConfig.ogImageAlt;
+
+/** Inline the Solvora brand mark as a data URI so Satori can render it at build time. */
+const brandIconDataUri = (() => {
+  try {
+    const buf = fs.readFileSync(
+      path.join(process.cwd(), "public/brand/solvora-icon-512.png"),
+    );
+    return `data:image/png;base64,${buf.toString("base64")}`;
+  } catch {
+    return null;
+  }
+})();
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -79,23 +93,36 @@ export default function OpengraphImage() {
         >
           <div
             style={{
-              width: 56,
-              height: 56,
-              borderRadius: 28,
-              background:
-                "linear-gradient(135deg, rgba(59,124,217,0.18), rgba(71,85,105,0.18))",
-              border: "1px solid rgba(20,35,65,0.10)",
+              width: 76,
+              height: 76,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <svg width="34" height="34" viewBox="0 0 32 32">
-              <ellipse cx="16" cy="16" rx="12" ry="4.5" fill="none" stroke="#3b7cd9" strokeWidth="1.6" />
-              <ellipse cx="16" cy="16" rx="12" ry="4.5" fill="none" stroke="#475569" strokeWidth="1.6" transform="rotate(60 16 16)" />
-              <ellipse cx="16" cy="16" rx="12" ry="4.5" fill="none" stroke="#e28040" strokeWidth="1.6" transform="rotate(-60 16 16)" />
-              <circle cx="16" cy="16" r="2.4" fill="#caa34b" />
-            </svg>
+            {brandIconDataUri ? (
+              // Satori が PNG をそのまま埋め込めるよう data URI を使用。
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={brandIconDataUri}
+                alt=""
+                width={76}
+                height={76}
+                style={{ width: 76, height: 76, objectFit: "contain" }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: 76,
+                  height: 76,
+                  borderRadius: 38,
+                  background:
+                    "linear-gradient(135deg, rgba(59,124,217,0.18), rgba(71,85,105,0.18))",
+                  border: "1px solid rgba(20,35,65,0.10)",
+                  display: "flex",
+                }}
+              />
+            )}
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
             <div

@@ -24,10 +24,10 @@ export function PullQuote() {
         &rdquo;
       </div>
 
-      <Container className="relative py-28 sm:py-36">
+      <Container className="relative py-16 sm:py-36">
         <div className="mx-auto max-w-4xl">
-          <Quote className="h-7 w-7 text-warm-deep" aria-hidden />
-          <blockquote className="mt-7 font-serif text-[2rem] leading-[1.45] tracking-[-0.012em] text-ink-900 sm:text-[3rem] sm:leading-[1.3] lg:text-[3.6rem] lg:leading-[1.25]">
+          <Quote className="h-6 w-6 sm:h-7 sm:w-7 text-warm-deep" aria-hidden />
+          <blockquote className="mt-5 sm:mt-7 font-serif text-[1.55rem] leading-[1.45] tracking-[-0.012em] text-ink-900 sm:text-[3rem] sm:leading-[1.3] lg:text-[3.6rem] lg:leading-[1.25]">
             『わかったふり』を、
             <br />
             <span className="text-warm-deep">許さない。</span>
@@ -36,8 +36,8 @@ export function PullQuote() {
             <br />
             勝手に動くまで。
           </blockquote>
-          <figcaption className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] sm:text-[12.5px] tracking-[0.2em] uppercase text-ink-500">
-            <span className="h-px w-10 bg-ink-900/30" aria-hidden />
+          <figcaption className="mt-7 sm:mt-10 flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-2 text-[11px] sm:text-[12.5px] tracking-[0.16em] sm:tracking-[0.2em] uppercase text-ink-500">
+            <span className="h-px w-8 sm:w-10 bg-ink-900/30" aria-hidden />
             <span>Solvora Learning Lab</span>
             <span className="text-ink-400">/</span>
             <span>主宰講師 森祐太</span>

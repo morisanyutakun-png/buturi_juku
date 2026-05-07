@@ -11,8 +11,9 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#fdfbf5",
     theme_color: "#142341",
     icons: [
-      { src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
-      { src: "/apple-icon.svg", sizes: "180x180", type: "image/svg+xml" },
+      { src: "/icon.png", sizes: "64x64", type: "image/png", purpose: "any" },
+      { src: "/apple-icon.png", sizes: "180x180", type: "image/png", purpose: "any" },
+      { src: "/brand/solvora-icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
     ],
   };
 }

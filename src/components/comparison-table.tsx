@@ -89,22 +89,22 @@ export function ComparisonTable() {
         {/* mobile: stacked — specialty card on top, alternatives in a 2-up row */}
         <div className="divide-y divide-ink-900/10 md:hidden">
           {rows.map((r) => (
-            <div key={r.criterion} className="p-5">
-              <p className="text-[11.5px] tracking-[0.18em] uppercase text-ink-500 font-medium">
+            <div key={r.criterion} className="p-4">
+              <p className="text-[10.5px] tracking-[0.14em] uppercase text-ink-500 font-medium">
                 {r.criterion}
               </p>
-              <div className="mt-4 rounded-xl border border-brand/30 bg-brand-bg p-4">
-                <div className="flex items-center gap-3">
+              <div className="mt-3 rounded-xl border border-brand/30 bg-brand-bg p-3">
+                <div className="flex items-center gap-2.5">
                   <Mark type={r.specialty.mark} />
-                  <p className="text-[10.5px] tracking-[0.18em] uppercase text-brand-deep font-medium">
-                    Solvora Learning Lab
+                  <p className="text-[10px] tracking-[0.14em] uppercase text-brand-deep font-medium">
+                    Solvora
                   </p>
                 </div>
-                <p className="mt-2.5 text-[13px] leading-[1.75] text-ink-800">
+                <p className="mt-2 text-[12px] leading-[1.7] text-ink-800">
                   {r.specialty.note}
                 </p>
               </div>
-              <div className="mt-2.5 grid grid-cols-2 gap-2.5">
+              <div className="mt-2 grid grid-cols-2 gap-2">
                 <MobileCellLite label="総合塾" cell={r.general} />
                 <MobileCellLite label="独学" cell={r.solo} />
               </div>
@@ -162,14 +162,14 @@ function MobileCellLite({
   cell: { mark: Cell; note: string };
 }) {
   return (
-    <div className="rounded-xl border border-ink-900/10 bg-paper-soft px-3 py-3">
-      <div className="flex items-center gap-2">
+    <div className="rounded-xl border border-ink-900/10 bg-paper-soft px-2.5 py-2.5">
+      <div className="flex items-center gap-1.5">
         <Mark type={cell.mark} />
-        <p className="text-[10px] tracking-[0.16em] uppercase text-ink-500 leading-tight">
+        <p className="text-[9.5px] tracking-[0.12em] uppercase text-ink-500 leading-tight">
           {label}
         </p>
       </div>
-      <p className="mt-2 text-[11.5px] leading-[1.7] text-ink-700">
+      <p className="mt-1.5 text-[11px] leading-[1.55] text-ink-700">
         {cell.note}
       </p>
     </div>

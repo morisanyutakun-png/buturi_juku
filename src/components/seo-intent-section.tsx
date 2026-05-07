@@ -56,33 +56,33 @@ export function SeoIntentSection() {
   return (
     <Section
       eyebrow="SEARCH INTENT"
-      title={<>高校物理・理系個別指導を探す<br className="sm:hidden" />『悩み』に、すべて答えます。</>}
-      description="『AI復習プリント 個別指導』『高校物理専門塾 オンライン』『高校物理 個別指導』など、検索で探される悩みごとに、Solvora Learning Lab としての答えを整理しました。広告から来た方にも、自然検索で調べている方にも、迷わず次の一歩を選んでいただけます。"
+      title={<>高校物理・理系個別指導の<br className="sm:hidden" />『悩み』に、すべて答えます。</>}
+      description="検索で探される悩みごとに、Solvora としての答えを整理しました。"
       className="bg-paper-soft"
     >
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-3 sm:gap-5 md:grid-cols-2">
         {intents.map((intent) => (
           <article
             key={intent.keyword}
-            className="group rounded-2xl border border-ink-900/10 bg-white p-7 sm:p-7 shadow-soft transition hover:-translate-y-0.5 hover:border-brand/35 hover:shadow-card"
+            className="group rounded-2xl border border-ink-900/10 bg-white p-5 sm:p-7 shadow-soft transition hover:-translate-y-0.5 hover:border-brand/35 hover:shadow-card"
           >
-            <div className="flex items-center gap-3">
-              <span className="flex h-12 w-12 sm:h-11 sm:w-11 items-center justify-center rounded-xl border border-brand/25 bg-brand-bg text-brand-deep">
-                <intent.icon className="h-5 w-5" aria-hidden />
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <span className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl border border-brand/25 bg-brand-bg text-brand-deep">
+                <intent.icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden />
               </span>
-              <p className="text-[11px] sm:text-[10px] tracking-[0.22em] sm:tracking-[0.25em] uppercase text-ink-500">
+              <p className="text-[10px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.25em] uppercase text-ink-500">
                 {intent.keyword}
               </p>
             </div>
-            <h3 className="mt-6 font-serif text-[1.25rem] sm:text-xl leading-[1.55] sm:leading-snug text-ink-900">
+            <h3 className="mt-4 sm:mt-6 font-serif text-[1.05rem] sm:text-xl leading-[1.45] sm:leading-snug text-ink-900">
               {intent.title}
             </h3>
-            <p className="mt-4 text-[15px] sm:text-sm leading-[2] sm:leading-relaxed text-ink-700">
+            <p className="mt-3 sm:mt-4 text-[13px] sm:text-sm leading-[1.85] sm:leading-relaxed text-ink-700">
               {intent.body}
             </p>
             <Link
               href={intent.href}
-              className="mt-6 inline-flex min-h-[44px] items-center gap-1 text-[15px] sm:text-sm text-brand-deep transition group-hover:translate-x-0.5"
+              className="mt-4 sm:mt-6 inline-flex min-h-[40px] sm:min-h-[44px] items-center gap-1 text-[13.5px] sm:text-sm text-brand-deep transition group-hover:translate-x-0.5"
             >
               {intent.cta}
               <ArrowRight className="h-4 w-4" />

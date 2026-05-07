@@ -58,46 +58,46 @@ export function OnlineSection() {
     <Section
       eyebrow="ONLINE ADVANTAGE"
       title={<>Solvora × オンライン、<br className="sm:hidden" />だからできること。</>}
-      description="Solvora Learning Lab のオンライン授業は、対面の代替ではありません。移動時間を学習時間に変え、授業ノートを残し、解けなかった問題は AI 復習プリントに整える。高校物理・理系個別指導は、オンラインのほうが加速します（高校物理専門塾としての指導継続）。"
+      description="移動時間を学習時間に変え、解けなかった問題は AI 復習プリントに整える。高校物理・理系個別指導は、オンラインのほうが加速します。"
       className="bg-paper"
     >
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (
           <article
             key={item.title}
-            className="group relative overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+            className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink-900/[0.07] bg-white/85 p-5 sm:p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
           >
             <div
-              className={`flex h-12 w-12 sm:h-11 sm:w-11 items-center justify-center rounded-2xl ring-1 ${toneMap[item.tone]}`}
+              className={`flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl sm:rounded-2xl ring-1 ${toneMap[item.tone]}`}
             >
-              <item.icon className="h-5 w-5 sm:h-[18px] sm:w-[18px]" aria-hidden strokeWidth={1.6} />
+              <item.icon className="h-4 w-4 sm:h-[18px] sm:w-[18px]" aria-hidden strokeWidth={1.6} />
             </div>
-            <h3 className="mt-6 sm:mt-7 font-serif text-[1.25rem] sm:text-[1.15rem] leading-[1.55] sm:leading-snug tracking-[-0.008em] text-ink-900">
+            <h3 className="mt-4 sm:mt-7 font-serif text-[1.05rem] sm:text-[1.15rem] leading-[1.45] sm:leading-snug tracking-[-0.008em] text-ink-900">
               {item.title}
             </h3>
-            <p className="mt-4 sm:mt-3 text-[15px] sm:text-[13.5px] leading-[2] sm:leading-[1.75] text-ink-600">
+            <p className="mt-2.5 sm:mt-3 text-[13px] sm:text-[13.5px] leading-[1.75] sm:leading-[1.75] text-ink-600">
               {item.body}
             </p>
           </article>
         ))}
       </div>
 
-      <div className="mt-14 overflow-hidden rounded-3xl border border-ink-900/[0.07] bg-white/85 shadow-soft backdrop-blur-sm">
+      <div className="mt-10 sm:mt-14 overflow-hidden rounded-2xl sm:rounded-3xl border border-ink-900/[0.07] bg-white/85 shadow-soft backdrop-blur-sm">
         <div className="grid grid-cols-2 divide-y divide-ink-900/[0.06] md:grid-cols-4 md:divide-x md:divide-y-0">
           {[
-            { k: "通塾時間の削減", v: "週 3〜6h", sub: "その分を演習に転用" },
+            { k: "通塾時間の削減", v: "週 3〜6h", sub: "演習に転用" },
             { k: "対応時間帯", v: "10:00–22:00", sub: "前後要相談" },
-            { k: "授業教材", v: "森祐太の自作", sub: "『考える力を育てる』シリーズ" },
+            { k: "授業教材", v: "森祐太の自作", sub: "『考える力を育てる』" },
             { k: "授業形式", v: "完全1対1", sub: "振替可" },
           ].map((x) => (
-            <div key={x.k} className="p-6 sm:p-7 text-center">
-              <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.22em] sm:tracking-[0.28em] uppercase text-ink-500">
+            <div key={x.k} className="p-4 sm:p-7 text-center">
+              <p className="text-[10px] sm:text-[10px] font-medium tracking-[0.18em] sm:tracking-[0.28em] uppercase text-ink-500">
                 {x.k}
               </p>
-              <p className="mt-3.5 font-serif text-[1.4rem] sm:text-[1.55rem] tracking-[-0.012em] text-brand-deep">
+              <p className="mt-2.5 sm:mt-3.5 font-serif text-[1.1rem] sm:text-[1.55rem] tracking-[-0.012em] text-brand-deep">
                 {x.v}
               </p>
-              <p className="mt-2 text-[13px] sm:text-[12px] leading-relaxed text-ink-600">{x.sub}</p>
+              <p className="mt-1.5 sm:mt-2 text-[11px] sm:text-[12px] leading-tight sm:leading-relaxed text-ink-600">{x.sub}</p>
             </div>
           ))}
         </div>

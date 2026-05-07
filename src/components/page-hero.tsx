@@ -147,23 +147,23 @@ export function PageHero({
             "pointer-events-none absolute select-none font-serif leading-[0.8] tracking-[-0.05em] sm:hidden",
             t.watermark,
           )}
-          style={{ fontSize: "clamp(14rem, 70vw, 22rem)", right: "-12%", top: "8%" }}
+          style={{ fontSize: "clamp(9rem, 45vw, 14rem)", right: "-8%", top: "10%" }}
         >
           {watermark}
         </span>
       )}
 
       {breadcrumb && breadcrumb.length > 0 && (
-        <Container className="relative pt-10">
+        <Container className="relative pt-6 sm:pt-10">
           <Breadcrumb items={breadcrumb} />
         </Container>
       )}
 
-      <Container className="relative py-16 sm:py-28 lg:py-32">
+      <Container className="relative py-10 sm:py-28 lg:py-32">
         <div className="max-w-3xl">
           <p
             className={cn(
-              "flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10.5px] sm:text-[11px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.32em]",
+              "flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.18em] sm:tracking-[0.32em]",
               "before:inline-block before:h-px before:w-5 sm:before:w-6 before:bg-current before:opacity-50",
               t.eyebrow,
             )}
@@ -171,30 +171,30 @@ export function PageHero({
             {eyebrow}
           </p>
           <h1
-            className="mt-6 sm:mt-7 font-serif text-display-xl text-ink-900"
+            className="mt-4 sm:mt-7 font-serif text-display-xl text-ink-900"
             style={{ wordBreak: "keep-all", overflowWrap: "break-word", lineBreak: "strict" }}
           >
             {title}
           </h1>
 
-          <div className="mt-7 sm:mt-8 flex items-center gap-3" aria-hidden>
-            <span className="h-px w-12 bg-ink-900/20" />
+          <div className="mt-5 sm:mt-8 flex items-center gap-3" aria-hidden>
+            <span className="h-px w-10 sm:w-12 bg-ink-900/20" />
             <span className={cn("h-1.5 w-1.5 rounded-full", t.dot)} />
             <span
               className={cn(
-                "h-px flex-1 max-w-[14rem] bg-gradient-to-r",
+                "h-px flex-1 max-w-[10rem] sm:max-w-[14rem] bg-gradient-to-r",
                 t.rule,
               )}
             />
           </div>
 
           {description && (
-            <p className="mt-6 sm:mt-7 max-w-2xl text-[15.5px] sm:text-[16px] leading-[1.95] sm:leading-[1.85] text-ink-700">
+            <p className="mt-4 sm:mt-7 max-w-2xl text-[14px] sm:text-[16px] leading-[1.85] sm:leading-[1.85] text-ink-700">
               {description}
             </p>
           )}
 
-          {children && <div className="mt-8 sm:mt-10">{children}</div>}
+          {children && <div className="mt-6 sm:mt-10">{children}</div>}
         </div>
       </Container>
     </section>
