@@ -13,6 +13,9 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import { Hero } from "@/components/hero";
+import { ProofStrip } from "@/components/proof-strip";
+import { PainPointsSection } from "@/components/pain-points-section";
+import { AiPrintFigure } from "@/components/ai-print-figure";
 import { Section } from "@/components/section";
 import { FeatureCard } from "@/components/feature-card";
 import { CtaBlock } from "@/components/cta-block";
@@ -140,12 +143,12 @@ const subjects = [
 const flow = [
   {
     step: "01",
-    title: "無料体験のお申し込み",
-    description: "Webフォームから3分でお申し込みいただけます。気になる講座を選んでクリックすると、フォームに自動入力されます。日程候補を複数お送りください。",
+    title: "体験授業のお申し込み（¥3,000）",
+    description: "Webフォームから3分でお申し込みいただけます。気になる講座を選んでクリックするとフォームに自動入力。送信時に Stripe 決済を経由します（決済完了で申し込み確定）。",
   },
   {
     step: "02",
-    title: "無料体験授業（60分）",
+    title: "体験授業（60分・¥3,000）",
     description: "現在の理解度ヒアリング、診断ミニ授業、おすすめコースのご提案までを、講師（森祐太）が直接担当します。",
   },
   {
@@ -171,59 +174,40 @@ export default function HomePage() {
 
   return (
     <>
+      {/* === ABOVE THE FOLD === */}
       <Hero />
 
-      {/* KEYWORD LEAD — primary SEO anchor */}
-      <section
-        aria-labelledby="lead-heading"
-        className="border-b border-ink-900/[0.06] bg-paper"
-      >
-        <div className="container py-8 sm:py-16">
-          <p className="text-[10px] sm:text-[10px] font-medium tracking-[0.18em] sm:tracking-[0.32em] uppercase text-brand-deep">
-            REPAIR EVERY MISSED PROBLEM
-          </p>
-          <h2
-            id="lead-heading"
-            className="mt-3 sm:mt-5 max-w-3xl font-serif text-[1.25rem] leading-[1.5] tracking-[-0.012em] text-ink-900 sm:text-[1.85rem] sm:leading-[1.55]"
-          >
-            <span className="text-brand-deep">解けなかった1問</span>を、
-            <br className="sm:hidden" />
-            <span className="text-warm-deep">その子専用の復習プリント</span>に。
-            <span className="hidden sm:inline">AI復習プリント付きの 高校物理・理系個別指導。</span>
-          </h2>
-          {/* モバイル：3 つの短文に分割。デスクトップ：従来の長文。 */}
-          <ul className="mt-5 sm:hidden space-y-2.5 text-[14px] leading-[1.85] text-ink-700">
-            <li>
-              <strong className="font-medium text-ink-900">Solvora Learning Lab</strong> は、高校物理が苦手で止まっている受験生を、つまずきの場所から修復するオンライン個別指導です。
-            </li>
-            <li>
-              授業は <strong className="font-medium text-ink-900">人間の講師（森祐太）</strong> が担当。解けなかった問題は AI（REM）と一緒に類題・解答・解説を整え、復習 PDF にします。
-            </li>
-            <li>
-              初学者〜難関大・医学部まで、力学・電磁気・波動・熱・原子の全分野をカバーします（高校物理専門塾としての指導継続）。
-            </li>
-          </ul>
-          <p className="mt-6 max-w-3xl text-[15px] leading-[1.95] text-ink-700 hidden sm:block">
-            <strong className="font-medium text-ink-900">Solvora Learning Lab</strong> は、<strong className="font-medium text-ink-900">高校物理が苦手で止まっている受験生</strong>を、つまずきの場所から修復することに特化したオンライン個別指導サービスです。授業は人間の講師が担当し、解けなかった問題は AI（REM）と一緒に類題・解答・解説を整えて復習PDFに仕立てます。<br />
-            初学者から共通テスト・難関大・医学部志望まで、力学・電磁気・波動・熱力学・原子の全分野を体系的にカバーする、高校物理専門塾としての指導も継続しています。
-          </p>
-        </div>
-      </section>
+      {/* 実績ストリップ — Hero 直下で信頼を即座に提示 */}
+      <ProofStrip />
 
+      {/* 悩み — 共感セクション（3 つの典型的なつまずき） */}
+      <PainPointsSection />
+
+      {/* 指導の仕組み — 4 ステップの円環フロー */}
+      <WhiteboardFlow />
+
+      {/* AI 復習プリントを図解で説明 */}
+      <AiPrintFigure />
+
+      {/* === MAIN CONVERSION === */}
+      {/* 料金（3 ティア：体験 / 電磁気集中 / 1対1 個別） */}
+      <PricePreview />
+
+      {/* === SECONDARY CONTENT (mobile では密度を下げる) === */}
       <div className="cv-auto">
         {/* MANIFESTO — dark contrast pivot */}
         <ManifestoBand />
 
-        {/* PROOF — giant numbers showcase */}
+        {/* PROOF — giant numbers showcase（実績の詳細） */}
         <ProofShowcase />
-
-        {/* PRICE PREVIEW — surface fees on TOP */}
-        <PricePreview />
 
         {/* FOR EVERYONE */}
         <ForEveryoneSection />
 
-        <SeoIntentSection />
+        {/* SEO Intent — モバイルでは負担増のため隠す（SEO クローラには見える） */}
+        <div className="hidden sm:block">
+          <SeoIntentSection />
+        </div>
       </div>
 
       <div className="cv-auto">
@@ -258,8 +242,8 @@ export default function HomePage() {
       {/* PHILOSOPHY */}
       <PhilosophySection />
 
-      {/* WHITEBOARD —授業設計図 */}
-      <WhiteboardFlow />
+      {/* WhiteboardFlow（4ステップメソッド）は ABOVE-THE-FOLD で表示済みのため、
+          ここでは重複を避けて再描画しない。 */}
 
       {/* FEATURES */}
       <Section

@@ -14,7 +14,7 @@ export function CtaBlock({
   eyebrow = "BOOK A TRIAL SESSION",
   title = "まずは60分の体験授業で、現在地を見に行きませんか。",
   description = "残り時間と志望校から逆算した学習戦略を、その場でお渡しします。無理な勧誘は行いません。",
-  primary = { label: "無料体験を申し込む", href: "/trial" },
+  primary = { label: "体験授業を申し込む（¥3,000）", href: "/trial" },
   secondary = { label: "Solvora Learning Lab にお問い合わせ", href: "/contact" },
 }: Props) {
   return (

@@ -21,8 +21,8 @@ type TierConfig = {
 const tierConfigs: TierConfig[] = [
   {
     slug: "trial",
-    unit: "60分 / 初回のみ / 無料",
-    note: "受講のスタートは必ずここから。現状診断 + 学習戦略 + おすすめコースのご案内まで、その場で実施します。いきなり高額な講座にお金を払う必要はありません。",
+    unit: "60分 / 初回のみ / Stripe 前払い",
+    note: "受講のスタートは必ずここから。現状診断 + 学習戦略 + おすすめコースのご案内まで、その場で実施します。本気度のフィルターとして ¥3,000 をいただきます。",
     accent: "border-warm/35 bg-warm-bg/55",
     badge: "まずはここから",
   },
@@ -37,14 +37,8 @@ const tierConfigs: TierConfig[] = [
   {
     slug: "private",
     unit: "1回 90分 × 月4回 / Solvora 最上位プロダクト",
-    note: "毎回オーダーメイドの専用カリキュラムで、森祐太の指導時間を専有。難関大・医学部向けに、論述添削・過去問演習まで含む プレミアム（月額 88,000円）もご用意。",
+    note: "毎回オーダーメイドの専用カリキュラムで、森祐太の指導時間を専有。難関大・医学部向けプレミアム（月額 88,000円）もご用意。",
     accent: "border-gold/40 bg-gold-soft/45",
-  },
-  {
-    slug: "test-prep",
-    unit: "1回 90分 × 全3回 / 駆け込み対応",
-    note: "学校テスト直前 7〜10日前から。出題範囲を絞って、立式の型と誤答パターンを一気に仕上げます。",
-    accent: "border-ink-900/15 bg-white/80",
   },
 ];
 
@@ -110,12 +104,12 @@ export function PricePreview() {
               href="/courses"
               className="mt-5 sm:mt-7 inline-flex min-h-[44px] sm:min-h-[48px] items-center gap-2 rounded-full border border-ink-900/15 bg-white/80 px-4 sm:px-5 py-2.5 sm:py-3 text-[13px] sm:text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
             >
-              全 {totalCourseCount} 講座・料金詳細を見る
+              ほかの講座をもっと見る（全 {totalCourseCount} 講座）
               <ArrowRight className="h-3.5 w-3.5 opacity-60" />
             </Link>
           </div>
 
-          <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
+          <div className="grid gap-3 sm:gap-4">
             {tiers.map((t) => (
               <Link
                 key={t.label}

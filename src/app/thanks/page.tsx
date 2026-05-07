@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "申し込みありがとうございました ｜ Solvora Learning Lab",
   description:
-    "Solvora Learning Lab — 無料体験授業のお申し込み、決済完了をもって受付が確定しました。担当の森祐太より2営業日以内にご連絡いたします。",
+    "Solvora Learning Lab — 体験授業（¥3,000）のお申し込み、決済完了をもって受付が確定しました。担当の森祐太より2営業日以内にご連絡いたします。",
   path: "/thanks",
   noIndex: true,
 });
@@ -47,7 +47,7 @@ export default function ThanksPage() {
         data={webPageJsonLd({
           name: "申し込みありがとうございました ｜ Solvora Learning Lab",
           description:
-            "Solvora Learning Lab — 無料体験授業の申し込み完了ページ。",
+            "Solvora Learning Lab — 体験授業（¥3,000）の申し込み完了ページ。",
           path: "/thanks",
         })}
       />
