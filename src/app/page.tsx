@@ -91,9 +91,9 @@ const features: {
   },
   {
     icon: BookMarked,
-    title: "書籍出版実績のある講師",
+    title: "高校物理 全分野の書籍執筆",
     description:
-      "大学受験物理の書籍を手がけた主宰講師が、すべての生徒のカリキュラムを設計します。",
+      "力学・電磁気・熱・波動・原子、および高校物理I／II を自ら執筆。授業はこの自作教材を軸に、全分野を一貫した視座で組み立てます。",
     tone: "gold",
   },
   {
@@ -347,7 +347,7 @@ export default function HomePage() {
               あなた専用のルートを。
             </h3>
             <p className="mt-6 sm:mt-7 text-[15px] leading-[1.95] sm:leading-[1.85] text-ink-600">
-              名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導にあたる。自身も共通テスト物理 満点・二次試験物理 9割を達成し、これまでの指導で<strong className="text-warm-deep font-medium">名古屋大学合格生</strong>も輩出。書籍執筆の経験とあわせ、一人ひとりに合わせた学習ルートを設計します。
+              名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導にあたる。自身も共通テスト物理 満点・二次試験物理 9割を達成し、これまでの指導で<strong className="text-warm-deep font-medium">名古屋大学合格生</strong>も輩出。<strong className="text-ink-900 font-medium">『考える力を育てる』シリーズ（力学・電磁気・熱・波動・原子・高校物理I／II）</strong>を自ら執筆し、授業はこの自作教材を軸に、一人ひとりに合わせた学習ルートを設計します。
             </p>
 
             <div className="mt-7 sm:mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.07] bg-ink-900/[0.06] sm:grid-cols-4">
