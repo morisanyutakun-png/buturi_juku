@@ -6,7 +6,7 @@ type Props = {
 
 /**
  * Bright pastel illustrated hero card.
- * Vivid central orbital + glow halo + floating equation chips + vertical 森 watermark.
+ * Vivid central orbital + glow halo + floating equation chips.
  * Designed as a focal-point image, not a backdrop.
  */
 export function HeroVisual({ className }: Props) {
@@ -45,15 +45,6 @@ export function HeroVisual({ className }: Props) {
         }}
       />
 
-      {/* huge watermark kanji */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-12 -bottom-16 select-none font-serif text-[28rem] leading-[0.8] tracking-tighter text-warm-deep/[0.10]"
-        style={{ writingMode: "vertical-rl" }}
-      >
-        森
-      </span>
-
       {/* central orbital atom */}
       <svg
         viewBox="0 0 400 500"
@@ -79,8 +70,8 @@ export function HeroVisual({ className }: Props) {
             <stop offset="100%" stopColor="#e28040" stopOpacity="0.15" />
           </linearGradient>
           <linearGradient id="hv-orbit-3" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0%" stopColor="#597a5b" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#597a5b" stopOpacity="0.1" />
+            <stop offset="0%" stopColor="#475569" stopOpacity="0.85" />
+            <stop offset="100%" stopColor="#475569" stopOpacity="0.12" />
           </linearGradient>
         </defs>
 
@@ -106,7 +97,7 @@ export function HeroVisual({ className }: Props) {
           <circle cx="355" cy="250" r="5" fill="#e28040" />
         </g>
         <g className="orbit-28">
-          <circle cx="340" cy="250" r="5" fill="#597a5b" />
+          <circle cx="340" cy="250" r="5" fill="#475569" />
         </g>
       </svg>
 
@@ -132,8 +123,8 @@ export function HeroVisual({ className }: Props) {
           className="absolute left-6 bottom-10 rounded-2xl border border-ink-900/[0.10] bg-white/90 px-4 py-3 shadow-soft"
           style={{ fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}
         >
-          <p className="text-[10px] tracking-[0.24em] uppercase text-forest-deep">Wave</p>
-          <p className="mt-1.5 text-[16px] text-ink-900">v = f λ</p>
+          <p className="text-[10px] tracking-[0.24em] uppercase text-ink-700">Review · PDF</p>
+          <p className="mt-1.5 text-[14.5px] text-ink-900">類題 + 解答 + 解説</p>
         </div>
 
         <div className="absolute right-7 bottom-12 inline-flex items-center gap-2 rounded-full border border-ink-900/[0.10] bg-white/90 px-3.5 py-1.5 text-[10.5px] tracking-[0.26em] text-ink-700 shadow-soft">

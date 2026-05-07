@@ -1,37 +1,52 @@
 import Link from "next/link";
-import { ArrowRight, BookOpenCheck, MonitorCheck, Target, Waves } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpenCheck,
+  FileText,
+  MonitorCheck,
+  Target,
+  Waves,
+} from "lucide-react";
 import { Section } from "@/components/section";
 
 const intents = [
   {
+    icon: FileText,
+    keyword: "AI復習プリント 個別指導",
+    title: "解けなかった1問を、その子専用の復習プリントに変えてほしい",
+    body: "Solvora Learning Lab は、授業で解けなかった問題を、講師が確認したうえで AI（REM）と一緒に類題・解答・解説の復習PDFに整えます。AI が出力した内容は、必ず講師が見たうえでお渡しします。",
+    href: "/online",
+    cta: "復習プリントの仕組みを見る",
+  },
+  {
     icon: Target,
-    keyword: "高校物理専門塾 大学受験",
-    title: "大学受験物理を、高校物理専門塾で志望校から逆算して伸ばしたい",
-    body: "高校物理専門塾として、総合塾の進度に合わせるのではなく、志望校の出題傾向・残り期間・今の理解度から、高校物理だけの学習ルートを設計します。",
+    keyword: "高校物理 個別指導 大学受験",
+    title: "大学受験物理を、志望校から逆算して伸ばしたい",
+    body: "総合塾の進度に合わせるのではなく、志望校の出題傾向・残り期間・今の理解度から学習ルートを設計します。高校物理専門塾としての指導はそのまま継続しています。",
     href: "/courses/private",
     cta: "1対1個別指導を見る",
   },
   {
     icon: MonitorCheck,
-    keyword: "高校物理専門塾 オンライン",
-    title: "通塾せず、オンラインの高校物理専門塾で1対1で学びたい",
-    body: "画面共有とライブ解説で、図の描き方・力の取り方・立式の順序を一緒になぞりながら進めます。授業内で作成した板書・解説はPDF/画像でお渡しし、当日のうちに復習に使えます。",
+    keyword: "高校物理 オンライン 個別指導",
+    title: "通塾せず、オンラインで1対1の高校物理個別指導を受けたい",
+    body: "画面共有とライブ解説で、図の描き方・力の取り方・立式の順序を一緒になぞって進めます。授業内で作成した板書・解説は PDF/画像でお渡しし、当日のうちに復習に使えます。",
     href: "/online",
     cta: "オンライン指導の詳細を見る",
   },
   {
     icon: BookOpenCheck,
-    keyword: "共通テスト物理 専門塾",
-    title: "共通テスト物理で安定して高得点を取りたい高校生へ",
-    body: "高校物理専門塾の対策では、公式暗記ではなく、リード文・グラフ・選択肢を読み解く処理手順を身につけ、時間配分まで含めて指導します。",
+    keyword: "共通テスト物理 対策",
+    title: "共通テスト物理で安定して高得点を取りたい",
+    body: "公式暗記ではなく、リード文・グラフ・選択肢を読み解く処理手順を身につけ、時間配分まで含めて指導します。苦手問題は授業後に復習プリント化します。",
     href: "/courses/kyotsu",
     cta: "共通テスト対策を見る",
   },
   {
     icon: Waves,
-    keyword: "高校物理 苦手分野 克服",
+    keyword: "力学 電磁気 苦手 克服",
     title: "力学・電磁気など、高校物理の苦手分野だけを短期で立て直したい",
-    body: "高校物理専門塾として、物理の失点原因を分野別に切り分け、力学の立式、電磁気の場のイメージなど、必要な単元に絞って補強します。",
+    body: "失点原因を分野別に切り分け、力学の立式、電磁気の場のイメージなど、必要な単元に絞って補強します。修復された理解は、復習プリントで翌週まで持続します。",
     href: "/courses",
     cta: "分野別講座を見る",
   },
@@ -41,8 +56,8 @@ export function SeoIntentSection() {
   return (
     <Section
       eyebrow="SEARCH INTENT"
-      title={<>高校物理専門塾を検索する<br className="sm:hidden" />『悩み』に、すべて答えます。</>}
-      description="『高校物理専門塾』『高校物理専門塾 オンライン』『高校物理 個別指導』など、検索で探される悩みごとに、高校物理専門塾としての答えを整理しました。広告から来た方にも、自然検索で調べている方にも、迷わず次の一歩を選んでいただけます。"
+      title={<>高校物理・理系個別指導を探す<br className="sm:hidden" />『悩み』に、すべて答えます。</>}
+      description="『AI復習プリント 個別指導』『高校物理専門塾 オンライン』『高校物理 個別指導』など、検索で探される悩みごとに、Solvora Learning Lab としての答えを整理しました。広告から来た方にも、自然検索で調べている方にも、迷わず次の一歩を選んでいただけます。"
       className="bg-paper-soft"
     >
       <div className="grid gap-5 md:grid-cols-2">

@@ -9,11 +9,12 @@ import { breadcrumbJsonLd, serviceJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "高校物理専門塾の無料体験授業(60分)",
+  title: "無料体験授業(60分) ｜ Solvora Learning Lab",
   description:
-    "高校物理専門塾「物理の森」の無料体験授業(60分)のご案内。高校物理の現状診断から学習戦略の提案までをその場で行う、高校物理専門塾のオンライン体験授業です。",
+    "Solvora Learning Lab（高校物理・理系個別指導 / AI復習プリント付き）の無料体験授業(60分)のご案内。現状診断から学習戦略の提案までをその場で行う、オンライン体験授業です（高校物理専門塾としての指導継続）。",
   path: "/trial",
   keywords: [
+    "Solvora Learning Lab 体験授業",
     "高校物理専門塾 体験授業",
     "高校物理 体験授業 無料",
     "オンライン 高校物理 体験授業",
@@ -63,7 +64,7 @@ export default function TrialPage() {
             <span className="block">診断します。</span>
           </>
         }
-        description="高校物理専門塾「物理の森」の体験授業は、入塾を前提としない学習相談としてご利用いただけます。高校物理の現状の苦手分野と残り期間を踏まえた学習戦略を、その場でお渡しします。"
+        description="Solvora Learning Lab の体験授業は、入塾を前提としない学習相談としてご利用いただけます。高校物理の現状の苦手分野と残り期間を踏まえた学習戦略を、その場でお渡しします。体験授業内のミニ授業で解けなかった問題は、後日 AI復習プリントとして整理する流れもご紹介します。"
       >
         <div className="flex flex-wrap gap-3">
           <Link
@@ -77,7 +78,7 @@ export default function TrialPage() {
             href="/courses"
             className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/80 px-7 py-4 text-[15px] sm:text-[14px] text-ink-800 transition hover:border-ink-900/30 hover:bg-white min-h-[52px] sm:min-h-0"
           >
-            高校物理専門塾の講座を見る
+            高校物理・理系個別指導の講座を見る
             <ArrowRight className="h-3.5 w-3.5 opacity-50" />
           </Link>
         </div>
@@ -205,7 +206,7 @@ export default function TrialPage() {
 
       <CtaBlock
         primary={{ label: "体験授業を申し込む", href: "/contact" }}
-        secondary={{ label: "高校物理専門塾の講座を見る", href: "/courses" }}
+        secondary={{ label: "高校物理・理系個別指導の講座を見る", href: "/courses" }}
       />
 
       <JsonLd
@@ -218,20 +219,20 @@ export default function TrialPage() {
       <JsonLd
         id="ld-webpage-trial"
         data={webPageJsonLd({
-          name: "高校物理専門塾の無料体験授業(60分)",
+          name: "無料体験授業(60分) ｜ Solvora Learning Lab",
           description:
-            "高校物理専門塾「物理の森」の60分無料体験授業。現在の高校物理の理解度を診断し、学習戦略を提案します。",
+            "Solvora Learning Lab の60分無料体験授業。現在の高校物理の理解度を診断し、学習戦略を提案します（高校物理専門塾としての指導継続）。",
           path: "/trial",
         })}
       />
       <JsonLd
         id="ld-service-trial"
         data={serviceJsonLd({
-          name: "高校物理専門塾「物理の森」の無料体験授業",
+          name: "Solvora Learning Lab の無料体験授業（高校物理・理系個別指導）",
           description:
-            "高校物理専門塾「物理の森」が行う、高校物理・大学受験物理の現状診断と学習戦略提案の60分オンライン体験授業です。",
+            "Solvora Learning Lab が行う、高校物理・大学受験物理の現状診断と学習戦略提案の60分オンライン体験授業です（高校物理専門塾としての指導継続）。",
           path: "/trial",
-          serviceType: "高校物理専門塾のオンライン学習相談 / 体験授業",
+          serviceType: "オンライン学習相談 / 体験授業 / 高校物理・理系個別指導",
           price: "0",
         })}
       />

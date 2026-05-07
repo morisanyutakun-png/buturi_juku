@@ -10,8 +10,8 @@ import { siteConfig } from "@/data/site";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
-    template: `%s | 高校物理専門塾「${siteConfig.name}」`,
+    default: `${siteConfig.name} ｜ AI復習プリント付き 高校物理・理系個別指導`,
+    template: `%s ｜ ${siteConfig.name}`,
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
+    title: `${siteConfig.name} ｜ AI復習プリント付き 高校物理・理系個別指導`,
     description: siteConfig.description,
     // og:image is auto-injected by Next.js from src/app/opengraph-image.tsx
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: siteConfig.twitter,
     creator: siteConfig.twitter,
-    title: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
+    title: `${siteConfig.name} ｜ AI復習プリント付き 高校物理・理系個別指導`,
     description: siteConfig.description,
     // twitter:image is auto-injected from the same opengraph-image convention
   },

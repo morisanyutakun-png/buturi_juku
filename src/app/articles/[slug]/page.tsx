@@ -31,13 +31,18 @@ export async function generateMetadata(
   const article = getArticleBySlug(slug);
   if (!article) return {};
   return buildMetadata({
-    title: `${article.title} | 高校物理専門塾の学習コラム`,
+    title: `${article.title} ｜ Solvora Learning Lab の学習コラム`,
     description: article.description,
     path: `/articles/${article.slug}`,
     type: "article",
     publishedTime: article.publishedAt,
     modifiedTime: article.updatedAt ?? article.publishedAt,
-    keywords: ["高校物理専門塾", article.category, ...article.tags],
+    keywords: [
+      "Solvora Learning Lab",
+      "高校物理専門塾",
+      article.category,
+      ...article.tags,
+    ],
     category: article.category,
   });
 }
@@ -129,7 +134,7 @@ export default async function ArticleDetailPage({
                     href="/courses"
                     className="inline-flex items-center gap-2 rounded-full border border-ink-900/15 px-5 py-3 text-sm text-ink-900 hover:border-brand hover:text-brand transition"
                   >
-                    高校物理専門塾の講座を見る
+                    高校物理・理系個別指導の講座を見る
                   </Link>
                 </div>
               </div>
@@ -228,7 +233,7 @@ export default async function ArticleDetailPage({
           slug: article.slug,
           publishedAt: article.publishedAt,
           updatedAt: article.updatedAt,
-          keywords: ["高校物理専門塾", article.category, ...article.tags],
+          keywords: ["Solvora Learning Lab", "高校物理専門塾", article.category, ...article.tags],
           articleSection: article.category,
           wordCount: article.sections
             .flatMap((s) => s.paragraphs)

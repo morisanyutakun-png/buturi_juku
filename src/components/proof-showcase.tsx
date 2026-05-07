@@ -84,7 +84,7 @@ export function ProofShowcase() {
           >
             『教える側』の<span className="text-warm-deep">数字</span>で、
             <br className="hidden sm:block" />
-            高校物理専門塾を選ぶ根拠を示します。
+            Solvora Learning Lab を選ぶ根拠を示します。
           </h2>
           <p className="mt-5 max-w-2xl text-[16px] sm:text-[15px] leading-[2] sm:leading-[1.85] text-ink-700">
             以下は、すべて<strong className="font-medium text-ink-900">主宰講師・森祐太自身の実績</strong>です。受験生本人の点数の伸びは個人差があるため、ここでは『教える側がどこまで物理を理解しているか』を数字で開示します。

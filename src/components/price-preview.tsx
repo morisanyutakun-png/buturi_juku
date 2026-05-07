@@ -28,7 +28,7 @@ const tiers: Tier[] = [
     label: "1対1個別指導",
     price: "月 38,000円〜",
     unit: "90分 × 月4回 / 講師固定",
-    note: "志望校から逆算したフルカスタムカリキュラム",
+    note: "志望校から逆算したフルカスタムカリキュラム ／ AI復習プリント作成つき",
     href: "/courses/private",
     accent: "border-brand/30 bg-brand-bg/55 text-brand-deep",
   },
@@ -36,15 +36,15 @@ const tiers: Tier[] = [
     label: "共通テスト対策",
     price: "全8回 48,000円",
     unit: "90分 × 8回",
-    note: "読解・処理・時間配分まで含めた共通テスト特化",
+    note: "読解・処理・時間配分に加え、苦手問題は AI復習プリントで補強",
     href: "/courses/kyotsu",
-    accent: "border-forest/30 bg-forest-bg/60 text-forest-deep",
+    accent: "border-brand/30 bg-brand-bg/55 text-brand-deep",
   },
   {
     label: "分野別 集中講座",
     price: "全6回 36,000円",
     unit: "90分 × 6回 / 力学 or 電磁気",
-    note: "苦手分野だけを短期で立て直す集中講座",
+    note: "苦手単元を短期で修復 ／ 苦手問題の復習プリント作成",
     href: "/courses",
     accent: "border-gold/40 bg-gold-soft/50 text-gold-deep",
   },
@@ -64,7 +64,7 @@ export function PricePreview() {
         <div className="grid gap-8 md:grid-cols-[1fr_1.6fr] md:items-end">
           <div>
             <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10.5px] sm:text-[10px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-5 sm:before:w-6 before:bg-current before:opacity-50">
-              PRICING — 高校物理専門塾の料金
+              PRICING — Solvora Learning Lab の料金
             </p>
             <h2
               id="price-preview-heading"
@@ -75,7 +75,7 @@ export function PricePreview() {
               <span className="text-warm-deep">最初に</span>明示します。
             </h2>
             <p className="mt-5 max-w-md text-[15.5px] sm:text-[15px] leading-[2] sm:leading-[1.85] text-ink-700">
-              高校物理専門塾の入塾金は<strong className="font-medium text-ink-900">0円</strong>。システム利用料も別途いただきません。受講料の概算をTOPで先に示します。<span className="text-ink-500">※ 指定教材（市販の問題集等）のみ、別途ご購入をお願いしています。</span>
+              Solvora Learning Lab の入塾金は<strong className="font-medium text-ink-900">0円</strong>。システム利用料も別途いただきません。受講料の概算を TOP で先に示します。<span className="text-ink-500">※ 指定教材（市販の問題集等）のみ、別途ご購入をお願いしています。</span>
             </p>
             <Link
               href="/courses"

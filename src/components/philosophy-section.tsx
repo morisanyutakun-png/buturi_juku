@@ -43,7 +43,7 @@ export function PhilosophySection() {
             <span className="text-warm-deep">学び方</span>の問題です。
           </p>
           <p className="mt-5 sm:mt-6 text-[14px] sm:text-[12.5px] leading-[2] sm:leading-[1.85] text-ink-600">
-            正しい順序で、正しい姿勢で学べば、物理は必ず伸びます。私たちは、そのための伴走者です。
+            正しい順序で、正しい姿勢で学べば、物理は着実に伸びていきます。Solvora Learning Lab は、そのための伴走者です。
           </p>
         </li>
       </ol>

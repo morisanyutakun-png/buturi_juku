@@ -14,7 +14,7 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const rows: { label: string; value: string }[] = [
-  { label: "販売事業者", value: siteConfig.name },
+  { label: "販売事業者", value: `${siteConfig.name}（運営：森祐太 / 個人事業主）` },
   { label: "運営責任者", value: siteConfig.author.name },
   { label: "所在地", value: "請求があり次第、遅滞なく開示します。" },
   { label: "連絡先", value: siteConfig.contact.email },
@@ -22,7 +22,7 @@ const rows: { label: string; value: string }[] = [
   { label: "販売価格", value: "各講座ページに記載(税込)" },
   {
     label: "商品以外の必要料金",
-    value: "インターネット接続にかかる通信費・教材購入費(任意)等はお客様のご負担となります。",
+    value: "インターネット接続にかかる通信費、および指定教材（市販の問題集等。任意。コースにより推奨）の購入費はお客様のご負担となります。",
   },
   {
     label: "支払方法",

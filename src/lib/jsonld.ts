@@ -26,7 +26,7 @@ export function organizationJsonLd() {
 
   const hasOfferCatalog = {
     "@type": "OfferCatalog",
-    name: `高校物理専門塾「${siteConfig.name}」の講座カタログ`,
+    name: `${siteConfig.name} の講座カタログ（高校物理・理系個別指導）`,
     itemListElement: courses.map((c) => ({
       "@type": "Offer",
       url: absoluteUrl(`/courses/${c.slug}`, siteConfig.url),
@@ -49,10 +49,13 @@ export function organizationJsonLd() {
     "@id": organizationId,
     name: siteConfig.name,
     alternateName: [
-      "高校物理専門塾 物理の森",
+      siteConfig.legacyName,
       "高校物理専門塾",
+      "高校物理専門塾 物理の森",
+      "MORI Physics Forest",
       siteConfig.nameSub,
       siteConfig.nameEn,
+      siteConfig.shortName,
     ],
     slogan: siteConfig.tagline,
     url: siteConfig.url,
@@ -95,10 +98,11 @@ export function websiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": websiteId,
-    name: `高校物理専門塾「${siteConfig.name}」`,
+    name: siteConfig.name,
     alternateName: [
-      "高校物理専門塾 物理の森",
+      siteConfig.legacyName,
       "高校物理専門塾",
+      "MORI Physics Forest",
       siteConfig.nameSub,
     ],
     description: siteConfig.description,

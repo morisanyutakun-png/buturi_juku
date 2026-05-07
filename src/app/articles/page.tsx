@@ -11,13 +11,14 @@ import { articles, articleHref } from "@/data/articles";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = buildMetadata({
-  title: "高校物理の学習コラム — 高校物理専門塾「物理の森」",
+  title: "高校物理の学習コラム ｜ Solvora Learning Lab",
   description:
-    "高校物理専門塾「物理の森」が発信する高校物理の学習コラム一覧です。高校物理の勉強法、力学・電磁気・波動・熱力学・原子の分野別の苦手克服、大学受験物理の戦略について、現場から発信します。",
+    "Solvora Learning Lab（高校物理専門塾としての指導も継続）が発信する高校物理の学習コラム一覧です。高校物理の勉強法、力学・電磁気・波動・熱力学・原子の分野別の苦手克服、大学受験物理の戦略について、現場から発信します。",
   path: "/articles",
   keywords: [
     "高校物理 勉強法",
     "高校物理 苦手",
+    "Solvora Learning Lab コラム",
     "高校物理専門塾 コラム",
     "大学受験物理 勉強法",
     "力学 勉強法",
@@ -36,7 +37,7 @@ export default function ArticlesIndexPage() {
       <PageHero
         eyebrow="INSIGHTS — 高校物理の学習コラム"
         watermark="解"
-        tone="forest"
+        tone="ink"
         breadcrumb={[
           { label: "ホーム", href: "/" },
           { label: "物理学習コラム", href: "/articles" },
@@ -45,12 +46,12 @@ export default function ArticlesIndexPage() {
           <>
             <span className="block">高校物理を</span>
             <span className="block">
-              <span className="text-forest-deep">解きほぐす</span>、
+              <span className="text-brand-deep">解きほぐす</span>、
             </span>
             <span className="block">学習コラム。</span>
           </>
         }
-        description="高校物理専門塾「物理の森」から、高校物理の学び方・分野別の躓きやすいポイント・大学受験物理の戦略を、指導現場の視点で発信します。"
+        description="Solvora Learning Lab から、高校物理の学び方・分野別の躓きやすいポイント・大学受験物理の戦略を、指導現場の視点で発信します（高校物理専門塾としての発信を継続）。"
       />
 
       <Section
@@ -133,9 +134,9 @@ export default function ArticlesIndexPage() {
       <JsonLd
         id="ld-collection-articles"
         data={collectionPageJsonLd({
-          name: "高校物理の学習コラム — 高校物理専門塾「物理の森」",
+          name: "高校物理の学習コラム ｜ Solvora Learning Lab",
           description:
-            "高校物理専門塾「物理の森」が発信する、高校物理の学び方・分野別の苦手克服・大学受験物理の戦略をまとめた記事一覧です。",
+            "Solvora Learning Lab（高校物理専門塾としての指導も継続）が発信する、高校物理の学び方・分野別の苦手克服・大学受験物理の戦略をまとめた記事一覧です。",
           path: "/articles",
           items: sorted.map((article) => ({
             name: article.title,
@@ -148,7 +149,7 @@ export default function ArticlesIndexPage() {
         id="ld-articles-itemlist"
         data={itemListJsonLd({
           name: "高校物理の学習コラム一覧",
-          description: "高校物理専門塾「物理の森」による、高校物理・大学受験物理の学習記事一覧です。",
+          description: "Solvora Learning Lab（高校物理専門塾）による、高校物理・大学受験物理の学習記事一覧です。",
           path: "/articles",
           items: sorted.map((article) => ({
             name: article.title,

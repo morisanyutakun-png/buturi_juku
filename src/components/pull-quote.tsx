@@ -4,7 +4,7 @@ import { Container } from "@/components/container";
 export function PullQuote() {
   return (
     <section
-      aria-label="高校物理専門塾の信念"
+      aria-label="Solvora Learning Lab の信念"
       className="relative isolate overflow-hidden border-y border-ink-900/[0.08] bg-paper-soft"
     >
       <div
@@ -38,7 +38,7 @@ export function PullQuote() {
           </blockquote>
           <figcaption className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] sm:text-[12.5px] tracking-[0.2em] uppercase text-ink-500">
             <span className="h-px w-10 bg-ink-900/30" aria-hidden />
-            <span>高校物理専門塾「物理の森」</span>
+            <span>Solvora Learning Lab</span>
             <span className="text-ink-400">/</span>
             <span>主宰講師 森祐太</span>
           </figcaption>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Atom, Sparkles, Wifi } from "lucide-react";
+import { ArrowRight, FileText, Sparkles, Wifi } from "lucide-react";
 import { Container } from "@/components/container";
 import { HeroBackdrop } from "@/components/hero-backdrop";
 import { HeroVisual } from "@/components/hero-visual";
@@ -30,18 +30,6 @@ export function Hero() {
         }}
       />
 
-      {/* HUGE watermark kanji behind everything — desktop only.
-          Removed entirely on mobile because any bleed creates the perception
-          of right-shifted cards (see related QA feedback). The hero card
-          carries its own centered watermark instead. */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -left-[6vw] top-[14%] hidden select-none font-serif leading-[0.8] tracking-[-0.05em] text-warm-deep/[0.07] lg:block"
-        style={{ fontSize: "clamp(20rem, 36vw, 44rem)" }}
-      >
-        森
-      </span>
-
       <Container className="relative py-16 sm:py-24 lg:py-40">
         {/* Mobile uses default block flow (each child = container width); only
             switch to grid on lg+. Using `grid` without an explicit
@@ -51,28 +39,28 @@ export function Hero() {
           <div className="relative">
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-700">
-                <Atom className="h-3 w-3 sm:h-3 sm:w-3 text-brand" aria-hidden />
-                高校物理専門塾
+                <FileText className="h-3 w-3 sm:h-3 sm:w-3 text-brand" aria-hidden />
+                AI復習プリント付き
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-700">
                 <Wifi className="h-3 w-3 sm:h-3 sm:w-3 text-warm-deep" aria-hidden />
-                全国オンライン
+                全国オンライン 1対1
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.10] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-700">
                 <Sparkles className="h-3 w-3 sm:h-3 sm:w-3 text-gold-deep" aria-hidden />
-                初学者〜難関大
+                高校物理・理系個別指導
               </span>
             </div>
 
             <p className="mt-7 sm:mt-10 text-[12px] sm:text-[12px] font-medium tracking-[0.22em] sm:tracking-[0.32em] uppercase text-brand-deep">
-              高校物理専門塾「物理の森」
+              {siteConfig.nameEn} — AI復習プリント付き 理系個別指導
             </p>
             <h1
               className="mt-4 font-serif text-display-2xl text-ink-900"
               style={{ wordBreak: "keep-all", overflowWrap: "break-word", lineBreak: "strict" }}
             >
+              <span className="block">解けなかった</span>
               <span className="block">
-                高校物理が
                 <span
                   className="bg-clip-text text-transparent"
                   style={{
@@ -80,26 +68,23 @@ export function Hero() {
                       "linear-gradient(120deg, #1f5aa6 0%, #3b7cd9 60%, #6ea8ff 100%)",
                   }}
                 >
-                  苦手
+                  1問
                 </span>
-                な
+                を、
               </span>
-              <span className="block">受験生を、</span>
-              <span className="block">
-                <span
-                  className="relative inline-block bg-clip-text text-transparent"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(120deg, #b35f27 0%, #e28040 50%, #f3a86c 100%)",
-                  }}
-                >
-                  得点源
-                </span>
-                <span className="text-ink-900">まで</span>
-              </span>
+              <span className="block">その子専用の</span>
               <span className="block text-ink-900">
                 <span className="relative inline-block">
-                  引き上げる。
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(120deg, #b35f27 0%, #e28040 50%, #f3a86c 100%)",
+                    }}
+                  >
+                    復習プリント
+                  </span>
+                  <span className="text-ink-900">に。</span>
                   <span
                     aria-hidden
                     className="absolute inset-x-0 -bottom-1 h-[10px] -z-10 rounded-full bg-warm/25"
@@ -116,11 +101,12 @@ export function Hero() {
             </div>
 
             <p className="mt-6 sm:mt-8 max-w-xl text-[15.5px] sm:text-[17px] leading-[1.9] sm:leading-[1.85] text-ink-700">
-              <strong className="text-ink-900 font-medium">高校物理専門塾「{siteConfig.name}」</strong>は、森祐太(名古屋大学 工学部 電気電子情報工学科)が主宰する、全国オンライン対応の高校物理専門塾です。<strong className="text-ink-900 font-medium">『高校物理だけ』を、暗記ではなく構造で教える</strong>ことに特化し、苦手で止まっている人を、得点源まで引き上げます。
+              <strong className="text-ink-900 font-medium">{siteConfig.name}</strong>は、高校物理・理系科目のつまずきを、個別指導と <strong className="text-ink-900 font-medium">AI 復習プリント</strong>で修復するオンライン指導サービスです。授業で解けなかった問題をもとに、講師が理解を確認し、類題生成 AI「REM」を活用して類題・解答・復習用 PDF を作成します。<br />
+              公式暗記ではなく、現象の理解、立式、演習、復習までを一つの流れで支えます。
             </p>
 
             <p className="mt-4 sm:mt-5 text-[11px] sm:text-[11px] leading-[1.85] tracking-[0.14em] sm:tracking-[0.22em] text-ink-500">
-              中心読者：高校物理が苦手な高校生・受験生 — 初学者から難関大・医学部まで対応
+              中心読者：高校物理が苦手な高校生・受験生 — 初学者から難関大・医学部まで対応 / 高校物理 個別指導
             </p>
 
             <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
@@ -158,10 +144,10 @@ export function Hero() {
               aria-hidden
             >
               <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
-                MORI PHYSICS FOREST
+                SOLVORA LEARNING LAB
               </p>
               <p className="mt-2.5 font-serif text-[1.3rem] leading-[1.45] tracking-[-0.012em] text-ink-900">
-                高校物理を、構造で。
+                解けなかった1問を、復習プリントに。
               </p>
               <ul
                 className="mt-4 grid grid-cols-2 gap-2 font-mono text-[12.5px] text-ink-800"
@@ -186,9 +172,9 @@ export function Hero() {
 
             <ul className="mx-auto mt-10 sm:mt-16 grid w-full grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-900/[0.10] bg-ink-900/[0.06] sm:grid-cols-4">
               {[
-                { k: "指導分野", v: "物理のみ", c: "text-brand-deep" },
-                { k: "授業形式", v: "1対1", c: "text-forest-deep" },
-                { k: "対応地域", v: "全国", c: "text-brand-deep" },
+                { k: "指導分野", v: "高校物理 中心 / 理系", c: "text-brand-deep" },
+                { k: "授業形式", v: "1対1", c: "text-ink-800" },
+                { k: "対応地域", v: "全国オンライン", c: "text-brand-deep" },
                 { k: "入塾金", v: "0円", c: "text-warm-deep" },
               ].map((item) => (
                 <li
@@ -198,19 +184,22 @@ export function Hero() {
                   <p className="text-[10.5px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase text-ink-500">
                     {item.k}
                   </p>
-                  <p className={`mt-2 font-serif text-[1.2rem] sm:text-[1.15rem] tracking-[-0.01em] ${item.c}`}>
+                  <p className={`mt-2 font-serif text-[1rem] sm:text-[1.05rem] tracking-[-0.01em] ${item.c}`}>
                     {item.v}
                   </p>
                 </li>
               ))}
             </ul>
+            <p className="mt-3 max-w-xl text-[11.5px] sm:text-[12px] leading-[1.85] text-ink-500">
+              ※ 力学・電磁気・波動・熱力学・原子をはじめ、理系科目は段階的に拡張予定。
+            </p>
 
             <p className="mt-9 max-w-xl font-serif text-[1.15rem] sm:text-[1.35rem] leading-[1.7] tracking-[-0.005em] text-ink-700">
-              <span className="text-brand-deep">わからない</span>が、
-              <span className="text-warm-deep">わかる</span>に変わる瞬間を。
+              <span className="text-brand-deep">解けなかった</span>が、
+              <span className="text-warm-deep">次に解ける</span>に変わる仕組みを。
             </p>
             <p className="mt-2 text-[10.5px] sm:text-[10.5px] tracking-[0.24em] sm:tracking-[0.32em] uppercase text-gold-deep">
-              構造で理解する高校物理専門塾 / Physics Forest
+              {siteConfig.name} / 高校物理・理系個別指導
             </p>
           </div>
 

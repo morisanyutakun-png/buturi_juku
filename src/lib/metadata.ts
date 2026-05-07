@@ -33,6 +33,7 @@ export function buildMetadata({
   const desc = description ?? siteConfig.description;
   const canonical = absoluteUrl(path, siteConfig.url);
   const mergedKeywords = uniqueKeywords([
+    ...siteConfig.seo.solvoraKeywords,
     ...siteConfig.seo.defaultKeywords,
     ...siteConfig.seo.highIntentKeywords,
     ...keywords,

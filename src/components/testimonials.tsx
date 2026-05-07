@@ -12,7 +12,7 @@ export function Testimonials() {
     <Section
       eyebrow="TEACHING APPROACH — 指導モデルケース"
       title="高校物理が苦手な受験生に、どう向き合うか。"
-      description="高校物理専門塾「物理の森」は立ち上げ期のため、ここでは実在の受講生の声ではなく、よくあるつまずきのタイプ別に、講師がどのように指導を設計するかをモデルケースとして示します。体験授業では、あなた自身の状態に合わせて同じ枠組みでルートを設計します。"
+      description="Solvora Learning Lab は立ち上げ期のため、ここでは実在の受講生の声ではなく、よくあるつまずきのタイプ別に、講師がどのように指導を設計するか、AI（REM）と一緒にどう復習プリントを作るかをモデルケースとして示します。体験授業では、あなた自身の状態に合わせて同じ枠組みでルートを設計します。"
       className="bg-paper"
     >
       <div className="grid gap-6 md:grid-cols-3">

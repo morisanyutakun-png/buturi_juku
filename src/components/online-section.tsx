@@ -1,10 +1,10 @@
 import {
   CalendarClock,
   ClipboardList,
+  FileText,
   Globe2,
   MonitorPlay,
   PencilLine,
-  Waves,
 } from "lucide-react";
 import { Section } from "@/components/section";
 
@@ -40,9 +40,9 @@ const items = [
     tone: "warm",
   },
   {
-    icon: Waves,
-    title: "移動ゼロ・集中MAX",
-    body: "通塾の往復時間がそのまま学習時間に変わります。睡眠時間を削らず、演習量を増やせます。",
+    icon: FileText,
+    title: "AI復習プリント (REMが補助)",
+    body: "授業で解けなかった問題に近い類題と解答・解説を AI（REM）が下書きし、講師が確認したうえで復習PDFとしてお渡しします。",
     tone: "forest",
   },
 ] as const;
@@ -57,8 +57,8 @@ export function OnlineSection() {
   return (
     <Section
       eyebrow="ONLINE ADVANTAGE"
-      title={<>高校物理専門塾 × オンライン、<br className="sm:hidden" />だからできること。</>}
-      description="高校物理専門塾「物理の森」のオンライン授業は、対面の代替ではありません。移動時間を学習時間に変え、授業ノートを残し、宿題で次回までの取り組みを設計する。高校物理の学習は、オンラインの高校物理専門塾のほうが加速します。"
+      title={<>Solvora × オンライン、<br className="sm:hidden" />だからできること。</>}
+      description="Solvora Learning Lab のオンライン授業は、対面の代替ではありません。移動時間を学習時間に変え、授業ノートを残し、解けなかった問題は AI 復習プリントに整える。高校物理・理系個別指導は、オンラインのほうが加速します（高校物理専門塾としての指導継続）。"
       className="bg-paper"
     >
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">

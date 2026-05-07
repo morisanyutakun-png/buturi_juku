@@ -51,19 +51,21 @@ export default function OpengraphImage() {
           }}
         />
 
-        {/* watermark kanji */}
+        {/* large numeral watermark — replaces the legacy 森 kanji.
+            Hints at the H1 「解けなかった1問を…」without leaning on the
+            old forest motif. */}
         <div
           style={{
             position: "absolute",
-            right: -90,
-            bottom: -180,
+            right: -30,
+            bottom: -240,
             fontSize: 720,
-            color: "rgba(179,95,39,0.10)",
+            color: "rgba(31,90,166,0.08)",
             lineHeight: 0.8,
             display: "flex",
           }}
         >
-          森
+          1
         </div>
 
         {/* top: brand mark + label */}
@@ -81,7 +83,7 @@ export default function OpengraphImage() {
               height: 56,
               borderRadius: 28,
               background:
-                "linear-gradient(135deg, rgba(59,124,217,0.18), rgba(89,122,91,0.22))",
+                "linear-gradient(135deg, rgba(59,124,217,0.18), rgba(71,85,105,0.18))",
               border: "1px solid rgba(20,35,65,0.10)",
               display: "flex",
               alignItems: "center",
@@ -90,7 +92,7 @@ export default function OpengraphImage() {
           >
             <svg width="34" height="34" viewBox="0 0 32 32">
               <ellipse cx="16" cy="16" rx="12" ry="4.5" fill="none" stroke="#3b7cd9" strokeWidth="1.6" />
-              <ellipse cx="16" cy="16" rx="12" ry="4.5" fill="none" stroke="#597a5b" strokeWidth="1.6" transform="rotate(60 16 16)" />
+              <ellipse cx="16" cy="16" rx="12" ry="4.5" fill="none" stroke="#475569" strokeWidth="1.6" transform="rotate(60 16 16)" />
               <ellipse cx="16" cy="16" rx="12" ry="4.5" fill="none" stroke="#e28040" strokeWidth="1.6" transform="rotate(-60 16 16)" />
               <circle cx="16" cy="16" r="2.4" fill="#caa34b" />
             </svg>
@@ -98,24 +100,24 @@ export default function OpengraphImage() {
           <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
             <div
               style={{
-                fontSize: 16,
-                letterSpacing: 5,
-                color: "#1f5aa6",
+                fontSize: 22,
+                letterSpacing: 4,
+                color: "#142341",
                 textTransform: "uppercase",
                 display: "flex",
               }}
             >
-              MORI PHYSICS FOREST
+              SOLVORA LEARNING LAB
             </div>
             <div
               style={{
-                fontSize: 26,
-                color: "#142341",
-                letterSpacing: -0.5,
+                fontSize: 18,
+                color: "#36456a",
+                letterSpacing: 2,
                 display: "flex",
               }}
             >
-              高校物理専門塾「物理の森」
+              AI復習プリント付き 高校物理・理系個別指導
             </div>
           </div>
         </div>
@@ -137,12 +139,12 @@ export default function OpengraphImage() {
               display: "flex",
             }}
           >
-            HIGH-SCHOOL PHYSICS SPECIALTY
+            REPAIR EVERY MISSED PROBLEM
           </div>
           <div
             style={{
               marginTop: 26,
-              fontSize: 92,
+              fontSize: 88,
               color: "#142341",
               lineHeight: 1.18,
               letterSpacing: -2,
@@ -151,14 +153,14 @@ export default function OpengraphImage() {
             }}
           >
             <div style={{ display: "flex" }}>
-              高校物理が
-              <span style={{ color: "#1f5aa6" }}>苦手</span>
-              な
+              解けなかった
+              <span style={{ color: "#1f5aa6" }}>1問</span>
+              を、
             </div>
             <div style={{ display: "flex" }}>
-              受験生を、
-              <span style={{ color: "#b35f27" }}>得点源</span>
-              まで。
+              その子専用の
+              <span style={{ color: "#b35f27" }}>復習プリント</span>
+              に。
             </div>
           </div>
         </div>
@@ -178,18 +180,18 @@ export default function OpengraphImage() {
               display: "flex",
               flexDirection: "column",
               gap: 10,
-              maxWidth: 720,
+              maxWidth: 760,
             }}
           >
             <div
               style={{
-                fontSize: 26,
+                fontSize: 24,
                 color: "#36456a",
-                lineHeight: 1.5,
+                lineHeight: 1.55,
                 display: "flex",
               }}
             >
-              『高校物理だけ』を、暗記ではなく構造で教えるオンライン専門塾。
+              講師がつまずきを確認し、AI（REM）で類題・解答・復習PDFを作成します。
             </div>
             <div
               style={{

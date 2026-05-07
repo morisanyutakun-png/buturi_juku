@@ -9,11 +9,12 @@ import { ContactForm } from "@/components/contact-form";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = buildMetadata({
-  title: "高校物理専門塾「物理の森」へのお問い合わせ",
+  title: "お問い合わせ ｜ Solvora Learning Lab",
   description:
-    "高校物理専門塾「物理の森」へのお問い合わせはこちらから。高校物理専門塾の体験授業のお申し込み、受講相談、料金に関するご質問などをお受けしています。",
+    "Solvora Learning Lab（高校物理・理系個別指導 / AI復習プリント付き）へのお問い合わせはこちらから。体験授業のお申し込み、受講相談、料金に関するご質問などをお受けしています（高校物理専門塾としての指導継続）。",
   path: "/contact",
   keywords: [
+    "Solvora Learning Lab お問い合わせ",
     "高校物理専門塾 お問い合わせ",
     "高校物理 体験授業 申し込み",
     "オンライン 高校物理 相談",
@@ -34,13 +35,13 @@ export default function ContactPage() {
         ]}
         title={
           <>
-            <span className="block">高校物理専門塾と、</span>
+            <span className="block">Solvora Learning Lab と、</span>
             <span className="block">
               <span className="text-brand">最初の一歩</span>を。
             </span>
           </>
         }
-        description="高校物理専門塾「物理の森」では、体験授業のお申し込み・受講前のご相談・料金に関するご質問などをお受けしています。2営業日以内にご返信します。"
+        description="Solvora Learning Lab では、体験授業のお申し込み・受講前のご相談・料金に関するご質問などをお受けしています。2営業日以内にご返信します（高校物理専門塾としての指導継続）。"
       />
 
       <Section
@@ -105,9 +106,9 @@ export default function ContactPage() {
       <JsonLd
         id="ld-webpage-contact"
         data={webPageJsonLd({
-          name: "高校物理専門塾「物理の森」へのお問い合わせ",
+          name: "お問い合わせ ｜ Solvora Learning Lab",
           description:
-            "高校物理専門塾「物理の森」が、体験授業の申し込み・受講相談・料金に関する質問を受け付けるお問い合わせページです。",
+            "Solvora Learning Lab が、体験授業の申し込み・受講相談・料金に関する質問を受け付けるお問い合わせページです（高校物理専門塾としての指導継続）。",
           path: "/contact",
         })}
       />

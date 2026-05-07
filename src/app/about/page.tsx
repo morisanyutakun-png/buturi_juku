@@ -9,14 +9,16 @@ import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "高校物理専門塾「物理の森」とは — 塾について",
+  title: "Solvora Learning Lab について — AI復習プリント付き 高校物理・理系個別指導",
   description:
-    "高校物理専門塾「物理の森」の理念・指導思想・総合塾との違いをまとめたページです。なぜ高校物理専門塾なのか、物理を『わかる』まで追いかける高校物理専門塾の姿勢を解説します。",
+    "Solvora Learning Lab の理念・指導思想・総合塾との違いをまとめたページです。高校物理専門塾としての姿勢を継承しつつ、解けなかった1問を AI復習プリントに変えるサービス設計を解説します。",
   path: "/about",
   keywords: [
+    "Solvora Learning Lab",
+    "AI復習プリント",
+    "理系個別指導",
     "高校物理専門塾",
     "高校物理専門塾 とは",
-    "高校物理専門塾 オンライン",
     "高校物理 個別指導",
     "高校物理 総合塾 違い",
     "高校物理 苦手 克服",
@@ -28,8 +30,8 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="ABOUT — 高校物理専門塾の理念"
-        watermark="森"
+        eyebrow="ABOUT — Solvora Learning Lab の理念"
+        watermark="S"
         tone="brand"
         breadcrumb={[
           { label: "ホーム", href: "/" },
@@ -37,14 +39,14 @@ export default function AboutPage() {
         ]}
         title={
           <>
-            <span className="block">高校物理を</span>
+            <span className="block">解けなかった問題を、</span>
             <span className="block">
-              『<span className="text-brand">わかる</span>』まで、
+              次の<span className="text-brand">理解</span>と<span className="text-warm-deep">復習</span>に
             </span>
-            <span className="block">追いかける高校物理専門塾。</span>
+            <span className="block">変える個別指導。</span>
           </>
         }
-        description="高校物理は、わかったふりで止まると最も損をする科目です。高校物理専門塾「物理の森」は『わかったふり』を許さず、あなたの手が勝手に動くところまで伴走します。"
+        description="高校物理は、わかったふりで止まると最も損をする科目です。Solvora Learning Lab は『わかったふり』を許さず、解けなかった1問を講師が確認したうえで AI復習プリントに変え、次の理解へつなげます。高校物理専門塾としての指導は、ここでも継続しています。"
       />
 
       <Section
@@ -84,9 +86,9 @@ export default function AboutPage() {
       <PhilosophySection />
 
       <Section
-        eyebrow="WHY PHYSICS-ONLY"
-        title="なぜ高校物理専門塾なのか"
-        description="総合塾ではなく高校物理専門塾であることに、はっきりとした意味があります。高校物理専門塾だからこそ提供できる価値を3点でお伝えします。"
+        eyebrow="WHY PHYSICS-FIRST"
+        title="なぜ高校物理を主軸に置くのか"
+        description="Solvora Learning Lab は理系個別指導サービスですが、軸足は高校物理にあります。高校物理を深く扱うからこそ提供できる価値を3点でお伝えします（高校物理専門塾としての指導継続）。"
         className="bg-paper-soft"
       >
         <div className="grid gap-8 md:grid-cols-3">
@@ -181,9 +183,9 @@ export default function AboutPage() {
       <JsonLd
         id="ld-webpage-about"
         data={webPageJsonLd({
-          name: "高校物理専門塾「物理の森」とは — 塾について",
+          name: "Solvora Learning Lab について — AI復習プリント付き 高校物理・理系個別指導",
           description:
-            "高校物理専門塾「物理の森」の理念、高校物理専門塾としての指導方針、総合塾との違いをまとめたページです。",
+            "Solvora Learning Lab の理念、指導方針、総合塾との違いをまとめたページです（高校物理専門塾としての姿勢を継承）。",
           path: "/about",
         })}
       />

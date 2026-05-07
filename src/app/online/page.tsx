@@ -23,11 +23,13 @@ import {
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "高校物理専門塾 オンライン｜全国どこからでも1対1で受講",
+  title: "オンライン受講｜Solvora Learning Lab — 全国どこからでも1対1で",
   description:
-    "高校物理専門塾「物理の森」のオンライン指導。通塾不要・全国対応・1対1の個別指導で、高校物理が苦手な受験生を得点源まで引き上げます。画面共有でのライブ解説・授業ノート（PDF）の配布・毎回の宿題と次回フィードバックで、地方・海外からでも都市部と同じ授業をそのまま受講できます。",
+    "Solvora Learning Lab のオンライン指導は、通塾不要・全国対応・1対1の高校物理・理系個別指導です。画面共有でのライブ解説、授業ノート（PDF配布）、毎回の宿題と次回フィードバック、AI 復習プリントまでを一貫して提供します（高校物理専門塾としての指導を継続）。",
   path: "/online",
   keywords: [
+    "Solvora Learning Lab オンライン",
+    "AI復習プリント オンライン",
     "高校物理専門塾 オンライン",
     "高校物理 オンライン 個別指導",
     "高校物理 通信 塾",
@@ -42,7 +44,7 @@ const onlineFaqs = [
   {
     question: "オンラインでも対面と同じ品質で受けられますか？",
     answer:
-      "高校物理専門塾「物理の森」のオンライン指導では、問題用紙と図を画面共有しながら、力の取り方・座標の置き方・立式の順序を一緒になぞって進めます。授業中に作成した板書・解説は授業後にPDF/画像でお渡ししますので、その日のうちに見返して復習に使えます。",
+      "Solvora Learning Lab のオンライン指導では、問題用紙と図を画面共有しながら、力の取り方・座標の置き方・立式の順序を一緒になぞって進めます。授業中に作成した板書・解説は授業後にPDF/画像でお渡ししますので、その日のうちに見返して復習に使えます（高校物理専門塾としての指導継続）。",
   },
   {
     question: "対応エリアは？地方や海外からでも受講できますか？",
@@ -103,18 +105,18 @@ export default function OnlinePage() {
         tone="gold"
         breadcrumb={[
           { label: "ホーム", href: "/" },
-          { label: "高校物理専門塾 オンライン", href: "/online" },
+          { label: "オンライン受講", href: "/online" },
         ]}
         title={
           <>
-            <span className="block">高校物理専門塾、</span>
+            <span className="block">Solvora Learning Lab、</span>
             <span className="block">
               <span className="text-brand">オンライン</span>で
             </span>
             <span className="block">全国対応。</span>
           </>
         }
-        description="高校物理専門塾「物理の森」のオンライン指導は、通塾不要・全国対応・1対1の個別指導です。高校物理が苦手な受験生を、得点源まで引き上げることに特化しています。地方・海外からでも、都市部と同じ授業をそのまま受講できます。"
+        description="Solvora Learning Lab のオンライン指導は、通塾不要・全国対応・1対1の高校物理・理系個別指導です。授業で解けなかった問題を、講師が確認したうえで AI（REM）と一緒に類題・解答・復習プリントに整えてお渡しします。地方・海外からでも、都市部と同じ授業をそのまま受講できます（高校物理専門塾としての指導継続）。"
       >
         <div className="flex flex-wrap gap-3">
           <Link
@@ -128,7 +130,7 @@ export default function OnlinePage() {
             href="/courses"
             className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/80 px-7 py-4 text-[15px] sm:text-[14px] text-ink-800 transition hover:border-ink-900/30 hover:bg-white min-h-[52px] sm:min-h-0"
           >
-            高校物理専門塾の講座を見る
+            高校物理・理系個別指導の講座を見る
             <ArrowRight className="h-3.5 w-3.5 opacity-50" />
           </Link>
         </div>
@@ -138,12 +140,12 @@ export default function OnlinePage() {
         eyebrow="WHY ONLINE"
         title={
           <>
-            高校物理専門塾を、
+            Solvora Learning Lab を、
             <br className="sm:hidden" />
             オンラインで受ける4つの理由。
           </>
         }
-        description="『オンラインは対面の代替』ではありません。高校物理の学習は、オンラインの高校物理専門塾のほうが加速します。"
+        description="『オンラインは対面の代替』ではありません。高校物理・理系個別指導は、オンラインのほうが加速します。"
         className="bg-paper-soft"
       >
         <div className="grid gap-5 md:grid-cols-2">
@@ -172,7 +174,7 @@ export default function OnlinePage() {
 
       <Section
         eyebrow="REQUIREMENTS — 受講環境"
-        title="オンライン高校物理専門塾の受講環境"
+        title="Solvora Learning Lab オンラインの受講環境"
         description="必要な機材・推奨環境・対応ツールをまとめました。手元にないものがあっても、開始時にあわせて整えていきますのでご相談ください。"
         className="bg-paper"
       >
@@ -203,7 +205,7 @@ export default function OnlinePage() {
 
       <Section
         eyebrow="FAQ — オンライン受講のよくある質問"
-        title="高校物理専門塾 オンラインのFAQ"
+        title="Solvora Learning Lab オンラインのFAQ"
         description="オンライン受講前によく寄せられるご質問をまとめました。"
         className="bg-paper-soft"
       >
@@ -242,26 +244,26 @@ export default function OnlinePage() {
         id="ld-breadcrumb-online"
         data={breadcrumbJsonLd([
           { name: "ホーム", href: "/" },
-          { name: "高校物理専門塾 オンライン", href: "/online" },
+          { name: "オンライン受講", href: "/online" },
         ])}
       />
       <JsonLd
         id="ld-webpage-online"
         data={webPageJsonLd({
-          name: "高校物理専門塾 オンライン｜全国どこからでも1対1で受講",
+          name: "オンライン受講｜Solvora Learning Lab — 全国どこからでも1対1で",
           description:
-            "高校物理専門塾「物理の森」のオンライン指導の専用ページ。通塾不要・全国対応・1対1個別指導の特徴・受講環境・FAQをまとめています。",
+            "Solvora Learning Lab のオンライン指導の専用ページ。通塾不要・全国対応・1対1の高校物理・理系個別指導と AI復習プリントの特徴・受講環境・FAQをまとめています（高校物理専門塾としての指導継続）。",
           path: "/online",
         })}
       />
       <JsonLd
         id="ld-service-online"
         data={serviceJsonLd({
-          name: "高校物理専門塾「物理の森」のオンライン指導",
+          name: "Solvora Learning Lab のオンライン指導（高校物理専門塾）",
           description:
-            "高校物理が苦手な高校生・受験生に向けた、全国オンライン対応の高校物理専門塾。1対1個別指導で、力学・電磁気・波動・熱力学・原子の全分野を体系的に組み立て直します。",
+            "高校物理が苦手な高校生・受験生に向けた、全国オンライン対応の高校物理・理系個別指導。1対1個別指導と AI 復習プリント（REM 補助）で、力学・電磁気・波動・熱力学・原子の全分野を体系的に組み立て直します。",
           path: "/online",
-          serviceType: "オンライン高校物理専門塾 / 大学受験物理 個別指導",
+          serviceType: "オンライン高校物理専門塾 / 高校物理・理系個別指導",
         })}
       />
       <JsonLd

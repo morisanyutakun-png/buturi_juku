@@ -10,11 +10,13 @@ import { buildMetadata } from "@/lib/metadata";
 import { courses } from "@/data/courses";
 
 export const metadata: Metadata = buildMetadata({
-  title: "高校物理専門塾の講座一覧 — オンライン個別指導・共通テスト・分野別",
+  title: "講座一覧 — Solvora Learning Lab（高校物理・理系個別指導 / AI復習プリント付き）",
   description:
-    "高校物理専門塾「物理の森」の講座一覧です。高校物理専門塾の体験授業、1対1個別指導、共通テスト対策、力学・電磁気の集中講座まで、目的に応じた高校物理専門塾の講座をご用意しています。",
+    "Solvora Learning Lab の講座一覧です。体験授業、1対1個別指導、共通テスト対策、力学・電磁気の集中講座まで、目的に応じた高校物理・理系個別指導の講座をご用意しています（高校物理専門塾としての指導継続）。",
   path: "/courses",
   keywords: [
+    "Solvora Learning Lab 講座",
+    "AI復習プリント 講座",
     "高校物理専門塾 講座",
     "高校物理 個別指導 講座",
     "高校物理 オンライン 講座",
@@ -30,7 +32,7 @@ export default function CoursesIndexPage() {
   return (
     <>
       <PageHero
-        eyebrow="COURSES — 高校物理専門塾の全講座"
+        eyebrow="COURSES — Solvora の全講座"
         watermark="講"
         tone="brand"
         breadcrumb={[
@@ -39,13 +41,13 @@ export default function CoursesIndexPage() {
         ]}
         title={
           <>
-            <span className="block">高校物理専門塾の</span>
+            <span className="block">高校物理・理系個別指導の</span>
             <span className="block">
               <span className="text-brand">講座一覧</span>。
             </span>
           </>
         }
-        description="高校物理専門塾「物理の森」では、1対1個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。すべての講座はオンラインで全国からご受講いただけます。"
+        description="Solvora Learning Lab では、1対1個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。すべての講座はオンラインで全国からご受講いただけます（高校物理専門塾としての指導継続）。"
       />
 
       <Section
@@ -107,9 +109,9 @@ export default function CoursesIndexPage() {
       <JsonLd
         id="ld-collection-courses"
         data={collectionPageJsonLd({
-          name: "高校物理専門塾の講座一覧",
+          name: "Solvora Learning Lab の講座一覧（高校物理・理系個別指導）",
           description:
-            "高校物理専門塾「物理の森」の体験授業、1対1個別指導、共通テスト対策、分野別集中講座を比較できる講座一覧ページです。",
+            "Solvora Learning Lab の体験授業、1対1個別指導、共通テスト対策、分野別集中講座を比較できる講座一覧ページです（高校物理専門塾としての指導継続）。",
           path: "/courses",
           items: courses.map((course) => ({
             name: course.title,
@@ -121,8 +123,8 @@ export default function CoursesIndexPage() {
       <JsonLd
         id="ld-courses-itemlist"
         data={itemListJsonLd({
-          name: "高校物理専門塾「物理の森」 講座一覧",
-          description: "高校物理専門塾として目的別に選べる大学受験物理・高校物理の講座一覧です。",
+          name: "Solvora Learning Lab 講座一覧",
+          description: "目的別に選べる、高校物理・理系個別指導（AI復習プリント付き）の講座一覧です。",
           path: "/courses",
           items: courses.map((course) => ({
             name: course.title,

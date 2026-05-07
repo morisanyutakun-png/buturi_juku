@@ -38,17 +38,17 @@ import { breadcrumbJsonLd, itemListJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "高校物理専門塾「物理の森」| オンライン全国対応・大学受験物理の個別指導",
+  title: "Solvora Learning Lab ｜ AI復習プリント付き 高校物理・理系個別指導",
   description:
-    "高校物理専門塾「物理の森」は、高校物理・大学受験物理だけを扱うオンライン専門塾です。名古屋大学 工学部 電気電子情報工学科所属・大学受験物理の書籍執筆実績を持つ森祐太が、高校物理の初学者から難関大・医学部志望まで1対1で個別指導。全国どこからでも、高校物理専門塾の指導が受けられます。",
+    "Solvora Learning Lab は、解けなかった1問からその子専用の復習プリントを作る、AI復習プリント付きの高校物理・理系個別指導です。森祐太が作成した物理教材と類題生成 AI「REM」を活用し、つまずきの原因分析、構造理解、類題演習、復習PDF作成まで一貫して支援します（高校物理専門塾としての指導も継続）。",
   path: "/",
   keywords: [
-    "高校物理専門塾",
+    "Solvora Learning Lab",
+    "AI復習プリント",
+    "理系個別指導",
+    "高校物理 個別指導",
     "高校物理専門塾 オンライン",
     "高校物理専門塾 個別指導",
-    "高校物理専門塾 大学受験",
-    "高校物理 オンライン 専門塾",
-    "高校物理 個別指導",
     "大学受験 物理 専門塾",
     "医学部 物理 専門塾",
   ],
@@ -175,19 +175,20 @@ export default function HomePage() {
       >
         <div className="container py-10 sm:py-16">
           <p className="text-[10.5px] sm:text-[10px] font-medium tracking-[0.22em] sm:tracking-[0.32em] uppercase text-brand-deep">
-            HIGH-SCHOOL PHYSICS SPECIALTY
+            REPAIR EVERY MISSED PROBLEM
           </p>
           <h2
             id="lead-heading"
             className="mt-4 sm:mt-5 max-w-3xl font-serif text-[1.45rem] leading-[1.55] tracking-[-0.012em] text-ink-900 sm:text-[1.85rem] sm:leading-[1.55]"
           >
-            <span className="text-brand-deep">高校物理が苦手な受験生</span>を、
+            <span className="text-brand-deep">解けなかった1問</span>を、
             <br className="sm:hidden" />
-            <span className="text-warm-deep">得点源</span>まで引き上げる、
-            オンライン高校物理専門塾。
+            <span className="text-warm-deep">その子専用の復習プリント</span>に変える、
+            AI復習プリント付きの<wbr />高校物理・理系個別指導。
           </h2>
           <p className="mt-6 sm:mt-6 max-w-3xl text-[15px] sm:text-[15px] leading-[1.95] sm:leading-[1.95] text-ink-700">
-            高校物理専門塾「物理の森」は、<strong className="font-medium text-ink-900">高校物理が苦手で止まっている受験生</strong>を、得点源まで引き上げることに特化したオンライン専門塾です。高校物理だけを扱うので、『公式に当てはめる物理』ではなく『現象から立式できる物理』に組み直すところまで、最後の一歩まで伴走します。初学者から共通テスト・難関大・医学部の大学受験物理志望者まで、力学・電磁気・波動・熱力学・原子の全分野を体系的にカバーします。
+            <strong className="font-medium text-ink-900">Solvora Learning Lab</strong> は、<strong className="font-medium text-ink-900">高校物理が苦手で止まっている受験生</strong>を、つまずきの場所から修復することに特化したオンライン個別指導サービスです。授業は人間の講師が担当し、解けなかった問題は AI（REM）と一緒に類題・解答・解説を整えて復習PDFに仕立てます。<br />
+            初学者から共通テスト・難関大・医学部志望まで、力学・電磁気・波動・熱力学・原子の全分野を体系的にカバーする、高校物理専門塾としての指導も継続しています。
           </p>
         </div>
       </section>
@@ -212,8 +213,8 @@ export default function HomePage() {
       {/* SUBJECTS */}
       <Section
         eyebrow="SUBJECTS"
-        title="高校物理専門塾として、高校物理の全分野を体系的に"
-        description="高校物理専門塾の指導は、単元ごとに分断して教えるのではなく、分野をまたぐ共通構造から組み立てます。力学・電磁気・波動・熱力学・原子の5分野を、1人の専門講師が一貫して扱います。"
+        title="高校物理の全分野を、構造から体系的に"
+        description="Solvora Learning Lab の高校物理指導は、単元ごとに分断して教えるのではなく、分野をまたぐ共通構造から組み立てます。力学・電磁気・波動・熱力学・原子の5分野を、1人の専門講師が一貫して扱います（高校物理専門塾としての指導継続）。"
         className="bg-paper-soft"
       >
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
@@ -245,9 +246,9 @@ export default function HomePage() {
 
       {/* FEATURES */}
       <Section
-        eyebrow="WHY HIGH-SCHOOL PHYSICS SPECIALTY"
-        title={<>高校物理専門塾を選ぶ、<br className="sm:hidden" />6つの理由。</>}
-        description="高校物理を伸ばす近道は、高校物理だけを深く教える環境にいることです。総合塾では実現しにくい、高校物理専門塾としての価値をお伝えします。"
+        eyebrow="WHY SOLVORA"
+        title={<>Solvora Learning Lab を選ぶ、<br className="sm:hidden" />6つの理由。</>}
+        description="高校物理を伸ばす近道は、高校物理を深く教える環境にいることです。総合塾では実現しにくい、AI復習プリント付き高校物理専門塾としての価値をお伝えします。"
         className="bg-paper"
       >
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -405,7 +406,7 @@ export default function HomePage() {
               <div className="mt-8 sm:mt-9 flex items-center justify-between text-[14px] sm:text-[13px]">
                 <span className="text-ink-500">{c.duration}</span>
                 <span className="inline-flex items-center gap-1.5 text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
-                  高校物理専門塾のコース詳細を見る
+                  コース詳細を見る
                   <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </div>
@@ -417,7 +418,7 @@ export default function HomePage() {
             href="/courses"
             className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/70 px-6 py-3.5 text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
           >
-            高校物理専門塾の講座を見る
+            高校物理・理系個別指導の講座を見る
             <ArrowRight className="h-3.5 w-3.5 opacity-60" />
           </Link>
         </div>
@@ -553,14 +554,14 @@ export default function HomePage() {
         nodes={[
           breadcrumbJsonLd([{ name: "ホーム", href: "/" }]),
           webPageJsonLd({
-            name: `高校物理専門塾「${siteConfig.name}」| オンライン全国対応・大学受験物理の個別指導`,
+            name: `${siteConfig.name} ｜ AI復習プリント付き 高校物理・理系個別指導`,
             description: siteConfig.description,
             path: "/",
           }),
           itemListJsonLd({
-            name: "高校物理専門塾「物理の森」の主要講座",
+            name: `${siteConfig.name} の主要講座`,
             description:
-              "高校物理専門塾として、大学受験物理・高校物理に対応するオンライン講座の一覧です。",
+              "Solvora Learning Lab（高校物理専門塾としても運営）が提供する、大学受験物理・高校物理・理系個別指導のオンライン講座一覧です。",
             path: "/",
             items: courses.map((course) => ({
               name: course.title,

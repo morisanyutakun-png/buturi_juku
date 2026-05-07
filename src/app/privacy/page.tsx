@@ -10,7 +10,7 @@ import { siteConfig } from "@/data/site";
 export const metadata: Metadata = buildMetadata({
   title: "プライバシーポリシー",
   description:
-    "森祐太 物理専門塾における個人情報の取り扱いに関する方針を定めています。",
+    "Solvora Learning Lab（運営：森祐太）における個人情報の取り扱いに関する方針を定めています。",
   path: "/privacy",
 });
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
       <Section
         eyebrow="PRIVACY POLICY"
         title="プライバシーポリシー"
-        description={`${siteConfig.name}(以下「当塾」)は、ご提供いただく個人情報を以下の方針に基づき取り扱います。`}
+        description={`${siteConfig.name}（運営：森祐太 / 個人事業主、以下「当サービス」）は、ご提供いただく個人情報を以下の方針に基づき取り扱います。`}
       >
         <div className="article-content mx-auto max-w-3xl">
           <h2>1. 個人情報の定義</h2>
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
 
           <h2>2. 取得する情報</h2>
           <p>
-            当塾は、お問い合わせ・体験授業申込・受講契約に際し、必要な範囲で以下の情報を取得します。
+            当サービスは、お問い合わせ・体験授業申込・受講契約に際し、必要な範囲で以下の情報を取得します。
           </p>
           <ul>
             <li>氏名</li>
@@ -54,7 +54,7 @@ export default function PrivacyPage() {
             <li>お問い合わせ・体験授業申込への返信</li>
             <li>受講の契約・案内・連絡</li>
             <li>受講者の学習状況に関する連絡</li>
-            <li>当塾からのサービスに関する情報提供</li>
+            <li>当サービスからのサービスに関する情報提供</li>
           </ul>
 
           <h2>4. 第三者提供</h2>

@@ -3,7 +3,7 @@ import { siteConfig } from "@/data/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `高校物理専門塾「${siteConfig.name}」`,
+    name: `${siteConfig.name} ｜ ${siteConfig.nameSub}`,
     short_name: siteConfig.shortName,
     description: siteConfig.description,
     start_url: "/",

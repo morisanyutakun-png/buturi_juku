@@ -11,7 +11,7 @@ const rows: {
 }[] = [
   {
     criterion: "高校物理の専門性",
-    specialty: { mark: "good", note: "高校物理だけを扱う専門講師が指導" },
+    specialty: { mark: "good", note: "高校物理を主軸に扱う専門講師が指導" },
     general: { mark: "mid", note: "科目ごとに担当が分かれる" },
     solo: { mark: "bad", note: "専門家の介入なし" },
   },
@@ -26,6 +26,12 @@ const rows: {
     specialty: { mark: "good", note: "次回授業の冒頭で立式手順までさかのぼって添削" },
     general: { mark: "mid", note: "質問時間が限定的" },
     solo: { mark: "bad", note: "解決できず放置されやすい" },
+  },
+  {
+    criterion: "解けなかった問題の扱い",
+    specialty: { mark: "good", note: "AI（REM）と一緒に類題・解答・解説を作成し、講師確認のうえ復習プリント化" },
+    general: { mark: "mid", note: "各自で復習教材を探す必要" },
+    solo: { mark: "bad", note: "そのまま放置になりがち" },
   },
   {
     criterion: "物理5分野の体系性",
@@ -68,14 +74,14 @@ export function ComparisonTable() {
   return (
     <Section
       eyebrow="COMPARISON"
-      title="高校物理専門塾と、他の選択肢との違い"
-      description="高校物理専門塾は、総合塾・独学・映像授業と何が違うのか。比較表でご確認ください。"
+      title="Solvora Learning Lab と、他の選択肢との違い"
+      description="AI復習プリント付き 高校物理・理系個別指導は、総合塾・独学・映像授業と何が違うのか。比較表でご確認ください（高校物理専門塾としての指導継続）。"
       className="bg-paper-soft"
     >
       <div className="overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-soft">
         <div className="hidden grid-cols-[1.6fr_1fr_1fr_1fr] divide-x divide-ink-900/10 border-b border-ink-900/10 bg-paper-soft text-xs tracking-[0.2em] uppercase text-ink-500 md:grid">
           <div className="p-5">比較項目</div>
-          <div className="p-5 text-center text-brand-deep">高校物理専門塾</div>
+          <div className="p-5 text-center text-brand-deep">Solvora Learning Lab</div>
           <div className="p-5 text-center">総合塾</div>
           <div className="p-5 text-center">独学</div>
         </div>
@@ -91,7 +97,7 @@ export function ComparisonTable() {
                 <div className="flex items-center gap-3">
                   <Mark type={r.specialty.mark} />
                   <p className="text-[10.5px] tracking-[0.18em] uppercase text-brand-deep font-medium">
-                    高校物理専門塾
+                    Solvora Learning Lab
                   </p>
                 </div>
                 <p className="mt-2.5 text-[13px] leading-[1.75] text-ink-800">

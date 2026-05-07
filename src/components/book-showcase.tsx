@@ -6,11 +6,31 @@ import { books, type Book } from "@/data/books";
 export function BookShowcase() {
   return (
     <Section
-      eyebrow="PUBLISHED WORK"
-      title={<>書籍を執筆した講師が、<br className="sm:hidden" />授業をそのまま担当します。</>}
-      description="主宰講師 森祐太(名古屋大学 工学部 電気電子情報工学科)が手がけた電磁気・力学の書籍。書籍で体系化した指導観を、そのままオンライン授業に持ち込みます。"
+      eyebrow="OUR TEACHING MATERIALS — 講師制作の物理教材で授業します"
+      title={<>森祐太が作成した物理教材を使って、<br className="sm:hidden" />構造から学ぶ。</>}
+      description="授業では、森祐太が作成した高校物理教材・KDP教材・PDF教材を活用します。力学、電磁気、波動、熱力学、原子などを、公式暗記ではなく『なぜその式を立てるのか』から整理。授業で扱った内容と、解けなかった問題から作る AI 復習プリントが、自然につながる構成です。"
       className="relative overflow-hidden bg-gradient-to-b from-cream via-cream to-cream-muted text-ink-900 border-y border-ink-900/10"
     >
+      <ul className="grid gap-3 sm:gap-4 mb-12 sm:mb-16 sm:grid-cols-2">
+        {[
+          "市販教材だけに依存しない",
+          "講師自身が作成した教材で一貫指導",
+          "授業内容と AI復習プリントがつながる",
+          "物理のつまずきを教材側からも補強できる",
+        ].map((b) => (
+          <li
+            key={b}
+            className="flex items-start gap-3 rounded-2xl border border-ink-900/10 bg-paper/60 p-4 text-[14px] sm:text-[13.5px] leading-[1.7] text-ink-900"
+          >
+            <span
+              aria-hidden
+              className="mt-1 h-3.5 w-3.5 shrink-0 rounded-full border border-gold-deep/50 bg-gold/40"
+            />
+            {b}
+          </li>
+        ))}
+      </ul>
+
       <div className="space-y-16 sm:space-y-24">
         {books.map((book, idx) => (
           <BookEntry key={book.slug} book={book} flipped={idx % 2 === 1} />
@@ -148,7 +168,7 @@ function BookEntry({ book, flipped }: { book: Book; flipped: boolean }) {
             href="/teacher"
             className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-ink-900/20 px-6 py-3.5 text-[14.5px] sm:text-sm text-ink-900 hover:border-ink-900/50 transition min-h-[48px] sm:min-h-0"
           >
-            高校物理専門塾の講師プロフィールを見る
+            講師プロフィールを見る
           </a>
         </div>
       </div>
