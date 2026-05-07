@@ -95,13 +95,6 @@ export function Hero() {
                   className="absolute inset-0 -translate-x-full bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.25),transparent)] transition-transform duration-700 group-hover:translate-x-full"
                 />
               </Link>
-              <Link
-                href="#proof"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-1.5 rounded-full px-5 py-3 text-[13.5px] sm:text-[13px] text-ink-700 transition hover:text-ink-900 sm:underline-offset-4 sm:hover:underline"
-              >
-                講師の実績を見る
-                <ArrowRight className="h-3.5 w-3.5 opacity-50" />
-              </Link>
             </div>
           </div>
 

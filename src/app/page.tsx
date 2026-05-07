@@ -174,43 +174,56 @@ export default function HomePage() {
 
   return (
     <>
-      {/* === ABOVE THE FOLD === */}
+      {/* ============================================================
+          MOBILE FIRST FUNNEL
+          スマホ広告流入想定。「読ませる」のではなく「3秒で判断させる」設計。
+          順序: Hero → 悩み → 解決策 → 実績 → 料金 → CTA
+          ============================================================ */}
+
+      {/* FV — H1 + サブ + 単一CTA のみ */}
       <Hero />
 
-      {/* 実績ストリップ — Hero 直下で信頼を即座に提示 */}
-      <ProofStrip />
-
-      {/* 悩み — 共感セクション（3 つの典型的なつまずき） */}
+      {/* 1. 悩み — まず共感（3つのつまずき） */}
       <PainPointsSection />
 
-      {/* 指導の仕組み — 4 ステップの円環フロー */}
-      <WhiteboardFlow />
-
-      {/* AI 復習プリントを図解で説明 */}
+      {/* 2. 解決策 — AI復習プリントの 4 ステップ図解 */}
       <AiPrintFigure />
 
-      {/* === MAIN CONVERSION === */}
-      {/* 料金（3 ティア：体験 / 電磁気集中 / 1対1 個別） */}
+      {/* 3. 実績 — 解決策のあとに信頼担保（共テ100/二次9割/名大/6冊） */}
+      <ProofStrip />
+
+      {/* 4. 料金 — 3 ティアだけ */}
       <PricePreview />
 
-      {/* === SECONDARY CONTENT (mobile では密度を下げる) === */}
-      <div className="cv-auto">
+      {/* 5. CTA — 最終押し */}
+      <CtaBlock
+        eyebrow="START NOW"
+        title="まずは60分の体験授業から。"
+        description="現状診断 + 学習戦略 + おすすめコースのご案内まで、講師（森祐太）が直接担当します。"
+      />
+
+      {/* ============================================================
+          BELOW-THE-FOLD（モバイルでは大半を hidden sm:block で削る）
+          デスクトップで深掘りしたい人向けの content と SEO 価値の保持。
+          ============================================================ */}
+      <div className="hidden cv-auto sm:block">
         {/* MANIFESTO — dark contrast pivot */}
         <ManifestoBand />
 
         {/* PROOF — giant numbers showcase（実績の詳細） */}
         <ProofShowcase />
 
+        {/* WHITEBOARD — 4 ステップ円環フロー（解決策の詳細版） */}
+        <WhiteboardFlow />
+
         {/* FOR EVERYONE */}
         <ForEveryoneSection />
 
-        {/* SEO Intent — モバイルでは負担増のため隠す（SEO クローラには見える） */}
-        <div className="hidden sm:block">
-          <SeoIntentSection />
-        </div>
+        {/* SEO Intent */}
+        <SeoIntentSection />
       </div>
 
-      <div className="cv-auto">
+      <div className="hidden cv-auto sm:block">
       {/* SUBJECTS */}
       <Section
         eyebrow="SUBJECTS"
@@ -321,12 +334,14 @@ export default function HomePage() {
       <ComparisonTable />
       </div>
 
-      <div className="cv-auto">
-      {/* PULL QUOTE — emotional pivot */}
+      <div className="hidden cv-auto sm:block">
+      {/* PULL QUOTE — emotional pivot（モバイルでは省略） */}
       <PullQuote />
+      </div>
 
-      {/* BOOK */}
-      <BookShowcase />
+      {/* BOOK — 教材で信頼を裏付ける（モバイル / デスクトップ両方表示） */}
+      <div className="cv-auto">
+        <BookShowcase />
       </div>
 
       {/* TEACHER */}
@@ -390,12 +405,13 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* COURSES */}
+      {/* COURSES — モバイルでは PricePreview と重複するため非表示。
+          デスクトップでは詳細カード（subtitle + summary + 価格 + duration）を見せる。 */}
       <Section
         eyebrow="COURSES"
         title="主な講座"
         description="個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。"
-        className="bg-paper-soft"
+        className="hidden sm:block bg-paper-soft"
       >
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2">
           {featuredCourses.map((c) => {
@@ -454,10 +470,12 @@ export default function HomePage() {
         </div>
       </Section>
 
+      {/* TESTIMONIALS — モバイルでも残す（指導モデルケースは信頼補強として軽量） */}
       <div className="cv-auto">
-      {/* TESTIMONIALS */}
-      <Testimonials />
+        <Testimonials />
+      </div>
 
+      <div className="hidden cv-auto sm:block">
       {/* FLOW */}
       <Section
         eyebrow="HOW IT WORKS"
@@ -558,25 +576,29 @@ export default function HomePage() {
       </Section>
       </div>
 
+      {/* 最終 CTA（モバイル / デスクトップ両方） */}
       <div className="cv-auto">
-      <CtaBlock />
+        <CtaBlock />
+      </div>
 
-      <Section className="py-24 text-center bg-paper">
-        <div className="mx-auto flex max-w-xl flex-col items-center">
-          <span
-            aria-hidden
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-warm-bg ring-1 ring-warm/30"
-          >
-            <Sparkles className="h-4 w-4 text-warm-deep" aria-hidden strokeWidth={1.6} />
-          </span>
-          <p className="mt-7 font-serif text-[1.5rem] tracking-[-0.012em] text-ink-900 leading-relaxed">
-            物理を、<span className="text-warm-deep">わかる</span>に変える。
-          </p>
-          <p className="mt-4 text-[14px] leading-[1.85] text-ink-600">
-            一人ひとりの『わからない』と、最後まで向き合います。
-          </p>
-        </div>
-      </Section>
+      {/* スピリットの締め — デスクトップのみ */}
+      <div className="hidden cv-auto sm:block">
+        <Section className="py-24 text-center bg-paper">
+          <div className="mx-auto flex max-w-xl flex-col items-center">
+            <span
+              aria-hidden
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-warm-bg ring-1 ring-warm/30"
+            >
+              <Sparkles className="h-4 w-4 text-warm-deep" aria-hidden strokeWidth={1.6} />
+            </span>
+            <p className="mt-7 font-serif text-[1.5rem] tracking-[-0.012em] text-ink-900 leading-relaxed">
+              物理を、<span className="text-warm-deep">わかる</span>に変える。
+            </p>
+            <p className="mt-4 text-[14px] leading-[1.85] text-ink-600">
+              一人ひとりの『わからない』と、最後まで向き合います。
+            </p>
+          </div>
+        </Section>
       </div>
 
       <JsonLdGraph
