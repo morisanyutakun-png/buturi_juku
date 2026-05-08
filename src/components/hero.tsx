@@ -164,13 +164,6 @@ export function Hero() {
             {/* floating chips around the print */}
             <div
               aria-hidden
-              className="pointer-events-none absolute -left-7 top-6 inline-flex items-center gap-2 rounded-full border border-ink-900/[0.10] bg-white/95 px-3.5 py-2 text-[11px] tracking-[0.22em] text-brand-deep shadow-soft"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-              REVIEW PDF
-            </div>
-            <div
-              aria-hidden
               className="pointer-events-none absolute -right-4 top-[42%] inline-flex items-center gap-2 rounded-2xl border border-ink-900/[0.10] bg-white/95 px-3.5 py-2 text-[11px] text-ink-800 shadow-soft"
               style={{ fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace" }}
             >
