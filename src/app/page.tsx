@@ -16,6 +16,7 @@ import { Hero } from "@/components/hero";
 import { ProofStrip } from "@/components/proof-strip";
 import { PainPointsSection } from "@/components/pain-points-section";
 import { AiPrintFigure } from "@/components/ai-print-figure";
+import { BookCoversStrip } from "@/components/book-covers-strip";
 import { Section } from "@/components/section";
 import { FeatureCard } from "@/components/feature-card";
 import { CtaBlock } from "@/components/cta-block";
@@ -192,6 +193,9 @@ export default function HomePage() {
       {/* 3. 実績 — 解決策のあとに信頼担保（共テ100/二次9割/名大/6冊） */}
       <ProofStrip />
 
+      {/* 3-b. 講師作の教材 6 冊 — 最大の差別化を実績ストリップ直下で前面に出す */}
+      <BookCoversStrip />
+
       {/* 4. 料金 — 3 ティアだけ */}
       <PricePreview />
 
@@ -334,13 +338,10 @@ export default function HomePage() {
       <ComparisonTable />
       </div>
 
+      {/* PULL QUOTE / BookShowcase（フル詳細）はデスクトップのみ。
+          モバイルでは BookCoversStrip がコンパクトに 6 冊を見せている。 */}
       <div className="hidden cv-auto sm:block">
-      {/* PULL QUOTE — emotional pivot（モバイルでは省略） */}
-      <PullQuote />
-      </div>
-
-      {/* BOOK — 教材で信頼を裏付ける（モバイル / デスクトップ両方表示） */}
-      <div className="cv-auto">
+        <PullQuote />
         <BookShowcase />
       </div>
 

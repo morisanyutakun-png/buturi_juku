@@ -99,9 +99,12 @@ body {
   body {
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-  /* Reserve space at the bottom of pages for the sticky CTA */
+  /* Reserve space at the bottom of pages for the sticky CTA.
+     Bar height = 11(h-11) + 4(py-2) ≈ 60px。Home `/` などでは
+     bar 自体が表示されないため余白は無駄になるが、padding は
+     全ページ共通で問題ない。 */
   main {
-    padding-bottom: 88px;
+    padding-bottom: 64px;
   }
 }
 
