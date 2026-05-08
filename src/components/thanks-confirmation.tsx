@@ -45,6 +45,11 @@ export function ThanksConfirmation() {
 
     // GA4 計測：申込完了。Stripe success_url の `?session_id=` があれば
     // transaction_id として送り、ブラウザ更新時の重複発火を sessionStorage で防ぐ。
+    //
+    // gtag.js が `afterInteractive` で読み込まれるため、本 useEffect の方が
+    // 先に走るケースがある（race condition）。analytics.ts の trackEvent は
+    // gtag 未ロード時でも dataLayer に直接 push する設計なので、この時点で
+    // 呼んでも遅延配信される。
     try {
       const alreadyFired = sessionStorage.getItem(FIRED_KEY);
       if (!alreadyFired) {
@@ -57,6 +62,13 @@ export function ThanksConfirmation() {
           transactionId: sessionId,
         });
         sessionStorage.setItem(FIRED_KEY, "1");
+        // 開発時の確認用ログ。本番でも害なし。
+        if (typeof console !== "undefined") {
+          console.info(
+            "[analytics] trial_application_complete fired",
+            { course: recoveredData?.course, sessionId },
+          );
+        }
       }
     } catch {
       // sessionStorage / window.location が使えない場合も計測スキップで継続。

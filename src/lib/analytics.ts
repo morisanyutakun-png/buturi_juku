@@ -49,7 +49,38 @@ type WindowWithGtag = Window & {
 };
 
 /**
- * 任意の GA4 イベントを送る。gtag が未ロードでも黙って no-op。
+ * gtag 未ロード時でも安全にイベントをキューに積む。
+ *
+ * 競合パターン:
+ *   `/thanks` などマウント直後の useEffect で trackEvent が呼ばれると、
+ *   layout.tsx の `gtag-init` Script (afterInteractive) よりも先に走り、
+ *   `window.gtag` が未定義 → イベントが silently 捨てられる、ということが起きる。
+ *
+ * 解決:
+ *   gtag.js が後から `window.dataLayer` を見て処理するため、配列形式
+ *   `['event', name, params]` で直接 push しておけばロード後にイベントが
+ *   遅延配信される。これは Google 公式の gtag スニペットと等価。
+ */
+function pushToDataLayer(args: unknown[]): void {
+  if (typeof window === "undefined") return;
+  const w = window as WindowWithGtag;
+
+  if (typeof w.gtag === "function") {
+    // gtag が既に定義済み → 通常の関数呼び出しに展開
+    (w.gtag as (...a: unknown[]) => void)(...args);
+    return;
+  }
+
+  // gtag 未ロードでも dataLayer に積めば、後で gtag.js が処理する
+  if (!Array.isArray(w.dataLayer)) {
+    w.dataLayer = [];
+  }
+  w.dataLayer.push(args);
+}
+
+/**
+ * 任意の GA4 イベントを送る。gtag が未ロードでも dataLayer に積んで
+ * gtag.js のロード完了後に届くようにする。
  *
  * @example
  *   trackEvent("trial_payment_click", { course: "electromagnetism" });
@@ -58,10 +89,7 @@ export function trackEvent(
   eventName: string,
   params: Record<string, unknown> = {},
 ): void {
-  if (typeof window === "undefined") return;
-  const w = window as WindowWithGtag;
-  if (typeof w.gtag !== "function") return;
-  w.gtag("event", eventName, params);
+  pushToDataLayer(["event", eventName, params]);
 }
 
 /**
@@ -73,15 +101,15 @@ export function trackGoogleAdsConversion(
   label: string | null,
   params: Record<string, unknown> = {},
 ): void {
-  if (typeof window === "undefined") return;
-  const w = window as WindowWithGtag;
-  if (typeof w.gtag !== "function") return;
-
   const sendTo = label ? `${GADS_ID}/${label}` : GADS_ID;
-  w.gtag("event", "conversion", {
-    send_to: sendTo,
-    ...params,
-  });
+  pushToDataLayer([
+    "event",
+    "conversion",
+    {
+      send_to: sendTo,
+      ...params,
+    },
+  ]);
 }
 
 /**
