@@ -103,15 +103,14 @@ export default function RootLayout({
 
         {/* Google tag (gtag.js) — GA4 + Google Ads conversions
             一つの gtag.js で両方の宛先に送信できる。
-            ID は src/lib/analytics.ts で集中管理。`afterInteractive` で
-            ハイドレーション後に読み込み、初回描画を阻害しない。 */}
+            gtag-init を `beforeInteractive` にすることで、React ハイドレーション
+            （= useEffect 実行）より前に window.gtag を定義する。これで
+            `/thanks` などマウント直後に発火するイベントとの競合を避けられる。
+            gtag.js 本体は `afterInteractive` で非同期に読み込み、初回描画を
+            阻害しない。dataLayer に積まれたイベントはロード後に処理される。 */}
         {(GA_ID || GADS_ID) && (
           <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID || GADS_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="gtag-init" strategy="afterInteractive">
+            <Script id="gtag-init" strategy="beforeInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
@@ -120,6 +119,10 @@ export default function RootLayout({
                 ${GADS_ID ? `gtag('config', '${GADS_ID}');` : ""}
               `}
             </Script>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID || GADS_ID}`}
+              strategy="afterInteractive"
+            />
           </>
         )}
       </body>
