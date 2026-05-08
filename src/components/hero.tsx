@@ -7,16 +7,15 @@ import { siteConfig } from "@/data/site";
 
 /**
  * Hero（FV）— モバイル第一の高凝縮版。
- * 訴求は「H1 + サブコピー + 単一 CTA」のみ。
- * 詳細（badges / stats / formula card）は撤去し、直下の「実績ストリップ」と
- * 「悩み」セクションに役割を委譲する。
+ * H1 + サブ + 本文1段落 + CTA2つ。それ以外（badges / stats / formula chip）は撤去。
+ * モバイル広告流入が中心で、3秒判断 → スクロールで深掘り、という設計。
  */
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden border-b border-ink-900/[0.06]">
       <HeroBackdrop />
 
-      {/* desktop-only diagonal beams（雰囲気） */}
+      {/* desktop-only diagonal beams */}
       <div
         aria-hidden
         className="pointer-events-none absolute -left-1/4 -top-1/2 hidden h-[200%] w-[60%] rotate-[24deg] opacity-50 lg:block"
@@ -34,7 +33,7 @@ export function Hero() {
         }}
       />
 
-      <Container className="relative py-12 sm:py-20 lg:py-32">
+      <Container className="relative py-10 sm:py-20 lg:py-32">
         <div className="lg:grid lg:items-center lg:gap-14 lg:grid-cols-[1.1fr_1fr]">
           <div className="relative">
             <p className="text-[10px] sm:text-[11px] font-medium tracking-[0.18em] sm:tracking-[0.3em] uppercase text-brand-deep">
@@ -42,7 +41,7 @@ export function Hero() {
             </p>
 
             <h1
-              className="mt-4 sm:mt-5 font-serif text-[2.1rem] leading-[1.2] tracking-[-0.018em] text-ink-900 sm:text-[3.2rem] sm:leading-[1.15] lg:text-[4rem] lg:leading-[1.1]"
+              className="mt-4 sm:mt-5 font-serif text-[2rem] leading-[1.22] tracking-[-0.018em] text-ink-900 sm:text-[3.2rem] sm:leading-[1.15] lg:text-[4rem] lg:leading-[1.1]"
               style={{
                 wordBreak: "keep-all",
                 overflowWrap: "break-word",
@@ -51,7 +50,6 @@ export function Hero() {
             >
               <span className="block">解けなかった<span className="text-brand-deep">1問</span>を、</span>
               <span className="block">
-                次に
                 <span className="relative inline-block">
                   <span
                     className="bg-clip-text text-transparent"
@@ -60,24 +58,27 @@ export function Hero() {
                         "linear-gradient(120deg, #b35f27 0%, #e28040 50%, #f3a86c 100%)",
                     }}
                   >
-                    解ける
+                    専用の復習プリント
                   </span>
                   <span
                     aria-hidden
                     className="absolute inset-x-0 -bottom-1 h-[8px] sm:h-[10px] -z-10 rounded-full bg-warm/25"
                   />
                 </span>
-                問題へ。
+                に。
               </span>
             </h1>
 
-            <p className="mt-5 sm:mt-7 max-w-xl text-[14.5px] sm:text-[17px] leading-[1.85] sm:leading-[1.85] text-ink-700">
+            <p className="mt-4 sm:mt-6 text-[14px] sm:text-[15px] font-medium tracking-[0.04em] text-ink-800">
               高校物理専門のオンライン個別指導。
-              <br />
-              <strong className="font-medium text-ink-900">AI復習プリント付き</strong>で、苦手を次回までに潰します。
             </p>
 
-            <div className="mt-7 sm:mt-9 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
+            <p className="mt-3 sm:mt-4 max-w-xl text-[13.5px] sm:text-[15.5px] leading-[1.85] sm:leading-[1.85] text-ink-700">
+              授業で詰まった問題を、<strong className="font-medium text-ink-900">森祐太</strong>が原因分析し、
+              <strong className="font-medium text-ink-900">AI復習プリント</strong>で次に解ける形へ整えます。
+            </p>
+
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
               <Link
                 href="/trial"
                 className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-4 text-[15px] sm:text-[14.5px] font-medium text-paper transition duration-300 ease-out min-h-[54px] sm:min-h-0"
@@ -94,6 +95,13 @@ export function Hero() {
                   aria-hidden
                   className="absolute inset-0 -translate-x-full bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.25),transparent)] transition-transform duration-700 group-hover:translate-x-full"
                 />
+              </Link>
+              <Link
+                href="/courses"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-ink-900/15 bg-white/80 px-6 py-3.5 text-[14.5px] sm:text-[14px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white min-h-[52px] sm:min-h-0"
+              >
+                講座料金を見る
+                <ArrowRight className="h-3.5 w-3.5 opacity-60" />
               </Link>
             </div>
           </div>

@@ -34,6 +34,7 @@ import { ProofShowcase } from "@/components/proof-showcase";
 import { WhiteboardFlow } from "@/components/whiteboard-flow";
 import { PullQuote } from "@/components/pull-quote";
 import { PricePreview } from "@/components/price-preview";
+import { MiniFaq } from "@/components/mini-faq";
 import { visibleCourses } from "@/data/courses";
 import { articles, articleHref } from "@/data/articles";
 import { instructor } from "@/data/instructor";
@@ -178,33 +179,24 @@ export default function HomePage() {
       {/* ============================================================
           MOBILE FIRST FUNNEL
           スマホ広告流入想定。「読ませる」のではなく「3秒で判断させる」設計。
-          順序: Hero → 悩み → 解決策 → 実績 → 料金 → CTA
+          順序（モバイル）: Hero → 何を → 誰向け → 信頼 → 料金 → 流れ → 不安 → 申込
+          中ほどに CTA を挟まないことで、最後までの導線を一本化する。
           ============================================================ */}
 
-      {/* FV — H1 + サブ + 単一CTA のみ */}
+      {/* FV — H1 + サブ + 本文 + CTA2つ */}
       <Hero />
 
-      {/* 1. 悩み — まず共感（3つのつまずき） */}
-      <PainPointsSection />
-
-      {/* 2. 解決策 — AI復習プリントの 4 ステップ図解 */}
+      {/* 1. 何をしてくれるか — AI復習プリントの 4 ステップ図解 */}
       <AiPrintFigure />
 
-      {/* 3. 実績 — 解決策のあとに信頼担保（共テ100/二次9割/名大/6冊） */}
+      {/* 2. 誰向けか — 3つのつまずき（悩みベースで対象を示す） */}
+      <PainPointsSection />
+
+      {/* 3. 信頼 — 実績ストリップ（共テ100/二次9割/名大/6冊） */}
       <ProofStrip />
 
-      {/* 3-b. 講師作の教材 6 冊 — 最大の差別化を実績ストリップ直下で前面に出す */}
+      {/* 3-b. 信頼 — 講師作の教材6冊を最大の差別化として前面に */}
       <BookCoversStrip />
-
-      {/* 4. 料金 — 3 ティアだけ */}
-      <PricePreview />
-
-      {/* 5. CTA — 最終押し */}
-      <CtaBlock
-        eyebrow="START NOW"
-        title="まずは60分の体験授業から。"
-        description="現状診断 + 学習戦略 + おすすめコースのご案内まで、講師（森祐太）が直接担当します。"
-      />
 
       {/* ============================================================
           BELOW-THE-FOLD（モバイルでは大半を hidden sm:block で削る）
@@ -476,8 +468,10 @@ export default function HomePage() {
         <Testimonials />
       </div>
 
-      <div className="hidden cv-auto sm:block">
-      {/* FLOW */}
+      {/* 料金 — 信頼の直後 */}
+      <PricePreview />
+
+      {/* 受講の流れ — モバイルでも見せる（申込前の最後の不安解消ステップ） */}
       <Section
         eyebrow="HOW IT WORKS"
         title="受講の流れ"
@@ -504,7 +498,11 @@ export default function HomePage() {
         </ol>
       </Section>
 
-      {/* ARTICLES */}
+      {/* 不安 — モバイルでも見せるミニ FAQ */}
+      <MiniFaq />
+
+      {/* ARTICLES — デスクトップのみ */}
+      <div className="hidden cv-auto sm:block">
       <Section
         eyebrow="INSIGHTS"
         title="物理学習コラム"
