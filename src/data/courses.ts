@@ -6,6 +6,12 @@ export type Course = {
   category: "体験" | "個別" | "対策" | "分野別";
   /** UI: 「主力」バッジを出すかどうか。主力=体験 → 電磁気集中の動線。 */
   featured?: boolean;
+  /**
+   * 一覧 / 動線から非表示にするかどうか。`true` のときも courses 配列には残るので
+   * `getCourseBySlug` での名前ルックアップや、過去フォーム送信値の表示は崩れない。
+   * 一覧 / sitemap / JSON-LD / dropdown / generateStaticParams には乗らない。
+   */
+  hidden?: boolean;
   targets: string[];
   curriculum: { heading: string; body: string }[];
   price: { label: string; value: string; note?: string };
@@ -23,7 +29,7 @@ export const courses: Course[] = [
     title: "体験授業（60分・¥3,000）",
     subtitle: "あなたの物理を、60分で診断する",
     summary:
-      "Solvora の入口です。60分・¥3,000 の体験授業で、現状の理解度・つまずきポイントを言語化し、残り期間から逆算した学習戦略と、合うコース（電磁気集中・1対1 専用カリキュラム指導など）をその場でご提案します。受講のスタートは、必ずここから。",
+      "Solvora の入口です。60分・¥3,000 の体験授業で、現状の理解度・つまずきポイントを言語化し、残り期間から逆算した学習戦略と、合うコース（電磁気集中講座・分野別講座など）をその場でご提案します。受講のスタートは、必ずここから。",
     category: "体験",
     featured: true,
     targets: [
@@ -34,7 +40,7 @@ export const courses: Course[] = [
     curriculum: [
       { heading: "現状ヒアリング", body: "模試・定期試験の状況、志望校、使用教材を整理します。" },
       { heading: "診断ミニ授業", body: "苦手分野の中から1テーマを選び、実際の指導を体験していただきます。" },
-      { heading: "学習戦略 + おすすめコースの提案", body: "残り期間から逆算した学習ロードマップと、電磁気集中講座・1対1 専用カリキュラム指導など、合うコースをその場で提案します。" },
+      { heading: "学習戦略 + おすすめコースの提案", body: "残り期間から逆算した学習ロードマップと、電磁気集中講座・分野別講座など、合うコースをその場で提案します。" },
     ],
     price: {
       label: "受講料",
@@ -119,6 +125,8 @@ export const courses: Course[] = [
       "Solvora の最上位プロダクトです。森祐太が一人ひとり専用にカリキュラムを設計し、現状分析・授業・宿題レビュー・AI復習プリント・過去問演習までを完全フルパッケージで担当します。受け入れ枠が限られているため、本気で物理を伸ばしたい方向けの講座です。",
     category: "個別",
     featured: true,
+    // 商品ラインナップから一時的に外す（運用が安定してから再公開）。
+    hidden: true,
     targets: [
       "志望校から逆算した、自分専用のカリキュラムが欲しい受験生",
       "独学で進めているが停滞感があり、根本から組み直したい方",
@@ -367,6 +375,15 @@ export function getCourseBySlug(slug: string): Course | undefined {
   return courses.find((c) => c.slug === slug);
 }
 
+/**
+ * 一覧・動線・SEO に乗せる「販売中の」講座のみ。
+ * label ルックアップ（過去フォーム値の表示など）には `courses` をそのまま使う。
+ */
+export function visibleCourses(): Course[] {
+  return courses.filter((c) => !c.hidden);
+}
+
+/** 販売中の講座 slug 一覧。generateStaticParams / sitemap / dropdown 用。 */
 export function allCourseSlugs(): string[] {
-  return courses.map((c) => c.slug);
+  return visibleCourses().map((c) => c.slug);
 }

@@ -34,7 +34,7 @@ import { ProofShowcase } from "@/components/proof-showcase";
 import { WhiteboardFlow } from "@/components/whiteboard-flow";
 import { PullQuote } from "@/components/pull-quote";
 import { PricePreview } from "@/components/price-preview";
-import { courses } from "@/data/courses";
+import { visibleCourses } from "@/data/courses";
 import { articles, articleHref } from "@/data/articles";
 import { instructor } from "@/data/instructor";
 import { siteConfig } from "@/data/site";
@@ -155,7 +155,7 @@ const flow = [
   {
     step: "03",
     title: "コース選定 / カリキュラム設計",
-    description: "志望校・現状・残り期間から、合うコースを提案します。電磁気集中・分野別・テスト前は『考える力を育てる』シリーズに沿った定型カリキュラム。1対1 専用カリキュラム指導（最上位プロダクト）を選んだ場合のみ、毎回オーダーメイドで設計します。",
+    description: "志望校・現状・残り期間から、合うコースを提案します。電磁気集中・分野別・テスト前は『考える力を育てる』シリーズに沿った定型カリキュラムで、書籍と同じ思考順序を一気通貫で進めます。",
   },
   {
     step: "04",
@@ -168,7 +168,7 @@ export default function HomePage() {
   // 体験以外の `featured` 講座を、データ定義順で並べる。
   // /courses ページや TOP の price-preview と同じ courses.ts を参照することで、
   // タイトル・価格表記がページ間でずれないことを保証する。
-  const featuredCourses = courses.filter(
+  const featuredCourses = visibleCourses().filter(
     (c) => c.featured && c.slug !== "trial",
   );
   const latestArticles = articles.slice(0, 4);
@@ -616,7 +616,7 @@ export default function HomePage() {
             description:
               "Solvora Learning Lab（高校物理専門塾としても運営）が提供する、大学受験物理・高校物理・理系個別指導のオンライン講座一覧です。",
             path: "/",
-            items: courses.map((course) => ({
+            items: visibleCourses().map((course) => ({
               name: course.title,
               href: `/courses/${course.slug}`,
               description: course.summary,

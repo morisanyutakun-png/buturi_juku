@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site";
-import { courses } from "@/data/courses";
+import { visibleCourses } from "@/data/courses";
 import { articles } from "@/data/articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tokushoho`, lastModified, changeFrequency: "yearly", priority: 0.2 },
   ];
 
-  const courseUrls: MetadataRoute.Sitemap = courses.map((c) => ({
+  const courseUrls: MetadataRoute.Sitemap = visibleCourses().map((c) => ({
     url: `${base}/courses/${c.slug}`,
     lastModified,
     changeFrequency: "monthly",

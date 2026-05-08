@@ -23,8 +23,8 @@ const intents = [
     keyword: "高校物理 個別指導 大学受験",
     title: "大学受験物理を、志望校から逆算して伸ばしたい",
     body: "総合塾の進度に合わせるのではなく、志望校の出題傾向・残り期間・今の理解度から学習ルートを設計します。高校物理専門塾としての指導はそのまま継続しています。",
-    href: "/courses/private",
-    cta: "1対1個別指導を見る",
+    href: "/courses/electromagnetism",
+    cta: "電磁気集中講座を見る",
   },
   {
     icon: MonitorCheck,

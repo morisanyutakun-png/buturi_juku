@@ -9,8 +9,8 @@ import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
 import {
   allCourseSlugs,
-  courses,
   getCourseBySlug,
+  visibleCourses,
 } from "@/data/courses";
 import {
   breadcrumbJsonLd,
@@ -59,7 +59,9 @@ export default async function CourseDetailPage({
   const course = getCourseBySlug(slug);
   if (!course) notFound();
 
-  const others = courses.filter((c) => c.slug !== course.slug).slice(0, 3);
+  const others = visibleCourses()
+    .filter((c) => c.slug !== course.slug)
+    .slice(0, 3);
 
   return (
     <>

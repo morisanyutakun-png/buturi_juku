@@ -7,12 +7,14 @@ import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { breadcrumbJsonLd, collectionPageJsonLd, itemListJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
-import { courses } from "@/data/courses";
+import { visibleCourses } from "@/data/courses";
+
+const courseList = visibleCourses();
 
 export const metadata: Metadata = buildMetadata({
   title: "講座一覧 — Solvora Learning Lab（高校物理・理系個別指導 / AI復習プリント付き）",
   description:
-    "Solvora Learning Lab の講座一覧です。体験授業、1対1個別指導、共通テスト対策、力学・電磁気の集中講座まで、目的に応じた高校物理・理系個別指導の講座をご用意しています（高校物理専門塾としての指導継続）。",
+    "Solvora Learning Lab の講座一覧です。体験授業、共通テスト対策、力学・電磁気の集中講座まで、目的に応じた高校物理・理系個別指導の講座をご用意しています（高校物理専門塾としての指導継続）。",
   path: "/courses",
   keywords: [
     "Solvora Learning Lab 講座",
@@ -47,7 +49,7 @@ export default function CoursesIndexPage() {
             </span>
           </>
         }
-        description="Solvora Learning Lab では、1対1個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。すべての講座はオンラインで全国からご受講いただけます（高校物理専門塾としての指導継続）。"
+        description="Solvora Learning Lab では、書籍ベースの集中講座を軸に、志望校や目的に合わせて高校物理・理系個別指導をご用意しています。すべての講座はオンラインで全国からご受講いただけます（高校物理専門塾としての指導継続）。"
       />
 
       <Section
@@ -56,7 +58,7 @@ export default function CoursesIndexPage() {
         description="体験授業から志望校別カリキュラム、共通テスト対策、分野別集中講座まで。"
       >
         <div className="grid gap-6 md:grid-cols-2">
-          {courses.map((c) => {
+          {courseList.map((c) => {
             const isRecommended = c.slug === "electromagnetism";
             return (
             <Link
@@ -123,9 +125,9 @@ export default function CoursesIndexPage() {
         data={collectionPageJsonLd({
           name: "Solvora Learning Lab の講座一覧（高校物理・理系個別指導）",
           description:
-            "Solvora Learning Lab の体験授業、1対1個別指導、共通テスト対策、分野別集中講座を比較できる講座一覧ページです（高校物理専門塾としての指導継続）。",
+            "Solvora Learning Lab の体験授業、共通テスト対策、分野別集中講座を比較できる講座一覧ページです（高校物理専門塾としての指導継続）。",
           path: "/courses",
-          items: courses.map((course) => ({
+          items: courseList.map((course) => ({
             name: course.title,
             href: `/courses/${course.slug}`,
             description: course.summary,
@@ -138,7 +140,7 @@ export default function CoursesIndexPage() {
           name: "Solvora Learning Lab 講座一覧",
           description: "目的別に選べる、高校物理・理系個別指導（AI復習プリント付き）の講座一覧です。",
           path: "/courses",
-          items: courses.map((course) => ({
+          items: courseList.map((course) => ({
             name: course.title,
             href: `/courses/${course.slug}`,
             description: course.summary,

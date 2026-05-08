@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Loader2, Check, CreditCard, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { courses } from "@/data/courses";
+import { visibleCourses } from "@/data/courses";
 import { trackTrialPaymentClick } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -59,7 +59,7 @@ const PENDING_KEY = "solvora-pending-application";
 
 const courseOptions: { value: string; label: string }[] = [
   { value: "未定", label: "決まっていない / まずは体験したい" },
-  ...courses.map((c) => ({
+  ...visibleCourses().map((c) => ({
     value: c.slug,
     label: `${c.title}${c.slug === "electromagnetism" ? "（おすすめ）" : ""}`,
   })),
@@ -77,7 +77,7 @@ export function ContactForm() {
   const initialCourse = (() => {
     if (!courseParam) return "未定";
     if (courseParam === "未定") return "未定";
-    return courses.some((c) => c.slug === courseParam) ? courseParam : "未定";
+    return visibleCourses().some((c) => c.slug === courseParam) ? courseParam : "未定";
   })();
   const initialTopic =
     (topicParam && TOPIC_PARAM_TO_LABEL[topicParam]) ?? TRIAL_TOPIC;
@@ -99,7 +99,7 @@ export function ContactForm() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    if (courseParam && courses.some((c) => c.slug === courseParam)) {
+    if (courseParam && visibleCourses().some((c) => c.slug === courseParam)) {
       setCourse(courseParam);
     }
   }, [courseParam]);
