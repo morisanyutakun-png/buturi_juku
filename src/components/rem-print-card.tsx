@@ -103,13 +103,13 @@ export function RemPrintCard({ className }: Props) {
             style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}
           >
             <p>
-              なめらかな水平面上に、質量 <Math>m</Math> の小物体が置かれている。
-              小物体は、ばね定数 <Math>k</Math> の軽いばねにつながれており、
+              なめらかな水平面上に、質量 <Var>m</Var> の小物体が置かれている。
+              小物体は、ばね定数 <Var>k</Var> の軽いばねにつながれており、
               ばねの他端は左側の壁に固定されている。
             </p>
             <p>
-              小物体の中心が <Math>O</Math> にあるとき、ばねは自然長である。
-              いま、小物体を <Math>O</Math> から右向きに距離 <Math>x</Math> だけ
+              小物体の中心が <Var>O</Var> にあるとき、ばねは自然長である。
+              いま、小物体を <Var>O</Var> から右向きに距離 <Var>x</Var> だけ
               引きのばして静かに手を離す。
             </p>
           </div>
@@ -126,8 +126,8 @@ export function RemPrintCard({ className }: Props) {
               小物体の加速度を、向きを含めて文字式で答えよ。
             </li>
             <li>
-              小物体を <Math>O</Math> から右向きに距離 <Math>A</Math> だけ
-              引きのばして静かに手を離す。小物体が初めて <Math>O</Math> を
+              小物体を <Var>O</Var> から右向きに距離 <Var>A</Var> だけ
+              引きのばして静かに手を離す。小物体が初めて <Var>O</Var> を
               通過するときの速さを、文字式で答えよ。
             </li>
           </ol>
@@ -148,7 +148,7 @@ export function RemPrintCard({ className }: Props) {
   );
 }
 
-function Math({ children }: { children: React.ReactNode }) {
+function Var({ children }: { children: React.ReactNode }) {
   return (
     <span
       className="font-serif italic"
@@ -161,9 +161,27 @@ function Math({ children }: { children: React.ReactNode }) {
 }
 
 function SpringFigure({ className }: { className?: string }) {
+  // 図全体の座標系
+  const W = 360;
+  const H = 130;
+
+  // 主要 X 座標
+  const wallX = 28; // 壁の右面（ばねの固定端）
+  const O = 200; // 自然長位置（小物体の中心）
+  const blockW = 38;
+  const blockH = 34;
+  const stretch = 50; // O から右に引きのばした距離（x の表示）
+  const blockCenterX = O + stretch;
+  const blockLeftX = blockCenterX - blockW / 2;
+
+  // Y 座標
+  const floorY = 100;
+  const blockTopY = floorY - blockH;
+  const blockMidY = blockTopY + blockH / 2; // ばねが接続する高さ
+
   return (
     <svg
-      viewBox="0 0 320 110"
+      viewBox={`0 0 ${W} ${H}`}
       className={cn("h-auto w-full", className)}
       aria-hidden
     >
@@ -179,38 +197,37 @@ function SpringFigure({ className }: { className?: string }) {
         </pattern>
       </defs>
 
-      {/* left wall (hatched) */}
-      <rect x="14" y="20" width="10" height="68" fill="url(#rem-hatch)" />
-      <line x1="24" y1="18" x2="24" y2="90" stroke="#142341" strokeWidth="1.2" />
+      {/* 左壁（ハッチング） */}
+      <rect x="18" y="18" width="10" height={floorY - 18} fill="url(#rem-hatch)" />
+      <line x1={wallX} y1="14" x2={wallX} y2={floorY} stroke="#142341" strokeWidth="1.4" />
 
-      {/* floor */}
-      <line x1="14" y1="88" x2="306" y2="88" stroke="#142341" strokeWidth="1.2" />
+      {/* 床 */}
+      <line x1="14" y1={floorY} x2={W - 8} y2={floorY} stroke="#142341" strokeWidth="1.4" />
       <g stroke="#142341" strokeWidth="0.8">
-        {Array.from({ length: 24 }).map((_, i) => (
-          <line key={i} x1={20 + i * 12} y1="88" x2={14 + i * 12} y2="98" />
+        {Array.from({ length: Math.floor((W - 24) / 12) }).map((_, i) => (
+          <line key={i} x1={20 + i * 12} y1={floorY} x2={14 + i * 12} y2={floorY + 10} />
         ))}
       </g>
 
-      {/* spring (zigzag) */}
-      <SpringCoil x1={24} x2={188} y={62} />
+      {/* ばね（ヘリカルコイル） */}
+      <Spring x1={wallX} x2={blockLeftX} y={blockMidY} coils={16} amplitude={11} />
 
-      {/* equilibrium guide (vertical dashed at O) */}
+      {/* O の鉛直点線 */}
       <line
-        x1="148"
-        y1="20"
-        x2="148"
-        y2="88"
+        x1={O}
+        y1="22"
+        x2={O}
+        y2={floorY}
         stroke="#142341"
         strokeWidth="0.9"
         strokeDasharray="3 3"
         opacity="0.55"
       />
-      {/* O label */}
       <text
-        x="148"
+        x={O}
         y="16"
         textAnchor="middle"
-        fontSize="10"
+        fontSize="11"
         fontFamily="'Times New Roman', serif"
         fontStyle="italic"
         fill="#142341"
@@ -218,12 +235,12 @@ function SpringFigure({ className }: { className?: string }) {
         O
       </text>
 
-      {/* k label above spring */}
+      {/* k ラベル（ばね上） */}
       <text
-        x="92"
-        y="50"
+        x={(wallX + blockLeftX) / 2}
+        y={blockMidY - 22}
         textAnchor="middle"
-        fontSize="10"
+        fontSize="11"
         fontFamily="'Times New Roman', serif"
         fontStyle="italic"
         fill="#142341"
@@ -231,21 +248,21 @@ function SpringFigure({ className }: { className?: string }) {
         k
       </text>
 
-      {/* mass block (warm red) — pulled right by x */}
-      <g transform="translate(188 44)">
+      {/* 小物体 m */}
+      <g transform={`translate(${blockLeftX} ${blockTopY})`}>
         <rect
-          width="36"
-          height="34"
+          width={blockW}
+          height={blockH}
           rx="2"
           fill="#e28040"
           stroke="#b35f27"
           strokeWidth="1"
         />
         <text
-          x="18"
-          y="22"
+          x={blockW / 2}
+          y={blockH / 2 + 5}
           textAnchor="middle"
-          fontSize="13"
+          fontSize="14"
           fontFamily="'Times New Roman', serif"
           fontStyle="italic"
           fontWeight="500"
@@ -255,15 +272,17 @@ function SpringFigure({ className }: { className?: string }) {
         </text>
       </g>
 
-      {/* F arrow on the left face of the block */}
-      <g stroke="#142341" strokeWidth="1.1" fill="#142341">
-        <line x1="200" y1="62" x2="180" y2="62" />
-        <polygon points="180,62 184,60 184,64" />
+      {/* F 矢印（ブロックの左面、左向き） */}
+      <g stroke="#142341" strokeWidth="1.2" fill="#142341">
+        <line x1={blockLeftX + 14} y1={blockMidY} x2={blockLeftX - 6} y2={blockMidY} />
+        <polygon
+          points={`${blockLeftX - 6},${blockMidY} ${blockLeftX - 1},${blockMidY - 2.5} ${blockLeftX - 1},${blockMidY + 2.5}`}
+        />
       </g>
       <text
-        x="184"
-        y="56"
-        fontSize="10"
+        x={blockLeftX - 2}
+        y={blockMidY - 6}
+        fontSize="11"
         fontFamily="'Times New Roman', serif"
         fontStyle="italic"
         fill="#142341"
@@ -271,17 +290,17 @@ function SpringFigure({ className }: { className?: string }) {
         F
       </text>
 
-      {/* x bracket below floor — from O (148) to block-left (188) */}
+      {/* x ブラケット（O から ブロック左面まで、床より下） */}
       <g stroke="#142341" strokeWidth="1" fill="none">
-        <line x1="148" y1="100" x2="188" y2="100" />
-        <polygon points="148,100 152,98 152,102" fill="#142341" stroke="none" />
-        <polygon points="188,100 184,98 184,102" fill="#142341" stroke="none" />
+        <line x1={O} y1={floorY + 12} x2={blockLeftX} y2={floorY + 12} />
+        <line x1={O} y1={floorY + 8} x2={O} y2={floorY + 16} />
+        <line x1={blockLeftX} y1={floorY + 8} x2={blockLeftX} y2={floorY + 16} />
       </g>
       <text
-        x="168"
-        y="109"
+        x={(O + blockLeftX) / 2}
+        y={floorY + 24}
         textAnchor="middle"
-        fontSize="10"
+        fontSize="11"
         fontFamily="'Times New Roman', serif"
         fontStyle="italic"
         fill="#142341"
@@ -289,15 +308,15 @@ function SpringFigure({ className }: { className?: string }) {
         x
       </text>
 
-      {/* x-axis arrow on the right */}
-      <g stroke="#142341" strokeWidth="1.1" fill="#142341">
-        <line x1="252" y1="34" x2="298" y2="34" />
-        <polygon points="298,34 292,31 292,37" />
+      {/* x 軸（右上、座標の正の向き） */}
+      <g stroke="#142341" strokeWidth="1.2" fill="#142341">
+        <line x1={W - 70} y1="34" x2={W - 18} y2="34" />
+        <polygon points={`${W - 18},34 ${W - 24},31 ${W - 24},37`} />
       </g>
       <text
-        x="304"
-        y="37"
-        fontSize="10"
+        x={W - 12}
+        y="38"
+        fontSize="11"
         fontFamily="'Times New Roman', serif"
         fontStyle="italic"
         fill="#142341"
@@ -309,27 +328,75 @@ function SpringFigure({ className }: { className?: string }) {
 }
 
 /**
- * ばねの zigzag コイル。x1→x2 を 14 セグメントで上下に振る。
+ * ヘリカルコイル形状のばね。
+ *
+ * 各コイルを 1 本のキュービックベジェで描く。control 点を可視振幅より
+ * はるかに上下に押し出すことで、中央通過時の接線がほぼ垂直になり、
+ * 連続させると「タイトな S 字 = ヘリックスの真横投影」に見える。
+ *
+ *   コイル i : (xa, y) → (xb, y)
+ *     control1 = (cx, y − amp * OVER)
+ *     control2 = (cx, y + amp * OVER)
+ *
+ * P0=(0,0), P1=(0.5,-H), P2=(0.5,+H), P3=(1,0) のキュービックは
+ *   Y(t) = 3H · t(1−t)(2t−1)
+ * を満たし、t = (3 ± √3)/6 で極値 ±H · 0.2887 をとる。
+ * よって、画面上で見せたい振幅 amp に対して
+ *   H ≈ amp · 3.46
+ * を control に与えれば、ピークがちょうど ±amp になる。
+ *
+ * さらに、3D らしさを出すため、各コイルの「上アーチ（前面）」だけを
+ * 太い実線、「下アーチ（背面）」を細めの線で描く 2 パス構成にする。
  */
-function SpringCoil({ x1, x2, y }: { x1: number; x2: number; y: number }) {
-  const segments = 14;
-  const amplitude = 8;
-  const dx = (x2 - x1) / segments;
-  const points: string[] = [];
-  points.push(`${x1},${y}`);
-  for (let i = 1; i <= segments; i += 1) {
-    const x = x1 + dx * i - dx / 2;
-    const offset = i % 2 === 0 ? -amplitude : amplitude;
-    points.push(`${x},${y + offset}`);
+function Spring({
+  x1,
+  x2,
+  y,
+  coils,
+  amplitude,
+}: {
+  x1: number;
+  x2: number;
+  y: number;
+  coils: number;
+  amplitude: number;
+}) {
+  const pitch = (x2 - x1) / coils;
+  // 可視振幅 amp に合わせて control 点を補正（ピーク = 0.2887 H）
+  const H = amplitude * 3.46;
+
+  // 1 本繋がった S 字パス
+  let d = `M ${x1} ${y}`;
+  for (let i = 0; i < coils; i += 1) {
+    const xa = x1 + i * pitch;
+    const xb = xa + pitch;
+    const cx = xa + pitch * 0.5;
+    d += ` C ${cx} ${y - H} ${cx} ${y + H} ${xb} ${y}`;
   }
-  points.push(`${x2},${y}`);
+
   return (
-    <polyline
-      points={points.join(" ")}
-      fill="none"
-      stroke="#142341"
-      strokeWidth="1.1"
-      strokeLinejoin="round"
-    />
+    <g>
+      {/* 背景の柔らかい影（厚みの錯覚） */}
+      <path
+        d={d}
+        fill="none"
+        stroke="#142341"
+        strokeOpacity="0.12"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      {/* 主線 */}
+      <path
+        d={d}
+        fill="none"
+        stroke="#142341"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* 端のコネクタ（壁面・ブロック面に確実に接続させる） */}
+      <line x1={x1 - 1} y1={y} x2={x1 + 0.5} y2={y} stroke="#142341" strokeWidth="1.4" />
+      <line x1={x2 - 0.5} y1={y} x2={x2 + 1} y2={y} stroke="#142341" strokeWidth="1.4" />
+    </g>
   );
 }
