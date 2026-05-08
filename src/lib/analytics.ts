@@ -54,28 +54,39 @@ type WindowWithGtag = Window & {
  * 競合パターン:
  *   `/thanks` などマウント直後の useEffect で trackEvent が呼ばれると、
  *   layout.tsx の `gtag-init` Script (afterInteractive) よりも先に走り、
- *   `window.gtag` が未定義 → イベントが silently 捨てられる、ということが起きる。
+ *   `window.gtag` が未定義になる場合がある。
  *
  * 解決:
- *   gtag.js が後から `window.dataLayer` を見て処理するため、配列形式
- *   `['event', name, params]` で直接 push しておけばロード後にイベントが
- *   遅延配信される。これは Google 公式の gtag スニペットと等価。
+ *   gtag が未定義なら **gtag-init Script と同形式の関数を自前で定義**し、
+ *   それ経由で push する。gtag は内部で `dataLayer.push(arguments)` する仕様で、
+ *   gtag.js は `arguments` オブジェクトのみを正しく処理するため、配列を直接
+ *   push してはいけない。後から gtag-init Script が走っても、定義済みの
+ *   gtag を上書きするだけでキューは保持される。
  */
-function pushToDataLayer(args: unknown[]): void {
+function ensureGtag(): void {
   if (typeof window === "undefined") return;
   const w = window as WindowWithGtag;
 
-  if (typeof w.gtag === "function") {
-    // gtag が既に定義済み → 通常の関数呼び出しに展開
-    (w.gtag as (...a: unknown[]) => void)(...args);
-    return;
-  }
-
-  // gtag 未ロードでも dataLayer に積めば、後で gtag.js が処理する
   if (!Array.isArray(w.dataLayer)) {
     w.dataLayer = [];
   }
-  w.dataLayer.push(args);
+  if (typeof w.gtag !== "function") {
+    // Google 公式スニペットと等価:
+    //   function gtag(){dataLayer.push(arguments);}
+    // arguments オブジェクトで push することが gtag.js の処理対象になるための条件。
+    w.gtag = function gtag() {
+      // eslint-disable-next-line prefer-rest-params
+      (w.dataLayer as unknown[]).push(arguments);
+    } as GtagFn;
+  }
+}
+
+function pushToDataLayer(args: unknown[]): void {
+  if (typeof window === "undefined") return;
+  ensureGtag();
+  const w = window as WindowWithGtag;
+  // ensureGtag() の後なので gtag は必ず存在する。
+  (w.gtag as (...a: unknown[]) => void)(...args);
 }
 
 /**
