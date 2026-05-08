@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Loader2, Check, CreditCard, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -40,15 +40,21 @@ const TOPIC_PARAM_TO_LABEL: Record<string, (typeof topics)[number]> = {
  *   1. 講座カードの「申し込む」ボタン → /contact?course=<slug>&topic=trial に飛ぶ
  *   2. 受講希望講座が自動入力される
  *   3. 受講のスタートは必ず体験授業（¥3,000）から
- *   4. 「体験授業の申し込み」を選んだ場合のみ、送信ボタンは Stripe 決済ページに遷移する。
- *      決済完了をもって申し込み確定（Stripe 側で `success_url` を /thanks に設定）。
- *   5. それ以外の問い合わせ（学習相談・料金など）は、決済ゲートなしでそのまま送信。
+ *   4. 「体験授業の申し込み」を選んだ場合：
+ *        a. クライアント側でフォームを検証（必須+同意チェック）
+ *        b. /api/contact に POST してメール送信を確定
+ *        c. 成功したら GA / Google Ads タグを発火
+ *        d. Stripe 決済ページへリダイレクト（success_url で /thanks に戻る）
+ *   5. それ以外の問い合わせは a → b までで完了し、success 画面を出す。
+ *
+ * 「決済が走る前にメールを送る」順序にしている理由:
+ *   - 万一決済前にユーザーがブラウザを閉じても、講師に問い合わせ内容は届いている。
+ *   - メール送信は数百ms で終わるので、Stripe への遷移体感は変わらない。
+ *   - メール送信が失敗したら Stripe には飛ばさない（タグも撃たない）= 整合性が保たれる。
  */
 
-/** Stripe 決済リンク。本人確認・申込確定の手続きとして決済を必須にする。 */
 const STRIPE_PAYMENT_URL = "https://buy.stripe.com/28EaEX2kG3X8cWEa9Q3Ru06";
 
-/** 決済前にフォーム値を保存しておく localStorage キー（/thanks ページが読み出す）。 */
 const PENDING_KEY = "solvora-pending-application";
 
 const courseOptions: { value: string; label: string }[] = [
@@ -59,12 +65,15 @@ const courseOptions: { value: string; label: string }[] = [
   })),
 ];
 
+function isEmailLike(v: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
 export function ContactForm() {
   const searchParams = useSearchParams();
   const courseParam = searchParams.get("course");
   const topicParam = searchParams.get("topic");
 
-  // クエリパラメータから受講希望講座 / トピックを初期化。
   const initialCourse = (() => {
     if (!courseParam) return "未定";
     if (courseParam === "未定") return "未定";
@@ -73,12 +82,22 @@ export function ContactForm() {
   const initialTopic =
     (topicParam && TOPIC_PARAM_TO_LABEL[topicParam]) ?? TRIAL_TOPIC;
 
-  const [course, setCourse] = useState(initialCourse);
+  // 制御コンポーネント化することで、リアルタイム検証 + 送信ボタン disable を
+  // 自然に実装できる。FormData でも値は読めるが、状態を一箇所に集めた方が
+  // 「同意せずにボタン押せちゃった」系のミスを構造的に潰せる。
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [grade, setGrade] = useState("");
   const [topic, setTopic] = useState<string>(initialTopic);
+  const [course, setCourse] = useState(initialCourse);
+  const [message, setMessage] = useState("");
+  const [agree, setAgree] = useState(false);
+
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  // フィールド単位のサーバー検証エラー（API 側からの 400 をそのまま反映）。
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
-  // クエリパラメータが後から変わった場合（クライアント遷移）にも追随する。
   useEffect(() => {
     if (courseParam && courses.some((c) => c.slug === courseParam)) {
       setCourse(courseParam);
@@ -92,18 +111,40 @@ export function ContactForm() {
 
   const requiresStripe = topic === TRIAL_TOPIC;
 
+  // すべての必須項目が満たされ、かつ同意もある状態でだけボタンが押せる。
+  // ここを通らないと API もタグも走らない = 二重防御。
+  const isComplete = useMemo(() => {
+    return (
+      name.trim().length > 0 &&
+      isEmailLike(email.trim()) &&
+      grade.trim().length > 0 &&
+      topic.trim().length > 0 &&
+      message.trim().length > 0 &&
+      agree
+    );
+  }, [name, email, grade, topic, message, agree]);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!isComplete || status === "submitting") return;
+
     setStatus("submitting");
     setError(null);
+    setFieldErrors({});
 
-    const formData = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
+    const payload = {
+      name: name.trim(),
+      email: email.trim(),
+      grade,
+      topic,
+      course,
+      message: message.trim(),
+      agree: agree ? "1" : "",
+    };
 
     try {
-      // 将来的にここを `/api/contact` のRoute Handlerへ差し替え（実 API 化）。
-      // いまは console に残す + localStorage に保存して /thanks で復元できるように。
-      console.info("[contact-form] payload", payload);
+      // /thanks ページが復元するための控えを先に保存。
+      // API 失敗時は Stripe に飛ばさないので、復元されない=問題ない。
       try {
         localStorage.setItem(
           PENDING_KEY,
@@ -113,32 +154,57 @@ export function ContactForm() {
           }),
         );
       } catch {
-        // ローカルストレージが使えなくても続行（Stripe には飛ばす）。
+        /* localStorage 不可でも続行。 */
       }
 
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+        errors?: Record<string, string>;
+      };
+
+      if (!res.ok || !json.ok) {
+        if (json.errors) setFieldErrors(json.errors);
+        setStatus("error");
+        setError(
+          json.errors
+            ? "入力内容に不備があります。赤字の項目を確認してください。"
+            : "送信に失敗しました。時間をおいて再度お試しください。",
+        );
+        return;
+      }
+
+      // ここまで来たら API は成功 = メールは送信済み（または dev_log_only）。
       if (requiresStripe) {
-        // GA4 計測：体験申込の決済ボタンクリック（リード獲得）。
+        // GA4 / Google Ads にリード獲得イベントを発火。
+        // analytics.ts 側で gtag 未ロードでも dataLayer に積む実装にしているので
+        // ここで配列形式に直接 push するなどはしない。
         trackTrialPaymentClick({
-          course: (payload.course as string) ?? "未定",
-          email: (payload.email as string) ?? null,
+          course: payload.course || "未定",
+          email: payload.email,
         });
-        // Stripe 決済ページへリダイレクト。
-        // メールアドレスを prefill して、決済完了後に /thanks へ戻る前提。
-        const email = (payload.email as string) ?? "";
-        const stripeUrl = email
-          ? `${STRIPE_PAYMENT_URL}?prefilled_email=${encodeURIComponent(email)}`
+
+        const stripeUrl = payload.email
+          ? `${STRIPE_PAYMENT_URL}?prefilled_email=${encodeURIComponent(payload.email)}`
           : STRIPE_PAYMENT_URL;
         window.location.href = stripeUrl;
         return;
       }
 
-      // 体験以外（学習相談・料金問い合わせ等）はそのまま送信完了扱い。
-      await new Promise((resolve) => setTimeout(resolve, 700));
+      // 体験以外（学習相談・料金問い合わせ等）は success 画面を出して終わり。
       setStatus("success");
     } catch (e) {
-      console.error(e);
+      console.error("[contact-form] submit error", e);
       setStatus("error");
-      setError("送信に失敗しました。時間をおいて再度お試しください。");
+      setError(
+        "通信に失敗しました。電波状況を確認のうえ、再度お試しください。",
+      );
     }
   }
 
@@ -159,36 +225,66 @@ export function ContactForm() {
   }
 
   const isCoursePreselected = course !== "未定";
+  const submitting = status === "submitting";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-      <Field label="お名前" htmlFor="name" required>
+      <Field
+        label="お名前"
+        htmlFor="name"
+        required
+        error={fieldErrors.name}
+      >
         <input
           id="name"
           name="name"
           type="text"
           required
           autoComplete="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           className={inputClass}
           placeholder="山田 太郎"
+          aria-invalid={!!fieldErrors.name}
         />
       </Field>
 
-      <Field label="メールアドレス" htmlFor="email" required>
+      <Field
+        label="メールアドレス"
+        htmlFor="email"
+        required
+        error={fieldErrors.email}
+      >
         <input
           id="email"
           name="email"
           type="email"
           required
           autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className={inputClass}
           placeholder="example@mail.com"
+          aria-invalid={!!fieldErrors.email}
         />
       </Field>
 
       <div className="grid gap-6 sm:grid-cols-2">
-        <Field label="学年" htmlFor="grade" required>
-          <select id="grade" name="grade" required className={inputClass}>
+        <Field
+          label="学年"
+          htmlFor="grade"
+          required
+          error={fieldErrors.grade}
+        >
+          <select
+            id="grade"
+            name="grade"
+            required
+            value={grade}
+            onChange={(e) => setGrade(e.target.value)}
+            className={inputClass}
+            aria-invalid={!!fieldErrors.grade}
+          >
             <option value="">選択してください</option>
             {grades.map((g) => (
               <option key={g} value={g}>
@@ -197,7 +293,12 @@ export function ContactForm() {
             ))}
           </select>
         </Field>
-        <Field label="ご相談内容の種類" htmlFor="topic" required>
+        <Field
+          label="ご相談内容の種類"
+          htmlFor="topic"
+          required
+          error={fieldErrors.topic}
+        >
           <select
             id="topic"
             name="topic"
@@ -205,6 +306,7 @@ export function ContactForm() {
             className={inputClass}
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
+            aria-invalid={!!fieldErrors.topic}
           >
             {topics.map((t) => (
               <option key={t} value={t}>
@@ -239,23 +341,38 @@ export function ContactForm() {
         </select>
       </Field>
 
-      <Field label="ご相談内容" htmlFor="message" required>
+      <Field
+        label="ご相談内容"
+        htmlFor="message"
+        required
+        error={fieldErrors.message}
+      >
         <textarea
           id="message"
           name="message"
           required
           rows={6}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           className={cn(inputClass, "resize-y")}
           placeholder="現在の学習状況・ご質問などをご記入ください。"
+          aria-invalid={!!fieldErrors.message}
         />
       </Field>
 
-      <label className="flex items-start gap-3 text-[14px] sm:text-xs leading-[1.7] text-ink-600">
+      <label
+        className={cn(
+          "flex items-start gap-3 text-[14px] sm:text-xs leading-[1.7]",
+          fieldErrors.agree ? "text-red-600" : "text-ink-600",
+        )}
+      >
         <input
           type="checkbox"
           name="agree"
-          required
+          checked={agree}
+          onChange={(e) => setAgree(e.target.checked)}
           className="mt-1.5 h-5 w-5 sm:h-4 sm:w-4 accent-brand"
+          aria-invalid={!!fieldErrors.agree}
         />
         <span>
           <a href="/privacy" className="text-brand hover:underline">
@@ -265,7 +382,6 @@ export function ContactForm() {
         </span>
       </label>
 
-      {/* 体験申込の場合のみ表示する Stripe 決済ガイダンス */}
       {requiresStripe && (
         <div className="rounded-2xl border border-brand/30 bg-brand-bg/50 p-5 sm:p-6">
           <div className="flex items-start gap-3">
@@ -277,7 +393,7 @@ export function ContactForm() {
                 体験授業の申し込みは、決済画面での確認が必要です。
               </p>
               <p className="mt-2 text-ink-700">
-                送信ボタンを押すと、安全な決済ページ（Stripe）に移動します。
+                送信ボタンを押すと、まず申し込み内容を講師に送信し、続いて安全な決済ページ（Stripe）に移動します。
                 <strong className="text-ink-900 font-medium">
                   決済の完了をもって、正式に申し込み確定
                 </strong>
@@ -296,13 +412,14 @@ export function ContactForm() {
 
       <button
         type="submit"
-        disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-warm px-6 py-4 sm:py-3.5 text-[15px] sm:text-sm font-medium text-white shadow-warm transition hover:bg-warm-deep disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto min-h-[52px] sm:min-h-0"
+        disabled={!isComplete || submitting}
+        aria-disabled={!isComplete || submitting}
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-warm px-6 py-4 sm:py-3.5 text-[15px] sm:text-sm font-medium text-white shadow-warm transition hover:bg-warm-deep disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto min-h-[52px] sm:min-h-0"
       >
-        {status === "submitting" ? (
+        {submitting ? (
           <>
             <Loader2 className="h-4 w-4 animate-spin" />
-            {requiresStripe ? "決済画面へ移動しています…" : "送信中…"}
+            {requiresStripe ? "送信中…" : "送信中…"}
           </>
         ) : requiresStripe ? (
           <>
@@ -313,6 +430,12 @@ export function ContactForm() {
           "送信する"
         )}
       </button>
+
+      {!isComplete && (
+        <p className="text-[12px] sm:text-[11.5px] leading-[1.7] text-ink-500">
+          ※ 必須項目（*）の入力と、プライバシーポリシーへの同意で送信ボタンが有効になります。
+        </p>
+      )}
 
       {requiresStripe && (
         <p className="text-[12px] sm:text-[11.5px] leading-[1.7] text-ink-500">
@@ -325,19 +448,21 @@ export function ContactForm() {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-ink-900/15 bg-white px-4 py-3.5 sm:py-3 text-[16px] sm:text-sm text-ink-900 placeholder:text-ink-400 outline-none focus:border-brand focus:ring-1 focus:ring-brand/60 transition";
+  "w-full rounded-xl border border-ink-900/15 bg-white px-4 py-3.5 sm:py-3 text-[16px] sm:text-sm text-ink-900 placeholder:text-ink-400 outline-none focus:border-brand focus:ring-1 focus:ring-brand/60 transition aria-[invalid=true]:border-red-400 aria-[invalid=true]:focus:ring-red-300";
 
 function Field({
   label,
   htmlFor,
   required,
   helper,
+  error,
   children,
 }: {
   label: string;
   htmlFor: string;
   required?: boolean;
   helper?: string;
+  error?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -350,10 +475,16 @@ function Field({
         {required && <span className="ml-1 text-warm">*</span>}
       </label>
       {children}
-      {helper && (
-        <p className="mt-2 text-[12px] sm:text-[11px] leading-[1.6] text-ink-500">
-          {helper}
+      {error ? (
+        <p className="mt-2 text-[12px] sm:text-[11px] leading-[1.6] text-red-600">
+          {error}
         </p>
+      ) : (
+        helper && (
+          <p className="mt-2 text-[12px] sm:text-[11px] leading-[1.6] text-ink-500">
+            {helper}
+          </p>
+        )
       )}
     </div>
   );
