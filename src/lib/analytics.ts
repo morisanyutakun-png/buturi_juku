@@ -152,12 +152,19 @@ export function trackTrialPaymentClick(payload: {
   });
 }
 
+/** 体験授業の決済額（円）。courses.ts の trial 価格と合わせる。 */
+const TRIAL_PRICE_JPY = 3000;
+
 /**
  * Stripe 決済完了 → /thanks ページに到達した瞬間に発火。
  *
  * 二重計測:
  *   - GA4: `trial_application_complete` カスタム + `purchase` 推奨
  *   - Google Ads: `conversion` イベント (ラベルがあれば)
+ *
+ * `value: 3000` を送ることで、GA4 の収益レポート・Google Ads の入札最適化
+ * （tCPA / tROAS）が実数値で機能する。0 のままだと「無料コンバージョン」扱いになり
+ * 収益ベースの自動入札が学習しない。
  *
  * @param transactionId Stripe success_url から拾える `session_id` があれば渡す。
  *                      重複発火防止に GA4 / Google Ads 双方で利用される。
@@ -175,7 +182,7 @@ export function trackTrialApplicationComplete(payload: {
   trackEvent("purchase", {
     transaction_id: txnId,
     currency: "JPY",
-    value: 0,
+    value: TRIAL_PRICE_JPY,
     ...params,
   });
   // Google Ads
@@ -184,7 +191,7 @@ export function trackTrialApplicationComplete(payload: {
     {
       transaction_id: txnId,
       currency: "JPY",
-      value: 0,
+      value: TRIAL_PRICE_JPY,
     },
   );
 }
