@@ -185,7 +185,7 @@ export function MobileNav() {
           </p>
           <div className="mt-3 grid gap-2.5">
             <Link
-              href="/trial"
+              href="/contact?topic=trial#contact-form"
               onClick={() => setOpen(false)}
               className="group inline-flex min-h-[56px] items-center justify-center gap-2 rounded-full px-5 text-[15px] font-medium text-white shadow-warm transition active:scale-[0.99]"
               style={{

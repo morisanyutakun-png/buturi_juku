@@ -39,7 +39,7 @@ export function MobileCtaBar() {
     >
       <div className="container py-2">
         <Link
-          href="/trial"
+          href="/contact?topic=trial#contact-form"
           className="group inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full px-3 text-[14px] font-medium text-white shadow-warm active:scale-[0.98] transition-transform"
           style={{
             background:

@@ -229,28 +229,24 @@ export default async function CourseDetailPage({
                 {/* 受講のスタートは必ず体験授業（¥3,000）から。CTA は `/contact` フォームに
                     クエリで講座情報を渡し、受講希望講座を自動入力する。 */}
                 <Link
-                  href={
-                    course.slug === "trial"
-                      ? "/contact?topic=trial"
-                      : `/contact?course=${course.slug}&topic=trial`
-                  }
+                  href="/contact?topic=trial#contact-form"
                   className="inline-flex min-h-[52px] sm:min-h-0 items-center justify-center gap-2 rounded-full bg-warm px-5 py-4 sm:py-3 text-[15px] sm:text-sm font-medium text-white hover:bg-warm-deep transition"
                 >
                   {course.slug === "trial"
                     ? "体験授業を申し込む"
-                    : "この講座を希望して体験授業を申し込む"}
+                    : "まずは体験授業を申し込む"}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 {course.slug !== "trial" && (
                   <p className="text-center text-[12px] leading-[1.65] text-ink-500">
-                    受講のスタートは必ず体験授業（60分・¥3,000）から。フォームには本講座が自動でセットされます。
+                    受講のスタートは必ず体験授業（60分・¥3,000）から。体験当日に本講座のご案内もいたします。
                   </p>
                 )}
                 <Link
-                  href={`/contact?course=${course.slug}&topic=course`}
+                  href="/contact"
                   className="inline-flex min-h-[52px] sm:min-h-0 items-center justify-center gap-2 rounded-full border border-ink-900/15 px-5 py-4 sm:py-3 text-[15px] sm:text-sm text-ink-900 hover:border-brand hover:text-brand transition"
                 >
-                  この講座について問い合わせる
+                  まず質問だけしたい（メールで相談）
                 </Link>
               </div>
             </div>

@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Mail, Clock, MapPin, ArrowDown } from "lucide-react";
 import { Section } from "@/components/section";
@@ -36,13 +35,13 @@ export default function ContactPage() {
         ]}
         title={
           <>
-            <span className="block">Solvora Learning Lab と、</span>
+            <span className="block">体験授業を、</span>
             <span className="block">
-              <span className="text-brand">最初の一歩</span>を。
+              <span className="text-brand">いますぐ申し込む</span>。
             </span>
           </>
         }
-        description="体験授業のお申し込み・受講前のご相談・料金についてのご質問をお受けしています。フォーム送信から2営業日以内に返信します。"
+        description="このフォームは「体験授業（60分・¥3,000）」のお申し込み専用です。料金や講座内容のみのご質問は、右の『直接メール』からお気軽にどうぞ。"
       >
         {/* モバイル：ファーストビューから 1 タップでフォームへ飛べるアンカー */}
         <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:gap-3">
@@ -50,7 +49,7 @@ export default function ContactPage() {
             href="#contact-form"
             className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-warm px-6 py-3.5 text-[14.5px] sm:text-[14px] font-medium text-white shadow-warm transition hover:bg-warm-deep min-h-[52px] sm:min-h-0"
           >
-            フォームで申し込む / 相談する
+            体験授業の申し込みフォームへ
             <ArrowDown className="h-4 w-4" />
           </a>
           <a
@@ -64,18 +63,14 @@ export default function ContactPage() {
       </PageHero>
 
       <Section
-        eyebrow="CONTACT FORM"
-        title="お問い合わせフォーム"
-        description="ご相談内容に応じて、最適な学習プランをご案内します。"
+        eyebrow="TRIAL APPLICATION"
+        title="体験授業 申し込みフォーム"
+        description="入力後、決済画面（Stripe）に進みます。決済完了をもって申し込み確定となります。"
       >
-        <div id="contact-form" className="grid gap-8 lg:gap-10 lg:grid-cols-[1.5fr_1fr]">
+        <div id="contact-form" className="scroll-mt-24 sm:scroll-mt-28 grid gap-8 lg:gap-10 lg:grid-cols-[1.5fr_1fr]">
           {/* モバイルはフォーム先頭。デスクトップは左 = フォーム / 右 = 補足の 2 カラム */}
           <div className="rounded-2xl border border-ink-900/10 bg-white p-5 sm:p-8 order-1">
-            {/* useSearchParams を使うクライアントコンポーネントは Suspense で
-                囲むことで、静的生成時に動的レンダリング扱いになるのを防ぐ。 */}
-            <Suspense fallback={<div className="h-96" aria-hidden />}>
-              <ContactForm />
-            </Suspense>
+            <ContactForm />
           </div>
 
           {/* 補足情報 — モバイルではフォームの下に置き、メイン導線（フォーム）を優先 */}

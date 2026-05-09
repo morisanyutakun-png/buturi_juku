@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Mail, CalendarClock } from "lucide-react";
-import { courses } from "@/data/courses";
 import { trackTrialApplicationComplete } from "@/lib/analytics";
 
 const PENDING_KEY = "solvora-pending-application";
@@ -13,8 +12,8 @@ const FIRED_KEY = "solvora-thanks-event-fired";
 type Recovered = {
   name?: string;
   email?: string;
-  course?: string;
-  topic?: string;
+  grade?: string;
+  weakUnit?: string;
   submittedAt?: string;
 };
 
@@ -58,7 +57,7 @@ export function ThanksConfirmation() {
           url.searchParams.get("session_id") ??
           url.searchParams.get("checkout_session_id");
         trackTrialApplicationComplete({
-          course: recoveredData?.course ?? null,
+          course: recoveredData?.weakUnit ?? null,
           transactionId: sessionId,
         });
         sessionStorage.setItem(FIRED_KEY, "1");
@@ -66,7 +65,7 @@ export function ThanksConfirmation() {
         if (typeof console !== "undefined") {
           console.info(
             "[analytics] trial_application_complete fired",
-            { course: recoveredData?.course, sessionId },
+            { weakUnit: recoveredData?.weakUnit, sessionId },
           );
         }
       }
@@ -74,13 +73,6 @@ export function ThanksConfirmation() {
       // sessionStorage / window.location が使えない場合も計測スキップで継続。
     }
   }, []);
-
-  const courseLabel = (() => {
-    if (!recovered?.course) return null;
-    if (recovered.course === "未定") return "決まっていない / まずは体験したい";
-    const course = courses.find((c) => c.slug === recovered.course);
-    return course ? course.title : recovered.course;
-  })();
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -112,7 +104,7 @@ export function ThanksConfirmation() {
             <dl className="mt-4 grid gap-3 text-[13.5px] leading-[1.7] text-ink-800 sm:grid-cols-[8rem_1fr] sm:gap-x-6 sm:gap-y-2.5">
               {recovered.name && (
                 <>
-                  <dt className="text-ink-500">お名前</dt>
+                  <dt className="text-ink-500">氏名（生徒）</dt>
                   <dd>{recovered.name}</dd>
                 </>
               )}
@@ -122,16 +114,16 @@ export function ThanksConfirmation() {
                   <dd className="break-all">{recovered.email}</dd>
                 </>
               )}
-              {recovered.topic && (
+              {recovered.grade && (
                 <>
-                  <dt className="text-ink-500">ご相談内容の種類</dt>
-                  <dd>{recovered.topic}</dd>
+                  <dt className="text-ink-500">学年</dt>
+                  <dd>{recovered.grade}</dd>
                 </>
               )}
-              {courseLabel && (
+              {recovered.weakUnit && (
                 <>
-                  <dt className="text-ink-500">受講希望講座</dt>
-                  <dd>{courseLabel}</dd>
+                  <dt className="text-ink-500">体験したい分野</dt>
+                  <dd>{recovered.weakUnit}</dd>
                 </>
               )}
             </dl>

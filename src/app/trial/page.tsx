@@ -68,7 +68,7 @@ export default function TrialPage() {
       >
         <div className="flex flex-wrap gap-3">
           <Link
-            href="/contact?topic=trial"
+            href="/contact?topic=trial#contact-form"
             className="group inline-flex items-center gap-2 rounded-full bg-warm px-7 py-4 text-[15px] sm:text-[14px] font-medium text-white shadow-warm transition hover:bg-warm-deep min-h-[52px] sm:min-h-0"
           >
             体験授業を申し込む
@@ -197,7 +197,7 @@ export default function TrialPage() {
               </ul>
 
               <Link
-                href="/contact?topic=trial"
+                href="/contact?topic=trial#contact-form"
                 className="mt-8 inline-flex w-full min-h-[52px] sm:min-h-0 items-center justify-center gap-2 rounded-full bg-warm px-5 py-4 sm:py-3 text-[15px] sm:text-sm font-medium text-white hover:bg-warm-deep transition"
               >
                 体験授業の申し込みフォームへ
@@ -208,8 +208,70 @@ export default function TrialPage() {
         </div>
       </Section>
 
+      <Section
+        eyebrow="AFTER THE TRIAL"
+        title="体験のあと、自分のペースで続けたい方へ"
+        description="体験授業は1回完結ですが、続けて取り組みたい単元が出てきた方には、定期テスト対策講座が次の一歩として自然です。"
+        className="bg-paper-soft"
+      >
+        <div className="grid gap-6 rounded-2xl border border-ink-900/10 bg-white/90 p-6 sm:p-9 shadow-soft md:grid-cols-[1.4fr_1fr] md:items-center">
+          <div>
+            <p className="text-[10.5px] sm:text-[11px] font-medium tracking-[0.22em] sm:tracking-[0.28em] uppercase text-warm-deep">
+              定期テスト対策講座
+            </p>
+            <h3 className="mt-3 sm:mt-4 font-serif text-[1.35rem] sm:text-[1.6rem] leading-[1.45] tracking-[-0.012em] text-ink-900">
+              強化したい単元を選び、<br className="sm:hidden" />
+              詰まった問題は専用プリントに。
+            </h3>
+            <ul className="mt-5 space-y-3 text-[14px] sm:text-[14.5px] leading-[1.85] text-ink-700">
+              <li className="flex items-start gap-2.5">
+                <Check className="mt-1 h-4 w-4 shrink-0 text-brand-deep" />
+                <span>
+                  力学 / 熱 / 波 / 電磁気 / 原子から、
+                  <strong className="font-medium text-ink-900">伸ばしたい単元</strong>
+                  を選んで集中演習。
+                </span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <Check className="mt-1 h-4 w-4 shrink-0 text-brand-deep" />
+                <span>
+                  授業中に詰まった問題は、AI（REM）で
+                  <strong className="font-medium text-ink-900">専用の復習プリント</strong>
+                  を準備し、次回の冒頭でフォローします。
+                </span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <Check className="mt-1 h-4 w-4 shrink-0 text-brand-deep" />
+                <span>
+                  学校の定期テスト直前にも、入試前の単元立て直しにも使えます。
+                </span>
+              </li>
+            </ul>
+            <p className="mt-5 text-[12.5px] sm:text-[12px] leading-[1.75] text-ink-500">
+              ※ コース詳細・受講料は講座ページにてご確認ください。体験授業の終了時にも個別にご案内します。
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <Link
+              href="/courses/test-prep"
+              className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-ink-900 px-5 py-3.5 text-[14.5px] sm:text-[14px] font-medium text-paper transition hover:bg-ink-800"
+            >
+              定期テスト対策講座の詳細を見る
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/courses"
+              className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-ink-900/15 bg-white px-5 py-3.5 text-[14.5px] sm:text-[14px] text-ink-800 transition hover:border-ink-900/30 hover:bg-paper-soft"
+            >
+              他の講座も見る
+              <ArrowRight className="h-3.5 w-3.5 opacity-60" />
+            </Link>
+          </div>
+        </div>
+      </Section>
+
       <CtaBlock
-        primary={{ label: "体験授業を申し込む", href: "/contact?topic=trial" }}
+        primary={{ label: "体験授業を申し込む", href: "/contact?topic=trial#contact-form" }}
         secondary={{ label: "高校物理・理系個別指導の講座を見る", href: "/courses" }}
       />
 

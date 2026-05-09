@@ -35,6 +35,7 @@ import { WhiteboardFlow } from "@/components/whiteboard-flow";
 import { PullQuote } from "@/components/pull-quote";
 import { PricePreview } from "@/components/price-preview";
 import { MiniFaq } from "@/components/mini-faq";
+import { NotePromoSection } from "@/components/note-promo-section";
 import { visibleCourses } from "@/data/courses";
 import { articles, articleHref } from "@/data/articles";
 import { instructor } from "@/data/instructor";
@@ -197,6 +198,9 @@ export default function HomePage() {
 
       {/* 3-b. 信頼 — 講師作の教材6冊を最大の差別化として前面に */}
       <BookCoversStrip />
+
+      {/* 3-c. note の有料プリント送客（授業ではなく教材だけ欲しい層への逃げ道） */}
+      <NotePromoSection />
 
       {/* ============================================================
           BELOW-THE-FOLD（モバイルでは大半を hidden sm:block で削る）
