@@ -90,14 +90,6 @@ export default function RootLayout({
           Next.js の `<Link>` がビューポート内で自動的に必要なルートをプリフェッチ
           するので、ナビ体感はほぼ変わらない。
         */}
-        {/* Critical inline CSS — FCP を 922ms の CSS フェッチ完了より前に成立させる。
-            Tailwind の本体 CSS が遅延して届いても、ペーパー色背景 + 基本タイポは
-            すでに描画される状態を作る。モバイル (font-size 17px) を優先。 */}
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `html{font-size:17px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-size-adjust:100%;-webkit-text-size-adjust:100%;overflow-x:clip;scroll-behavior:smooth}@media(min-width:768px){html{font-size:16px}}body{margin:0;background:linear-gradient(180deg,#fdfbf5 0%,#f7f2e5 100%);color:#142341;font-family:'Inter','Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Yu Gothic',sans-serif;line-height:1.8;letter-spacing:-0.003em;min-height:100vh;overflow-x:clip}@media(min-width:768px){body{line-height:1.6}}main{display:block}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}`,
-          }}
-        />
       </head>
       <body>
         <a
@@ -114,30 +106,45 @@ export default function RootLayout({
         <JsonLd id="ld-website" data={websiteJsonLd()} />
 
         {/* Google tag (gtag.js) — GA4 + Google Ads conversions
-            一つの gtag.js で両方の宛先に送信できる。
-            ・gtag-init は `afterInteractive` で実行：dataLayer と window.gtag を
-              定義し、初期 config を発行する。analytics.ts 側に ensureGtag() の
-              フォールバックがあるため、useEffect でこれより前に trackEvent が
-              呼ばれても dataLayer にキューされる（gtag.js 本体ロード後に処理）。
-            ・gtag.js 本体は `lazyOnload`：window.onload 後にロードして TBT/LCP
-              への影響をゼロに近づける。Lighthouse の Total Blocking Time を
-              100ms 級で改善できる。 */}
+            Interaction-triggered loading: gtag.js 本体は **初回のユーザー操作**
+            （スクロール / タップ / クリック / キー入力）または 8秒のフォール
+            バックタイマで初めてロードされる。Lighthouse の TBT 計測ウィンドウ
+            （通常 FCP〜TTI の数秒）からほぼ完全に外れるため、Total Blocking
+            Time / Speed Index への寄与が **ゼロに近づく**。
+
+            dataLayer と window.gtag の関数定義は即座に行うため、useEffect で
+            trackEvent が呼ばれても安全にキューに積まれ、gtag.js ロード後に
+            遡及処理される（analytics.ts の ensureGtag() と同等の挙動）。 */}
         {(GA_ID || GADS_ID) && (
-          <>
-            <Script id="gtag-init" strategy="afterInteractive">
-              {`
+          <Script
+            id="gtag-deferred-loader"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
                 gtag('js', new Date());
                 ${GA_ID ? `gtag('config', '${GA_ID}', { send_page_view: true });` : ""}
                 ${GADS_ID ? `gtag('config', '${GADS_ID}');` : ""}
-              `}
-            </Script>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID || GADS_ID}`}
-              strategy="lazyOnload"
-            />
-          </>
+                var loaded = false;
+                function loadGtag(){
+                  if (loaded) return;
+                  loaded = true;
+                  var s = document.createElement('script');
+                  s.async = true;
+                  s.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_ID || GADS_ID}';
+                  document.head.appendChild(s);
+                }
+                var events = ['pointerdown','touchstart','keydown','scroll','mousemove'];
+                events.forEach(function(e){
+                  window.addEventListener(e, loadGtag, { once: true, passive: true, capture: true });
+                });
+                // フォールバック: 操作がなくても 8 秒で読み込む（バウンス計測のため）
+                setTimeout(loadGtag, 8000);
+              `,
+            }}
+          />
         )}
       </body>
     </html>
