@@ -80,12 +80,16 @@ export default function RootLayout({
     <html lang="ja">
       <head>
         <link rel="dns-prefetch" href="https://yuta-eng.com" />
-        <link rel="preconnect" href="https://yuta-eng.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://amzn.asia" />
-        {/* Prefetch high-probability nav targets so subsequent clicks feel instant */}
-        <link rel="prefetch" href="/trial" as="document" />
-        <link rel="prefetch" href="/courses" as="document" />
-        <link rel="prefetch" href="/online" as="document" />
+        {/* GA / Google Ads タグ用：早めに接続を温める */}
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
+        {/*
+          注：以前は /trial /courses /online の3ドキュメントを `<link rel="prefetch">`
+          していたが、Lighthouse のネットワーク利用率を圧迫していたため停止。
+          Next.js の `<Link>` がビューポート内で自動的に必要なルートをプリフェッチ
+          するので、ナビ体感はほぼ変わらない。
+        */}
       </head>
       <body>
         <a

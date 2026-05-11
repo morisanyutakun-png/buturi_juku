@@ -107,6 +107,8 @@ export default function CoursesIndexPage() {
                         alt={`${book.title} の書影`}
                         width={book.coverWidth}
                         height={book.coverHeight}
+                        unoptimized={book.coverImage.endsWith(".svg")}
+                        loading="lazy"
                         className="h-auto w-full"
                         sizes="(min-width: 1024px) 128px, (min-width: 640px) 112px, 120px"
                       />

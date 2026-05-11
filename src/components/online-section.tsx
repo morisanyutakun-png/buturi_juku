@@ -86,7 +86,7 @@ export function OnlineSection() {
         <div className="grid grid-cols-2 divide-y divide-ink-900/[0.06] md:grid-cols-4 md:divide-x md:divide-y-0">
           {[
             { k: "通塾時間の削減", v: "週 3〜6h", sub: "演習に転用" },
-            { k: "対応時間帯", v: "平日 10–12 / 16–20、土日 10–18", sub: "他時間も相談可" },
+            { k: "対応時間帯", v: "月木金 13–20、土日 10–18", sub: "他時間も相談可" },
             { k: "授業教材", v: "森祐太の自作", sub: "『考える力を育てる』" },
             { k: "授業形式", v: "完全1対1", sub: "振替可" },
           ].map((x) => (

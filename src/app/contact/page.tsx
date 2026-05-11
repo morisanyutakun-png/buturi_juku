@@ -99,13 +99,13 @@ export default function ContactPage() {
                 <Clock className="mt-1 h-5 w-5 text-brand-deep" aria-hidden />
                 <div>
                   <p className="text-[10px] tracking-[0.24em] uppercase text-ink-400">
-                    AVAILABILITY — 受講可能時間帯
+                    AVAILABILITY — 受講可能時間帯（現状）
                   </p>
                   <p className="mt-1 text-[14px] text-ink-900 leading-[1.7]">
                     {siteConfig.contact.hours}
                   </p>
                   <p className="mt-2 text-[12px] leading-[1.7] text-ink-500">
-                    送信から 2 営業日以内に、講師（森祐太）より直接ご返信します。
+                    お申し込み後のご返信は、2営業日以内を目安に、講師（森祐太）よりできる限り柔軟に対応いたします。
                   </p>
                 </div>
               </div>

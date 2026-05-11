@@ -63,7 +63,7 @@ export function BookCoversStrip() {
                     alt={`${book.title} の表紙`}
                     width={book.coverWidth}
                     height={book.coverHeight}
-                    unoptimized
+                    unoptimized={book.coverImage.endsWith(".svg")}
                     loading="lazy"
                     sizes="(max-width: 640px) 30vw, 160px"
                     className="block h-auto w-full"

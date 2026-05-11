@@ -66,7 +66,7 @@ function BookEntry({ book, flipped }: { book: Book; flipped: boolean }) {
               alt={`${book.title} の表紙`}
               width={book.coverWidth}
               height={book.coverHeight}
-              unoptimized
+              unoptimized={book.coverImage.endsWith(".svg")}
               priority={false}
               loading="lazy"
               sizes="(max-width: 640px) 280px, 380px"

@@ -182,24 +182,33 @@ export default function TrialPage() {
           <aside className="lg:sticky lg:top-24 lg:self-start space-y-5">
             <div className="rounded-2xl border border-brand/25 bg-brand-bg/40 p-6 sm:p-7">
               <p className="text-[11px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
-                AVAILABILITY — 受講可能時間帯
+                AVAILABILITY — 受講可能時間帯（現状）
               </p>
               <dl className="mt-4 space-y-2.5 text-[13.5px] sm:text-[13px] leading-[1.7] text-ink-800">
                 <div className="flex items-baseline gap-3">
-                  <dt className="w-12 shrink-0 font-mono text-[11px] tracking-[0.16em] text-brand-deep">
-                    平日
+                  <dt className="w-16 shrink-0 font-mono text-[11px] tracking-[0.16em] text-brand-deep">
+                    月・木・金
                   </dt>
-                  <dd>10:00–12:00 / 16:00–20:00</dd>
+                  <dd>13:00–20:00</dd>
                 </div>
                 <div className="flex items-baseline gap-3">
-                  <dt className="w-12 shrink-0 font-mono text-[11px] tracking-[0.16em] text-brand-deep">
-                    土日
+                  <dt className="w-16 shrink-0 font-mono text-[11px] tracking-[0.16em] text-brand-deep">
+                    土・日
                   </dt>
                   <dd>10:00–18:00</dd>
+                </div>
+                <div className="flex items-baseline gap-3">
+                  <dt className="w-16 shrink-0 font-mono text-[11px] tracking-[0.16em] text-ink-400">
+                    火・水
+                  </dt>
+                  <dd className="text-ink-500">休講（現状）</dd>
                 </div>
               </dl>
               <p className="mt-4 rounded-lg bg-white/70 p-3 text-[12px] sm:text-[11.5px] leading-[1.7] text-ink-700">
                 上記以外の時間帯も <strong className="font-medium text-ink-900">柔軟に対応</strong> しています。部活・通学時間の都合などがあれば、お申し込み時にご相談ください。
+              </p>
+              <p className="mt-3 text-[11.5px] sm:text-[11px] leading-[1.7] text-ink-500">
+                ※ 申し込み後のご返信は2営業日以内を目安に、できる限り柔軟に対応します。
               </p>
             </div>
 

@@ -109,6 +109,8 @@ export default async function CourseDetailPage({
                         alt={`${book.title} の書影`}
                         width={book.coverWidth}
                         height={book.coverHeight}
+                        unoptimized={book.coverImage.endsWith(".svg")}
+                        loading="lazy"
                         className="h-auto w-full"
                         sizes="(min-width: 640px) 160px, 140px"
                       />

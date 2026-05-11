@@ -23,10 +23,10 @@ export function BrandMark({ className, asLink = true }: Props) {
         <Image
           src="/brand/solvora-icon.png"
           alt=""
-          width={96}
-          height={96}
+          width={36}
+          height={36}
           priority
-          unoptimized
+          sizes="36px"
           className="h-9 w-9 object-contain"
         />
       </span>
