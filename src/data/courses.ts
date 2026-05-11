@@ -273,7 +273,7 @@ export const courses: Course[] = [
     ],
     price: {
       label: "受講料",
-      value: "全6回 52,000円",
+      value: "全6回 66,000円",
       note: "1回90分 × 全6回。指定教材：『考える力を育てる 力学』(別途購入)。",
     },
     duration: "1回 90分 × 全6回（合計 9時間）",
@@ -312,7 +312,7 @@ export const courses: Course[] = [
     ],
     price: {
       label: "受講料",
-      value: "全4回 36,000円",
+      value: "全4回 66,000円",
       note: "1回90分 × 全4回。指定教材：『考える力を育てる 熱力学』(別途購入)。",
     },
     duration: "1回 90分 × 全4回（合計 6時間）",
@@ -352,7 +352,7 @@ export const courses: Course[] = [
     ],
     price: {
       label: "受講料",
-      value: "全6回 54,000円",
+      value: "全6回 66,000円",
       note: "1回90分 × 全6回。指定教材：『考える力を育てる 波動・原子』(別途購入)。",
     },
     duration: "1回 90分 × 全6回（合計 9時間）",
