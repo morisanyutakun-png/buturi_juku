@@ -170,3 +170,7 @@ export const books: Book[] = [
 ];
 
 export const featuredBook = books[0];
+
+export function getBookBySlug(slug: string): Book | undefined {
+  return books.find((b) => b.slug === slug);
+}

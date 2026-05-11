@@ -148,22 +148,22 @@ const flow = [
   {
     step: "01",
     title: "体験授業のお申し込み（¥3,000）",
-    description: "Webフォームから3分でお申し込みいただけます。気になる講座を選んでクリックするとフォームに自動入力。送信時に Stripe 決済を経由します（決済完了で申し込み確定）。",
+    description: "Webフォームから3分でお申し込みいただけます。送信時に Stripe 決済を経由します（決済完了で体験申し込みが確定）。",
   },
   {
     step: "02",
-    title: "体験授業（60分・¥3,000）",
-    description: "現在の理解度ヒアリング、診断ミニ授業、おすすめコースのご提案までを、講師（森祐太）が直接担当します。",
+    title: "体験授業（60分）+ 学習方針の提案",
+    description: "苦手調査 → REM 演習プリントを使った授業 → 質疑応答 → 学習方針の提案までを、講師（森祐太）が直接担当。当日中に合うコースもご提案します。",
   },
   {
     step: "03",
-    title: "コース選定 / カリキュラム設計",
-    description: "志望校・現状・残り期間から、合うコースを提案します。電磁気集中・分野別・テスト前は『考える力を育てる』シリーズに沿った定型カリキュラムで、書籍と同じ思考順序を一気通貫で進めます。",
+    title: "各講座のお申し込み（支払いフォームで入金）",
+    description: "受講したい講座が決まったら、お送りする支払いフォームでご入金いただきます。入金確認をもって、その講座の申し込み完了となります（体験当日に決める必要はありません）。",
   },
   {
     step: "04",
-    title: "受講開始・週次PDCA",
-    description: "毎週の授業で理解度を確認しながら、解けなかった1問は AI（REM）で復習プリント化。最後まで伴走します。",
+    title: "日程調整 → ご都合の日に受講開始",
+    description: "申し込み完了後、ご都合に合わせて授業の日程を組みます。受講開始後は毎週の授業で理解度を確認しながら、解けなかった1問は AI（REM）で復習プリント化し最後まで伴走します。",
   },
 ];
 
@@ -311,13 +311,13 @@ export default function HomePage() {
           <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <div>
               <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.28em] sm:tracking-[0.32em] uppercase text-warm-deep">
-                FIRST 30 MIN
+                TRIAL FORMAT
               </p>
               <p className="mt-4 sm:mt-3 font-serif text-[1.25rem] sm:text-[1.15rem] leading-[1.6] sm:leading-snug tracking-[-0.008em] text-ink-900">
-                体験授業の冒頭30分は、現状ヒアリングに使います。
+                体験授業は、REM 演習プリントを使った授業が中心です。
               </p>
               <p className="mt-3 sm:mt-2 text-[14.5px] sm:text-[13px] leading-[2] sm:leading-[1.8] text-ink-600">
-                模試・志望校・使用教材・つまずきを丁寧に整理してから、診断ミニ授業に進みます。
+                冒頭10分で苦手の輪郭を確認し、選んだ単元の演習プリントを使って『言語化 → 立式 → 演習』を実際に体験できます。
               </p>
             </div>
             <Link

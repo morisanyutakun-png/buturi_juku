@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Check } from "lucide-react";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
 import { Breadcrumb } from "@/components/breadcrumb";
@@ -12,6 +13,7 @@ import {
   getCourseBySlug,
   visibleCourses,
 } from "@/data/courses";
+import { getBookBySlug } from "@/data/books";
 import {
   breadcrumbJsonLd,
   courseJsonLd,
@@ -59,6 +61,10 @@ export default async function CourseDetailPage({
   const course = getCourseBySlug(slug);
   if (!course) notFound();
 
+  const book = course.basedOnBookSlug
+    ? getBookBySlug(course.basedOnBookSlug)
+    : undefined;
+
   const others = visibleCourses()
     .filter((c) => c.slug !== course.slug)
     .slice(0, 3);
@@ -88,6 +94,63 @@ export default async function CourseDetailPage({
               </p>
               <p className="mt-4 text-ink-800 leading-[1.9]">{course.summary}</p>
             </div>
+
+            {book && (
+              <div className="rounded-2xl border border-gold/30 bg-gradient-to-br from-gold-soft/40 via-white to-paper-soft/60 p-6 sm:p-8">
+                <div className="flex items-center gap-2 text-[10.5px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-gold-deep">
+                  <BookOpen className="h-3.5 w-3.5" aria-hidden strokeWidth={1.8} />
+                  BASED ON BOOK — 著者執筆の書籍に沿った授業
+                </div>
+                <div className="mt-5 grid gap-6 sm:gap-8 sm:grid-cols-[auto_1fr] sm:items-start">
+                  <div className="mx-auto w-[140px] shrink-0 sm:mx-0 sm:w-[160px]">
+                    <div className="relative overflow-hidden rounded-lg border border-ink-900/[0.08] bg-white shadow-card">
+                      <Image
+                        src={book.coverImage}
+                        alt={`${book.title} の書影`}
+                        width={book.coverWidth}
+                        height={book.coverHeight}
+                        className="h-auto w-full"
+                        sizes="(min-width: 640px) 160px, 140px"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-[1.2rem] sm:text-[1.35rem] leading-[1.45] tracking-[-0.008em] text-ink-900">
+                      『{book.title}』に沿って、<br className="hidden sm:block" />
+                      <span className="text-gold-deep">基礎から応用までを完走</span>します。
+                    </h3>
+                    <p className="mt-4 text-[13.5px] sm:text-[14px] leading-[1.9] text-ink-700">
+                      本講座は、講師（森祐太）が執筆した『{book.title}』を指定教材として、書籍の章立て・思考順序に沿って授業を進めます。基礎の立式から、難関大入試レベルの応用問題までを、{course.duration.replace(/（.*?）/g, "").trim()}の中で一気通貫で扱い、最後まで完走することを設計の前提としています。
+                    </p>
+                    <ul className="mt-5 space-y-2 text-[13px] sm:text-[13.5px] leading-[1.7] text-ink-700">
+                      {book.highlights.slice(0, 3).map((h) => (
+                        <li key={h} className="flex items-start gap-2.5">
+                          <Check className="mt-1 h-3.5 w-3.5 shrink-0 text-gold-deep" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-5 text-[11.5px] sm:text-[12px] leading-[1.7] text-ink-500">
+                      ※ 書籍は別途ご購入をお願いしています。
+                      {book.amazonUrl && (
+                        <>
+                          {" "}
+                          <a
+                            href={book.amazonUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-0.5 text-brand-deep underline-offset-2 hover:underline"
+                          >
+                            Amazon で見る
+                            <ArrowUpRight className="h-3 w-3" aria-hidden />
+                          </a>
+                        </>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div>
               <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
@@ -134,31 +197,52 @@ export default async function CourseDetailPage({
               </ol>
             </div>
 
-            <div>
-              <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
-                FLOW
-              </p>
-              <h2 className="mt-4 font-serif text-2xl text-ink-900">
-                受講の流れ
-              </h2>
-              <ol className="mt-6 grid gap-4 sm:grid-cols-2">
-                {[
-                  { step: "01", title: "お申し込み", body: "フォームから3分で申し込み可能です。" },
-                  { step: "02", title: "面談・日程調整", body: "オンラインで簡単な面談を行い、カリキュラムを確定します。" },
-                  { step: "03", title: "授業開始", body: "受講開始。週次で進捗を共有しながら進めます。" },
-                  { step: "04", title: "到達確認", body: "到達度を見ながら、追加施策をご提案します。" },
-                ].map((s) => (
-                  <li
-                    key={s.step}
-                    className="rounded-xl border border-ink-900/10 bg-white p-5"
-                  >
-                    <p className="font-mono text-xs text-brand-deep">STEP {s.step}</p>
-                    <p className="mt-2 font-serif text-ink-900">{s.title}</p>
-                    <p className="mt-2 text-xs leading-relaxed text-ink-700">{s.body}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
+            {course.slug !== "trial" && (
+              <div>
+                <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
+                  FLOW
+                </p>
+                <h2 className="mt-4 font-serif text-2xl text-ink-900">
+                  本講座のお申し込み〜受講開始まで
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                  すべての講座は、まず体験授業（60分・¥3,000）からスタートしていただきます。本講座への申し込みは、体験授業のあとに行います。
+                </p>
+                <ol className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {[
+                    {
+                      step: "01",
+                      title: "体験授業（¥3,000）を受講",
+                      body: "現状の苦手調査 → REM 演習プリントを使った授業 → 質疑応答 → 学習方針の提案までを、講師（森祐太）が直接担当します。",
+                    },
+                    {
+                      step: "02",
+                      title: "支払いフォームでご入金 → お申し込み完了",
+                      body: "本講座を受講される場合は、体験後にお送りする支払いフォームでご入金いただきます。入金確認をもって正式に申し込み完了となります（体験当日に決める必要はありません）。",
+                    },
+                    {
+                      step: "03",
+                      title: "日程調整",
+                      body: "ご都合に合わせて授業の日程を組みます。週1ペースが基本ですが、ご希望に応じて柔軟に調整可能です。",
+                    },
+                    {
+                      step: "04",
+                      title: "ご都合の日に受講開始",
+                      body: "決定した日程で授業を実施。毎週の授業で理解度を確認しながら、解けなかった1問は AI（REM）で復習プリント化し最後まで伴走します。",
+                    },
+                  ].map((s) => (
+                    <li
+                      key={s.step}
+                      className="rounded-xl border border-ink-900/10 bg-white p-5"
+                    >
+                      <p className="font-mono text-xs text-brand-deep">STEP {s.step}</p>
+                      <p className="mt-2 font-serif text-ink-900">{s.title}</p>
+                      <p className="mt-2 text-xs leading-relaxed text-ink-700">{s.body}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
 
             <div>
               <p className="text-xs tracking-[0.28em] uppercase text-brand-deep">
