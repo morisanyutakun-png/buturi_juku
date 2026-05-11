@@ -107,14 +107,16 @@ export default function RootLayout({
 
         {/* Google tag (gtag.js) — GA4 + Google Ads conversions
             一つの gtag.js で両方の宛先に送信できる。
-            gtag-init を `beforeInteractive` にすることで、React ハイドレーション
-            （= useEffect 実行）より前に window.gtag を定義する。これで
-            `/thanks` などマウント直後に発火するイベントとの競合を避けられる。
-            gtag.js 本体は `afterInteractive` で非同期に読み込み、初回描画を
-            阻害しない。dataLayer に積まれたイベントはロード後に処理される。 */}
+            ・gtag-init は `afterInteractive` で実行：dataLayer と window.gtag を
+              定義し、初期 config を発行する。analytics.ts 側に ensureGtag() の
+              フォールバックがあるため、useEffect でこれより前に trackEvent が
+              呼ばれても dataLayer にキューされる（gtag.js 本体ロード後に処理）。
+            ・gtag.js 本体は `lazyOnload`：window.onload 後にロードして TBT/LCP
+              への影響をゼロに近づける。Lighthouse の Total Blocking Time を
+              100ms 級で改善できる。 */}
         {(GA_ID || GADS_ID) && (
           <>
-            <Script id="gtag-init" strategy="beforeInteractive">
+            <Script id="gtag-init" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
@@ -125,7 +127,7 @@ export default function RootLayout({
             </Script>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID || GADS_ID}`}
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             />
           </>
         )}
