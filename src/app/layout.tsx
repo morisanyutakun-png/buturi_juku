@@ -119,7 +119,11 @@ export default function RootLayout({
 
             dataLayer と window.gtag の関数定義は即座に行うため、useEffect で
             trackEvent が呼ばれても安全にキューに積まれ、gtag.js ロード後に
-            遡及処理される（analytics.ts の ensureGtag() と同等の挙動）。 */}
+            遡及処理される（analytics.ts の ensureGtag() と同等の挙動）。
+
+            window.__solvoraLoadGtag() を /thanks など即時計測が必要な
+            ページから呼ぶことで、deferred ロードをバイパスできる
+            （コンバージョン取りこぼしを防ぐ）。 */}
         {(GA_ID || GADS_ID) && (
           <Script
             id="gtag-deferred-loader"
@@ -141,6 +145,8 @@ export default function RootLayout({
                   s.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_ID || GADS_ID}';
                   document.head.appendChild(s);
                 }
+                // /thanks など即時計測が必要なページから呼べるよう export
+                window.__solvoraLoadGtag = loadGtag;
                 var events = ['pointerdown','touchstart','keydown','scroll','mousemove'];
                 events.forEach(function(e){
                   window.addEventListener(e, loadGtag, { once: true, passive: true, capture: true });

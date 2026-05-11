@@ -31,6 +31,21 @@ export function ThanksConfirmation() {
   const [recovered, setRecovered] = useState<Recovered | null>(null);
 
   useEffect(() => {
+    // /thanks は **コンバージョン計測の最終地点** なので、LP の interaction-deferred
+    // gtag ロードをここでバイパスし、gtag.js を即座に取得する。これがないと
+    // ユーザーが操作せずタブを閉じた場合、dataLayer に積まれた conversion
+    // イベントが送信されないまま消える（取りこぼし）。
+    // layout.tsx で `window.__solvoraLoadGtag` を公開している。
+    try {
+      const loadGtag = (window as unknown as { __solvoraLoadGtag?: () => void })
+        .__solvoraLoadGtag;
+      if (typeof loadGtag === "function") {
+        loadGtag();
+      }
+    } catch {
+      // 失敗しても dataLayer フォールバックで後追い送信されるので致命的ではない。
+    }
+
     let recoveredData: Recovered | null = null;
     try {
       const data = localStorage.getItem(PENDING_KEY);
@@ -47,10 +62,8 @@ export function ThanksConfirmation() {
     // GA4 計測：申込完了。Stripe success_url の `?session_id=` があれば
     // transaction_id として送り、ブラウザ更新時の重複発火を sessionStorage で防ぐ。
     //
-    // gtag.js が `afterInteractive` で読み込まれるため、本 useEffect の方が
-    // 先に走るケースがある（race condition）。analytics.ts の trackEvent は
-    // gtag 未ロード時でも dataLayer に直接 push する設計なので、この時点で
-    // 呼んでも遅延配信される。
+    // gtag.js が間に合わなくても analytics.ts の trackEvent は dataLayer に
+    // push する設計なので、上の loadGtag() でロードが始まれば確実に送信される。
     try {
       const alreadyFired = sessionStorage.getItem(FIRED_KEY);
       if (!alreadyFired) {

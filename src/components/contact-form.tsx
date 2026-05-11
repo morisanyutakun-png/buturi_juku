@@ -147,15 +147,34 @@ export function ContactForm() {
         return;
       }
 
+      // Stripe へリダイレクト直前のため、gtag.js を強制ロード。
+      // LP は interaction-deferred で gtag.js を遅延ロードしているため、
+      // ここで明示的にロードしないとイベントが dataLayer に積まれただけで
+      // 送信されないままページ遷移し、トラッキングを取りこぼす可能性がある。
+      try {
+        const loadGtag = (
+          window as unknown as { __solvoraLoadGtag?: () => void }
+        ).__solvoraLoadGtag;
+        if (typeof loadGtag === "function") loadGtag();
+      } catch {
+        /* 失敗時は analytics.ts のフォールバックに任せる */
+      }
+
       trackTrialPaymentClick({
         course: "trial",
         email: payload.email,
       });
 
+      // gtag.js のロード + リクエスト送出のための短い待ち時間。
+      // navigator.sendBeacon は gtag.js が POST 時に使うため、ロード前だと
+      // queue したまま遷移すると失われる。最低 350ms あれば本番 4G で
+      // gtag.js が走り始め、conversion ping を送出してくれる。
       const stripeUrl = payload.email
         ? `${STRIPE_PAYMENT_URL}?prefilled_email=${encodeURIComponent(payload.email)}`
         : STRIPE_PAYMENT_URL;
-      window.location.href = stripeUrl;
+      setTimeout(() => {
+        window.location.href = stripeUrl;
+      }, 350);
     } catch (e) {
       console.error("[contact-form] submit error", e);
       setStatus("error");
