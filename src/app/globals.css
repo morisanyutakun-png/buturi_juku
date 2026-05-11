@@ -35,29 +35,38 @@ html {
 
 body {
   @apply bg-paper text-ink-900 font-sans antialiased;
-  background-image:
-    radial-gradient(
-      1600px 800px at 50% -300px,
-      rgba(59, 124, 217, 0.08),
-      transparent 55%
-    ),
-    radial-gradient(
-      1000px 560px at 100% 8%,
-      rgba(226, 128, 64, 0.045),
-      transparent 60%
-    ),
-    radial-gradient(
-      900px 600px at 0% 95%,
-      rgba(89, 122, 91, 0.04),
-      transparent 65%
-    ),
-    linear-gradient(180deg, #fdfbf5 0%, #f7f2e5 100%);
+  /* Mobile-first: 軽量な linear-gradient のみ（モバイルでは radials は
+     viewport の外で描画されており見えないので、ペイントコスト分だけ削減）。
+     デスクトップ (sm: ≥640px) では 3 radials を上書きして元の意匠を保つ。 */
+  background-image: linear-gradient(180deg, #fdfbf5 0%, #f7f2e5 100%);
   min-height: 100vh;
   letter-spacing: -0.003em;
   line-height: 1.8;
   /* Belt-and-braces guard against accidental horizontal scroll on mobile —
      `clip` (vs. `hidden`) preserves position:sticky. */
   overflow-x: clip;
+}
+
+@media (min-width: 640px) {
+  body {
+    background-image:
+      radial-gradient(
+        1600px 800px at 50% -300px,
+        rgba(59, 124, 217, 0.08),
+        transparent 55%
+      ),
+      radial-gradient(
+        1000px 560px at 100% 8%,
+        rgba(226, 128, 64, 0.045),
+        transparent 60%
+      ),
+      radial-gradient(
+        900px 600px at 0% 95%,
+        rgba(89, 122, 91, 0.04),
+        transparent 65%
+      ),
+      linear-gradient(180deg, #fdfbf5 0%, #f7f2e5 100%);
+  }
 }
 
 /* Make sure absolutely-positioned hero/page decorations never push the

@@ -3,7 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { MobileCtaBar } from "@/components/mobile-cta-bar";
+import { MobileCtaBarClient } from "@/components/mobile-cta-bar-client";
 import { JsonLd } from "@/components/json-ld";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
 import { siteConfig } from "@/data/site";
@@ -90,6 +90,14 @@ export default function RootLayout({
           Next.js の `<Link>` がビューポート内で自動的に必要なルートをプリフェッチ
           するので、ナビ体感はほぼ変わらない。
         */}
+        {/* Critical inline CSS — FCP を 922ms の CSS フェッチ完了より前に成立させる。
+            Tailwind の本体 CSS が遅延して届いても、ペーパー色背景 + 基本タイポは
+            すでに描画される状態を作る。モバイル (font-size 17px) を優先。 */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `html{font-size:17px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-size-adjust:100%;-webkit-text-size-adjust:100%;overflow-x:clip;scroll-behavior:smooth}@media(min-width:768px){html{font-size:16px}}body{margin:0;background:linear-gradient(180deg,#fdfbf5 0%,#f7f2e5 100%);color:#142341;font-family:'Inter','Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Yu Gothic',sans-serif;line-height:1.8;letter-spacing:-0.003em;min-height:100vh;overflow-x:clip}@media(min-width:768px){body{line-height:1.6}}main{display:block}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}`,
+          }}
+        />
       </head>
       <body>
         <a
@@ -101,7 +109,7 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
-        <MobileCtaBar />
+        <MobileCtaBarClient />
         <JsonLd id="ld-organization" data={organizationJsonLd()} />
         <JsonLd id="ld-website" data={websiteJsonLd()} />
 
