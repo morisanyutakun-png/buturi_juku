@@ -13,6 +13,7 @@ type Recovered = {
   name?: string;
   email?: string;
   grade?: string;
+  targetLevel?: string;
   weakUnit?: string;
   subtopic?: string;
   submittedAt?: string;
@@ -119,6 +120,12 @@ export function ThanksConfirmation() {
                 <>
                   <dt className="text-ink-500">学年</dt>
                   <dd>{recovered.grade}</dd>
+                </>
+              )}
+              {recovered.targetLevel && (
+                <>
+                  <dt className="text-ink-500">志望校レベル</dt>
+                  <dd>{recovered.targetLevel}</dd>
                 </>
               )}
               {recovered.weakUnit && (

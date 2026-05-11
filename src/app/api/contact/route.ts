@@ -28,6 +28,7 @@ type ContactPayload = {
   name?: string;
   email?: string;
   grade?: string;
+  targetLevel?: string;
   weakUnit?: string;
   subtopic?: string;
   message?: string;
@@ -62,6 +63,7 @@ export async function POST(request: Request) {
   const name = (body.name ?? "").trim();
   const email = (body.email ?? "").trim();
   const grade = (body.grade ?? "").trim();
+  const targetLevel = (body.targetLevel ?? "").trim();
   const weakUnit = (body.weakUnit ?? "").trim();
   const subtopic = (body.subtopic ?? "").trim();
   const message = (body.message ?? "").trim();
@@ -73,6 +75,7 @@ export async function POST(request: Request) {
   else if (!isEmail(email))
     errors.email = "メールアドレスの形式が正しくありません。";
   if (!grade) errors.grade = "学年を選択してください。";
+  if (!targetLevel) errors.targetLevel = "志望校レベル（物理のみ）を選択してください。";
   if (!weakUnit) errors.weakUnit = "体験したい分野を選択してください。";
   else if (!ALLOWED_WEAK_UNITS.has(weakUnit))
     errors.weakUnit = "選択肢から1つ選んでください。";
@@ -101,6 +104,7 @@ export async function POST(request: Request) {
       name,
       email,
       grade,
+      targetLevel,
       weakUnit,
       subtopic,
       message,
@@ -122,6 +126,7 @@ export async function POST(request: Request) {
     `氏名（生徒）    : ${name}`,
     `メール          : ${email}`,
     `学年            : ${grade}`,
+    `志望校レベル    : ${targetLevel}`,
     `体験したい分野  : ${weakUnit}`,
     `取り組みたい単元: ${subtopic}`,
     ``,
@@ -130,6 +135,7 @@ export async function POST(request: Request) {
     ``,
     `------`,
     `※ 体験申込です。Stripe 決済の状況を別途ご確認ください。`,
+    `※ 事前送付プリントの難易度は『志望校レベル』に合わせて調整してください。`,
     `送信日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}`,
   ].join("\n");
 
@@ -142,6 +148,7 @@ export async function POST(request: Request) {
         <tr><td style="padding: 6px 16px 6px 0; color: #586780; vertical-align: top;">氏名（生徒）</td><td style="padding: 6px 0;">${escapeHtml(name)}</td></tr>
         <tr><td style="padding: 6px 16px 6px 0; color: #586780; vertical-align: top;">メール</td><td style="padding: 6px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #1f5aa6;">${escapeHtml(email)}</a></td></tr>
         <tr><td style="padding: 6px 16px 6px 0; color: #586780; vertical-align: top;">学年</td><td style="padding: 6px 0;">${escapeHtml(grade)}</td></tr>
+        <tr><td style="padding: 6px 16px 6px 0; color: #586780; vertical-align: top;">志望校レベル</td><td style="padding: 6px 0;">${escapeHtml(targetLevel)}</td></tr>
         <tr><td style="padding: 6px 16px 6px 0; color: #586780; vertical-align: top;">体験したい分野</td><td style="padding: 6px 0;">${escapeHtml(weakUnit)}</td></tr>
         <tr><td style="padding: 6px 16px 6px 0; color: #586780; vertical-align: top;">取り組みたい単元</td><td style="padding: 6px 0;">${escapeHtml(subtopic)}</td></tr>
       </table>

@@ -19,6 +19,21 @@ const grades = [
 const WEAK_UNITS = ["力学", "熱", "波", "電磁気", "原子"] as const;
 
 /**
+ * 物理の志望校レベル（難易度ラダー）。
+ * 事前送付プリントの難易度キャリブレーションに使う。
+ * ※ 「物理として目指す得点ライン」基準なので、英数の志望校とは独立に選ばせる。
+ */
+export const TARGET_LEVELS = [
+  "基礎固め（教科書・学校テスト水準）",
+  "共通テスト 物理 7〜8割を狙う",
+  "共通テスト 物理 9割〜満点を狙う",
+  "地方国公立・中堅私大 理工（二次標準）",
+  "旧帝大・難関私大 理工 / 国公立医学部（二次応用）",
+  "東大・京大・東工大 / 最難関医学部（最難関）",
+  "まだ決まっていない / 当日相談したい",
+] as const;
+
+/**
  * Solvora の動線ルール:
  *   1. LP / 講座カードの「体験授業を申し込む」ボタン → /contact?topic=trial#contact-form
  *      に直接飛ばし、ヒーロー部分を経由せず最初からフォームに視点を合わせる。
@@ -48,6 +63,7 @@ export function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [grade, setGrade] = useState("");
+  const [targetLevel, setTargetLevel] = useState("");
   const [weakUnit, setWeakUnit] = useState("");
   const [subtopic, setSubtopic] = useState("");
   const [message, setMessage] = useState("");
@@ -68,12 +84,13 @@ export function ContactForm() {
       name.trim().length > 0 &&
       isEmailLike(email.trim()) &&
       grade.trim().length > 0 &&
+      targetLevel.trim().length > 0 &&
       weakUnit.trim().length > 0 &&
       subtopic.trim().length > 0 &&
       message.trim().length > 0 &&
       agree
     );
-  }, [name, email, grade, weakUnit, subtopic, message, agree]);
+  }, [name, email, grade, targetLevel, weakUnit, subtopic, message, agree]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -87,6 +104,7 @@ export function ContactForm() {
       name: name.trim(),
       email: email.trim(),
       grade,
+      targetLevel,
       weakUnit,
       subtopic,
       message: message.trim(),
@@ -233,6 +251,33 @@ export function ContactForm() {
           </select>
         </Field>
         <Field
+          label="志望校レベル（物理のみ）"
+          htmlFor="targetLevel"
+          required
+          helper="事前送付プリントの難易度を合わせるために使います。英数の志望校とは独立に、物理として目指す得点ラインを選んでください。"
+          error={fieldErrors.targetLevel}
+        >
+          <select
+            id="targetLevel"
+            name="targetLevel"
+            required
+            value={targetLevel}
+            onChange={(e) => setTargetLevel(e.target.value)}
+            className={inputClass}
+            aria-invalid={!!fieldErrors.targetLevel}
+          >
+            <option value="">選択してください</option>
+            {TARGET_LEVELS.map((l) => (
+              <option key={l} value={l}>
+                {l}
+              </option>
+            ))}
+          </select>
+        </Field>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <Field
           label="体験したい分野（大単元）"
           htmlFor="weakUnit"
           required
@@ -259,39 +304,38 @@ export function ContactForm() {
             ))}
           </select>
         </Field>
-      </div>
-
-      <Field
-        label="取り組みたい単元（細目）"
-        htmlFor="subtopic"
-        required
-        helper={
-          weakUnit
-            ? "60分の体験授業で、特に扱いたい単元を1つ選んでください。決めきれない場合は『おまかせ』でも構いません。"
-            : "先に上の『大単元』を選ぶと、対応する細目が表示されます。"
-        }
-        error={fieldErrors.subtopic}
-      >
-        <select
-          id="subtopic"
-          name="subtopic"
+        <Field
+          label="取り組みたい単元（細目）"
+          htmlFor="subtopic"
           required
-          disabled={!weakUnit}
-          className={cn(inputClass, !weakUnit && "cursor-not-allowed opacity-60")}
-          value={subtopic}
-          onChange={(e) => setSubtopic(e.target.value)}
-          aria-invalid={!!fieldErrors.subtopic}
+          helper={
+            weakUnit
+              ? "60分の体験授業で、特に扱いたい単元を1つ。決めきれない場合は『おまかせ』でも構いません。"
+              : "先に左の『大単元』を選ぶと、対応する細目が表示されます。"
+          }
+          error={fieldErrors.subtopic}
         >
-          <option value="">
-            {weakUnit ? "選択してください" : "先に大単元を選択"}
-          </option>
-          {availableSubtopics.map((s) => (
-            <option key={s.value} value={s.value}>
-              {s.value}
+          <select
+            id="subtopic"
+            name="subtopic"
+            required
+            disabled={!weakUnit}
+            className={cn(inputClass, !weakUnit && "cursor-not-allowed opacity-60")}
+            value={subtopic}
+            onChange={(e) => setSubtopic(e.target.value)}
+            aria-invalid={!!fieldErrors.subtopic}
+          >
+            <option value="">
+              {weakUnit ? "選択してください" : "先に大単元を選択"}
             </option>
-          ))}
-        </select>
-      </Field>
+            {availableSubtopics.map((s) => (
+              <option key={s.value} value={s.value}>
+                {s.value}
+              </option>
+            ))}
+          </select>
+        </Field>
+      </div>
 
       {selectedSubtopic && (
         <div className="rounded-2xl border border-brand/25 bg-brand-bg/40 p-5 sm:p-6">
