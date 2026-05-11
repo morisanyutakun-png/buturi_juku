@@ -25,16 +25,22 @@ export const metadata: Metadata = buildMetadata({
 
 const flow = [
   {
+    step: "00",
+    time: "授業前日まで",
+    title: "演習プリントを事前にお送りします",
+    body: "申込フォームで選んでいただいた分野・単元・学年をもとに、難易度を合わせた REM 演習プリント（問題＋解答＋解説の PDF）を授業前日までにメールでお送りします。当日までに目を通していただくと、診断の精度が上がります（未着手でも参加可）。",
+  },
+  {
     step: "01",
     time: "0 – 10分",
     title: "苦手調査",
-    body: "申込フォームで選んでいただいた分野・単元をもとに、つまずいているポイントを具体化します。志望校・模試成績・使用教材も伺い、当日の授業で扱う問題の難易度を最終調整します。",
+    body: "事前プリントの感触をヒアリングし、つまずいているポイントを具体化します。志望校・模試成績・使用教材も伺い、当日の授業で深掘りする問題を最終調整します。",
   },
   {
     step: "02",
     time: "10 – 45分",
-    title: "REM 演習プリントを使った授業",
-    body: "選んだ単元について、AI（REM）で作成した演習プリント（問題＋解答＋解説）を当日の教材として進めます。『言語化 → 立式 → 演習』の3ステップを実際になぞり、書籍ベースの主力講座と同じ思考順序を圧縮して体験できます。",
+    title: "事前プリントを使った授業",
+    body: "事前にお送りした演習プリントを教材に、『言語化 → 立式 → 演習』の3ステップで授業を進めます。書籍ベースの主力講座と同じ思考順序を圧縮して体験できます。本講座を受講いただいた場合、毎週の理解度に応じてプリントの内容が一人ひとりにさらにカスタマイズされていきます。",
   },
   {
     step: "03",
@@ -93,7 +99,7 @@ export default function TrialPage() {
       <Section
         eyebrow="OVERVIEW"
         title="体験授業の中身"
-        description="苦手調査 → REM 演習プリントを使った授業 → 質疑応答 → 学習方針の提案。60分のなかで密度高く進めます。"
+        description="授業前日までに難易度を合わせた演習プリントを事前送付 → 当日は 苦手調査 → 事前プリントで授業 → 質疑応答 → 学習方針の提案。60分のなかで密度高く進めます。"
       >
         <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <div className="space-y-10">
@@ -103,10 +109,12 @@ export default function TrialPage() {
               </p>
               <ul className="mt-6 space-y-4 sm:space-y-3 text-[15px] sm:text-sm leading-[1.85] sm:leading-normal text-ink-800">
                 {[
-                  "選んだ単元の苦手調査と難易度調整",
-                  "REM 演習プリントを使った授業体験",
+                  "授業前日までに難易度を合わせた演習プリントを事前送付",
+                  "選んだ単元の苦手調査",
+                  "事前プリントを使った授業体験",
                   "気になった点をその場で解消する質疑応答",
                   "今後の学習方針（教材・進め方）の提案",
+                  "本講座移行時は、毎週カスタマイズされていく復習プリント付き",
                   "講座の詳細・費用面のご説明(ご希望の方のみ)",
                 ].map((x) => (
                   <li key={x} className="flex items-start gap-3">
@@ -147,7 +155,7 @@ export default function TrialPage() {
                 TIMELINE
               </p>
               <h2 className="mt-4 font-serif text-[1.55rem] sm:text-2xl text-ink-900">
-                当日の流れ(60分)
+                事前準備 + 当日の流れ
               </h2>
               <ol className="mt-6 space-y-3">
                 {flow.map((f) => (
@@ -171,7 +179,30 @@ export default function TrialPage() {
             </div>
           </div>
 
-          <aside className="lg:sticky lg:top-24 lg:self-start">
+          <aside className="lg:sticky lg:top-24 lg:self-start space-y-5">
+            <div className="rounded-2xl border border-brand/25 bg-brand-bg/40 p-6 sm:p-7">
+              <p className="text-[11px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
+                AVAILABILITY — 受講可能時間帯
+              </p>
+              <dl className="mt-4 space-y-2.5 text-[13.5px] sm:text-[13px] leading-[1.7] text-ink-800">
+                <div className="flex items-baseline gap-3">
+                  <dt className="w-12 shrink-0 font-mono text-[11px] tracking-[0.16em] text-brand-deep">
+                    平日
+                  </dt>
+                  <dd>10:00–12:00 / 16:00–20:00</dd>
+                </div>
+                <div className="flex items-baseline gap-3">
+                  <dt className="w-12 shrink-0 font-mono text-[11px] tracking-[0.16em] text-brand-deep">
+                    土日
+                  </dt>
+                  <dd>10:00–18:00</dd>
+                </div>
+              </dl>
+              <p className="mt-4 rounded-lg bg-white/70 p-3 text-[12px] sm:text-[11.5px] leading-[1.7] text-ink-700">
+                上記以外の時間帯も <strong className="font-medium text-ink-900">柔軟に対応</strong> しています。部活・通学時間の都合などがあれば、お申し込み時にご相談ください。
+              </p>
+            </div>
+
             <div className="rounded-2xl border border-ink-900/10 bg-gradient-to-br from-paper-soft to-white p-7 sm:p-8">
               <p className="text-[11px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
                 FEE

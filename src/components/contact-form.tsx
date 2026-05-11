@@ -298,7 +298,7 @@ export function ContactForm() {
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-brand-deep" aria-hidden />
             <p className="text-[10.5px] sm:text-[11px] font-medium tracking-[0.22em] sm:tracking-[0.28em] uppercase text-brand-deep">
-              当日の代表的なカリキュラム（60分）
+              事前送付プリント + 当日の授業（代表的なカリキュラム）
             </p>
           </div>
           <p className="mt-3 font-serif text-[1rem] sm:text-[1.05rem] leading-[1.5] text-ink-900">
@@ -320,7 +320,7 @@ export function ContactForm() {
             ))}
           </ol>
           <p className="mt-4 text-[11.5px] sm:text-[11.5px] leading-[1.7] text-ink-500">
-            ※ 当日の進度・理解度に合わせて、3ステップの配分は柔軟に調整します。
+            ※ この単元に合わせた演習プリント（問題＋解答＋解説 PDF）を授業前日までにメール送付します。当日は事前プリントを教材に上の3ステップで進め、進度・理解度に合わせて配分は柔軟に調整します。
           </p>
         </div>
       )}

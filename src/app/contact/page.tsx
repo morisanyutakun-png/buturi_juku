@@ -99,7 +99,7 @@ export default function ContactPage() {
                 <Clock className="mt-1 h-5 w-5 text-brand-deep" aria-hidden />
                 <div>
                   <p className="text-[10px] tracking-[0.24em] uppercase text-ink-400">
-                    HOURS — 返信目安
+                    AVAILABILITY — 受講可能時間帯
                   </p>
                   <p className="mt-1 text-[14px] text-ink-900 leading-[1.7]">
                     {siteConfig.contact.hours}

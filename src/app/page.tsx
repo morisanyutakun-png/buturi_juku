@@ -153,7 +153,7 @@ const flow = [
   {
     step: "02",
     title: "体験授業（60分）+ 学習方針の提案",
-    description: "苦手調査 → REM 演習プリントを使った授業 → 質疑応答 → 学習方針の提案までを、講師（森祐太）が直接担当。当日中に合うコースもご提案します。",
+    description: "授業前日までに難易度を合わせた演習プリントを事前送付。当日は 苦手調査 → 事前プリントで授業 → 質疑応答 → 学習方針の提案までを、講師（森祐太）が直接担当します。",
   },
   {
     step: "03",
@@ -314,10 +314,10 @@ export default function HomePage() {
                 TRIAL FORMAT
               </p>
               <p className="mt-4 sm:mt-3 font-serif text-[1.25rem] sm:text-[1.15rem] leading-[1.6] sm:leading-snug tracking-[-0.008em] text-ink-900">
-                体験授業は、REM 演習プリントを使った授業が中心です。
+                授業前日までに、難易度を合わせた演習プリントを事前送付します。
               </p>
               <p className="mt-3 sm:mt-2 text-[14.5px] sm:text-[13px] leading-[2] sm:leading-[1.8] text-ink-600">
-                冒頭10分で苦手の輪郭を確認し、選んだ単元の演習プリントを使って『言語化 → 立式 → 演習』を実際に体験できます。
+                当日は冒頭10分で苦手の輪郭を確認し、事前にお送りしたプリントを教材に『言語化 → 立式 → 演習』を実際に体験できます。本講座移行後は毎週カスタマイズされていきます。
               </p>
             </div>
             <Link
