@@ -29,7 +29,7 @@ export function SafetyPolicySection() {
     {
       icon: ShieldCheck,
       eyebrow: "TROUBLE",
-      title: "機材トラブル時の誠意ある対応",
+      title: "機材トラブル時は振替で対応",
       body: "講師側の機材・通信障害で授業ができなかった場合は、無償で振替授業を実施します。受講者側の機材トラブルでも、開始から15分以内にご連絡いただければ振替日程を調整します（月1回まで）。トラブルで授業料が無駄になる、ということは起こらないようにしています。",
       tone: "forest",
     },
