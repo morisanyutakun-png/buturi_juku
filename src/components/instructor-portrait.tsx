@@ -38,9 +38,9 @@ export function InstructorPortrait({ className }: Props) {
     },
     {
       icon: Users,
-      label: "指導実績",
-      value: "名大合格生を輩出",
-      sub: "塾講師として指導",
+      label: "指導経験",
+      value: "名大合格者を指導",
+      sub: "塾講師として担当",
       tone: "forest" as const,
     },
   ];

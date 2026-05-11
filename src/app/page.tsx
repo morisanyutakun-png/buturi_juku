@@ -36,6 +36,7 @@ import { PullQuote } from "@/components/pull-quote";
 import { PricePreview } from "@/components/price-preview";
 import { MiniFaq } from "@/components/mini-faq";
 import { NotePromoSection } from "@/components/note-promo-section";
+import { SafetyPolicySection } from "@/components/safety-policy-section";
 import { visibleCourses } from "@/data/courses";
 import { articles, articleHref } from "@/data/articles";
 import { instructor } from "@/data/instructor";
@@ -365,14 +366,14 @@ export default function HomePage() {
                 名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱う、現役の研究者・塾講師。
               </li>
               <li>
-                共通テスト物理 <strong className="font-medium text-ink-900">満点</strong>・二次試験 <strong className="font-medium text-ink-900">9割</strong> を自ら達成し、これまでに <strong className="text-warm-deep font-medium">名古屋大学合格生</strong> を輩出。
+                共通テスト物理 <strong className="font-medium text-ink-900">満点</strong>・二次試験 <strong className="font-medium text-ink-900">9割</strong> を自ら達成。これまでに <strong className="text-warm-deep font-medium">名古屋大学合格者の指導経験</strong>あり。
               </li>
               <li>
                 <strong className="font-medium text-ink-900">『考える力を育てる』シリーズ全6冊</strong>（力学・電磁気・熱・波動・原子・高校物理I/II）を自ら執筆し、自作教材で授業します。
               </li>
             </ul>
             <p className="mt-6 sm:mt-7 text-[15px] leading-[1.85] text-ink-600 hidden sm:block">
-              名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導にあたる。自身も共通テスト物理 満点・二次試験物理 9割を達成し、これまでの指導で<strong className="text-warm-deep font-medium">名古屋大学合格生</strong>も輩出。<strong className="text-ink-900 font-medium">『考える力を育てる』シリーズ（力学・電磁気・熱・波動・原子・高校物理I／II）</strong>を自ら執筆し、授業はこの自作教材を軸に、一人ひとりに合わせた学習ルートを設計します。
+              名古屋大学 工学部 電気電子情報工学科で電磁気を専門領域として扱いながら、塾講師として大学受験物理の指導にあたる。自身も共通テスト物理 満点・二次試験物理 9割を達成。これまでの指導で<strong className="text-warm-deep font-medium">名古屋大学合格者の指導経験</strong>もあります。<strong className="text-ink-900 font-medium">『考える力を育てる』シリーズ（力学・電磁気・熱・波動・原子・高校物理I／II）</strong>を自ら執筆し、授業はこの自作教材を軸に、一人ひとりに合わせた学習ルートを設計します。
             </p>
 
             <div className="mt-5 sm:mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl sm:rounded-2xl border border-ink-900/[0.07] bg-ink-900/[0.06] sm:grid-cols-4">
@@ -504,6 +505,9 @@ export default function HomePage() {
 
       {/* 不安 — モバイルでも見せるミニ FAQ */}
       <MiniFaq />
+
+      {/* 安心ポリシー — Zoom / 回数割返金 / 機材トラブル対応の3点を最終CTA直前に */}
+      <SafetyPolicySection />
 
       {/* ARTICLES — デスクトップのみ */}
       <div className="hidden cv-auto sm:block">

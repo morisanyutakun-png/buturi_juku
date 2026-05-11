@@ -157,7 +157,7 @@ export default function TeacherPage() {
       <Section
         eyebrow="TEACHING TRACK RECORD"
         title={<>塾講師として、<br className="sm:hidden" />物理指導の実績があります。</>}
-        description="名古屋大学で電磁気学を専攻しながら、塾講師として大学受験物理の指導に携わっています。これまでの指導で名古屋大学合格生を輩出するなど、幅広い学力層への指導実績があります。"
+        description="名古屋大学で電磁気学を専攻しながら、塾講師として大学受験物理の指導に携わっています。これまでの指導で名古屋大学合格者を担当した経験など、幅広い学力層への指導実績があります。"
       >
         <div className="grid gap-5 md:grid-cols-2">
           {instructor.trackRecord.map((t, i) => (
@@ -198,9 +198,9 @@ export default function TeacherPage() {
                 HIGHLIGHT
               </p>
               <p className="mt-3 font-serif text-xl leading-relaxed text-ink-900 sm:text-2xl">
-                塾講師として指導した受講生の中から、
-                <span className="text-gold-deep">名古屋大学合格生</span>
-                を輩出しています。
+                塾講師として指導した受講生の中に、
+                <span className="text-gold-deep">名古屋大学合格者</span>
+                がいます。
               </p>
               <p className="mt-3 text-sm text-ink-700 leading-relaxed">
                 中堅大から難関大まで、物理指導を通して多様な受講生を志望校まで伴走してきました。

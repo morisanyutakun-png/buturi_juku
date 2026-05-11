@@ -32,8 +32,8 @@ const stats: Stat[] = [
   {
     icon: GraduationCap,
     big: "名大",
-    unit: "輩出",
-    label: "合格生を指導",
+    unit: "指導",
+    label: "合格者の指導経験",
     tone: "ink",
   },
   {

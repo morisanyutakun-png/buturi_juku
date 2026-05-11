@@ -1,9 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Loader2, Check, CreditCard, ShieldCheck } from "lucide-react";
+import { Loader2, Check, CreditCard, ShieldCheck, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackTrialPaymentClick } from "@/lib/analytics";
+import { subtopicsFor } from "@/data/trial-curriculum";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -48,6 +49,7 @@ export function ContactForm() {
   const [email, setEmail] = useState("");
   const [grade, setGrade] = useState("");
   const [weakUnit, setWeakUnit] = useState("");
+  const [subtopic, setSubtopic] = useState("");
   const [message, setMessage] = useState("");
   const [agree, setAgree] = useState(false);
 
@@ -55,16 +57,23 @@ export function ContactForm() {
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
+  const availableSubtopics = useMemo(() => subtopicsFor(weakUnit), [weakUnit]);
+  const selectedSubtopic = useMemo(
+    () => availableSubtopics.find((s) => s.value === subtopic) ?? null,
+    [availableSubtopics, subtopic],
+  );
+
   const isComplete = useMemo(() => {
     return (
       name.trim().length > 0 &&
       isEmailLike(email.trim()) &&
       grade.trim().length > 0 &&
       weakUnit.trim().length > 0 &&
+      subtopic.trim().length > 0 &&
       message.trim().length > 0 &&
       agree
     );
-  }, [name, email, grade, weakUnit, message, agree]);
+  }, [name, email, grade, weakUnit, subtopic, message, agree]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -79,6 +88,7 @@ export function ContactForm() {
       email: email.trim(),
       grade,
       weakUnit,
+      subtopic,
       message: message.trim(),
       agree: agree ? "1" : "",
     };
@@ -223,10 +233,10 @@ export function ContactForm() {
           </select>
         </Field>
         <Field
-          label="体験してみたい分野"
+          label="体験したい分野（大単元）"
           htmlFor="weakUnit"
           required
-          helper="苦手 / これから強化したい分野を1つ選んでください。当日の診断ミニ授業のテーマになります。"
+          helper="苦手 / これから強化したい大きな分野を1つ選んでください。"
           error={fieldErrors.weakUnit}
         >
           <select
@@ -235,7 +245,10 @@ export function ContactForm() {
             required
             className={inputClass}
             value={weakUnit}
-            onChange={(e) => setWeakUnit(e.target.value)}
+            onChange={(e) => {
+              setWeakUnit(e.target.value);
+              setSubtopic("");
+            }}
             aria-invalid={!!fieldErrors.weakUnit}
           >
             <option value="">選択してください</option>
@@ -247,6 +260,70 @@ export function ContactForm() {
           </select>
         </Field>
       </div>
+
+      <Field
+        label="取り組みたい単元（細目）"
+        htmlFor="subtopic"
+        required
+        helper={
+          weakUnit
+            ? "60分の体験授業で、特に扱いたい単元を1つ選んでください。決めきれない場合は『おまかせ』でも構いません。"
+            : "先に上の『大単元』を選ぶと、対応する細目が表示されます。"
+        }
+        error={fieldErrors.subtopic}
+      >
+        <select
+          id="subtopic"
+          name="subtopic"
+          required
+          disabled={!weakUnit}
+          className={cn(inputClass, !weakUnit && "cursor-not-allowed opacity-60")}
+          value={subtopic}
+          onChange={(e) => setSubtopic(e.target.value)}
+          aria-invalid={!!fieldErrors.subtopic}
+        >
+          <option value="">
+            {weakUnit ? "選択してください" : "先に大単元を選択"}
+          </option>
+          {availableSubtopics.map((s) => (
+            <option key={s.value} value={s.value}>
+              {s.value}
+            </option>
+          ))}
+        </select>
+      </Field>
+
+      {selectedSubtopic && (
+        <div className="rounded-2xl border border-brand/25 bg-brand-bg/40 p-5 sm:p-6">
+          <div className="flex items-center gap-2">
+            <Sparkles className="h-4 w-4 text-brand-deep" aria-hidden />
+            <p className="text-[10.5px] sm:text-[11px] font-medium tracking-[0.22em] sm:tracking-[0.28em] uppercase text-brand-deep">
+              当日の代表的なカリキュラム（60分）
+            </p>
+          </div>
+          <p className="mt-3 font-serif text-[1rem] sm:text-[1.05rem] leading-[1.5] text-ink-900">
+            {weakUnit} ／ {selectedSubtopic.value}
+          </p>
+          {selectedSubtopic.hint && (
+            <p className="mt-2 text-[12.5px] sm:text-[12.5px] leading-[1.75] text-ink-600">
+              {selectedSubtopic.hint}
+            </p>
+          )}
+          <ol className="mt-4 space-y-2.5 text-[13px] sm:text-[13.5px] leading-[1.8] text-ink-700">
+            {selectedSubtopic.flow.map((step, i) => (
+              <li key={step} className="flex items-start gap-2.5">
+                <span className="mt-[2px] inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/15 font-mono text-[10.5px] font-medium text-brand-deep">
+                  {i + 1}
+                </span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-4 text-[11.5px] sm:text-[11.5px] leading-[1.7] text-ink-500">
+            ※ 当日の進度・理解度に合わせて、3ステップの配分は柔軟に調整します。
+          </p>
+        </div>
+      )}
 
       <Field
         label="ご相談内容 / 現状"

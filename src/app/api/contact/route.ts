@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { ALL_SUBTOPIC_VALUES } from "@/data/trial-curriculum";
 
 /**
  * /api/contact — 体験申込フォームのメール送信エンドポイント。
@@ -28,6 +29,7 @@ type ContactPayload = {
   email?: string;
   grade?: string;
   weakUnit?: string;
+  subtopic?: string;
   message?: string;
   agree?: string;
 };
@@ -61,6 +63,7 @@ export async function POST(request: Request) {
   const email = (body.email ?? "").trim();
   const grade = (body.grade ?? "").trim();
   const weakUnit = (body.weakUnit ?? "").trim();
+  const subtopic = (body.subtopic ?? "").trim();
   const message = (body.message ?? "").trim();
   const agree = body.agree;
 
@@ -70,9 +73,12 @@ export async function POST(request: Request) {
   else if (!isEmail(email))
     errors.email = "メールアドレスの形式が正しくありません。";
   if (!grade) errors.grade = "学年を選択してください。";
-  if (!weakUnit) errors.weakUnit = "体験してみたい分野を選択してください。";
+  if (!weakUnit) errors.weakUnit = "体験したい分野を選択してください。";
   else if (!ALLOWED_WEAK_UNITS.has(weakUnit))
     errors.weakUnit = "選択肢から1つ選んでください。";
+  if (!subtopic) errors.subtopic = "取り組みたい単元を選択してください。";
+  else if (!ALL_SUBTOPIC_VALUES.has(subtopic))
+    errors.subtopic = "選択肢から1つ選んでください。";
   if (!message) errors.message = "ご相談内容を入力してください。";
   if (!agree)
     errors.agree = "プライバシーポリシーへの同意が必要です。";
@@ -96,6 +102,7 @@ export async function POST(request: Request) {
       email,
       grade,
       weakUnit,
+      subtopic,
       message,
     });
     return NextResponse.json({
@@ -106,16 +113,17 @@ export async function POST(request: Request) {
   }
 
   const resend = new Resend(apiKey);
-  const subject = `【Solvora】体験申込 — ${name}様（${grade}・${weakUnit}）`;
+  const subject = `【Solvora】体験申込 — ${name}様（${grade}・${weakUnit} / ${subtopic}）`;
 
   const text = [
     `Solvora Learning Lab — 体験申込フォーム送信通知`,
     ``,
     `▼ 受付内容`,
-    `氏名（生徒）  : ${name}`,
-    `メール        : ${email}`,
-    `学年          : ${grade}`,
-    `体験したい分野: ${weakUnit}`,
+    `氏名（生徒）    : ${name}`,
+    `メール          : ${email}`,
+    `学年            : ${grade}`,
+    `体験したい分野  : ${weakUnit}`,
+    `取り組みたい単元: ${subtopic}`,
     ``,
     `▼ ご相談内容 / 現状`,
     message,
@@ -135,6 +143,7 @@ export async function POST(request: Request) {
         <tr><td style="padding: 6px 16px 6px 0; color: #586780; vertical-align: top;">メール</td><td style="padding: 6px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #1f5aa6;">${escapeHtml(email)}</a></td></tr>
         <tr><td style="padding: 6px 16px 6px 0; color: #586780; vertical-align: top;">学年</td><td style="padding: 6px 0;">${escapeHtml(grade)}</td></tr>
         <tr><td style="padding: 6px 16px 6px 0; color: #586780; vertical-align: top;">体験したい分野</td><td style="padding: 6px 0;">${escapeHtml(weakUnit)}</td></tr>
+        <tr><td style="padding: 6px 16px 6px 0; color: #586780; vertical-align: top;">取り組みたい単元</td><td style="padding: 6px 0;">${escapeHtml(subtopic)}</td></tr>
       </table>
       <h3 style="margin-top: 28px; font-size: 14px; color: #586780;">▼ ご相談内容 / 現状</h3>
       <div style="background: #f6f2e8; border-left: 3px solid #e28040; padding: 12px 16px; white-space: pre-wrap; font-size: 14px;">${escapeHtml(message)}</div>

@@ -21,8 +21,8 @@ const proofs = [
   {
     icon: GraduationCap,
     big: "名大",
-    unit: "輩出",
-    label: "塾講師としての指導実績",
+    unit: "指導",
+    label: "合格者の指導経験",
     sub: "中堅大〜難関大まで対応",
     tone: "forest",
   },

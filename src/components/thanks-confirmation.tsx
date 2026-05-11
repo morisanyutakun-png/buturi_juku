@@ -14,6 +14,7 @@ type Recovered = {
   email?: string;
   grade?: string;
   weakUnit?: string;
+  subtopic?: string;
   submittedAt?: string;
 };
 
@@ -124,6 +125,12 @@ export function ThanksConfirmation() {
                 <>
                   <dt className="text-ink-500">体験したい分野</dt>
                   <dd>{recovered.weakUnit}</dd>
+                </>
+              )}
+              {recovered.subtopic && (
+                <>
+                  <dt className="text-ink-500">取り組みたい単元</dt>
+                  <dd>{recovered.subtopic}</dd>
                 </>
               )}
             </dl>
