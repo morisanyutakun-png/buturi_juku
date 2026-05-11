@@ -127,7 +127,18 @@ export default function RootLayout({
         {(GA_ID || GADS_ID) && (
           <Script
             id="gtag-deferred-loader"
-            strategy="afterInteractive"
+            // beforeInteractive: React hydration より前に走らせる。
+            // これにより dataLayer に [js, config G, config AW] の3項目が
+            // 必ず先に入り、React useEffect から push される event は
+            // 後続として正しく処理される（gtag.js は dataLayer を順番に
+            // 処理するため、config より前にある event は測定プロパティが
+            // 未初期化として破棄されてしまう）。これが trial_application_complete
+            // などのカスタムイベントだけ GA4 に届かない原因だった。
+            //
+            // 内容は外部フェッチを含まない軽量 IIFE（イベントリスナの登録 +
+            // 8秒の setTimeout のみ）なので、beforeInteractive にしても
+            // TBT への影響は無視できる。
+            strategy="beforeInteractive"
             dangerouslySetInnerHTML={{
               __html: `
                 window.dataLayer = window.dataLayer || [];
