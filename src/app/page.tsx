@@ -191,17 +191,27 @@ export default function HomePage() {
       {/* 1. 何をしてくれるか — AI復習プリントの 4 ステップ図解 */}
       <AiPrintFigure />
 
-      {/* 2. 誰向けか — 3つのつまずき（悩みベースで対象を示す） */}
-      <PainPointsSection />
+      {/* 2. 誰向けか — 3つのつまずき（悩みベースで対象を示す）
+          下層は `cv-auto` でラップしてオフスクリーンの layout/paint を
+          スキップ。Style&Layout タスクを大幅に削減し、TBT/SI を改善する。 */}
+      <div className="cv-auto">
+        <PainPointsSection />
+      </div>
 
       {/* 3. 信頼 — 実績ストリップ（共テ100/二次9割/名大/6冊） */}
-      <ProofStrip />
+      <div className="cv-auto">
+        <ProofStrip />
+      </div>
 
       {/* 3-b. 信頼 — 講師作の教材6冊を最大の差別化として前面に */}
-      <BookCoversStrip />
+      <div className="cv-auto">
+        <BookCoversStrip />
+      </div>
 
       {/* 3-c. note の有料プリント送客（授業ではなく教材だけ欲しい層への逃げ道） */}
-      <NotePromoSection />
+      <div className="cv-auto">
+        <NotePromoSection />
+      </div>
 
       {/* ============================================================
           BELOW-THE-FOLD（モバイルでは大半を hidden sm:block で削る）
@@ -474,40 +484,48 @@ export default function HomePage() {
       </div>
 
       {/* 料金 — 信頼の直後 */}
-      <PricePreview />
+      <div className="cv-auto">
+        <PricePreview />
+      </div>
 
       {/* 受講の流れ — モバイルでも見せる（申込前の最後の不安解消ステップ） */}
-      <Section
-        eyebrow="HOW IT WORKS"
-        title="受講の流れ"
-        description="お申し込みから受講開始までの流れはシンプルです。"
-        className="bg-paper-soft"
-      >
-        <ol className="grid gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {flow.map((s) => (
-            <li
-              key={s.step}
-              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink-900/[0.07] bg-white/85 p-5 sm:p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
-            >
-              <p className="font-mono text-[10.5px] sm:text-[10.5px] tracking-[0.16em] sm:tracking-[0.18em] text-warm-deep">
-                STEP {s.step}
-              </p>
-              <h3 className="mt-3 sm:mt-5 font-serif text-[1.05rem] sm:text-[1.15rem] leading-[1.45] sm:leading-snug tracking-[-0.008em] text-ink-900">
-                {s.title}
-              </h3>
-              <p className="mt-2.5 sm:mt-4 text-[13px] sm:text-[13.5px] leading-[1.85] sm:leading-[1.8] text-ink-600">
-                {s.description}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </Section>
+      <div className="cv-auto">
+        <Section
+          eyebrow="HOW IT WORKS"
+          title="受講の流れ"
+          description="お申し込みから受講開始までの流れはシンプルです。"
+          className="bg-paper-soft"
+        >
+          <ol className="grid gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {flow.map((s) => (
+              <li
+                key={s.step}
+                className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-ink-900/[0.07] bg-white/85 p-5 sm:p-8 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card"
+              >
+                <p className="font-mono text-[10.5px] sm:text-[10.5px] tracking-[0.16em] sm:tracking-[0.18em] text-warm-deep">
+                  STEP {s.step}
+                </p>
+                <h3 className="mt-3 sm:mt-5 font-serif text-[1.05rem] sm:text-[1.15rem] leading-[1.45] sm:leading-snug tracking-[-0.008em] text-ink-900">
+                  {s.title}
+                </h3>
+                <p className="mt-2.5 sm:mt-4 text-[13px] sm:text-[13.5px] leading-[1.85] sm:leading-[1.8] text-ink-600">
+                  {s.description}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </Section>
+      </div>
 
       {/* 不安 — モバイルでも見せるミニ FAQ */}
-      <MiniFaq />
+      <div className="cv-auto">
+        <MiniFaq />
+      </div>
 
       {/* 安心ポリシー — Zoom / 回数割返金 / 機材トラブル対応の3点を最終CTA直前に */}
-      <SafetyPolicySection />
+      <div className="cv-auto">
+        <SafetyPolicySection />
+      </div>
 
       {/* ARTICLES — デスクトップのみ */}
       <div className="hidden cv-auto sm:block">
