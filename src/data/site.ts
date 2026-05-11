@@ -32,7 +32,7 @@ export const siteConfig = {
   },
   contact: {
     email: "morisan.yutakun@gmail.com",
-    hours: "月・木・金 13:00–20:00、土日 10:00–18:00（火・水は休講・現状／その他の時間帯もご相談可能です）",
+    hours: "月・木・金 10:00–12:00 / 13:00–20:00、土日 10:00–18:00（火・水は休講・現状／その他の時間帯もご相談可能です）",
   },
   address: {
     region: "日本",

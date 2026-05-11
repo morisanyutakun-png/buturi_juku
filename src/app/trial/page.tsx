@@ -189,7 +189,7 @@ export default function TrialPage() {
                   <dt className="w-16 shrink-0 font-mono text-[11px] tracking-[0.16em] text-brand-deep">
                     月・木・金
                   </dt>
-                  <dd>13:00–20:00</dd>
+                  <dd>10:00–12:00 / 13:00–20:00</dd>
                 </div>
                 <div className="flex items-baseline gap-3">
                   <dt className="w-16 shrink-0 font-mono text-[11px] tracking-[0.16em] text-brand-deep">
@@ -228,10 +228,6 @@ export default function TrialPage() {
                 <li className="flex items-start gap-2.5 sm:gap-2">
                   <Check className="mt-1 sm:mt-0.5 h-4 w-4 sm:h-3 sm:w-3 shrink-0 text-brand-deep" />
                   入塾前提ではありません（無理な勧誘なし）
-                </li>
-                <li className="flex items-start gap-2.5 sm:gap-2">
-                  <Check className="mt-1 sm:mt-0.5 h-4 w-4 sm:h-3 sm:w-3 shrink-0 text-brand-deep" />
-                  保護者同席も可能です
                 </li>
                 <li className="flex items-start gap-2.5 sm:gap-2">
                   <Check className="mt-1 sm:mt-0.5 h-4 w-4 sm:h-3 sm:w-3 shrink-0 text-brand-deep" />
