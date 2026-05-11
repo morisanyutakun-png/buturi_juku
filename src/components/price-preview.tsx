@@ -5,7 +5,7 @@ import { courses, getCourseBySlug } from "@/data/courses";
 
 /**
  * 料金プレビュー（TOP）。
- * いちおし動線：体験授業 → 電磁気集中（おすすめ）→ 共通テスト or 分野別。
+ * いちおし動線：体験授業 → 電磁気集中（おすすめ）→ テスト前集中 or 分野別。
  * カードに表示する 価格 / コース名 は data/courses.ts を単一情報源として参照。
  * これにより /courses ページや講座詳細ページとの表記ズレが起きない。
  */
@@ -35,9 +35,9 @@ const tierConfigs: TierConfig[] = [
     highlight: true,
   },
   {
-    slug: "kyotsu",
-    unit: "1回 90分 × 全8回 / 共通テストで安定して高得点",
-    note: "現象の読み取りと情報処理を磨き、9割の得点ラインに乗せる戦略講座。落とした問題は AI（REM）で類題化、講師確認のうえ復習プリントとしてお渡しします。",
+    slug: "test-prep",
+    unit: "1回 90分 × 全3回 / 定期テスト直前の駆け込み対応",
+    note: "強化したい単元を選んで短期集中で仕上げる、定期テスト対策講座。授業中に詰まった問題は AI（REM）で復習プリント化し、次回冒頭でフォローします。",
     accent: "border-gold/40 bg-gold-soft/45",
   },
 ];
@@ -90,11 +90,11 @@ export function PricePreview() {
             {/* モバイル：箇条書き、デスクトップ：パラグラフ */}
             <ul className="mt-4 space-y-2 max-w-md text-[13.5px] leading-[1.8] text-ink-700 sm:hidden">
               <li>・<strong className="font-medium text-ink-900">いま一番おすすめは電磁気集中講座</strong>（書籍ベース・主軸）</li>
-              <li>・共通テスト・テスト前・分野別もご用意</li>
+              <li>・定期テスト対策・分野別集中もご用意</li>
               <li>・入塾金 <strong className="font-medium text-ink-900">0円</strong></li>
             </ul>
             <p className="mt-5 max-w-md text-[15px] leading-[1.85] text-ink-700 hidden sm:block">
-              いま一番おすすめは、書籍に沿った <strong className="font-medium text-ink-900">電磁気集中講座</strong>。森祐太が書いた『考える力を育てる 電磁気学』を講座カリキュラムに落とし込んだ Solvora の主軸講座です。共通テスト対策・テスト前集中・分野別の集中講座もご用意しています。入塾金は<strong className="font-medium text-ink-900">0円</strong>です。
+              いま一番おすすめは、書籍に沿った <strong className="font-medium text-ink-900">電磁気集中講座</strong>。森祐太が書いた『考える力を育てる 電磁気学』を講座カリキュラムに落とし込んだ Solvora の主軸講座です。定期テスト対策・分野別の集中講座もご用意しています。入塾金は<strong className="font-medium text-ink-900">0円</strong>です。
             </p>
             <p className="mt-2.5 sm:mt-3 max-w-md text-[11px] sm:text-[12px] leading-[1.7] text-ink-500">
               ※ 指定教材（『考える力を育てる』シリーズ等）のみ、別途ご購入をお願いしています。

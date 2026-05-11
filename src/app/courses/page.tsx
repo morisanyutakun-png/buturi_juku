@@ -14,7 +14,7 @@ const courseList = visibleCourses();
 export const metadata: Metadata = buildMetadata({
   title: "講座一覧 — Solvora Learning Lab（高校物理・理系個別指導 / AI復習プリント付き）",
   description:
-    "Solvora Learning Lab の講座一覧です。体験授業、共通テスト対策、力学・電磁気の集中講座まで、目的に応じた高校物理・理系個別指導の講座をご用意しています（高校物理専門塾としての指導継続）。",
+    "Solvora Learning Lab の講座一覧です。体験授業、力学・電磁気の集中講座、定期テスト対策まで、目的に応じた高校物理・理系個別指導の講座をご用意しています（高校物理専門塾としての指導継続）。",
   path: "/courses",
   keywords: [
     "Solvora Learning Lab 講座",
@@ -23,7 +23,6 @@ export const metadata: Metadata = buildMetadata({
     "高校物理 個別指導 講座",
     "高校物理 オンライン 講座",
     "大学受験 物理 個別指導",
-    "共通テスト 物理 講座",
     "力学 集中講座",
     "電磁気 集中講座",
   ],
@@ -55,7 +54,7 @@ export default function CoursesIndexPage() {
       <Section
         eyebrow="ALL COURSES"
         title="目的別 — コース一覧"
-        description="体験授業から志望校別カリキュラム、共通テスト対策、分野別集中講座まで。"
+        description="体験授業から志望校別カリキュラム、分野別集中講座、定期テスト対策まで。"
       >
         <div className="grid gap-6 md:grid-cols-2">
           {courseList.map((c) => {
@@ -125,7 +124,7 @@ export default function CoursesIndexPage() {
         data={collectionPageJsonLd({
           name: "Solvora Learning Lab の講座一覧（高校物理・理系個別指導）",
           description:
-            "Solvora Learning Lab の体験授業、共通テスト対策、分野別集中講座を比較できる講座一覧ページです（高校物理専門塾としての指導継続）。",
+            "Solvora Learning Lab の体験授業、分野別集中講座、定期テスト対策を比較できる講座一覧ページです（高校物理専門塾としての指導継続）。",
           path: "/courses",
           items: courseList.map((course) => ({
             name: course.title,

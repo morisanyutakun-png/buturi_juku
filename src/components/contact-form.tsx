@@ -263,7 +263,7 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className={cn(inputClass, "resize-y")}
-          placeholder="例）高2、共通テストで6割で頭打ち。電磁気が特に苦手で…"
+          placeholder="例）高2、模試で物理が頭打ち。電磁気が特に苦手で…"
           aria-invalid={!!fieldErrors.message}
         />
       </Field>

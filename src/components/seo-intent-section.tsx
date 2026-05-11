@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  BookOpenCheck,
   FileText,
   MonitorCheck,
   Target,
@@ -33,14 +32,6 @@ const intents = [
     body: "画面共有とライブ解説で、図の描き方・力の取り方・立式の順序を一緒になぞって進めます。授業内で作成した板書・解説は PDF/画像でお渡しし、当日のうちに復習に使えます。",
     href: "/online",
     cta: "オンライン指導の詳細を見る",
-  },
-  {
-    icon: BookOpenCheck,
-    keyword: "共通テスト物理 対策",
-    title: "共通テスト物理で安定して高得点を取りたい",
-    body: "公式暗記ではなく、リード文・グラフ・選択肢を読み解く処理手順を身につけ、時間配分まで含めて指導します。苦手問題は授業後に復習プリント化します。",
-    href: "/courses/kyotsu",
-    cta: "共通テスト対策を見る",
   },
   {
     icon: Waves,

@@ -25,7 +25,7 @@ const navMeta: Record<
 > = {
   "/about": { icon: Sparkles, tone: "brand", sub: "コンセプト・指導方針" },
   "/teacher": { icon: UserSquare, tone: "warm", sub: "森祐太のプロフィール" },
-  "/courses": { icon: GraduationCap, tone: "forest", sub: "1対1 / 共通テスト 他" },
+  "/courses": { icon: GraduationCap, tone: "forest", sub: "電磁気集中 / 分野別 / テスト対策" },
   "/articles": { icon: BookOpen, tone: "brand", sub: "物理学習コラム" },
   "/faq": { icon: HelpCircle, tone: "gold", sub: "よくある質問" },
   "/contact": { icon: Mail, tone: "warm", sub: "お問い合わせ・相談" },

@@ -40,7 +40,7 @@ const flow = [
     step: "03",
     time: "55 – 60分",
     title: "学習戦略の提案 / おすすめコースのご案内",
-    body: "残り期間から逆算した学習ロードマップに加え、電磁気集中講座（おすすめ）/ 共通テスト対策 / テスト前集中など、合うコースをその場でご提案します。",
+    body: "残り期間から逆算した学習ロードマップに加え、電磁気集中講座（おすすめ）/ 分野別集中 / 定期テスト対策など、合うコースをその場でご提案します。",
   },
 ];
 
@@ -64,7 +64,7 @@ export default function TrialPage() {
             <span className="block">診断します。</span>
           </>
         }
-        description="Solvora Learning Lab の体験授業は、入塾を前提としない学習相談としてご利用いただけます。本気で受験と向き合う方への軽い参加コストとして ¥3,000 をいただき、現状の苦手分野と残り期間を踏まえた学習戦略を、講師（森祐太）が直接お渡しします。一番おすすめしているのは、書籍ベースの電磁気集中講座。共通テスト対策・分野別講座・テスト前集中もご用意しています。"
+        description="Solvora Learning Lab の体験授業は、入塾を前提としない学習相談としてご利用いただけます。本気で受験と向き合う方への軽い参加コストとして ¥3,000 をいただき、現状の苦手分野と残り期間を踏まえた学習戦略を、講師（森祐太）が直接お渡しします。一番おすすめしているのは、書籍ベースの電磁気集中講座。分野別講座・定期テスト対策もご用意しています。"
       >
         <div className="flex flex-wrap gap-3">
           <Link
@@ -188,7 +188,7 @@ export default function TrialPage() {
                 </li>
                 <li className="flex items-start gap-2.5 sm:gap-2">
                   <Check className="mt-1 sm:mt-0.5 h-4 w-4 sm:h-3 sm:w-3 shrink-0 text-brand-deep" />
-                  当日中に学習戦略 + おすすめコース（電磁気集中・共通テスト対策など）のご提案
+                  当日中に学習戦略 + おすすめコース（電磁気集中・定期テスト対策など）のご提案
                 </li>
                 <li className="flex items-start gap-2.5 sm:gap-2">
                   <Check className="mt-1 sm:mt-0.5 h-4 w-4 sm:h-3 sm:w-3 shrink-0 text-brand-deep" />
@@ -287,7 +287,7 @@ export default function TrialPage() {
         data={webPageJsonLd({
           name: "体験授業（60分・¥3,000）｜ Solvora Learning Lab",
           description:
-            "Solvora Learning Lab の60分・¥3,000 体験授業。現在の高校物理の理解度を診断し、学習戦略とおすすめコース（電磁気集中講座 / 共通テスト対策 / 分野別講座）を提案します（高校物理専門塾としての指導継続）。",
+            "Solvora Learning Lab の60分・¥3,000 体験授業。現在の高校物理の理解度を診断し、学習戦略とおすすめコース（電磁気集中講座 / 分野別講座 / 定期テスト対策）を提案します（高校物理専門塾としての指導継続）。",
           path: "/trial",
         })}
       />
