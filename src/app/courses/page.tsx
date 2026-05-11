@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
@@ -8,6 +9,7 @@ import { PageHero } from "@/components/page-hero";
 import { breadcrumbJsonLd, collectionPageJsonLd, itemListJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 import { visibleCourses } from "@/data/courses";
+import { getBookBySlug } from "@/data/books";
 
 const courseList = visibleCourses();
 
@@ -59,33 +61,60 @@ export default function CoursesIndexPage() {
         <div className="grid gap-6 md:grid-cols-2">
           {courseList.map((c) => {
             const isRecommended = c.slug === "electromagnetism";
+            const book = c.basedOnBookSlug ? getBookBySlug(c.basedOnBookSlug) : undefined;
             return (
             <Link
               key={c.slug}
               href={`/courses/${c.slug}`}
-              className={`group relative flex h-full flex-col justify-between rounded-2xl border bg-white p-7 sm:p-8 transition hover:bg-paper-soft ${
+              className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border bg-white p-7 sm:p-8 transition hover:bg-paper-soft ${
                 isRecommended
                   ? "border-brand/40 ring-2 ring-brand/30 hover:border-brand/60"
                   : "border-ink-900/10 hover:border-brand/40"
               }`}
             >
               {isRecommended && (
-                <span className="absolute right-5 top-5 inline-flex rounded-full bg-brand px-3 py-1 text-[10.5px] font-medium tracking-[0.2em] text-white">
+                <span className="absolute right-5 top-5 z-10 inline-flex rounded-full bg-brand px-3 py-1 text-[10.5px] font-medium tracking-[0.2em] text-white">
                   おすすめ
                 </span>
               )}
-              <div>
-                <p className="text-[11px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
-                  {c.category}
-                </p>
-                <h2 className="mt-4 font-serif text-[1.6rem] sm:text-2xl leading-[1.4] text-ink-900">
-                  {c.title}
-                </h2>
-                <p className="mt-3 text-[14.5px] sm:text-sm leading-[1.7] text-ink-600">{c.subtitle}</p>
-                <p className="mt-6 text-[15px] sm:text-sm leading-[2] sm:leading-relaxed text-ink-700">
-                  {c.summary}
-                </p>
+
+              {/* 書籍ベース講座は、書影を右側に配置してビジュアル強化。 */}
+              <div className={book ? "grid gap-5 sm:gap-7 sm:grid-cols-[1fr_auto]" : ""}>
+                <div>
+                  <p className="text-[11px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] uppercase text-brand-deep">
+                    {c.category}
+                  </p>
+                  <h2 className="mt-4 font-serif text-[1.6rem] sm:text-2xl leading-[1.4] text-ink-900 pr-16 sm:pr-20">
+                    {c.title}
+                  </h2>
+                  <p className="mt-3 text-[14.5px] sm:text-sm leading-[1.7] text-ink-600">{c.subtitle}</p>
+                  {book && (
+                    <p className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-gold/35 bg-gold-soft/40 px-2.5 py-1 text-[10.5px] sm:text-[10px] tracking-[0.14em] sm:tracking-[0.18em] text-gold-deep">
+                      <BookOpen className="h-3 w-3" aria-hidden strokeWidth={1.8} />
+                      『{book.title.replace("考える力を育てる ", "")}』に沿って基礎〜応用を完走
+                    </p>
+                  )}
+                  <p className="mt-6 text-[15px] sm:text-sm leading-[2] sm:leading-relaxed text-ink-700">
+                    {c.summary}
+                  </p>
+                </div>
+
+                {book && (
+                  <div className="order-first mx-auto w-[120px] shrink-0 sm:order-none sm:mx-0 sm:w-[112px] md:w-[120px] lg:w-[128px]">
+                    <div className="relative overflow-hidden rounded-md border border-ink-900/[0.08] bg-white shadow-card transition-transform duration-500 ease-out group-hover:-translate-y-0.5 group-hover:rotate-[1.5deg]">
+                      <Image
+                        src={book.coverImage}
+                        alt={`${book.title} の書影`}
+                        width={book.coverWidth}
+                        height={book.coverHeight}
+                        className="h-auto w-full"
+                        sizes="(min-width: 1024px) 128px, (min-width: 640px) 112px, 120px"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
+
               <div className="mt-8 grid grid-cols-2 gap-3 text-[12.5px] sm:text-xs">
                 <div className="rounded-lg border border-ink-900/10 bg-white p-3.5 sm:p-3">
                   <p className="text-[11px] sm:text-[10px] tracking-[0.18em] sm:tracking-widest uppercase text-ink-400">
