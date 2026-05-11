@@ -188,8 +188,12 @@ export default function HomePage() {
       {/* FV — H1 + サブ + 本文 + CTA2つ */}
       <Hero />
 
-      {/* 1. 何をしてくれるか — AI復習プリントの 4 ステップ図解 */}
-      <AiPrintFigure />
+      {/* 1. 何をしてくれるか — AI復習プリントの 4 ステップ図解
+          モバイル fold 直下のため cv-auto でラップ。fold より下にあれば layout/paint を
+          スキップ、可視時は通常通り描画（content-visibility: auto の挙動）。 */}
+      <div className="cv-auto">
+        <AiPrintFigure />
+      </div>
 
       {/* 2. 誰向けか — 3つのつまずき（悩みベースで対象を示す）
           下層は `cv-auto` でラップしてオフスクリーンの layout/paint を

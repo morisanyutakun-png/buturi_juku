@@ -81,9 +81,14 @@ export default function RootLayout({
       <head>
         <link rel="dns-prefetch" href="https://yuta-eng.com" />
         <link rel="dns-prefetch" href="https://amzn.asia" />
-        {/* GA / Google Ads タグ用：早めに接続を温める */}
+        {/*
+          注：以前は googletagmanager.com に preconnect していたが、gtag.js を
+          interaction-triggered（初回ユーザー操作）でロードする方式に変更したため、
+          初期段階で接続を温める意味がなくなり Lighthouse から「未使用 preconnect」
+          として警告されていた。dns-prefetch だけ残す（接続コストはほぼゼロで、
+          かつユーザー操作後のロードを最速にする）。
+        */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
         {/*
           注：以前は /trial /courses /online の3ドキュメントを `<link rel="prefetch">`
           していたが、Lighthouse のネットワーク利用率を圧迫していたため停止。
