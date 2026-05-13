@@ -4,7 +4,14 @@ import { visibleCourses } from "@/data/courses";
 import { articles } from "@/data/articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date(siteConfig.seo.lastModified);
+  // lastModified は「ビルド時の現在日時」または siteConfig の手動設定値の
+  // **新しい方** を採用。これにより:
+  //   - 毎回のデプロイで sitemap の lastmod が自動更新される
+  //   - 内容を手で固定したい場合は site.ts 側で未来日を入れれば優先される
+  const manualDate = new Date(siteConfig.seo.lastModified);
+  const buildDate = new Date();
+  const lastModified =
+    manualDate.getTime() > buildDate.getTime() ? manualDate : buildDate;
   const base = siteConfig.url.replace(/\/$/, "");
 
   const staticPages: MetadataRoute.Sitemap = [

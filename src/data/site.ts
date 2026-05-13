@@ -39,7 +39,7 @@ export const siteConfig = {
     note: "オンライン指導中心(全国対応)",
   },
   seo: {
-    lastModified: "2026-04-25",
+    lastModified: "2026-05-12",
     defaultKeywords: [
       "高校物理専門塾",
       "高校物理 専門塾",
