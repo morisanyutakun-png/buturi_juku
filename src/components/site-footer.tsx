@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { footerNav, siteConfig } from "@/data/site";
 import { BrandMark } from "@/components/brand-mark";
 
@@ -23,6 +24,37 @@ export function SiteFooter() {
                 aria-hidden
               />
               {siteConfig.contact.hours}
+            </div>
+
+            {/* SNS — まずは note のみ。今後追加するなら同じ列に並べる。 */}
+            <div className="mt-7 sm:mt-8">
+              <h3 className="text-[11px] sm:text-[10px] font-medium tracking-[0.28em] sm:tracking-[0.32em] uppercase text-brand-deep">
+                SNS / Follow
+              </h3>
+              <ul className="mt-4 flex flex-wrap gap-2.5">
+                <li>
+                  <a
+                    href="https://note.com/yuta_mori_ind"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="森祐太の note を新しいタブで開く"
+                    className="group inline-flex min-h-[40px] items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/80 px-4 py-2 text-[13px] sm:text-[13px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
+                  >
+                    <span
+                      aria-hidden
+                      className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-ink-900/15 bg-white font-serif text-[11px] tracking-[-0.02em] text-ink-900"
+                    >
+                      n
+                    </span>
+                    <span className="font-medium">note</span>
+                    <span className="text-ink-400">/ yuta_mori_ind</span>
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 opacity-50 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden
+                    />
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
