@@ -4,16 +4,13 @@ import type { Metadata } from "next";
 import {
   ArrowRight,
   ArrowUpRight,
-  BookOpen,
-  Download,
   FileText,
   Layers,
-  Sparkles,
 } from "lucide-react";
 import { Section } from "@/components/section";
 import { CtaBlock } from "@/components/cta-block";
 import { NotePromoSection } from "@/components/note-promo-section";
-import { PageHero } from "@/components/page-hero";
+import { PrintsHero } from "@/components/prints-hero";
 import { Container } from "@/components/container";
 import { JsonLdGraph } from "@/components/json-ld";
 import { buildMetadata } from "@/lib/metadata";
@@ -156,43 +153,29 @@ function PrintCard({ p }: { p: Print }) {
 export default function PrintsIndexPage() {
   const total = prints.length;
 
+  // ヒーローに置く 3 枚は、印象の異なる単元から拾うために distinct subject 優先で選抜。
+  const heroCards: typeof prints = [];
+  const seenSubjects = new Set<string>();
+  for (const p of prints) {
+    if (!seenSubjects.has(p.subject)) {
+      heroCards.push(p);
+      seenSubjects.add(p.subject);
+    }
+    if (heroCards.length >= 3) break;
+  }
+  if (heroCards.length < 3) {
+    for (const p of prints) {
+      if (!heroCards.includes(p)) heroCards.push(p);
+      if (heroCards.length >= 3) break;
+    }
+  }
+
   return (
     <>
-      <PageHero
-        eyebrow={`MATERIALS — 演習プリント アーカイブ（全 ${total} 教材 / 順次追加）`}
-        watermark="解"
-        tone="warm"
-        breadcrumb={[
-          { label: "ホーム", href: "/" },
-          { label: "演習プリント", href: "/prints" },
-        ]}
-        title={
-          <>
-            <span className="block">高校物理の典型問題を、</span>
-            <span className="block">
-              <span className="text-warm-deep">Web</span>でそのまま読む。
-            </span>
-          </>
-        }
-        description="Solvora Learning Lab の演習プリント アーカイブです。ダウンロードしなくても、ページ画像と解答解説を Web 上でそのまま読めます。必要なら印刷向け PDF をダウンロードして配布・自習にお使いください。森祐太の物理専門塾が授業・体験で実際に使用している REM 製プリントを中心に、典型問題を単元ごとに順次公開しています。"
-      >
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.12] bg-white/80 px-3.5 py-1.5 text-[12px] sm:text-[12.5px] text-ink-700 backdrop-blur">
-            <BookOpen className="h-3 w-3 text-warm-deep" aria-hidden />
-            Web で読める
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.12] bg-white/80 px-3.5 py-1.5 text-[12px] sm:text-[12.5px] text-ink-700 backdrop-blur">
-            <Download className="h-3 w-3 text-brand-deep" aria-hidden />
-            PDF も配布可
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.12] bg-white/80 px-3.5 py-1.5 text-[12px] sm:text-[12.5px] text-ink-700 backdrop-blur">
-            <Sparkles className="h-3 w-3 text-forest-deep" aria-hidden />
-            問題＋解答解説
-          </span>
-        </div>
-      </PageHero>
+      <PrintsHero cards={heroCards} total={total} />
 
       {/* 単元別 — Section の eyebrow / title でやや控えめなトーンに（H1 と差別化） */}
+      <div id="materials" className="scroll-mt-20" />
       {groups.map((group, gi) => (
         <section
           key={group.subject}
