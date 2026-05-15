@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prints:build": "./scripts/build-print-previews.sh"
   },
   "dependencies": {
     "clsx": "^2.1.1",

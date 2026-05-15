@@ -110,7 +110,7 @@ export const mainNav: NavItem[] = [
   { label: "塾について", href: "/about" },
   { label: "講師紹介", href: "/teacher" },
   { label: "講座", href: "/courses" },
-  { label: "無料プリント", href: "/prints" },
+  { label: "演習プリント", href: "/prints" },
   { label: "物理学習コラム", href: "/articles" },
   { label: "よくある質問", href: "/faq" },
   { label: "お問い合わせ", href: "/contact" },
@@ -135,7 +135,7 @@ export const footerNav: { heading: string; items: NavItem[] }[] = [
     heading: "学ぶ",
     items: [
       { label: "体験授業", href: "/trial" },
-      { label: "無料プリント集", href: "/prints" },
+      { label: "演習プリント", href: "/prints" },
       { label: "物理学習コラム", href: "/articles" },
       { label: "よくある質問", href: "/faq" },
     ],

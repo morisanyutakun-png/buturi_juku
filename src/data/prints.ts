@@ -1,7 +1,10 @@
 /**
- * 無料公開 REM プリント集のデータ。
+ * 演習プリント アーカイブのデータ。
  *
- * - PDF は public/prints/*.pdf に配置（一次ソース）
+ * - PDF は public/prints/<slug>.pdf に配置（一次ソース）
+ * - PDF をページ画像に変換した PNG は public/prints/<slug>/page-N.png に配置
+ *   （`scripts/build-print-previews.sh` で再生成可能）。詳細ページの
+ *   Web プレビューはこの PNG を縦に並べて表示する。
  * - 各プリントの問題本文・解答解説 HTML はこのファイルが一次ソース
  *   → HTML として展開することで Google が中身を読めるようにし、
  *     SEO 上のロングテール（単元名 × 物理 × プリント / PDF）を拾う。
@@ -27,6 +30,8 @@ export type PrintSection = {
 
 export type PrintSubject = "力学" | "電磁気" | "波動" | "熱力学" | "原子";
 export type PrintDifficulty = "基礎" | "標準" | "応用";
+/** プリントの公開区分。`free` は全ページ公開・直 DL 可能、`paid` は note などで購入。 */
+export type PrintKind = "free" | "paid";
 
 export type Print = {
   slug: string;
@@ -41,10 +46,23 @@ export type Print = {
   difficulty: PrintDifficulty;
   /** 配点（PDF 表紙の [XX 点] と一致させる）。 */
   points: number;
+  /** 想定する学年帯。例: 「高校2年生 〜 高校3年生」「既卒生」 */
+  gradeLevel: string;
   /** /public からの相対 URL。例: "/prints/capacitor-charge-conservation.pdf" */
   pdfPath: string;
+  /** PDF の総ページ数。`scripts/build-print-previews.sh` 実行後の画像数と一致させる。 */
+  pageCount: number;
   publishedAt: string;
   updatedAt?: string;
+  /**
+   * 公開区分。デフォルト `free`（全ページ Web 表示 + 直 DL 可）。
+   * `paid` の場合は `previewMaxPage` 以降の画像にぼかし＋購入導線をかぶせる。
+   */
+  kind: PrintKind;
+  /** 有料プリントの購入先 URL（note / Stripe など）。 */
+  paidUrl?: string;
+  /** 有料プリントで Web プレビューを開放する最大ページ番号（1-origin）。 */
+  previewMaxPage?: number;
   /** SEO 用キーワードと一致させるタグ。 */
   tags: readonly string[];
   /**
@@ -64,6 +82,22 @@ export type Print = {
   relatedPrintSlugs?: string[];
 };
 
+/**
+ * Web プレビュー用 PNG ページ画像のパスを返す。
+ * 1-origin（先頭ページは page-1.png）。
+ */
+export function printPageImagePaths(print: Print): string[] {
+  return Array.from(
+    { length: print.pageCount },
+    (_, i) => `/prints/${print.slug}/page-${i + 1}.png`,
+  );
+}
+
+/** サムネイル（一覧カード・OG 画像など）として使う 1 ページ目の PNG パス。 */
+export function printThumbPath(print: Print): string {
+  return `/prints/${print.slug}/page-1.png`;
+}
+
 export const prints: Print[] = [
   // ───────────────────────────────────────────────
   // 1. 電磁気 / コンデンサ - 電荷保存則
@@ -78,8 +112,11 @@ export const prints: Print[] = [
     topic: "コンデンサ",
     difficulty: "標準",
     points: 20,
+    gradeLevel: "高校2年生 〜 高校3年生",
     pdfPath: "/prints/capacitor-charge-conservation.pdf",
+    pageCount: 3,
     publishedAt: "2026-05-15",
+    kind: "free",
     tags: ["電磁気", "コンデンサ", "電荷保存", "並列接続", "高校物理"],
     problemSetup: [
       {
@@ -181,8 +218,11 @@ export const prints: Print[] = [
     topic: "点電荷の電位と電界",
     difficulty: "基礎",
     points: 20,
+    gradeLevel: "高校2年生 〜 高校3年生",
     pdfPath: "/prints/point-charge-potential-and-field.pdf",
+    pageCount: 3,
     publishedAt: "2026-05-15",
+    kind: "free",
     tags: ["電磁気", "点電荷", "電位", "電界", "高校物理"],
     problemSetup: [
       {
@@ -273,8 +313,11 @@ export const prints: Print[] = [
     topic: "単振動",
     difficulty: "標準",
     points: 20,
+    gradeLevel: "高校1年生 〜 高校3年生",
     pdfPath: "/prints/simple-harmonic-motion-energy-conservation.pdf",
+    pageCount: 4,
     publishedAt: "2026-05-15",
+    kind: "free",
     tags: ["力学", "単振動", "エネルギー保存", "ばね", "高校物理"],
     problemSetup: [
       {
@@ -390,8 +433,11 @@ export const prints: Print[] = [
     topic: "弾性力・復元力",
     difficulty: "基礎",
     points: 20,
+    gradeLevel: "高校1年生 〜 高校2年生",
     pdfPath: "/prints/elastic-force-and-restoring-motion.pdf",
+    pageCount: 3,
     publishedAt: "2026-05-15",
+    kind: "free",
     tags: ["力学", "弾性力", "フックの法則", "復元力", "高校物理"],
     problemSetup: [
       {

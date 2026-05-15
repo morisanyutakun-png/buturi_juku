@@ -12,6 +12,14 @@ type BuildMetadataInput = {
   modifiedTime?: string;
   keywords?: readonly string[];
   category?: string;
+  /**
+   * OGP / Twitter Card で使う画像 URL（絶対 or サイト相対）。
+   * 通常は `src/app/opengraph-image.tsx` による自動生成に任せるが、
+   * プリント詳細などページ単位で固有のサムネを出したい場合だけ指定する。
+   */
+  images?: readonly string[];
+  /** `images` 指定時の代替テキスト。 */
+  imageAlt?: string;
 };
 
 function uniqueKeywords(keywords: readonly string[]): string[] {
@@ -28,6 +36,8 @@ export function buildMetadata({
   modifiedTime,
   keywords = [],
   category,
+  images,
+  imageAlt,
 }: BuildMetadataInput): Metadata {
   const fullTitle = `${title} | ${siteConfig.name}`;
   const desc = description ?? siteConfig.description;
@@ -41,7 +51,16 @@ export function buildMetadata({
 
   // Note: og:image / twitter:image are auto-filled by Next.js from
   // src/app/opengraph-image.tsx (file-based convention). We deliberately
-  // omit `images` here so the dynamic image is used on every page.
+  // omit `images` here so the dynamic image is used on every page —
+  // EXCEPT when the caller passes `images`, in which case those override
+  // the dynamic OG（プリント詳細ページの 1 ページ目サムネなどに利用）。
+  const ogImages = images
+    ? images.map((url) => ({
+        url: absoluteUrl(url, siteConfig.url),
+        alt: imageAlt ?? fullTitle,
+      }))
+    : undefined;
+
   const openGraph: Metadata["openGraph"] =
     type === "article"
       ? {
@@ -53,6 +72,7 @@ export function buildMetadata({
           locale: siteConfig.locale,
           publishedTime,
           modifiedTime: modifiedTime ?? publishedTime,
+          images: ogImages,
         }
       : {
           type: "website",
@@ -61,6 +81,7 @@ export function buildMetadata({
           url: canonical,
           siteName: siteConfig.name,
           locale: siteConfig.locale,
+          images: ogImages,
         };
 
   return {
@@ -100,6 +121,7 @@ export function buildMetadata({
       description: desc,
       site: siteConfig.twitter,
       creator: siteConfig.twitter,
+      images: images?.map((url) => absoluteUrl(url, siteConfig.url)),
     },
   };
 }
