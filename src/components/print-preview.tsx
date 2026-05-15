@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Lock, Sparkles } from "lucide-react";
 import type { Print } from "@/data/prints";
-import { printPageImagePaths } from "@/data/prints";
+import { printPageImagePaths, PRINT_BLUR_DATA_URL } from "@/data/prints";
 
 type Props = {
   print: Print;
@@ -18,9 +18,12 @@ type Props = {
  *   それ以降のページにロックオーバーレイをかけ、note への購入導線に流す。
  *
  * 画像最適化:
- * - next/image による自動 responsive 配信。`sizes` で 1 カラムレイアウトを宣言。
- * - 最初の 1 ページのみ `priority`（LCP）。他は遅延読み込み。
+ * - ソースは WebP（PNG 比 60〜70% 減）。next/image で AVIF/WebP に再エンコード配信。
+ * - 1 ページ目だけ `priority`（LCP 候補）+ blur プレースホルダで CLS と "白い空白" を回避。
+ * - 他ページは next/image デフォルトの lazy load に任せる（viewport 接近で読み込み）。
+ * - `quality={80}` でファイル容量を抑制（文字・図ベースのプリントなら劣化感じにくい）。
  */
+
 export function PrintPreview({ print }: Props) {
   const pages = printPageImagePaths(print);
   const lockAfter =
@@ -58,7 +61,11 @@ export function PrintPreview({ print }: Props) {
                   width={1240}
                   height={1754}
                   sizes="(min-width: 768px) 720px, 100vw"
+                  quality={80}
                   priority={pageNum === 1}
+                  loading={pageNum === 1 ? undefined : "lazy"}
+                  placeholder={pageNum === 1 ? "blur" : undefined}
+                  blurDataURL={pageNum === 1 ? PRINT_BLUR_DATA_URL : undefined}
                   className={`relative z-0 h-auto w-full ${locked ? "blur-md scale-[1.02]" : ""}`}
                 />
                 <figcaption className="absolute bottom-2 right-3 z-[2] rounded-full bg-ink-900/85 px-2.5 py-0.5 font-mono text-[10px] tracking-[0.14em] text-paper">

@@ -5,7 +5,7 @@ import { Container } from "@/components/container";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { cn } from "@/lib/utils";
 import type { Print } from "@/data/prints";
-import { printThumbPath } from "@/data/prints";
+import { printThumbPath, PRINT_BLUR_DATA_URL } from "@/data/prints";
 
 type Props = {
   /** ヒーロー右側の浮遊カードに使う 1〜3 件の Print。 */
@@ -240,6 +240,8 @@ export function PrintsHero({ cards, total }: Props) {
                     alt=""
                     fill
                     sizes="150px"
+                    quality={65}
+                    loading="lazy"
                     className="object-cover object-top"
                   />
                 </div>
@@ -355,6 +357,11 @@ function FloatingPrintCard({
             alt={print.title}
             fill
             sizes="230px"
+            quality={70}
+            priority={index === 1}
+            loading={index === 1 ? undefined : "lazy"}
+            placeholder="blur"
+            blurDataURL={PRINT_BLUR_DATA_URL}
             className="object-cover object-top"
           />
           <span className="absolute left-2.5 top-2.5 inline-flex rounded-full bg-white/95 px-2 py-0.5 font-mono text-[9.5px] tracking-[0.18em] text-ink-700 shadow-soft">

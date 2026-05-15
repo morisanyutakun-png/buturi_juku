@@ -25,6 +25,7 @@ import {
   prints,
   printsBySubject,
   printThumbPath,
+  PRINT_BLUR_DATA_URL,
   type Print,
 } from "@/data/prints";
 
@@ -58,6 +59,23 @@ const subjectAccent: Record<string, string> = {
   原子: "text-ink-800",
 };
 
+const subjectChipTone: Record<string, string> = {
+  力学: "border-brand/35 bg-brand-bg/70 text-brand-deep hover:bg-brand-bg",
+  電磁気: "border-warm/40 bg-warm-bg/70 text-warm-deep hover:bg-warm-bg",
+  波動: "border-forest/35 bg-forest-bg/70 text-forest-deep hover:bg-forest-bg",
+  熱力学: "border-gold/40 bg-gold-soft/60 text-gold-deep hover:bg-gold-soft",
+  原子: "border-ink-900/15 bg-white/85 text-ink-800 hover:bg-white",
+};
+
+/** 単元名 → アンカー id（ASCII 化）。section の id とチップの href を一致させる。 */
+const subjectAnchor: Record<string, string> = {
+  力学: "subject-mechanics",
+  電磁気: "subject-electromagnetism",
+  波動: "subject-waves",
+  熱力学: "subject-thermodynamics",
+  原子: "subject-atomic",
+};
+
 const difficultyBadge: Record<string, string> = {
   基礎: "bg-forest-bg text-forest-deep border-forest/30",
   標準: "bg-brand-bg text-brand-deep border-brand/30",
@@ -79,7 +97,7 @@ function KindBadge({ p }: { p: Print }) {
   );
 }
 
-function PrintCard({ p }: { p: Print }) {
+function PrintCard({ p, eager = false }: { p: Print; eager?: boolean }) {
   return (
     <Link
       href={`/prints/${p.slug}`}
@@ -92,6 +110,10 @@ function PrintCard({ p }: { p: Print }) {
           alt={`${p.title}（${p.subject} / ${p.topic}）— 1 ページ目プレビュー`}
           fill
           sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+          quality={72}
+          loading={eager ? undefined : "lazy"}
+          placeholder="blur"
+          blurDataURL={PRINT_BLUR_DATA_URL}
           className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
         />
         <div
@@ -174,12 +196,39 @@ export default function PrintsIndexPage() {
     <>
       <PrintsHero cards={heroCards} total={total} />
 
+      {/* 単元アンカー — 着地直後のユーザーが「自分の単元」へ最短でジャンプできる導線。
+          横スクロール（モバイル）/ 折返し（PC）両対応。 */}
+      <div className="sticky top-16 sm:top-[68px] z-20 border-b border-ink-900/[0.06] bg-paper/85 backdrop-blur-md supports-[backdrop-filter]:bg-paper/70">
+        <Container className="py-3 sm:py-4">
+          <div className="flex items-center gap-3 overflow-x-auto sm:flex-wrap sm:overflow-visible">
+            <span className="hidden sm:inline-flex shrink-0 text-[10.5px] font-medium uppercase tracking-[0.24em] text-ink-500">
+              JUMP TO
+            </span>
+            {groups.map((group) => (
+              <Link
+                key={group.subject}
+                href={`#${subjectAnchor[group.subject] ?? group.subject}`}
+                className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-[12.5px] sm:text-[12px] font-medium tracking-[0.04em] backdrop-blur-sm transition ${
+                  subjectChipTone[group.subject] ?? subjectChipTone["原子"]
+                }`}
+              >
+                {group.subject}
+                <span className="font-mono text-[10px] opacity-70">
+                  {group.items.length}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </div>
+
       {/* 単元別 — Section の eyebrow / title でやや控えめなトーンに（H1 と差別化） */}
-      <div id="materials" className="scroll-mt-20" />
+      <div id="materials" className="scroll-mt-32" />
       {groups.map((group, gi) => (
         <section
           key={group.subject}
-          className={`relative py-12 sm:py-20 ${gi % 2 === 0 ? "bg-paper-soft" : "bg-paper"}`}
+          id={subjectAnchor[group.subject] ?? group.subject}
+          className={`relative scroll-mt-32 py-12 sm:py-20 ${gi % 2 === 0 ? "bg-paper-soft" : "bg-paper"}`}
         >
           <Container>
             <div className="mb-8 sm:mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -201,8 +250,9 @@ export default function PrintsIndexPage() {
             </div>
 
             <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {group.items.map((p) => (
-                <PrintCard key={p.slug} p={p} />
+              {group.items.map((p, ci) => (
+                // 最上段（最初のグループの最初のカード）だけ eager に。それ以降は lazy。
+                <PrintCard key={p.slug} p={p} eager={gi === 0 && ci === 0} />
               ))}
             </div>
           </Container>

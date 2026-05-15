@@ -145,6 +145,22 @@ export function Hero() {
                 <ArrowRight className="h-3.5 w-3.5 opacity-60" />
               </Link>
             </div>
+
+            {/* soft path CTA — まだ申込に踏み切れない検討初期ユーザー向け。
+                プリントは Web 全文公開なので「無料で価値を確認」できる入口になる。 */}
+            <p className="mt-4 sm:mt-5 text-[13px] sm:text-[13.5px] text-ink-600">
+              迷っている方はまず、
+              <Link
+                href="/prints"
+                className="group inline-flex items-baseline gap-1 font-medium text-warm-deep underline decoration-warm/40 decoration-2 underline-offset-[5px] transition hover:decoration-warm-deep hover:decoration-2"
+              >
+                演習プリントを試し読み
+                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
+                  →
+                </span>
+              </Link>
+              <span className="ml-1 text-ink-500">（Webで全文公開・申込不要）</span>
+            </p>
           </div>
 
           {/* RIGHT: REM print mockup — desktop only */}

@@ -2,9 +2,10 @@
  * 演習プリント アーカイブのデータ。
  *
  * - PDF は public/prints/<slug>.pdf に配置（一次ソース）
- * - PDF をページ画像に変換した PNG は public/prints/<slug>/page-N.png に配置
+ * - PDF をページ画像に変換した WebP は public/prints/<slug>/page-N.webp に配置
  *   （`scripts/build-print-previews.sh` で再生成可能）。詳細ページの
- *   Web プレビューはこの PNG を縦に並べて表示する。
+ *   Web プレビューはこの WebP を縦に並べて表示する。
+ *   - 旧 PNG ソースは WebP 化により撤去（PageSpeed の next-gen formats 指摘解消）。
  * - 各プリントの問題本文・解答解説 HTML はこのファイルが一次ソース
  *   → HTML として展開することで Google が中身を読めるようにし、
  *     SEO 上のロングテール（単元名 × 物理 × プリント / PDF）を拾う。
@@ -83,20 +84,28 @@ export type Print = {
 };
 
 /**
- * Web プレビュー用 PNG ページ画像のパスを返す。
- * 1-origin（先頭ページは page-1.png）。
+ * Web プレビュー用 WebP ページ画像のパスを返す。
+ * 1-origin（先頭ページは page-1.webp）。
  */
 export function printPageImagePaths(print: Print): string[] {
   return Array.from(
     { length: print.pageCount },
-    (_, i) => `/prints/${print.slug}/page-${i + 1}.png`,
+    (_, i) => `/prints/${print.slug}/page-${i + 1}.webp`,
   );
 }
 
-/** サムネイル（一覧カード・OG 画像など）として使う 1 ページ目の PNG パス。 */
+/** サムネイル（一覧カード・OG 画像など）として使う 1 ページ目の WebP パス。 */
 export function printThumbPath(print: Print): string {
-  return `/prints/${print.slug}/page-1.png`;
+  return `/prints/${print.slug}/page-1.webp`;
 }
+
+/**
+ * next/image の `blurDataURL` に渡す共通プレースホルダ。
+ * A4 比率（8x11）の単色 SVG を base64 化したもの。色は paper-soft（#faf4e3）。
+ * Image 配置先の bg-paper-soft と一致させ、読み込み中もチラつきを抑える。
+ */
+export const PRINT_BLUR_DATA_URL =
+  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDExIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmFmNGUzIi8+PC9zdmc+";
 
 export const prints: Print[] = [
   // ───────────────────────────────────────────────

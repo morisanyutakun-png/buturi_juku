@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import {
   ArrowRight,
   BookOpen,
+  FileText,
   GraduationCap,
   HelpCircle,
   Mail,
@@ -200,6 +201,15 @@ export default function MobileNavDrawer({ open, onClose }: Props) {
             >
               体験授業を申し込む
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/prints"
+              onClick={onClose}
+              className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-warm/35 bg-warm-bg/70 px-5 text-[14px] text-warm-deep transition hover:bg-warm-bg"
+            >
+              <FileText className="h-3.5 w-3.5 opacity-70" aria-hidden />
+              演習プリントを試し読み
+              <ArrowRight className="h-3.5 w-3.5 opacity-60" />
             </Link>
             <Link
               href="/online"
