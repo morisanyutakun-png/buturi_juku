@@ -197,6 +197,65 @@ body {
   @apply text-ink-900;
 }
 
+/* REM print body — 数式・分数を HTML だけで表示するための最小スタイル */
+.print-content {
+  @apply text-[16.5px] sm:text-[16px];
+}
+
+.print-content p {
+  @apply my-4 leading-[2] sm:leading-[1.9] text-ink-700;
+  letter-spacing: -0.002em;
+}
+
+.print-content strong {
+  @apply text-ink-900;
+}
+
+.print-content i {
+  font-family: "Times New Roman", "Hiragino Mincho ProN", serif;
+  font-style: italic;
+  letter-spacing: 0.005em;
+}
+
+/* 表示式（display equation）— センタリング、セリフ、少し大きめ */
+.print-eq {
+  @apply my-6 sm:my-7 text-center text-ink-900;
+  font-family: "Times New Roman", "Hiragino Mincho ProN", serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .print-eq {
+    font-size: 1.12rem;
+  }
+}
+
+.print-eq i {
+  font-style: italic;
+}
+
+/* 分数 — 縦積み（横棒つき） */
+.frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: -0.6em;
+  margin: 0 0.18em;
+  line-height: 1.05;
+  font-size: 0.95em;
+}
+
+.frac > .num {
+  border-bottom: 1px solid currentColor;
+  padding: 0 0.32em 0.04em;
+}
+
+.frac > .den {
+  padding: 0.05em 0.32em 0;
+}
+
 /* Hide scrollbar where appropriate */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

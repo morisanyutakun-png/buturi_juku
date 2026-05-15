@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site";
 import { visibleCourses } from "@/data/courses";
 import { articles } from "@/data/articles";
+import { prints } from "@/data/prints";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // lastModified は「ビルド時の現在日時」または siteConfig の手動設定値の
@@ -21,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/teacher`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/courses`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/articles`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/prints`, lastModified, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/faq`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/contact`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/trial`, lastModified, changeFrequency: "monthly", priority: 0.9 },
@@ -44,5 +46,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     }));
 
-  return [...staticPages, ...courseUrls, ...articleUrls];
+  const printUrls: MetadataRoute.Sitemap = prints.map((p) => ({
+    url: `${base}/prints/${p.slug}`,
+    lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(p.publishedAt),
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
+  return [...staticPages, ...courseUrls, ...articleUrls, ...printUrls];
 }
