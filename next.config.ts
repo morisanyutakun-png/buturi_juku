@@ -7,9 +7,11 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
   experimental: {
     optimizePackageImports: ["lucide-react", "clsx", "tailwind-merge"],
-    // Inline critical CSS, defer the rest. Saves the ~450ms render-blocking
-    // CSS request flagged by Lighthouse.
-    optimizeCss: true,
+    // optimizeCss（critters）は PSI デスクトップで "LHR failed to render"
+    // を引き起こすことが確認されたため無効化。critical CSS のインライン化で
+    // 生成される `<style>` がフルページ監査時の CSS 解析を壊し、LHR JSON が
+    // 不整合になっていた。Next.js の通常の CSS チャンク配信に戻す。
+    // optimizeCss: true,
   },
   images: {
     formats: ["image/avif", "image/webp"],

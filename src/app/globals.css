@@ -264,10 +264,14 @@ body {
   scrollbar-width: none;
 }
 
-/* Defer painting of below-the-fold sections — major TBT/INP win */
+/* Defer painting of below-the-fold sections — TBT/INP の改善目的。
+   注: `contain-intrinsic-size: 1px 800px` は要素が未描画の間 width を 1px と
+   して扱うため、Lighthouse のフルページ監査時にスクロールに伴い scrollHeight
+   が変動し、PSI デスクトップで "LHR failed to render" の原因になっていた。
+   `auto 800px` にして一度描画した実サイズを保持させ、高さの揺れを抑える。 */
 .cv-auto {
   content-visibility: auto;
-  contain-intrinsic-size: 1px 800px;
+  contain-intrinsic-size: auto 800px;
 }
 
 /* SVG electron orbits — CSS-driven so prefers-reduced-motion can pause them */

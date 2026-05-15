@@ -356,7 +356,9 @@ export default function HomePage() {
         <BookShowcase />
       </div>
 
-      {/* TEACHER */}
+      {/* TEACHER — cv-auto でオフスクリーン時の layout/paint をスキップ。
+          ポートレート + 4セル実績グリッド + 長文 + アイコンを含む重いセクション。 */}
+      <div className="cv-auto">
       <Section
         eyebrow="INSTRUCTOR"
         title="講師紹介"
@@ -416,14 +418,17 @@ export default function HomePage() {
           </div>
         </div>
       </Section>
+      </div>
 
       {/* COURSES — モバイルでは PricePreview と重複するため非表示。
-          デスクトップでは詳細カード（subtitle + summary + 価格 + duration）を見せる。 */}
+          デスクトップでは詳細カード（subtitle + summary + 価格 + duration）を見せる。
+          cv-auto でオフスクリーン時の layout/paint をスキップ（Lighthouse-Desktop 軽量化）。 */}
+      <div className="hidden cv-auto sm:block">
       <Section
         eyebrow="COURSES"
         title="主な講座"
         description="個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。"
-        className="hidden sm:block bg-paper-soft"
+        className="bg-paper-soft"
       >
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2">
           {featuredCourses.map((c) => {
@@ -481,6 +486,7 @@ export default function HomePage() {
           </Link>
         </div>
       </Section>
+      </div>
 
       {/* TESTIMONIALS — モバイルでも残す（指導モデルケースは信頼補強として軽量） */}
       <div className="cv-auto">
