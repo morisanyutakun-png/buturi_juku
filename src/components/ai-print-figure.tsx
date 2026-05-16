@@ -15,28 +15,28 @@ const steps = [
     n: "01",
     icon: ClipboardList,
     title: "解けなかった問題",
-    body: "授業中につまずいた1問を、講師（森祐太）がその場で記録します。",
+    body: "つまずいた 1 問を、講師がその場で記録。",
     tone: "warm",
   },
   {
     n: "02",
     icon: Lightbulb,
     title: "つまずきの分析",
-    body: "式が立てられないのか、計算で詰まるのか、原因を講師が言語化します。",
+    body: "立式・計算・概念、どこで詰まったかを言語化。",
     tone: "brand",
   },
   {
     n: "03",
     icon: FileText,
     title: "類題プリントを作成",
-    body: "AI（REM）が類題・解答・解説を下書きし、講師が確認のうえ復習PDFをお渡しします。",
+    body: "AI が類題＋解答＋解説を生成、講師確認のうえお渡し。",
     tone: "gold",
   },
   {
     n: "04",
     icon: Check,
     title: "次回授業で再確認",
-    body: "次の授業の冒頭で、同じつまずきが解消されたかを確認します。",
+    body: "同じつまずきが解消されたかを冒頭で確認。",
     tone: "brand",
   },
 ] as const;
@@ -64,8 +64,7 @@ export function AiPrintFigure() {
           AI復習プリントは、<br className="sm:hidden" />こう動きます。
         </h2>
         <p className="mt-3 sm:mt-5 max-w-2xl text-[13.5px] sm:text-[15px] leading-[1.85] text-ink-700">
-          解けなかった1問が、次回までに「次は解ける状態」になる仕組みです。
-          AI が出力した内容は、必ず講師が確認したうえでお渡しします。
+          解けなかった 1 問が、次回までに「次は解ける状態」になる仕組み。
         </p>
 
         <ol className="mt-7 sm:mt-12 grid gap-3 sm:gap-4 md:grid-cols-4">
@@ -107,7 +106,7 @@ export function AiPrintFigure() {
         </ol>
 
         <p className="mt-6 sm:mt-8 max-w-2xl text-[12px] sm:text-[12.5px] leading-[1.75] text-ink-500">
-          ※ AI/REM は教材作成を補助する道具です。授業は講師（森祐太）が行い、生成内容の最終確認も講師が行います。
+          ※ 授業は講師（森祐太）が担当。AI 生成内容は講師が最終確認のうえお渡しします。
         </p>
       </Container>
     </section>

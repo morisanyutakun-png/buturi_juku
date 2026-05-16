@@ -12,8 +12,8 @@ const intents = [
   {
     icon: FileText,
     keyword: "AI復習プリント 個別指導",
-    title: "解けなかった1問を、その子専用の復習プリントに変えてほしい",
-    body: "Solvora Learning Lab は、授業で解けなかった問題を、講師が確認したうえで AI（REM）と一緒に類題・解答・解説の復習PDFに整えます。AI が出力した内容は、必ず講師が見たうえでお渡しします。",
+    title: "解けなかった 1 問を、その子専用の復習プリントに",
+    body: "AI（REM）が類題・解答・解説の復習 PDF を生成、講師確認のうえお渡しします。",
     href: "/online",
     cta: "復習プリントの仕組みを見る",
   },
@@ -21,23 +21,23 @@ const intents = [
     icon: Target,
     keyword: "高校物理 個別指導 大学受験",
     title: "大学受験物理を、志望校から逆算して伸ばしたい",
-    body: "総合塾の進度に合わせるのではなく、志望校の出題傾向・残り期間・今の理解度から学習ルートを設計します。高校物理専門塾としての指導はそのまま継続しています。",
+    body: "出題傾向・残り期間・現状の理解度から学習ルートを設計します。",
     href: "/courses/electromagnetism",
     cta: "電磁気集中講座を見る",
   },
   {
     icon: MonitorCheck,
     keyword: "高校物理 オンライン 個別指導",
-    title: "通塾せず、オンラインで1対1の高校物理個別指導を受けたい",
-    body: "画面共有とライブ解説で、図の描き方・力の取り方・立式の順序を一緒になぞって進めます。授業内で作成した板書・解説は PDF/画像でお渡しし、当日のうちに復習に使えます。",
+    title: "通塾せず、オンラインで 1 対 1 指導を受けたい",
+    body: "画面共有とライブ解説で図の描き方・立式の順序を一緒になぞります。板書 PDF も即日お渡し。",
     href: "/online",
     cta: "オンライン指導の詳細を見る",
   },
   {
     icon: Waves,
     keyword: "力学 電磁気 苦手 克服",
-    title: "力学・電磁気など、高校物理の苦手分野だけを短期で立て直したい",
-    body: "失点原因を分野別に切り分け、力学の立式、電磁気の場のイメージなど、必要な単元に絞って補強します。修復された理解は、復習プリントで翌週まで持続します。",
+    title: "苦手分野だけを、短期で立て直したい",
+    body: "失点原因を分野別に切り分け、必要な単元に絞って補強。復習プリントで定着まで。",
     href: "/courses",
     cta: "分野別講座を見る",
   },
@@ -47,8 +47,7 @@ export function SeoIntentSection() {
   return (
     <Section
       eyebrow="SEARCH INTENT"
-      title={<>高校物理・理系個別指導の<br className="sm:hidden" />『悩み』に、すべて答えます。</>}
-      description="検索で探される悩みごとに、Solvora としての答えを整理しました。"
+      title={<>高校物理の『悩み』に、<br className="sm:hidden" />すべて答えます。</>}
       className="bg-paper-soft"
     >
       <div className="grid gap-3 sm:gap-5 md:grid-cols-2">

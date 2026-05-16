@@ -70,32 +70,16 @@ export function ManifestoBand() {
           に変える。
         </h2>
 
-        <div className="mt-8 grid gap-8 sm:mt-16 sm:gap-10 md:grid-cols-[1.4fr_1fr] md:items-end">
-          {/* モバイル：3 文に分割した簡潔版 */}
-          <ul className="max-w-2xl space-y-3 text-[14px] leading-[1.85] text-paper/85 sm:hidden">
-            <li>
-              <strong className="font-medium text-paper">Solvora Learning Lab</strong> は、公式の暗記ではなく <strong className="font-medium text-paper">現象を式に翻訳する技術</strong> を教えます。
-            </li>
-            <li>
-              解けなかった問題は、講師が原因を確認したうえで AI（REM）と整理し、復習プリントに変えます。
-            </li>
-            <li>
-              理解は才能ではなく学び方の問題。正しい順序で組み直せば、物理は着実に伸びていきます。
-            </li>
-          </ul>
-          <p className="hidden sm:block max-w-2xl text-[17px] leading-[1.95] text-paper/85">
-            <strong className="font-medium text-paper">Solvora Learning Lab</strong> は、
-            高校物理・理系個別指導として、<strong className="font-medium text-paper">公式の暗記</strong>ではなく、
-            <strong className="font-medium text-paper">現象を式に翻訳する技術</strong>を教えます。
-            授業で解けなかった問題は、講師が原因を確認したうえで AI（REM）と一緒に類題・解答・解説を整え、復習プリントに変える。
-            理解は才能ではなく、学び方の問題。正しい順序で組み直せば、物理は着実に伸びていきます。
+        <div className="mt-8 grid gap-8 sm:mt-14 sm:gap-10 md:grid-cols-[1.4fr_1fr] md:items-end">
+          <p className="max-w-2xl text-[14px] leading-[1.9] text-paper/85 sm:text-[16.5px] sm:leading-[1.95]">
+            公式の暗記ではなく、<strong className="font-medium text-paper">現象を式に翻訳する技術</strong>を教えます。理解は才能ではなく学び方の問題。正しい順序で組み直せば、物理は着実に伸びていきます。
           </p>
 
           <ol className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-paper/15 bg-paper/10">
             {[
               { k: "言語化", v: "現象を語る" },
               { k: "立式", v: "数式に翻訳" },
-              { k: "演習 + 復習", v: "型 + プリント" },
+              { k: "演習", v: "型を固める" },
             ].map((x, i) => (
               <li key={x.k} className="bg-ink-950/85 px-3 py-4 sm:px-4 sm:py-6 text-center">
                 <p className="font-mono text-[9px] sm:text-[10px] tracking-[0.22em] sm:tracking-[0.32em] text-gold/90">
@@ -111,9 +95,6 @@ export function ManifestoBand() {
             ))}
           </ol>
         </div>
-        <p className="mt-5 sm:mt-6 max-w-2xl text-[10.5px] sm:text-[12.5px] leading-[1.7] tracking-[0.04em] text-paper/55">
-          ※ 上の3ステップは Solvora式 つまずき修復メソッドのうち、ステップ3「授業で構造から理解」の中身です。
-        </p>
       </Container>
     </section>
   );

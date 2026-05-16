@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { HeroBackdrop } from "@/components/hero-backdrop";
 import { RemPrintCard } from "@/components/rem-print-card";
@@ -82,44 +82,11 @@ export function Hero() {
               </span>
             </h1>
 
-            {/* formula display — visual hook echoing the print */}
-            <div className="mt-5 sm:mt-7 inline-flex items-center gap-3 rounded-2xl border border-ink-900/[0.10] bg-white/85 px-4 py-3 shadow-soft backdrop-blur">
-              <span
-                className="font-serif italic text-[1.15rem] sm:text-[1.35rem] tracking-tight text-ink-900"
-                style={{ fontFamily: "'Times New Roman', serif" }}
-              >
-                F = −kx
-              </span>
-              <span className="hidden h-4 w-px bg-ink-900/15 sm:inline-block" />
-              <span className="text-[12px] sm:text-[13px] text-ink-700">
-                の意味から、解ける形へ。
-              </span>
-            </div>
-
-            <p className="mt-5 sm:mt-6 max-w-xl text-[13.5px] sm:text-[15.5px] leading-[1.85] sm:leading-[1.85] text-ink-700">
-              高校物理専門のオンライン個別指導。授業で詰まった問題を、
-              <strong className="font-medium text-ink-900">森祐太</strong>が原因分析し、
-              <strong className="font-medium text-ink-900">AI復習プリント</strong>で
-              次に解ける形へ整えます。
+            <p className="mt-6 sm:mt-7 max-w-xl text-[14px] sm:text-[16px] leading-[1.9] sm:leading-[1.85] text-ink-700">
+              高校物理専門のオンライン個別指導。詰まった 1 問を <strong className="font-medium text-ink-900">森祐太</strong> が原因分析し、AI 復習プリントで次に解ける形へ整えます。
             </p>
 
-            {/* checkmark bullets — atmosphere from the attached print LP */}
-            <ul className="mt-5 sm:mt-6 space-y-2 text-[13px] sm:text-[14px] text-ink-800">
-              {[
-                "つまずきの原因を、講師が言語化",
-                "類題 + 解答 + 解説を AI（REM）で生成",
-                "次回授業の冒頭で、再確認",
-              ].map((line) => (
-                <li key={line} className="flex items-start gap-2.5">
-                  <span className="mt-[3px] inline-flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-brand/10 ring-1 ring-brand/35">
-                    <Check className="h-3 w-3 text-brand-deep" strokeWidth={2.6} />
-                  </span>
-                  <span>{line}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
+            <div className="mt-7 sm:mt-9 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
               <Link
                 href="/contact?topic=trial#contact-form"
                 className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-4 text-[15px] sm:text-[14.5px] font-medium text-paper transition duration-300 ease-out min-h-[54px] sm:min-h-0"
@@ -146,20 +113,16 @@ export function Hero() {
               </Link>
             </div>
 
-            {/* soft path CTA — まだ申込に踏み切れない検討初期ユーザー向け。
-                プリントは Web 全文公開なので「無料で価値を確認」できる入口になる。 */}
-            <p className="mt-4 sm:mt-5 text-[13px] sm:text-[13.5px] text-ink-600">
-              迷っている方はまず、
+            {/* soft path CTA — 申込前にプリントで価値を確認できる入口 */}
+            <p className="mt-4 sm:mt-5 text-[12.5px] sm:text-[13px] text-ink-500">
+              まず触れてみたい方は{" "}
               <Link
                 href="/prints"
-                className="group inline-flex items-baseline gap-1 font-medium text-warm-deep underline decoration-warm/40 decoration-2 underline-offset-[5px] transition hover:decoration-warm-deep hover:decoration-2"
+                className="font-medium text-warm-deep underline decoration-warm/30 underline-offset-[5px] transition hover:decoration-warm-deep"
               >
-                演習プリントを試し読み
-                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
-                  →
-                </span>
+                演習プリント
               </Link>
-              <span className="ml-1 text-ink-500">（Webで全文公開・申込不要）</span>
+              （無料・申込不要）
             </p>
           </div>
 

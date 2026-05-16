@@ -12,16 +12,16 @@ import { Container } from "@/components/container";
  */
 const painPoints = [
   {
-    title: "公式は覚えたのに、初見問題で手が止まる",
-    body: "教科書の例題は解けるのに、模試になると『どの公式を使えばいいのか』判断できない。",
+    title: "公式は覚えたのに、初見で手が止まる",
+    body: "模試になると『どの公式を使うか』判断できない。",
   },
   {
     title: "どこから手をつければいいかわからない",
-    body: "苦手分野が複数あって、限られた時間でどれから直せばいいのか自分では決められない。",
+    body: "苦手分野が複数あって、優先順位がつかない。",
   },
   {
     title: "復習が雑になり、同じ問題を間違える",
-    body: "間違えた問題を解き直すだけで終わって、似た問題が出るとまた落とす。",
+    body: "似た問題が出るとまた落とす。",
   },
 ];
 
@@ -63,9 +63,6 @@ export function PainPointsSection() {
           ))}
         </ul>
 
-        <p className="mt-7 sm:mt-10 max-w-2xl text-[14px] sm:text-[15.5px] leading-[1.85] text-ink-700">
-          Solvora Learning Lab は、これらのつまずきを <strong className="font-medium text-ink-900">4 つのステップで修復</strong>します。
-        </p>
       </Container>
     </section>
   );

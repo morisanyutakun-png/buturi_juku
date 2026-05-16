@@ -5,11 +5,9 @@ import {
   Atom,
   BookMarked,
   Brain,
-  Compass,
   GraduationCap,
   Sparkles,
   Target,
-  Users,
 } from "lucide-react";
 import type { Metadata } from "next";
 import { Hero } from "@/components/hero";
@@ -31,7 +29,6 @@ import { JsonLdGraph } from "@/components/json-ld";
 import { SeoIntentSection } from "@/components/seo-intent-section";
 import { ManifestoBand } from "@/components/manifesto-band";
 import { ProofShowcase } from "@/components/proof-showcase";
-import { WhiteboardFlow } from "@/components/whiteboard-flow";
 import { PullQuote } from "@/components/pull-quote";
 import { PricePreview } from "@/components/price-preview";
 import { MiniFaq } from "@/components/mini-faq";
@@ -71,44 +68,26 @@ const features: {
   {
     icon: Atom,
     title: "物理だけを、深く",
-    description:
-      "総合塾ではなく物理専門塾。全5分野を体系的に、本質まで踏み込んだ授業で扱います。",
+    description: "総合塾ではなく物理専門。全 5 分野を本質まで踏み込んで扱う。",
     tone: "brand",
   },
   {
     icon: Brain,
     title: "暗記ではなく理解",
-    description:
-      "公式に当てはめる学習から卒業し、『なぜそう立式するのか』を語れる状態を目指します。",
+    description: "『なぜそう立式するか』を語れる状態へ。",
     tone: "warm",
   },
   {
     icon: Target,
     title: "志望校から逆算",
-    description:
-      "残り期間と出題傾向から、投資対効果の高い分野・単元に学習を集中させます。",
+    description: "残り期間と出題傾向から、投資対効果の高い単元に集中。",
     tone: "forest",
   },
   {
-    icon: Users,
-    title: "完全1対1指導",
-    description:
-      "あなたの思考のクセと分野別の苦手に、ピンポイントで介入します。森祐太が一貫して担当します。",
-    tone: "brand",
-  },
-  {
     icon: BookMarked,
-    title: "高校物理 全分野の書籍執筆",
-    description:
-      "力学・電磁気・熱・波動・原子、および高校物理I／II を自ら執筆。授業はこの自作教材を軸に、全分野を一貫した視座で組み立てます。",
+    title: "全分野を自ら執筆",
+    description: "力学・電磁気・熱・波動・原子の 6 冊を執筆、授業の軸に。",
     tone: "gold",
-  },
-  {
-    icon: Compass,
-    title: "オンラインで全国対応",
-    description:
-      "双方向のライブ授業。地方在住・海外在住の受験生もそのまま受講できます。",
-    tone: "warm",
   },
 ];
 
@@ -116,54 +95,54 @@ const teachingSteps = [
   {
     step: "01",
     label: "言語化",
-    title: "現象を、自分の言葉で説明できるようにする",
-    body: "公式の前に、何が起きているかを日本語で語れるか。図と矢印で現象を捉える訓練からはじめます。",
+    title: "現象を、自分の言葉で説明する",
+    body: "公式の前に、何が起きているかを語れる状態へ。",
     accent: "text-brand-deep",
   },
   {
     step: "02",
     label: "立式",
     title: "言語化したものを、数式に翻訳する",
-    body: "系の選び方、座標の取り方、力の列挙、立式。この順序を機械的になぞれる状態を作ります。",
+    body: "系・座標・力の列挙・立式。この順序を機械的になぞれるように。",
     accent: "text-warm-deep",
   },
   {
     step: "03",
     label: "演習",
     title: "立式の型を、実戦で固める",
-    body: "標準問題で型を固め、過去問で志望校の出題傾向に合わせて磨き込みます。",
+    body: "標準問題で型を固め、過去問で志望校の傾向に磨き込む。",
     accent: "text-forest-deep",
   },
 ];
 
 const subjects = [
-  { name: "力学", kana: "りきがく", description: "運動方程式・保存則・円運動・単振動・剛体", accent: "text-brand-deep" },
-  { name: "電磁気", kana: "でんじき", description: "電場・電位・磁場・電磁誘導・交流回路", accent: "text-warm-deep" },
-  { name: "波動", kana: "はどう", description: "波の基本式・干渉・屈折・ドップラー・光の現象", accent: "text-forest-deep" },
-  { name: "熱力学", kana: "ねつりきがく", description: "気体の状態方程式・熱力学第一法則・熱機関", accent: "text-gold-deep" },
-  { name: "原子", kana: "げんし", description: "光電効果・原子モデル・原子核・素粒子の基礎", accent: "text-brand-deep" },
+  { name: "力学", description: "運動方程式・保存則・円運動・単振動・剛体", accent: "text-brand-deep" },
+  { name: "電磁気", description: "電場・電位・磁場・電磁誘導・交流回路", accent: "text-warm-deep" },
+  { name: "波動", description: "波の基本式・干渉・屈折・ドップラー", accent: "text-forest-deep" },
+  { name: "熱力学", description: "状態方程式・熱力学第一法則・熱機関", accent: "text-gold-deep" },
+  { name: "原子", description: "光電効果・原子モデル・原子核", accent: "text-brand-deep" },
 ];
 
 const flow = [
   {
     step: "01",
     title: "体験授業のお申し込み（¥3,000）",
-    description: "Webフォームから3分でお申し込みいただけます。送信時に Stripe 決済を経由します（決済完了で体験申し込みが確定）。",
+    description: "Web フォームから 3 分。送信時に Stripe 決済で確定します。",
   },
   {
     step: "02",
-    title: "体験授業（60分）+ 学習方針の提案",
-    description: "授業前日までに難易度を合わせた演習プリントを事前送付。当日は 苦手調査 → 事前プリントで授業 → 質疑応答 → 学習方針の提案までを、講師（森祐太）が直接担当します。",
+    title: "体験授業（60 分）＋ 学習方針の提案",
+    description: "事前プリントを送付。当日は苦手調査 → 授業 → 学習方針の提案まで森祐太が担当。",
   },
   {
     step: "03",
-    title: "各講座のお申し込み（支払いフォームで入金）",
-    description: "受講したい講座が決まったら、お送りする支払いフォームでご入金いただきます。入金確認をもって、その講座の申し込み完了となります（体験当日に決める必要はありません）。",
+    title: "各講座のお申し込み",
+    description: "受講したい講座が決まったら、支払いフォームでご入金。当日決める必要はありません。",
   },
   {
     step: "04",
-    title: "日程調整 → ご都合の日に受講開始",
-    description: "申し込み完了後、ご都合に合わせて授業の日程を組みます。受講開始後は毎週の授業で理解度を確認しながら、解けなかった1問は AI（REM）で復習プリント化し最後まで伴走します。",
+    title: "日程調整 → 受講開始",
+    description: "ご都合に合わせて日程を組み、毎週の授業 + AI 復習プリントで伴走します。",
   },
 ];
 
@@ -228,9 +207,6 @@ export default function HomePage() {
         {/* PROOF — giant numbers showcase（実績の詳細） */}
         <ProofShowcase />
 
-        {/* WHITEBOARD — 4 ステップ円環フロー（解決策の詳細版） */}
-        <WhiteboardFlow />
-
         {/* FOR EVERYONE */}
         <ForEveryoneSection />
 
@@ -242,8 +218,7 @@ export default function HomePage() {
       {/* SUBJECTS */}
       <Section
         eyebrow="SUBJECTS"
-        title="高校物理の全分野を、構造から体系的に"
-        description="Solvora Learning Lab の高校物理指導は、単元ごとに分断して教えるのではなく、分野をまたぐ共通構造から組み立てます。力学・電磁気・波動・熱力学・原子の5分野を、1人の専門講師が一貫して扱います（高校物理専門塾としての指導継続）。"
+        title="高校物理 全 5 分野を、一貫した視座で"
         className="bg-paper-soft"
       >
         <div className="grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-5">
@@ -256,9 +231,6 @@ export default function HomePage() {
                 0{i + 1}
               </span>
               <h3 className={`mt-3 sm:mt-5 font-serif text-[1.4rem] sm:text-[1.6rem] tracking-[-0.012em] ${s.accent}`}>{s.name}</h3>
-              <p className="mt-1.5 sm:mt-2 text-[10px] sm:text-[10px] tracking-[0.16em] sm:tracking-[0.22em] uppercase text-ink-500">
-                {s.kana}
-              </p>
               <p className="mt-3 sm:mt-5 text-[12.5px] sm:text-[12.5px] leading-[1.75] sm:leading-[1.75] text-ink-600">
                 {s.description}
               </p>
@@ -276,11 +248,10 @@ export default function HomePage() {
       {/* FEATURES */}
       <Section
         eyebrow="WHY SOLVORA"
-        title={<>Solvora Learning Lab を選ぶ、<br className="sm:hidden" />6つの理由。</>}
-        description="高校物理を伸ばす近道は、高校物理を深く教える環境にいることです。総合塾では実現しにくい、AI復習プリント付き高校物理専門塾としての価値をお伝えします。"
+        title="物理専門 × AI 復習プリント、4 つの軸。"
         className="bg-paper"
       >
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {features.map((f) => (
             <FeatureCard key={f.title} {...f} />
           ))}
@@ -294,7 +265,7 @@ export default function HomePage() {
       <Section
         eyebrow="TEACHING METHOD"
         title={<>授業は、<br className="sm:hidden" />言語化 → 立式 → 演習。</>}
-        description="どの分野・どのレベルでも、授業の組み立てはこの3ステップで一貫しています。問題を解く前に、現象が自分の言葉で語れるか。語れたら、機械的に立式できるか。立式できたら、実戦の型が固まっているか。"
+        description="どの分野でも、授業の組み立てはこの 3 ステップで一貫します。"
         className="bg-paper"
       >
         <div className="grid gap-5 md:grid-cols-3">
@@ -321,22 +292,19 @@ export default function HomePage() {
           ))}
         </div>
 
-        <div className="mt-10 rounded-3xl border border-ink-900/[0.07] bg-paper-soft/70 p-7 sm:p-8">
-          <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <div className="mt-10 rounded-3xl border border-ink-900/[0.07] bg-paper-soft/70 p-6 sm:p-8">
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-[11px] sm:text-[10px] font-medium tracking-[0.28em] sm:tracking-[0.32em] uppercase text-warm-deep">
+              <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-warm-deep">
                 TRIAL FORMAT
               </p>
-              <p className="mt-4 sm:mt-3 font-serif text-[1.25rem] sm:text-[1.15rem] leading-[1.6] sm:leading-snug tracking-[-0.008em] text-ink-900">
-                授業前日までに、難易度を合わせた演習プリントを事前送付します。
-              </p>
-              <p className="mt-3 sm:mt-2 text-[14.5px] sm:text-[13px] leading-[2] sm:leading-[1.8] text-ink-600">
-                当日は冒頭10分で苦手の輪郭を確認し、事前にお送りしたプリントを教材に『言語化 → 立式 → 演習』を実際に体験できます。本講座移行後は毎週カスタマイズされていきます。
+              <p className="mt-3 font-serif text-[1.1rem] sm:text-[1.15rem] leading-snug tracking-[-0.008em] text-ink-900">
+                体験授業では、事前送付したプリントで『言語化 → 立式 → 演習』を 60 分で実体験。
               </p>
             </div>
             <Link
               href="/trial"
-              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/80 px-5 py-3.5 sm:py-3 text-[14px] sm:text-[13px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white min-h-[48px] sm:min-h-0"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/80 px-5 py-3 text-[13px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
             >
               体験授業の流れを見る
               <ArrowRight className="h-3.5 w-3.5 opacity-60" />
@@ -362,7 +330,6 @@ export default function HomePage() {
       <Section
         eyebrow="INSTRUCTOR"
         title="講師紹介"
-        description="書籍を手がけた主宰講師が、体験授業からカリキュラム設計・授業まですべてを担当します。"
         className="bg-paper"
       >
         <div className="grid gap-7 rounded-2xl sm:rounded-[2rem] border border-ink-900/[0.07] bg-white/85 p-5 shadow-card backdrop-blur-sm sm:gap-10 sm:p-10 md:grid-cols-[1fr_1.4fr] md:gap-12 md:p-16">
@@ -427,7 +394,6 @@ export default function HomePage() {
       <Section
         eyebrow="COURSES"
         title="主な講座"
-        description="個別指導を軸に、志望校や目的に合わせた集中講座をご用意しています。"
         className="bg-paper-soft"
       >
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2">
@@ -503,7 +469,6 @@ export default function HomePage() {
         <Section
           eyebrow="HOW IT WORKS"
           title="受講の流れ"
-          description="お申し込みから受講開始までの流れはシンプルです。"
           className="bg-paper-soft"
         >
           <ol className="grid gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -542,7 +507,6 @@ export default function HomePage() {
       <Section
         eyebrow="INSIGHTS"
         title="物理学習コラム"
-        description="物理の学び方・分野別の躓き方・受験戦略について、現場から発信します。"
         className="bg-paper"
       >
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
