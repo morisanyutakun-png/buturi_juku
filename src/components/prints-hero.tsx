@@ -1,9 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BookOpen, Download, Sparkles, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/container";
 import { Breadcrumb } from "@/components/breadcrumb";
-import { cn } from "@/lib/utils";
 import type { Print } from "@/data/prints";
 import { printThumbPath, PRINT_BLUR_DATA_URL } from "@/data/prints";
 
@@ -47,72 +45,24 @@ export function PrintsHero({ cards, total }: Props) {
         }}
       />
 
-      {/* organic color blobs — 参考画像のオーロラ感を、サイト配色（warm/brand/gold）で再現 */}
+      {/* organic color blobs — 控えめな 2 つだけ */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-[8%] top-[6%] h-[55%] w-[55%] rounded-full opacity-70"
+        className="pointer-events-none absolute -left-[8%] top-[6%] h-[50%] w-[50%] rounded-full opacity-55"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(155,188,255,0.7), transparent 70%)",
-          filter: "blur(72px)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-[2%] top-[4%] h-[55%] w-[48%] rounded-full opacity-75"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(243,228,182,0.85), transparent 70%)",
-          filter: "blur(86px)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-[28%] bottom-[2%] h-[45%] w-[45%] rounded-full opacity-65"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(251,221,196,0.75), transparent 70%)",
-          filter: "blur(96px)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-[28%] bottom-[12%] h-[28%] w-[28%] rounded-full opacity-55"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(199,166,243,0.55), transparent 70%)",
+            "radial-gradient(closest-side, rgba(155,188,255,0.55), transparent 70%)",
           filter: "blur(80px)",
         }}
       />
-
-      {/* small decorative spheres */}
-      <DecorativeSphere className="left-[7%] top-[14%] h-7 w-7" />
-      <DecorativeSphere className="left-[46%] bottom-[12%] h-4 w-4" />
-      <DecorativeSphere className="right-[8%] bottom-[18%] h-9 w-9" />
-      <DecorativeSphere className="right-[42%] top-[10%] hidden h-3.5 w-3.5 sm:block" />
-
-      {/* floating formula chips — 参考画像の「公式が並ぶ」感をサイト配色で再現。
-          カード本体（z=10〜30）の "上" に z=40 で重ね、紙束に挟まった付箋のように見せる。 */}
-      <FormulaChip
-        className="hidden xl:flex right-[5%] top-[10%]"
-        rotate={-5}
-        index="01"
-        topic="Electromagnetism"
-        formula={<><span className="italic">F</span> = q<span className="italic">v</span> × <span className="italic">B</span></>}
-      />
-      <FormulaChip
-        className="hidden xl:flex right-[34%] top-[4%]"
-        rotate={4}
-        index="07"
-        topic="Mechanics"
-        formula={<><span className="italic">T</span> = 2π√(<span className="italic">L/g</span>)</>}
-      />
-      <FormulaChip
-        className="hidden xl:flex right-[6%] bottom-[10%]"
-        rotate={6}
-        index="12"
-        topic="Waves"
-        formula={<><span className="italic">v</span> = <span className="italic">f</span>λ</>}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[2%] top-[4%] h-[50%] w-[45%] rounded-full opacity-60"
+        style={{
+          background:
+            "radial-gradient(closest-side, rgba(243,228,182,0.7), transparent 70%)",
+          filter: "blur(90px)",
+        }}
       />
 
       <Container className="relative pt-6 sm:pt-10">
@@ -124,12 +74,12 @@ export function PrintsHero({ cards, total }: Props) {
         />
       </Container>
 
-      <Container className="relative pb-14 pt-8 sm:pb-20 sm:pt-12 lg:pb-24 lg:pt-16">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+      <Container className="relative pb-12 pt-6 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-12">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           {/* LEFT — glassmorphism panel */}
           <div className="relative">
             <div
-              className="relative overflow-hidden rounded-[1.75rem] border border-white/55 p-7 sm:p-10 shadow-card"
+              className="relative overflow-hidden rounded-[1.5rem] border border-white/55 p-7 sm:p-9 shadow-card"
               style={{
                 background:
                   "linear-gradient(140deg, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.28) 100%)",
@@ -137,54 +87,31 @@ export function PrintsHero({ cards, total }: Props) {
                 WebkitBackdropFilter: "blur(24px) saturate(140%)",
               }}
             >
-              {/* inner highlight ring（ガラスのエッジ感） */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 rounded-[1.75rem] ring-1 ring-inset ring-white/60"
+                className="pointer-events-none absolute inset-0 rounded-[1.5rem] ring-1 ring-inset ring-white/60"
               />
 
-              <p className="relative flex flex-wrap items-center gap-x-2 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.24em] sm:tracking-[0.3em] text-warm-deep before:inline-block before:h-px before:w-5 before:bg-current before:opacity-50">
-                MATERIALS — 演習プリント アーカイブ
+              <p className="relative text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.26em] sm:tracking-[0.3em] text-warm-deep">
+                演習プリント
               </p>
 
-              {/* H1 — 「読む。解く。理解する。」の3動詞構成。
-                  参考画像 "Study. Understand. Master." の縦リズムを和訳。
-                  各行は単独で短く、viewport が狭くても "、" 単独行が生まれない。 */}
               <h1
-                className="relative mt-5 sm:mt-7 font-serif text-[2.6rem] sm:text-[3.2rem] lg:text-[3.6rem] leading-[1.05] tracking-[-0.022em] text-ink-900"
+                className="relative mt-4 sm:mt-5 font-serif text-[2.4rem] sm:text-[2.9rem] lg:text-[3.2rem] leading-[1.1] tracking-[-0.022em] text-ink-900"
                 style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}
               >
-                <span className="block">読む。</span>
-                <span className="block">解く。</span>
-                <span className="block text-warm-deep">理解する。</span>
+                Web で読める、<br />
+                <span className="text-warm-deep">高校物理 演習集。</span>
               </h1>
 
-              <div className="relative mt-6 sm:mt-8 flex items-center gap-3" aria-hidden>
-                <span className="h-px w-10 sm:w-12 bg-ink-900/20" />
-                <span className="h-1.5 w-1.5 rounded-full bg-warm" />
-                <span className="h-px w-24 sm:w-32 bg-gradient-to-r from-warm/55 via-brand/30 to-transparent" />
-              </div>
-
               <p
-                className="relative mt-5 sm:mt-6 text-[14.5px] sm:text-[15.5px] leading-[1.9] text-ink-700"
+                className="relative mt-5 sm:mt-6 text-[14px] sm:text-[15px] leading-[1.9] text-ink-700"
                 style={{ lineBreak: "strict", wordBreak: "normal", overflowWrap: "anywhere" }}
               >
-                高校物理の典型問題を Web でそのまま読める、演習プリントのアーカイブです。印刷向け PDF も配布可。
-              </p>
-              <p
-                className="relative mt-3 text-[13.5px] sm:text-[14.5px] leading-[1.9] text-ink-600"
-                style={{ lineBreak: "strict", wordBreak: "normal", overflowWrap: "anywhere" }}
-              >
-                森祐太の物理専門塾が授業で使う REM 製プリントを、単元別に順次公開しています。
+                典型問題を、PDF と Web プレビューのセットで公開しています。授業・自習・直前演習にそのまま使えます。
               </p>
 
-              <ul className="relative mt-6 sm:mt-7 flex flex-wrap gap-2 sm:gap-2.5">
-                <Chip icon={BookOpen} tone="warm">Web で読める</Chip>
-                <Chip icon={Download} tone="brand">PDF も配布可</Chip>
-                <Chip icon={Sparkles} tone="forest">問題＋解答解説</Chip>
-              </ul>
-
-              <div className="relative mt-7 sm:mt-8 flex items-end justify-between gap-3">
+              <div className="relative mt-6 sm:mt-7 flex items-end justify-between gap-3">
                 <p className="font-mono text-[11px] tracking-[0.18em] text-ink-500">
                   全 {total} 教材 / 順次追加
                 </p>
@@ -251,75 +178,6 @@ export function PrintsHero({ cards, total }: Props) {
         </div>
       </Container>
     </section>
-  );
-}
-
-function Chip({
-  icon: Icon,
-  tone,
-  children,
-}: {
-  icon: LucideIcon;
-  tone: "warm" | "brand" | "forest";
-  children: React.ReactNode;
-}) {
-  const tones = {
-    warm: "text-warm-deep",
-    brand: "text-brand-deep",
-    forest: "text-forest-deep",
-  };
-  return (
-    <li className="inline-flex items-center gap-1.5 rounded-full border border-white/65 bg-white/65 px-3 py-1.5 text-[12px] sm:text-[12.5px] text-ink-800 backdrop-blur-sm">
-      <Icon className={cn("h-3 w-3", tones[tone])} aria-hidden strokeWidth={1.8} />
-      {children}
-    </li>
-  );
-}
-
-function FormulaChip({
-  className,
-  rotate,
-  index,
-  topic,
-  formula,
-}: {
-  className?: string;
-  rotate: number;
-  index: string;
-  topic: string;
-  formula: React.ReactNode;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={cn(
-        "pointer-events-none absolute z-40 flex-col gap-1 rounded-xl border border-white/65 bg-white/75 px-3 py-2 shadow-soft backdrop-blur-md",
-        className,
-      )}
-      style={{ transform: `rotate(${rotate}deg)` }}
-    >
-      <div className="flex items-center gap-2">
-        <span className="font-mono text-[9.5px] tracking-[0.18em] text-ink-500">{index}</span>
-        <span className="text-[9.5px] tracking-[0.18em] uppercase text-warm-deep">{topic}</span>
-      </div>
-      <p className="font-serif text-[13px] leading-none text-ink-800">{formula}</p>
-    </div>
-  );
-}
-
-function DecorativeSphere({ className }: { className?: string }) {
-  return (
-    <span
-      aria-hidden
-      className={cn(
-        "pointer-events-none absolute rounded-full bg-gradient-to-br from-white/95 via-white/70 to-white/30",
-        className,
-      )}
-      style={{
-        boxShadow:
-          "0 4px 16px rgba(10,21,40,0.06), inset 0 1px 2px rgba(255,255,255,0.9), inset 0 -3px 6px rgba(155,188,255,0.18)",
-      }}
-    />
   );
 }
 

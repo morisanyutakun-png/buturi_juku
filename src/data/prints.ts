@@ -109,6 +109,351 @@ export const PRINT_BLUR_DATA_URL =
 
 export const prints: Print[] = [
   // ───────────────────────────────────────────────
+  // 0. 力学 / 運動量 - 完全非弾性衝突
+  // ───────────────────────────────────────────────
+  {
+    slug: "perfectly-inelastic-collision-energy-loss",
+    title: "完全非弾性衝突｜運動量保存と失われる運動エネルギー",
+    description:
+      "なめらかな水平面上で 2 物体が一体化する完全非弾性衝突の典型問題。運動量保存則から共通速さを導き、失われる運動エネルギーを相対速度の 2 乗に整理する。問題本文・段階解説・印刷向け PDF を無料公開。",
+    lead: "衝突の前後で外力による力積が無視できるとき、運動量は保存されます。一方、運動エネルギーは保存されず、その失われる量は相対速度の 2 乗のみに依存する形へ整理できます。",
+    subject: "力学",
+    topic: "運動量保存・非弾性衝突",
+    difficulty: "標準",
+    points: 20,
+    gradeLevel: "高校2年生 〜 高校3年生",
+    pdfPath: "/prints/perfectly-inelastic-collision-energy-loss.pdf",
+    pageCount: 4,
+    publishedAt: "2026-05-16",
+    kind: "free",
+    tags: ["力学", "運動量保存", "非弾性衝突", "相対速度", "高校物理"],
+    problemSetup: [
+      {
+        kind: "p",
+        html: "なめらかな水平面上を、質量 <i>m</i><sub>1</sub> の物体 A と質量 <i>m</i><sub>2</sub> の物体 B が同一直線上を運動している。物体 A は速さ <i>v</i><sub>1</sub>、物体 B は速さ <i>v</i><sub>2</sub> で同じ向きに進んでおり、<i>v</i><sub>1</sub> &gt; <i>v</i><sub>2</sub> とする。A が B に追いついて衝突した後、2 つの物体は一体となって速さ <i>V</i> で運動した。",
+      },
+      {
+        kind: "p",
+        html: "水平面からの摩擦は無視でき、衝突の前後で水平方向の外力による力積は無視できるものとする。",
+      },
+    ],
+    problemQuestions: [
+      "衝突後に一体となって進む速さ <i>V</i> を、<i>m</i><sub>1</sub>, <i>m</i><sub>2</sub>, <i>v</i><sub>1</sub>, <i>v</i><sub>2</sub> を用いて表せ。",
+      "衝突前の運動エネルギーを <i>K</i><sub>before</sub>、衝突後の運動エネルギーを <i>K</i><sub>after</sub> とする。失われた運動エネルギー Δ<i>K</i> = <i>K</i><sub>before</sub> &minus; <i>K</i><sub>after</sub> を、<i>m</i><sub>1</sub>, <i>m</i><sub>2</sub>, <i>v</i><sub>1</sub>, <i>v</i><sub>2</sub> を用いて表せ。",
+      "Δ<i>K</i> が <i>v</i><sub>1</sub> &minus; <i>v</i><sub>2</sub> のみに依存する形で表されることの物理的意味を説明せよ。",
+    ],
+    solution: [
+      {
+        id: "q1-common-velocity",
+        heading: "(1) 衝突後の共通の速さ V",
+        blocks: [
+          {
+            kind: "p",
+            html: "水平方向には外力による力積が無視できるので、衝突の前後で運動量が保存される。衝突前の全運動量は <i>m</i><sub>1</sub><i>v</i><sub>1</sub> + <i>m</i><sub>2</sub><i>v</i><sub>2</sub>、衝突後は (<i>m</i><sub>1</sub> + <i>m</i><sub>2</sub>)<i>V</i>。",
+          },
+          {
+            kind: "eq",
+            html: "<i>m</i><sub>1</sub><i>v</i><sub>1</sub> + <i>m</i><sub>2</sub><i>v</i><sub>2</sub> = (<i>m</i><sub>1</sub> + <i>m</i><sub>2</sub>)<i>V</i>",
+          },
+          {
+            kind: "eq",
+            html: "<i>V</i> = <span class=\"frac\"><span class=\"num\"><i>m</i><sub>1</sub><i>v</i><sub>1</sub> + <i>m</i><sub>2</sub><i>v</i><sub>2</sub></span><span class=\"den\"><i>m</i><sub>1</sub> + <i>m</i><sub>2</sub></span></span>",
+          },
+          {
+            kind: "p",
+            html: "これは、衝突後の速さが <strong>2 物体の速さを質量で重みづけした平均</strong>になっていることを表す。",
+          },
+        ],
+      },
+      {
+        id: "q2-energy-loss",
+        heading: "(2) 失われた運動エネルギー ΔK",
+        blocks: [
+          { kind: "p", html: "衝突前後の運動エネルギーは" },
+          {
+            kind: "eq",
+            html: "<i>K</i><sub>before</sub> = (1/2)<i>m</i><sub>1</sub><i>v</i><sub>1</sub><sup>2</sup> + (1/2)<i>m</i><sub>2</sub><i>v</i><sub>2</sub><sup>2</sup>",
+          },
+          {
+            kind: "eq",
+            html: "<i>K</i><sub>after</sub> = (1/2)(<i>m</i><sub>1</sub> + <i>m</i><sub>2</sub>)<i>V</i><sup>2</sup> = <span class=\"frac\"><span class=\"num\">(<i>m</i><sub>1</sub><i>v</i><sub>1</sub> + <i>m</i><sub>2</sub><i>v</i><sub>2</sub>)<sup>2</sup></span><span class=\"den\">2(<i>m</i><sub>1</sub> + <i>m</i><sub>2</sub>)</span></span>",
+          },
+          {
+            kind: "p",
+            html: "差を取り、分子を展開・整理すると、",
+          },
+          {
+            kind: "eq",
+            html: "Δ<i>K</i> = <span class=\"frac\"><span class=\"num\"><i>m</i><sub>1</sub><i>m</i><sub>2</sub></span><span class=\"den\">2(<i>m</i><sub>1</sub> + <i>m</i><sub>2</sub>)</span></span> (<i>v</i><sub>1</sub> &minus; <i>v</i><sub>2</sub>)<sup>2</sup>",
+          },
+        ],
+      },
+      {
+        id: "q3-meaning",
+        heading: "(3) 物理的意味",
+        blocks: [
+          {
+            kind: "p",
+            html: "Δ<i>K</i> は <strong>相対速度 <i>v</i><sub>1</sub> &minus; <i>v</i><sub>2</sub> の 2 乗</strong> のみに依存する。同じ速さで動いている場合 (<i>v</i><sub>1</sub> = <i>v</i><sub>2</sub>) は追突自体が起きず Δ<i>K</i> = 0、相対速度が大きいほど多くのエネルギーが熱・音・変形などに移る。",
+          },
+          {
+            kind: "p",
+            html: "完全非弾性衝突では <strong>運動量は保存されるが、運動エネルギーは一般には保存されない</strong>。失われるのは『重心系から見た相対運動』のぶんのエネルギーである。",
+          },
+        ],
+      },
+    ],
+    pointNote: [
+      {
+        kind: "callout",
+        label: "ポイント",
+        html: "衝突問題は『運動量は保存、運動エネルギーは保存とは限らない』が基本姿勢。失われる運動エネルギーは <strong>換算質量 <i>m</i><sub>1</sub><i>m</i><sub>2</sub>/(<i>m</i><sub>1</sub>+<i>m</i><sub>2</sub>) × (相対速度)<sup>2</sup>/2</strong> という形に必ず整理できる。",
+      },
+    ],
+    relatedArticleSlugs: ["mechanics-mastery-guide"],
+    relatedPrintSlugs: ["cart-spring-collision-energy-transfer"],
+  },
+
+  // ───────────────────────────────────────────────
+  // 0b. 力学 / 運動量 + 力学的エネルギー（応用）
+  // ───────────────────────────────────────────────
+  {
+    slug: "cart-spring-collision-energy-transfer",
+    title: "衝突と最大圧縮｜運動量保存とばねに蓄えられるエネルギー",
+    description:
+      "静止した台車に小物体が衝突して一体化し、その後ばねを最大圧縮する典型問題。運動量保存と力学的エネルギー保存を切り替え、最終的に『衝突前のエネルギーのうちばねに蓄えられる割合』を導く応用問題。",
+    lead: "衝突は短時間 → 運動量保存。衝突後はばねが押されるだけ → 力学的エネルギー保存。同じ系でも、フェーズによって保存則が切り替わります。",
+    subject: "力学",
+    topic: "運動量保存・力学的エネルギー保存",
+    difficulty: "応用",
+    points: 25,
+    gradeLevel: "高校2年生 〜 既卒生",
+    pdfPath: "/prints/cart-spring-collision-energy-transfer.pdf",
+    pageCount: 4,
+    publishedAt: "2026-05-16",
+    kind: "free",
+    tags: ["力学", "運動量保存", "エネルギー保存", "ばね", "高校物理"],
+    problemSetup: [
+      {
+        kind: "p",
+        html: "なめらかな水平面上に、質量 <i>M</i> の台車 A と質量 <i>m</i> の小物体 B がある。台車 A ははじめ静止しており、小物体 B は水平右向きに速さ <i>v</i> で進んでいる。小物体 B は台車 A に衝突し、その後、台車 A と一体となって運動する。",
+      },
+      {
+        kind: "p",
+        html: "その後、一体となった物体は、水平面上に固定されたばね定数 <i>k</i> の軽いばねを縮め、最大圧縮時に一瞬静止した。水平面との摩擦、空気抵抗、ばねの質量は無視でき、衝突は十分短時間で起こるため衝突中の外力による力積は無視できるものとする。",
+      },
+    ],
+    problemQuestions: [
+      "衝突直後、台車 A と小物体 B が一体となって動く速さ <i>V</i> を、<i>m</i>, <i>M</i>, <i>v</i> を用いて表せ。",
+      "ばねが最大に縮んだときの縮み <i>x</i> を、<i>m</i>, <i>M</i>, <i>v</i>, <i>k</i> を用いて表せ。",
+      "はじめに小物体 B がもっていた運動エネルギーのうち、ばねの弾性エネルギーとして一時的に蓄えられる割合を求めよ。",
+      "<i>M</i> が <i>m</i> に比べて非常に大きい場合、ばねに蓄えられるエネルギーが小さくなる理由を、運動量保存の観点から説明せよ。",
+    ],
+    solution: [
+      {
+        id: "q1-velocity",
+        heading: "(1) 衝突直後の共通の速さ V",
+        blocks: [
+          {
+            kind: "p",
+            html: "衝突は短時間で、外力による力積は無視できる。よって水平方向の運動量が保存される。衝突前は B のみが運動しているので運動量は <i>mv</i>。衝突後は (<i>M</i> + <i>m</i>)<i>V</i>。",
+          },
+          {
+            kind: "eq",
+            html: "<i>V</i> = <span class=\"frac\"><span class=\"num\"><i>m</i></span><span class=\"den\"><i>M</i> + <i>m</i></span></span> <i>v</i>",
+          },
+        ],
+      },
+      {
+        id: "q2-compression",
+        heading: "(2) ばねの最大の縮み x",
+        blocks: [
+          {
+            kind: "p",
+            html: "衝突後はばね以外にエネルギーを失う要因がないので、力学的エネルギー保存則が使える。最大圧縮時には一瞬静止するので運動エネルギーは 0。",
+          },
+          {
+            kind: "eq",
+            html: "(1/2)(<i>M</i> + <i>m</i>)<i>V</i><sup>2</sup> = (1/2)<i>kx</i><sup>2</sup>",
+          },
+          {
+            kind: "p",
+            html: "(1) の結果を代入して整理すると、",
+          },
+          {
+            kind: "eq",
+            html: "<i>x</i> = <span class=\"frac\"><span class=\"num\"><i>mv</i></span><span class=\"den\">√(<i>k</i>(<i>M</i> + <i>m</i>))</span></span>",
+          },
+        ],
+      },
+      {
+        id: "q3-ratio",
+        heading: "(3) ばねに蓄えられるエネルギーの割合",
+        blocks: [
+          {
+            kind: "p",
+            html: "B の初期運動エネルギー <i>K</i><sub>0</sub> = (1/2)<i>mv</i><sup>2</sup>。ばねに蓄えられる最大エネルギー <i>U</i> = (1/2)<i>kx</i><sup>2</sup>。(2) を代入して、",
+          },
+          {
+            kind: "eq",
+            html: "<i>U</i> = <span class=\"frac\"><span class=\"num\"><i>m</i><sup>2</sup><i>v</i><sup>2</sup></span><span class=\"den\">2(<i>M</i> + <i>m</i>)</span></span>",
+          },
+          {
+            kind: "eq",
+            html: "<span class=\"frac\"><span class=\"num\"><i>U</i></span><span class=\"den\"><i>K</i><sub>0</sub></span></span> = <span class=\"frac\"><span class=\"num\"><i>m</i></span><span class=\"den\"><i>M</i> + <i>m</i></span></span>",
+          },
+        ],
+      },
+      {
+        id: "q4-heavy-cart",
+        heading: "(4) M ≫ m のときの解釈",
+        blocks: [
+          {
+            kind: "p",
+            html: "<i>M</i> ≫ <i>m</i> のとき <i>m</i>/(<i>M</i> + <i>m</i>) ≈ <i>m</i>/<i>M</i> となり、ばねに移るエネルギーの割合は非常に小さくなる。",
+          },
+          {
+            kind: "p",
+            html: "運動量保存より (<i>M</i> + <i>m</i>)<i>V</i> = <i>mv</i> なので、<i>M</i> が大きいほど衝突後の速さ <i>V</i> が小さくなる。ばねに移るエネルギーは <strong>(<i>M</i>+<i>m</i>)<i>V</i><sup>2</sup>/2</strong>。速さの 2 乗に比例するため、重い台車と一体化するほど、衝突後の系のエネルギーが大きく減ってしまうのである。",
+          },
+        ],
+      },
+    ],
+    pointNote: [
+      {
+        kind: "callout",
+        label: "考え方の整理",
+        html: "<strong>衝突 → 運動量保存／衝突後の運動 → 力学的エネルギー保存</strong>。どこからどこまでをどの保存則で結ぶかを意識するのが応用問題のコツ。『運動量は同じ、でも速さは質量で割られる → 運動エネルギーは速さの 2 乗だから損する』という構造を持っている。",
+      },
+    ],
+    relatedArticleSlugs: ["mechanics-mastery-guide"],
+    relatedPrintSlugs: [
+      "perfectly-inelastic-collision-energy-loss",
+      "simple-harmonic-motion-energy-conservation",
+    ],
+  },
+
+  // ───────────────────────────────────────────────
+  // 0c. 電磁気 / 直流回路 - 合成抵抗と分岐電流
+  // ───────────────────────────────────────────────
+  {
+    slug: "dc-circuit-series-parallel-resistors",
+    title: "直流回路｜直列・並列の合成抵抗と分岐電流",
+    description:
+      "起電力 E の電源に直列に R₁、その後 R₂ と R₃ を並列に接続した直流回路の典型問題。合成抵抗・全電流・並列部の電圧・分岐電流・消費電力までを一連で扱う標準演習。",
+    lead: "直流回路の基本は『直列は抵抗を足す、並列は逆数を足す』。あとはオームの法則を順に適用していくだけで、分岐電流や消費電力まで一気通貫で求められます。",
+    subject: "電磁気",
+    topic: "直流回路・合成抵抗",
+    difficulty: "標準",
+    points: 25,
+    gradeLevel: "高校2年生 〜 高校3年生",
+    pdfPath: "/prints/dc-circuit-series-parallel-resistors.pdf",
+    pageCount: 3,
+    publishedAt: "2026-05-16",
+    kind: "free",
+    tags: ["電磁気", "直流回路", "オームの法則", "合成抵抗", "高校物理"],
+    problemSetup: [
+      {
+        kind: "p",
+        html: "起電力 <i>E</i> の直流電源に、抵抗 <i>R</i><sub>1</sub> が直列に接続され、その後に抵抗 <i>R</i><sub>2</sub> と <i>R</i><sub>3</sub> が並列に接続されている。電源の内部抵抗は無視できるものとする。回路全体を流れる電流の大きさを <i>I</i>、<i>R</i><sub>2</sub> を流れる電流の大きさを <i>I</i><sub>2</sub>、<i>R</i><sub>3</sub> を流れる電流の大きさを <i>I</i><sub>3</sub> とする。<i>R</i><sub>1</sub>, <i>R</i><sub>2</sub>, <i>R</i><sub>3</sub> はすべて正の定数である。",
+      },
+    ],
+    problemQuestions: [
+      "回路全体の合成抵抗 <i>R</i> を <i>R</i><sub>1</sub>, <i>R</i><sub>2</sub>, <i>R</i><sub>3</sub> を用いて表せ。",
+      "回路全体を流れる電流の大きさ <i>I</i> を <i>E</i>, <i>R</i><sub>1</sub>, <i>R</i><sub>2</sub>, <i>R</i><sub>3</sub> を用いて表せ。",
+      "並列部分にかかる電圧の大きさ <i>V</i> を <i>E</i>, <i>R</i><sub>1</sub>, <i>R</i><sub>2</sub>, <i>R</i><sub>3</sub> を用いて表せ。",
+      "枝電流の大きさ <i>I</i><sub>2</sub>, <i>I</i><sub>3</sub> を <i>E</i>, <i>R</i><sub>1</sub>, <i>R</i><sub>2</sub>, <i>R</i><sub>3</sub> を用いて表せ。",
+      "抵抗 <i>R</i><sub>2</sub> で消費される電力 <i>P</i><sub>2</sub> を <i>E</i>, <i>R</i><sub>1</sub>, <i>R</i><sub>2</sub>, <i>R</i><sub>3</sub> を用いて表せ。",
+    ],
+    solution: [
+      {
+        id: "q1-combined-resistance",
+        heading: "(1) 合成抵抗 R",
+        blocks: [
+          {
+            kind: "p",
+            html: "並列部分の合成抵抗 <i>R</i><sub>23</sub> は逆数の和の逆数として求まる。",
+          },
+          {
+            kind: "eq",
+            html: "<i>R</i><sub>23</sub> = <span class=\"frac\"><span class=\"num\"><i>R</i><sub>2</sub><i>R</i><sub>3</sub></span><span class=\"den\"><i>R</i><sub>2</sub> + <i>R</i><sub>3</sub></span></span>",
+          },
+          {
+            kind: "p",
+            html: "これと <i>R</i><sub>1</sub> が直列なので、",
+          },
+          {
+            kind: "eq",
+            html: "<i>R</i> = <i>R</i><sub>1</sub> + <span class=\"frac\"><span class=\"num\"><i>R</i><sub>2</sub><i>R</i><sub>3</sub></span><span class=\"den\"><i>R</i><sub>2</sub> + <i>R</i><sub>3</sub></span></span> = <span class=\"frac\"><span class=\"num\"><i>R</i><sub>1</sub><i>R</i><sub>2</sub> + <i>R</i><sub>1</sub><i>R</i><sub>3</sub> + <i>R</i><sub>2</sub><i>R</i><sub>3</sub></span><span class=\"den\"><i>R</i><sub>2</sub> + <i>R</i><sub>3</sub></span></span>",
+          },
+        ],
+      },
+      {
+        id: "q2-total-current",
+        heading: "(2) 回路全体を流れる電流 I",
+        blocks: [
+          { kind: "p", html: "オームの法則 <i>I</i> = <i>E</i>/<i>R</i> より、" },
+          {
+            kind: "eq",
+            html: "<i>I</i> = <span class=\"frac\"><span class=\"num\"><i>E</i>(<i>R</i><sub>2</sub> + <i>R</i><sub>3</sub>)</span><span class=\"den\"><i>R</i><sub>1</sub><i>R</i><sub>2</sub> + <i>R</i><sub>1</sub><i>R</i><sub>3</sub> + <i>R</i><sub>2</sub><i>R</i><sub>3</sub></span></span>",
+          },
+        ],
+      },
+      {
+        id: "q3-parallel-voltage",
+        heading: "(3) 並列部分の電圧 V",
+        blocks: [
+          {
+            kind: "p",
+            html: "<i>V</i> = <i>IR</i><sub>23</sub> に (1)(2) を代入して約分すると、",
+          },
+          {
+            kind: "eq",
+            html: "<i>V</i> = <span class=\"frac\"><span class=\"num\"><i>ER</i><sub>2</sub><i>R</i><sub>3</sub></span><span class=\"den\"><i>R</i><sub>1</sub><i>R</i><sub>2</sub> + <i>R</i><sub>1</sub><i>R</i><sub>3</sub> + <i>R</i><sub>2</sub><i>R</i><sub>3</sub></span></span>",
+          },
+        ],
+      },
+      {
+        id: "q4-branch-currents",
+        heading: "(4) 枝電流 I₂, I₃",
+        blocks: [
+          {
+            kind: "p",
+            html: "並列接続では <i>R</i><sub>2</sub>, <i>R</i><sub>3</sub> の両端電圧は等しく <i>V</i>。それぞれにオームの法則を適用して、",
+          },
+          {
+            kind: "eq",
+            html: "<i>I</i><sub>2</sub> = <span class=\"frac\"><span class=\"num\"><i>ER</i><sub>3</sub></span><span class=\"den\"><i>R</i><sub>1</sub><i>R</i><sub>2</sub> + <i>R</i><sub>1</sub><i>R</i><sub>3</sub> + <i>R</i><sub>2</sub><i>R</i><sub>3</sub></span></span>,&emsp;<i>I</i><sub>3</sub> = <span class=\"frac\"><span class=\"num\"><i>ER</i><sub>2</sub></span><span class=\"den\"><i>R</i><sub>1</sub><i>R</i><sub>2</sub> + <i>R</i><sub>1</sub><i>R</i><sub>3</sub> + <i>R</i><sub>2</sub><i>R</i><sub>3</sub></span></span>",
+          },
+        ],
+      },
+      {
+        id: "q5-power",
+        heading: "(5) R₂ で消費される電力 P₂",
+        blocks: [
+          {
+            kind: "p",
+            html: "<i>P</i><sub>2</sub> = <i>I</i><sub>2</sub><sup>2</sup><i>R</i><sub>2</sub>。(4) の結果を代入して、",
+          },
+          {
+            kind: "eq",
+            html: "<i>P</i><sub>2</sub> = <span class=\"frac\"><span class=\"num\"><i>E</i><sup>2</sup><i>R</i><sub>2</sub><i>R</i><sub>3</sub><sup>2</sup></span><span class=\"den\">(<i>R</i><sub>1</sub><i>R</i><sub>2</sub> + <i>R</i><sub>1</sub><i>R</i><sub>3</sub> + <i>R</i><sub>2</sub><i>R</i><sub>3</sub>)<sup>2</sup></span></span>",
+          },
+        ],
+      },
+    ],
+    pointNote: [
+      {
+        kind: "callout",
+        label: "ポイント",
+        html: "直流回路の解法は <strong>『直列＝抵抗の和／並列＝逆数の和の逆数』→ 全体電流 → 部分電圧 → 分岐電流</strong> の順で機械的に書ける。電力は <i>P</i> = <i>I</i><sup>2</sup><i>R</i> または <i>V</i><sup>2</sup>/<i>R</i> のどちらでも出るので、求めやすい量から取りに行く。",
+      },
+    ],
+    relatedArticleSlugs: ["high-school-physics-electromagnetism-systematic-textbook"],
+    relatedPrintSlugs: ["capacitor-charge-conservation"],
+  },
+
+  // ───────────────────────────────────────────────
   // 1. 電磁気 / コンデンサ - 電荷保存則
   // ───────────────────────────────────────────────
   {

@@ -1,13 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  FileText,
-  Layers,
-} from "lucide-react";
-import { Section } from "@/components/section";
+import { ArrowRight, FileText, Layers } from "lucide-react";
 import { CtaBlock } from "@/components/cta-block";
 import { NotePromoSection } from "@/components/note-promo-section";
 import { PrintsHero } from "@/components/prints-hero";
@@ -231,22 +225,17 @@ export default function PrintsIndexPage() {
           className={`relative scroll-mt-32 py-12 sm:py-20 ${gi % 2 === 0 ? "bg-paper-soft" : "bg-paper"}`}
         >
           <Container>
-            <div className="mb-8 sm:mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p
-                  className={`flex flex-wrap items-center gap-x-2 text-[10px] sm:text-[10px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.32em] ${
-                    subjectAccent[group.subject] ?? "text-brand-deep"
-                  } before:inline-block before:h-px before:w-5 before:bg-current before:opacity-50`}
-                >
-                  {group.subject} ／ {group.items.length} 教材
-                </p>
-                <h2 className="mt-3 font-serif text-[1.5rem] sm:text-[1.85rem] leading-tight tracking-[-0.012em] text-ink-900">
-                  {group.subject}の演習プリント
-                </h2>
-              </div>
-              <p className="max-w-xl text-[13.5px] leading-[1.85] text-ink-600">
-                {group.subject}分野で頻出する典型問題を、PDF と Web プレビューのセットで公開しています。授業・自習・直前演習にそのまま使えます。
+            <div className="mb-7 sm:mb-9">
+              <p
+                className={`text-[10px] sm:text-[10px] font-medium uppercase tracking-[0.24em] sm:tracking-[0.32em] ${
+                  subjectAccent[group.subject] ?? "text-brand-deep"
+                }`}
+              >
+                {group.subject} ／ {group.items.length} 教材
               </p>
+              <h2 className="mt-2 font-serif text-[1.4rem] sm:text-[1.7rem] leading-tight tracking-[-0.012em] text-ink-900">
+                {group.subject}
+              </h2>
             </div>
 
             <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -261,43 +250,6 @@ export default function PrintsIndexPage() {
 
       {/* 「もっと欲しい人」への分岐 — note の有料プリント送客 */}
       <NotePromoSection />
-
-      {/* 塾本体への送客 — 体験授業 CTA */}
-      <Section className="bg-paper-soft" aria-labelledby="prints-trial-bridge">
-        <Container>
-          <div className="mx-auto max-w-3xl rounded-3xl border border-ink-900/[0.07] bg-white/85 p-7 sm:p-10 shadow-card backdrop-blur-sm">
-            <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.24em] sm:tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-5 before:bg-current before:opacity-50">
-              ONE MORE STEP
-            </p>
-            <h2
-              id="prints-trial-bridge"
-              className="mt-4 sm:mt-6 font-serif text-[1.4rem] sm:text-[1.7rem] leading-[1.4] tracking-[-0.012em] text-ink-900"
-            >
-              プリントを解いて、詰まる箇所がある人へ。
-            </h2>
-            <p className="mt-4 text-[14.5px] sm:text-[15px] leading-[1.95] text-ink-700">
-              プリントは『正解への道筋』を見せる教材です。<strong className="font-medium text-ink-900">『なぜそう立式するか』『どこで自分が間違えやすいか』</strong>までを掘り下げたい場合は、60 分の体験授業でこのプリントを題材に診断します。<br className="hidden sm:block" />
-              無理な勧誘はしません。プリント 1 枚分の課題感を、その場で言語化してお返しします。
-            </p>
-            <div className="mt-7 flex flex-col gap-2.5 sm:flex-row sm:gap-3">
-              <Link
-                href="/trial"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-[14.5px] font-medium text-paper transition hover:bg-ink-800 sm:w-auto"
-              >
-                体験授業の流れを見る
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-              </Link>
-              <Link
-                href="/articles"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/80 px-6 py-3.5 text-[14px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white sm:w-auto"
-              >
-                高校物理の学習コラムも読む
-                <ArrowUpRight className="h-3.5 w-3.5 opacity-70" />
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </Section>
 
       <CtaBlock
         eyebrow="STILL STUCK?"
