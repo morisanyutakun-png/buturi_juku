@@ -31,7 +31,7 @@ const proofs = [
     big: "6",
     unit: "冊",
     label: "大学受験物理の書籍執筆",
-    sub: "力学・電磁気・熱・波動・原子・高校物理I/II を網羅",
+    sub: "力学・電磁気・熱・波動・原子を網羅",
     tone: "gold",
   },
 ] as const;

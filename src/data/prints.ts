@@ -109,6 +109,122 @@ export const PRINT_BLUR_DATA_URL =
 
 export const prints: Print[] = [
   // ───────────────────────────────────────────────
+  // 00. 電磁気 / ローレンツ力 - 磁場中の荷電粒子の円運動
+  // ───────────────────────────────────────────────
+  {
+    slug: "lorentz-force-circular-motion",
+    title: "ローレンツ力｜磁場中の荷電粒子と等速円運動",
+    description:
+      "一様磁場中に入射した荷電粒子が受けるローレンツ力の向き・軌道半径・角速度・周期・半円分の到達時間と距離までを一連で問う基礎〜標準問題。等速円運動と向心力の橋渡しを 1 問で押さえます。",
+    lead: "ローレンツ力は常に速度に垂直に働くので、磁場中の荷電粒子は等速円運動します。向心力 = ローレンツ力 と置けば、半径も角速度も周期も一気に出ます。",
+    subject: "電磁気",
+    topic: "ローレンツ力・磁場中の運動",
+    difficulty: "標準",
+    points: 20,
+    gradeLevel: "高校2年生 〜 高校3年生",
+    pdfPath: "/prints/lorentz-force-circular-motion.pdf",
+    pageCount: 3,
+    publishedAt: "2026-05-18",
+    kind: "free",
+    tags: ["電磁気", "ローレンツ力", "磁場", "等速円運動", "高校物理"],
+    problemSetup: [
+      {
+        kind: "p",
+        html: "質量 <i>m</i>、電荷 <i>q</i>（<i>q</i> &gt; 0）をもつ粒子が、点 O から速さ <i>v</i> で <i>x</i> 軸正の向きに入射する。領域 <i>y</i> &gt; 0 には、紙面の裏向きに一様な磁束密度 <i>B</i> の磁場が存在している。",
+      },
+      {
+        kind: "p",
+        html: "重力および空気抵抗は無視できるものとする。粒子が次に <i>y</i> 軸上に到達する点を P とする。解答はすべて文字式で表せ。",
+      },
+    ],
+    problemQuestions: [
+      "入射直後に粒子が受けるローレンツ力の大きさと向きを答えよ。",
+      "粒子の軌道半径 <i>r</i> を求めよ。",
+      "粒子の角速度 ω と周期 <i>T</i> を求めよ。",
+      "粒子が点 P に到達するまでの時間 <i>t</i> と、距離 OP を求めよ。",
+    ],
+    solution: [
+      {
+        id: "q1-lorentz",
+        heading: "(1) ローレンツ力の大きさと向き",
+        blocks: [
+          {
+            kind: "p",
+            html: "ローレンツ力は <b>F</b> = <i>q</i><b>v</b> × <b>B</b>。速度 <b>v</b> は <i>x</i> 軸正の向き、磁場 <b>B</b> は紙面の裏向きなので、右ねじの規則より <b>v</b> × <b>B</b> は <i>y</i> 軸正の向き。<i>q</i> &gt; 0 なのでローレンツ力も <i>y</i> 軸正の向き。",
+          },
+          {
+            kind: "p",
+            html: "<b>v</b> と <b>B</b> は直交するので、大きさは",
+          },
+          { kind: "eq", html: "<i>F</i> = <i>qvB</i>&emsp;（向き：<i>y</i> 軸正の向き）" },
+        ],
+      },
+      {
+        id: "q2-radius",
+        heading: "(2) 軌道半径 r",
+        blocks: [
+          {
+            kind: "p",
+            html: "ローレンツ力は常に速度に垂直なので、速さは一定で運動方向だけが変わる。よって粒子は等速円運動。ローレンツ力が向心力となるので、",
+          },
+          {
+            kind: "eq",
+            html: "<i>qvB</i> = <span class=\"frac\"><span class=\"num\"><i>mv</i><sup>2</sup></span><span class=\"den\"><i>r</i></span></span>",
+          },
+          {
+            kind: "eq",
+            html: "<i>r</i> = <span class=\"frac\"><span class=\"num\"><i>mv</i></span><span class=\"den\"><i>qB</i></span></span>",
+          },
+        ],
+      },
+      {
+        id: "q3-omega-period",
+        heading: "(3) 角速度 ω と周期 T",
+        blocks: [
+          {
+            kind: "p",
+            html: "等速円運動の関係 <i>v</i> = <i>r</i>ω より ω = <i>v</i>/<i>r</i>。(2) を代入して、",
+          },
+          {
+            kind: "eq",
+            html: "ω = <span class=\"frac\"><span class=\"num\"><i>qB</i></span><span class=\"den\"><i>m</i></span></span>,&emsp;<i>T</i> = <span class=\"frac\"><span class=\"num\">2π</span><span class=\"den\">ω</span></span> = <span class=\"frac\"><span class=\"num\">2π<i>m</i></span><span class=\"den\"><i>qB</i></span></span>",
+          },
+          {
+            kind: "p",
+            html: "ω・<i>T</i> は速さ <i>v</i> によらず、質量と電荷と磁場だけで決まる（サイクロトロン周波数）。",
+          },
+        ],
+      },
+      {
+        id: "q4-half-circle",
+        heading: "(4) 点 P までの時間 t と距離 OP",
+        blocks: [
+          {
+            kind: "p",
+            html: "入射直後の力は <i>y</i> 軸正の向きなので、円軌道の中心は O の真上。次に <i>y</i> 軸上に戻るのは半周後で、その点 P は中心を挟んだ反対側 = 円の直径分だけ離れた点。",
+          },
+          {
+            kind: "eq",
+            html: "<i>t</i> = <span class=\"frac\"><span class=\"num\"><i>T</i></span><span class=\"den\">2</span></span> = <span class=\"frac\"><span class=\"num\">π<i>m</i></span><span class=\"den\"><i>qB</i></span></span>,&emsp;OP = 2<i>r</i> = <span class=\"frac\"><span class=\"num\">2<i>mv</i></span><span class=\"den\"><i>qB</i></span></span>",
+          },
+        ],
+      },
+    ],
+    pointNote: [
+      {
+        kind: "callout",
+        label: "ポイント",
+        html: "磁場中の荷電粒子は <strong>ローレンツ力 = 向心力</strong> で等速円運動。半径 <i>r</i> = <i>mv</i>/(<i>qB</i>) は速さに比例し、磁場に反比例。一方、<strong>角速度・周期は速さによらず</strong> ω = <i>qB</i>/<i>m</i>、<i>T</i> = 2π<i>m</i>/(<i>qB</i>) で決まる。これはサイクロトロンの動作原理そのもの。",
+      },
+    ],
+    relatedArticleSlugs: ["high-school-physics-electromagnetism-systematic-textbook"],
+    relatedPrintSlugs: [
+      "ac-rlc-series-impedance-resonance",
+      "point-charge-potential-and-field",
+    ],
+  },
+
+  // ───────────────────────────────────────────────
   // 0. 力学 / 運動量 - 完全非弾性衝突
   // ───────────────────────────────────────────────
   {
