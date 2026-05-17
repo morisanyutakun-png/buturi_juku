@@ -334,6 +334,149 @@ export const prints: Print[] = [
   },
 
   // ───────────────────────────────────────────────
+  // 0d. 電磁気 / 交流回路 - RLC 直列・インピーダンス・共振
+  // ───────────────────────────────────────────────
+  {
+    slug: "ac-rlc-series-impedance-resonance",
+    title: "交流回路｜RLC 直列の複素インピーダンスと共振",
+    description:
+      "抵抗 R・コイル L・コンデンサ C を直列につないだ交流回路で、複素インピーダンス、電流の最大値と位相、各素子の電圧、共振角周波数までを一連で扱う応用問題。物理 II・大学受験頻出のテーマを 1 問で押さえます。",
+    lead: "RLC 直列回路は、コイルとコンデンサが互いに逆の位相効果を持ち、ある周波数で打ち消し合います。それが共振。複素インピーダンスを 1 本立てれば、電流・位相・共振が機械的に出ます。",
+    subject: "電磁気",
+    topic: "交流回路・RLC 共振",
+    difficulty: "応用",
+    points: 50,
+    gradeLevel: "高校3年生 〜 既卒生",
+    pdfPath: "/prints/ac-rlc-series-impedance-resonance.pdf",
+    pageCount: 4,
+    publishedAt: "2026-05-17",
+    kind: "free",
+    tags: ["電磁気", "交流回路", "インピーダンス", "共振", "高校物理"],
+    problemSetup: [
+      {
+        kind: "p",
+        html: "抵抗 <i>R</i>、自己インダクタンス <i>L</i> のコイル、静電容量 <i>C</i> のコンデンサを直列につなぎ、角周波数 ω の交流電圧 <i>e</i>(<i>t</i>) = <i>E</i><sub>0</sub> sin ω<i>t</i> を加える。ここで <i>E</i><sub>0</sub> は電圧の最大値である。",
+      },
+      {
+        kind: "p",
+        html: "定常状態において、次の問いに答えよ。ただし、素子はすべて理想的であり、抵抗以外でのエネルギー損失は無視できるものとする。",
+      },
+    ],
+    problemQuestions: [
+      "この直列回路全体の複素インピーダンス <i>Z</i> と、その大きさ |<i>Z</i>| を求めよ。",
+      "回路を流れる電流の最大値 <i>I</i><sub>0</sub> と、電流 <i>i</i>(<i>t</i>) を <i>E</i><sub>0</sub>, <i>R</i>, <i>L</i>, <i>C</i>, ω を用いて表せ。",
+      "抵抗・コイル・コンデンサにかかる電圧の最大値を、それぞれ <i>V</i><sub>R0</sub>, <i>V</i><sub>L0</sub>, <i>V</i><sub>C0</sub> として求めよ。",
+      "電流が最大となる角周波数 ω<sub>0</sub> と、そのときの電流の最大値 <i>I</i><sub>0,max</sub> を求めよ。",
+    ],
+    solution: [
+      {
+        id: "q1-impedance",
+        heading: "(1) 複素インピーダンス Z と |Z|",
+        blocks: [
+          {
+            kind: "p",
+            html: "各素子の複素インピーダンスは <i>Z</i><sub>R</sub> = <i>R</i>、<i>Z</i><sub>L</sub> = <i>j</i>ω<i>L</i>、<i>Z</i><sub>C</sub> = 1/(<i>j</i>ω<i>C</i>) = &minus;<i>j</i>/(ω<i>C</i>)。直列なので和を取って、",
+          },
+          {
+            kind: "eq",
+            html: "<i>Z</i> = <i>R</i> + <i>j</i>(ω<i>L</i> &minus; 1/(ω<i>C</i>))",
+          },
+          {
+            kind: "eq",
+            html: "|<i>Z</i>| = √( <i>R</i><sup>2</sup> + (ω<i>L</i> &minus; 1/(ω<i>C</i>))<sup>2</sup> )",
+          },
+          {
+            kind: "p",
+            html: "実部 <i>R</i> は抵抗成分、虚部 ω<i>L</i> &minus; 1/(ω<i>C</i>) はコイルとコンデンサの <strong>リアクタンス</strong> 成分。両者は逆符号で打ち消し合う関係にある。",
+          },
+        ],
+      },
+      {
+        id: "q2-current",
+        heading: "(2) 電流の最大値 I₀ と i(t)",
+        blocks: [
+          {
+            kind: "p",
+            html: "オームの法則を交流に拡張して <i>I</i><sub>0</sub> = <i>E</i><sub>0</sub>/|<i>Z</i>|。よって、",
+          },
+          {
+            kind: "eq",
+            html: "<i>I</i><sub>0</sub> = <span class=\"frac\"><span class=\"num\"><i>E</i><sub>0</sub></span><span class=\"den\">√(<i>R</i><sup>2</sup> + (ω<i>L</i> &minus; 1/(ω<i>C</i>))<sup>2</sup>)</span></span>",
+          },
+          {
+            kind: "p",
+            html: "インピーダンスの偏角を φ = arctan((ω<i>L</i> &minus; 1/(ω<i>C</i>)) / <i>R</i>) とすると、電圧を基準にして、",
+          },
+          {
+            kind: "eq",
+            html: "<i>i</i>(<i>t</i>) = <i>I</i><sub>0</sub> sin(ω<i>t</i> &minus; φ)",
+          },
+          {
+            kind: "p",
+            html: "ω<i>L</i> &gt; 1/(ω<i>C</i>) なら φ &gt; 0 で <strong>誘導性</strong>（電流は電圧より遅れる）、逆なら <strong>容量性</strong>（電流は電圧より進む）。",
+          },
+        ],
+      },
+      {
+        id: "q3-voltages",
+        heading: "(3) 各素子の電圧の最大値",
+        blocks: [
+          {
+            kind: "p",
+            html: "直列なので電流の最大値はどの素子も同じ <i>I</i><sub>0</sub>。よって、",
+          },
+          {
+            kind: "eq",
+            html: "<i>V</i><sub>R0</sub> = <i>RI</i><sub>0</sub>,&emsp;<i>V</i><sub>L0</sub> = ω<i>LI</i><sub>0</sub>,&emsp;<i>V</i><sub>C0</sub> = <i>I</i><sub>0</sub>/(ω<i>C</i>)",
+          },
+          {
+            kind: "p",
+            html: "(2) の <i>I</i><sub>0</sub> を代入すれば <i>E</i><sub>0</sub>, <i>R</i>, <i>L</i>, <i>C</i>, ω だけで表せる。なお交流では位相が異なるため、一般に <i>E</i><sub>0</sub> ≠ <i>V</i><sub>R0</sub> + <i>V</i><sub>L0</sub> + <i>V</i><sub>C0</sub>（単純な和にはならない）。",
+          },
+        ],
+      },
+      {
+        id: "q4-resonance",
+        heading: "(4) 共振角周波数 ω₀ と I₀,max",
+        blocks: [
+          {
+            kind: "p",
+            html: "<i>I</i><sub>0</sub> が最大になるのは |<i>Z</i>| が最小、つまり虚部 ω<i>L</i> &minus; 1/(ω<i>C</i>) = 0 のとき。ω<sup>2</sup><i>LC</i> = 1 より、",
+          },
+          {
+            kind: "eq",
+            html: "ω<sub>0</sub> = <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">√(<i>LC</i>)</span></span>",
+          },
+          {
+            kind: "p",
+            html: "このとき <i>Z</i> = <i>R</i>（虚数成分が消える）。よって、",
+          },
+          {
+            kind: "eq",
+            html: "<i>I</i><sub>0,max</sub> = <i>E</i><sub>0</sub>/<i>R</i>",
+          },
+          {
+            kind: "p",
+            html: "これが <strong>共振</strong>。ω<sub>0</sub><i>L</i> = 1/(ω<sub>0</sub><i>C</i>) でコイルとコンデンサのリアクタンスが等しくなり、互いの位相効果が打ち消し合う。電源から見た回路は純抵抗 <i>R</i> と同じになり、電流が最大になる。",
+          },
+        ],
+      },
+    ],
+    pointNote: [
+      {
+        kind: "callout",
+        label: "ポイント",
+        html: "RLC 直列回路は <strong>複素インピーダンス <i>Z</i> = <i>R</i> + <i>j</i>(ω<i>L</i> &minus; 1/(ω<i>C</i>))</strong> を立てれば、電流・位相・共振がすべて機械的に出てくる。<strong>共振条件 ω<sub>0</sub> = 1/√(<i>LC</i>)</strong> はコイルとコンデンサのリアクタンスが釣り合う点であり、回路が純抵抗に見える瞬間。",
+      },
+    ],
+    relatedArticleSlugs: ["high-school-physics-electromagnetism-systematic-textbook"],
+    relatedPrintSlugs: [
+      "dc-circuit-series-parallel-resistors",
+      "capacitor-charge-conservation",
+    ],
+  },
+
+  // ───────────────────────────────────────────────
   // 0c. 電磁気 / 直流回路 - 合成抵抗と分岐電流
   // ───────────────────────────────────────────────
   {
