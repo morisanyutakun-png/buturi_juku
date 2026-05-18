@@ -128,7 +128,7 @@ export function SupportTierSection() {
               <Link
                 key={t.title}
                 href={t.href}
-                className={`group relative overflow-hidden rounded-2xl border bg-white/95 p-5 sm:p-7 shadow-soft backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-card ${
+                className={`lift group relative overflow-hidden rounded-2xl border bg-white/95 p-5 sm:p-7 shadow-soft backdrop-blur-sm ${
                   t.highlight
                     ? "border-brand/40 ring-1 ring-brand/30 hover:border-brand/60"
                     : "border-ink-900/[0.08] hover:border-ink-900/[0.18]"

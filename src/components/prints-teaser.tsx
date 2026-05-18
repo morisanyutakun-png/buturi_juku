@@ -133,13 +133,13 @@ export function PrintsTeaser() {
           ))}
         </ul>
 
-        {/* 教材棚（6 冊サムネ） */}
+        {/* 6 枚サムネ — モバイルでは 2 列、sm 以上で 3 列、lg で 6 列 */}
         <ul className="mt-7 sm:mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-6">
           {cards.map((p, i) => (
             <li key={p.slug}>
               <Link
                 href={`/prints/${p.slug}`}
-                className="group flex h-full flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-ink-900/[0.08] bg-white/95 shadow-soft transition hover:-translate-y-0.5 hover:border-ink-900/[0.18] hover:shadow-card"
+                className="lift group flex h-full flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-ink-900/[0.08] bg-white/95 shadow-soft hover:border-ink-900/[0.18]"
                 aria-label={`${p.title} を開く`}
               >
                 <div className="relative aspect-[210/297] w-full overflow-hidden bg-paper-soft">
@@ -149,10 +149,16 @@ export function PrintsTeaser() {
                     fill
                     sizes="(min-width: 1024px) 200px, (min-width: 640px) 33vw, 50vw"
                     quality={68}
-                    loading={i < 3 ? undefined : "lazy"}
+                    loading={i < 2 ? undefined : "lazy"}
+                    fetchPriority={i === 0 ? "high" : undefined}
                     placeholder="blur"
                     blurDataURL={PRINT_BLUR_DATA_URL}
                     className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
+                  {/* 紙の縁にうっすら光沢 */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-white/40 to-transparent"
                   />
                   <span className="absolute left-2 top-2 inline-flex rounded-full bg-white/95 px-2 py-0.5 font-mono text-[9px] tracking-[0.14em] text-ink-700 shadow-soft">
                     {String(i + 1).padStart(2, "0")}
@@ -169,7 +175,7 @@ export function PrintsTeaser() {
                   >
                     {p.topic}
                   </p>
-                  <p className="mt-1.5 font-serif text-[11.5px] sm:text-[12px] leading-[1.45] tracking-[-0.005em] text-ink-900 line-clamp-2 min-h-[2.9em]">
+                  <p className="mt-1.5 font-serif text-[12px] sm:text-[12.5px] leading-[1.5] tracking-[-0.005em] text-ink-900 line-clamp-2 min-h-[3em]">
                     {p.title}
                   </p>
                   <p className="mt-2 inline-flex items-center gap-1 text-[10.5px] text-ink-500">

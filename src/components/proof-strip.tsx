@@ -1,4 +1,4 @@
-import { Trophy, GraduationCap, BookOpen, Users } from "lucide-react";
+import { Trophy, GraduationCap, BookOpen } from "lucide-react";
 import { Container } from "@/components/container";
 
 /**
@@ -71,7 +71,7 @@ export function ProofStrip() {
             return (
               <li
                 key={s.label}
-                className="flex flex-col rounded-2xl border border-ink-900/[0.07] bg-white/85 p-4 sm:p-5 shadow-soft"
+                className="lift flex flex-col rounded-2xl border border-ink-900/[0.07] bg-white/85 p-4 sm:p-5 shadow-soft"
               >
                 <span
                   className={`inline-flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg ${t.chip}`}

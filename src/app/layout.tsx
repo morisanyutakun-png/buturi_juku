@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { MobileCtaBarClient } from "@/components/mobile-cta-bar-client";
+import { BackToTop } from "@/components/back-to-top";
 import { JsonLd } from "@/components/json-ld";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
 import { siteConfig } from "@/data/site";
@@ -107,6 +108,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <SiteFooter />
         <MobileCtaBarClient />
+        <BackToTop />
         <JsonLd id="ld-organization" data={organizationJsonLd()} />
         <JsonLd id="ld-website" data={websiteJsonLd()} />
 

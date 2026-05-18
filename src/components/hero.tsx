@@ -38,9 +38,9 @@ export function Hero() {
         }}
       />
 
-      <Container className="relative py-10 sm:py-20 lg:py-28">
+      <Container className="relative py-9 sm:py-20 lg:py-28">
         <div className="lg:grid lg:items-center lg:gap-12 lg:grid-cols-[1.05fr_1fr]">
-          <div className="relative">
+          <div className="relative animate-[hero-fade-in_640ms_ease-out_both] motion-reduce:animate-none">
             {/* eyebrow chips: brand + tag pair */}
             <div className="flex flex-wrap items-center gap-2">
               <span

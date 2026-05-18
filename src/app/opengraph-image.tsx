@@ -101,7 +101,6 @@ export default function OpengraphImage() {
           >
             {brandIconDataUri ? (
               // Satori が PNG をそのまま埋め込めるよう data URI を使用。
-              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={brandIconDataUri}
                 alt=""

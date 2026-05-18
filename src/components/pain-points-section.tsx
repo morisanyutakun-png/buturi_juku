@@ -46,7 +46,7 @@ export function PainPointsSection() {
           {painPoints.map((p) => (
             <li
               key={p.title}
-              className="flex gap-3 rounded-2xl border border-ink-900/[0.08] bg-white p-4 sm:p-6 shadow-soft sm:flex-col sm:gap-4"
+              className="lift flex gap-3 rounded-2xl border border-ink-900/[0.08] bg-white p-4 sm:p-6 shadow-soft sm:flex-col sm:gap-4"
             >
               <span className="inline-flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-warm-bg text-warm-deep">
                 <AlertCircle className="h-4 w-4 sm:h-[18px] sm:w-[18px]" aria-hidden strokeWidth={1.6} />

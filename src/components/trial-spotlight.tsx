@@ -38,6 +38,10 @@ export function TrialSpotlight() {
             {/* eyebrow + price-time chip ペア — 60 分・¥3,000 が一目で入る */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-warm-deep px-3 py-1 text-[10.5px] sm:text-[11px] font-medium uppercase tracking-[0.18em] sm:tracking-[0.24em] text-white">
+                <span className="relative inline-flex h-1.5 w-1.5" aria-hidden>
+                  <span className="absolute inline-flex h-1.5 w-1.5 animate-ping rounded-full bg-white/70" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
+                </span>
                 TRIAL
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-warm-deep/30 bg-white/85 px-3 py-1 text-[11.5px] sm:text-[12px] font-medium tracking-[0.04em] text-warm-deep">
