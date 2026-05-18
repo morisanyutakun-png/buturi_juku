@@ -8,18 +8,17 @@ import { buildMetadata } from "@/lib/metadata";
 import { faqItems } from "@/data/faq";
 
 export const metadata: Metadata = buildMetadata({
-  title: "よくある質問 ｜ Solvora Learning Lab — 体験・料金・AI復習プリント",
+  title: "よくある質問 ｜ Solvora Learning Lab — プリント・参考書・学習サポート",
   description:
-    "Solvora Learning Lab（高校物理・理系個別指導 / AI復習プリント付き）によくある質問をまとめました。体験授業、授業形式、料金、オンライン受講、REM による復習プリント作成についてお答えしています（高校物理専門塾としての指導継続）。",
+    "Solvora Learning Lab のよくある質問をまとめました。無料の演習プリント・参考書・学習サポート（体験授業 / オンライン個別指導）・料金・受講環境について先回りでお答えしています。",
   path: "/faq",
   keywords: [
     "Solvora Learning Lab FAQ",
-    "AI復習プリント よくある質問",
-    "高校物理専門塾 FAQ",
-    "高校物理専門塾 料金",
-    "高校物理専門塾 体験授業",
+    "高校物理 プリント よくある質問",
+    "高校物理 参考書 よくある質問",
+    "高校物理 個別指導 料金",
+    "高校物理 体験授業",
     "オンライン物理 授業",
-    "物理 体験授業 オンライン",
   ],
   category: "education",
 });
@@ -46,7 +45,7 @@ export default function FaqPage() {
             <span className="block">先回りで答えます。</span>
           </>
         }
-        description="Solvora Learning Lab の受講前によく寄せられるご質問をまとめました。ここにない内容は、お問い合わせフォームからお気軽にお送りください（高校物理専門塾としての指導継続）。"
+        description="Solvora Learning Lab のプリント・参考書・学習サポートについて、よく寄せられるご質問をまとめました。ここにない内容は、お問い合わせフォームからお気軽にお送りください。"
       />
 
       <Section
@@ -91,8 +90,11 @@ export default function FaqPage() {
       </Section>
 
       <CtaBlock
+        eyebrow="STILL UNSURE — まだ気になる点があれば"
         title="ご質問は、いつでも歓迎します。"
-        description="記載のない内容は、お問い合わせフォームまたは体験授業の時間内でお気軽にご相談ください。"
+        description="記載のない内容は、お問い合わせフォームまたは体験授業の時間内でお気軽にご相談ください。まずは演習プリントを試して、それでも気になる点があればどうぞ。"
+        primary={{ label: "演習プリントを開く", href: "/prints" }}
+        secondary={{ label: "お問い合わせを送る", href: "/contact" }}
       />
 
       <JsonLd
@@ -113,7 +115,7 @@ export default function FaqPage() {
         data={webPageJsonLd({
           name: "よくある質問 ｜ Solvora Learning Lab",
           description:
-            "Solvora Learning Lab の体験授業、料金、授業形式、オンライン受講、AI 復習プリント（REM 補助）についての FAQ ページです（高校物理専門塾としての指導継続）。",
+            "Solvora Learning Lab のプリント・参考書・学習サポート（体験授業 / オンライン個別指導）・料金・受講環境についての FAQ ページです。",
           path: "/faq",
         })}
       />

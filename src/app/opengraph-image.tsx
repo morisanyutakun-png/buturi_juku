@@ -66,8 +66,7 @@ export default function OpengraphImage() {
         />
 
         {/* large numeral watermark — replaces the legacy 森 kanji.
-            Hints at the H1 「解けなかった1問を…」without leaning on the
-            old forest motif. */}
+            「1」は最初の 1 単元・1 冊のニュアンスを残す。 */}
         <div
           style={{
             position: "absolute",
@@ -166,7 +165,7 @@ export default function OpengraphImage() {
               display: "flex",
             }}
           >
-            OPEN THE SHELF — 教材棚を、ひらく
+            FREE PRINTS — まず 1 単元から
           </div>
           <div
             style={{
@@ -180,13 +179,11 @@ export default function OpengraphImage() {
             }}
           >
             <div style={{ display: "flex" }}>
-              高校物理を、
-              <span style={{ color: "#1f5aa6" }}>棚で読む</span>
-              。
+              公式は覚えた。
             </div>
             <div style={{ display: "flex" }}>
-              <span style={{ color: "#b35f27" }}>プリント・解説・参考書</span>
-              を、ここに。
+              それなのに、
+              <span style={{ color: "#b35f27" }}>解けない</span>。
             </div>
           </div>
         </div>
@@ -266,7 +263,7 @@ export default function OpengraphImage() {
                 display: "flex",
               }}
             >
-              教材棚 / Web で読める
+              無料 / Web で読める
             </div>
           </div>
         </div>

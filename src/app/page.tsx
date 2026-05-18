@@ -16,6 +16,7 @@ import { PainPointsSection } from "@/components/pain-points-section";
 import { BookCoversStrip } from "@/components/book-covers-strip";
 import { PrintsTeaser } from "@/components/prints-teaser";
 import { SupportTierSection } from "@/components/support-tier-section";
+import { TrialSpotlight } from "@/components/trial-spotlight";
 import { Section } from "@/components/section";
 import { FeatureCard } from "@/components/feature-card";
 import { CtaBlock } from "@/components/cta-block";
@@ -45,7 +46,7 @@ export const metadata: Metadata = buildMetadata({
   title:
     "Solvora Learning Lab ｜ 高校物理の演習プリント・解説 PDF・参考書",
   description:
-    "Solvora Learning Lab は、高校物理の演習プリント・解説 PDF・参考書をひとつの棚にまとめた学習リソースです。力学・電磁気・波動・熱・原子の典型問題を Web プレビュー＋印刷向け PDF＋解答解説まで無料公開。さらに講師作の参考書『考える力を育てる』全 6 冊で全分野を体系的に読み通せます。一人で進めるのが難しい方には個別の学習サポート（体験授業・分野別講座）もご用意。",
+    "公式は覚えたのに解けない——その壁は、立式の手順を踏み直せば崩せます。Solvora Learning Lab では、力学・電磁気・波動・熱・原子の演習プリントを解答・解説まで無料で公開しています。さらに体系的に学びたい方には、講師作の参考書『考える力を育てる』全 6 冊と note の有料単発 PDF を。それでも詰まる単元には、60 分の体験授業と週次サポートも。",
   path: "/",
   keywords: [
     "高校物理 プリント",
@@ -132,32 +133,36 @@ export default function HomePage() {
   return (
     <>
       {/* ============================================================
-          TOP PAGE — 教材棚を主役にした構成（2026.05 リブランド）
-          順序: Hero → 演習プリント → 参考書 → note 有料 PDF → 信頼
-               → 講師 → 共感 → 学習サポート → 不安解消 → 締めの CTA
-          「Google 広告／SEO → /prints → プリント・解説 PDF → KDP 参考書
-           → 必要な人だけ学習サポート」という導線を、TOP でも再現する。
+          TOP PAGE — 教材主導の構成（2026.05 リブランド）
+          流入想定: Google 広告 / SEO → /prints が着地。
+          順序: Hero → 演習プリント（無料） → note（有料 PDF） → KDP 参考書 6 冊
+              → 体験授業（60 分） → 信頼 → 講師 → 続けて伴走が必要な方向けの週次サポート → 締め
           ============================================================ */}
 
-      {/* FV — プリント主導コピー + 参考書サブ CTA + 学習サポート soft link */}
+      {/* FV — 悩み駆動の H1 + 演習プリント主導 + 体験授業を soft link で残す */}
       <Hero />
 
-      {/* 1. 教材棚（無料プリント） — Hero 直下に「実物」を見せる主役セクション */}
+      {/* 1. 無料の演習プリント — メイン入口 */}
       <div className="cv-auto">
         <PrintsTeaser />
       </div>
 
-      {/* 2. 参考書 6 冊 — プリントから KDP 本へ自然に橋渡し */}
-      <div className="cv-auto">
-        <BookCoversStrip />
-      </div>
-
-      {/* 3. note の有料プリント — 「もっと欲しい人向け」の単発 PDF 導線 */}
+      {/* 2. note の有料プリント — 単発 PDF 流入 */}
       <div className="cv-auto">
         <NotePromoSection />
       </div>
 
-      {/* 4. 信頼 — 教材をつくっている人の実績ストリップ */}
+      {/* 3. KDP 参考書 6 冊 — 全分野を体系的に読みたい人へ */}
+      <div className="cv-auto">
+        <BookCoversStrip />
+      </div>
+
+      {/* 4. 体験授業（60 分・¥3,000）— 教材で詰まる方の入口として復活 */}
+      <div className="cv-auto">
+        <TrialSpotlight />
+      </div>
+
+      {/* 5. 信頼 — 教材をつくっている人の実績ストリップ */}
       <div className="cv-auto">
         <ProofStrip />
       </div>
@@ -184,8 +189,8 @@ export default function HomePage() {
         {/* SUBJECTS — 全 5 分野の概観 */}
         <Section
           eyebrow="SUBJECTS"
-          title="高校物理 全 5 分野、教材棚で網羅。"
-          description="演習プリントと参考書 6 冊で、力学・電磁気・波動・熱・原子をひとつの視座から読み通せます。"
+          title="力学から原子まで、すべての分野を扱います。"
+          description="演習プリントも参考書 6 冊も、5 分野を同じ視座から書いています。"
           className="bg-paper-soft"
         >
           <div className="grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-5">
@@ -329,15 +334,15 @@ export default function HomePage() {
       </div>
 
       {/* ============================================================
-          ここから「教材だけでは届かない人」へのソフトな分岐
+          ここから「教材＋体験では足りなかった方」向けの週次サポート枠
           ============================================================ */}
 
-      {/* 共感 — 教材だけでは詰まる典型的な3つのつまずき */}
+      {/* 共感 — 教材だけでは詰まる典型的な 3 つのつまずき */}
       <div className="cv-auto">
         <PainPointsSection />
       </div>
 
-      {/* 学習サポート — 「必要な人だけ」を強調した個別指導入口 */}
+      {/* 学習サポート（週次） — 体験のあと続けて伴走が必要な方向け */}
       <div className="cv-auto">
         <SupportTierSection />
       </div>
@@ -362,12 +367,12 @@ export default function HomePage() {
         <SafetyPolicySection />
       </div>
 
-      {/* ARTICLES — 学習コラム（教材棚の延長としての読み物） */}
+      {/* ARTICLES — 学習コラム（プリント・参考書を読み解くための補助記事） */}
       <div className="hidden cv-auto sm:block">
       <Section
         eyebrow="INSIGHTS"
         title="物理学習コラム"
-        description="プリントと参考書の補助として、単元の考え方・解法の構造を読み物として整理しています。"
+        description="プリントと参考書を読み解くための補助記事です。単元の考え方・解法の構造を、すこし長めに掘り下げています。"
         className="bg-paper"
       >
         <div className="grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -455,7 +460,7 @@ export default function HomePage() {
               物理を、<span className="text-warm-deep">わかる</span>に変える。
             </p>
             <p className="mt-4 text-[14px] leading-[1.85] text-ink-600">
-              教材棚を開いて、自分のペースから。
+              まずは 1 単元、自分のペースで。
             </p>
           </div>
         </Section>

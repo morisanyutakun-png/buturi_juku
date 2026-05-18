@@ -9,14 +9,14 @@ import { breadcrumbJsonLd, serviceJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "体験授業（60分・¥3,000）｜ Solvora Learning Lab",
+  title: "体験授業（60分・¥3,000）｜ 学習サポートの入口 ｜ Solvora Learning Lab",
   description:
-    "Solvora Learning Lab の体験授業（60分・¥3,000）のご案内。現状診断から学習戦略の提案、おすすめコースのご案内までを講師（森祐太）が直接担当します。受講のスタートは必ずここから。決済完了をもって申し込み確定（高校物理・理系個別指導 / AI復習プリント付き）。",
+    "演習プリントと参考書だけで詰まる方向けの、Solvora Learning Lab の体験授業（60分・¥3,000）のご案内です。事前送付するプリントを題材に、立式の癖と次の一手を講師（森祐太）が直接お渡しします。学習サポートを使うかどうかは、体験のあとで判断していただいて構いません。",
   path: "/trial",
   keywords: [
     "Solvora Learning Lab 体験授業",
     "高校物理 体験授業",
-    "高校物理専門塾 体験授業",
+    "高校物理 個別指導 体験",
     "オンライン 高校物理 体験授業",
     "大学受験 物理 学習相談",
   ],
@@ -60,11 +60,12 @@ export default function TrialPage() {
   return (
     <>
       <PageHero
-        eyebrow="TRIAL — 60分・¥3,000 の体験授業"
+        eyebrow="TRIAL — 学習サポートの入口（60分・¥3,000）"
         watermark="試"
         tone="warm"
         breadcrumb={[
           { label: "ホーム", href: "/" },
+          { label: "学習サポート", href: "/courses" },
           { label: "体験授業", href: "/trial" },
         ]}
         title={
@@ -72,11 +73,11 @@ export default function TrialPage() {
             <span className="block">
               <span className="text-warm">60分・¥3,000</span>で、
             </span>
-            <span className="block">あなたの高校物理を</span>
-            <span className="block">診断します。</span>
+            <span className="block">プリントで詰まった単元を</span>
+            <span className="block">一緒に診断します。</span>
           </>
         }
-        description="Solvora Learning Lab の体験授業は、入塾を前提としない学習相談としてご利用いただけます。本気で受験と向き合う方への軽い参加コストとして ¥3,000 をいただき、現状の苦手分野と残り期間を踏まえた学習戦略を、講師（森祐太）が直接お渡しします。一番おすすめしているのは、書籍ベースの電磁気集中講座。分野別講座・定期テスト対策もご用意しています。"
+        description="Solvora Learning Lab の体験授業は、プリントや参考書で進めても詰まる方のための、学習サポートの入口です。事前送付したプリントを題材に、立式の癖と次の一手をお渡しします。本気で受験と向き合う方への軽い参加コストとして ¥3,000 をいただきますが、サポートを続けるかは体験のあとで判断していただいて構いません。"
       >
         <div className="flex flex-wrap gap-3">
           <Link
@@ -87,10 +88,10 @@ export default function TrialPage() {
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
           <Link
-            href="/courses"
+            href="/prints"
             className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/80 px-7 py-4 text-[15px] sm:text-[14px] text-ink-800 transition hover:border-ink-900/30 hover:bg-white min-h-[52px] sm:min-h-0"
           >
-            高校物理・理系個別指導の講座を見る
+            まず演習プリントを試す
             <ArrowRight className="h-3.5 w-3.5 opacity-50" />
           </Link>
         </div>
@@ -314,8 +315,11 @@ export default function TrialPage() {
       </Section>
 
       <CtaBlock
+        eyebrow="TRIAL — まずは 60 分から"
+        title="体験授業は、学習サポートを使うかどうかを決めるための入口です。"
+        description="プリントで詰まった単元を題材に、立式の癖と次の一手をお渡しします。サポートを使うかは体験のあとで判断していただいて構いません。"
         primary={{ label: "体験授業を申し込む", href: "/contact?topic=trial#contact-form" }}
-        secondary={{ label: "高校物理・理系個別指導の講座を見る", href: "/courses" }}
+        secondary={{ label: "学習サポートを見る", href: "/courses" }}
       />
 
       <JsonLd
@@ -328,20 +332,20 @@ export default function TrialPage() {
       <JsonLd
         id="ld-webpage-trial"
         data={webPageJsonLd({
-          name: "体験授業（60分・¥3,000）｜ Solvora Learning Lab",
+          name: "体験授業（60分・¥3,000）｜ 学習サポートの入口 ｜ Solvora Learning Lab",
           description:
-            "Solvora Learning Lab の60分・¥3,000 体験授業。現在の高校物理の理解度を診断し、学習戦略とおすすめコース（電磁気集中講座 / 分野別講座 / 定期テスト対策）を提案します（高校物理専門塾としての指導継続）。",
+            "プリントや参考書で進めても詰まる方向けの、Solvora Learning Lab の 60 分・¥3,000 体験授業。事前送付プリントを題材に、立式の癖と次の一手を診断します。",
           path: "/trial",
         })}
       />
       <JsonLd
         id="ld-service-trial"
         data={serviceJsonLd({
-          name: "Solvora Learning Lab の体験授業（高校物理・理系個別指導）",
+          name: "Solvora Learning Lab の体験授業（高校物理 学習サポートの入口）",
           description:
-            "Solvora Learning Lab が行う、高校物理・大学受験物理の現状診断と学習戦略提案の60分オンライン体験授業（¥3,000）です（高校物理専門塾としての指導継続）。",
+            "Solvora Learning Lab が行う、高校物理・大学受験物理の現状診断と学習サポートの入口としての 60 分オンライン体験授業（¥3,000）です。",
           path: "/trial",
-          serviceType: "オンライン学習相談 / 体験授業 / 高校物理・理系個別指導",
+          serviceType: "高校物理 体験授業 / 学習サポート",
           price: "3000",
         })}
       />

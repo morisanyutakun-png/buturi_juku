@@ -14,19 +14,18 @@ import { getBookBySlug } from "@/data/books";
 const courseList = visibleCourses();
 
 export const metadata: Metadata = buildMetadata({
-  title: "講座一覧 — Solvora Learning Lab（高校物理・理系個別指導 / AI復習プリント付き）",
+  title: "学習サポート一覧 — 一人で進めるのが難しい方へ ｜ Solvora Learning Lab",
   description:
-    "Solvora Learning Lab の講座一覧です。体験授業、力学・電磁気の集中講座、定期テスト対策まで、目的に応じた高校物理・理系個別指導の講座をご用意しています（高校物理専門塾としての指導継続）。",
+    "演習プリントと参考書『考える力を育てる』シリーズで進めても一人では難しい方向けの、森祐太による個別の学習サポート一覧です。体験授業、電磁気集中、定期テスト対策まで、目的に応じて選べる高校物理の個別サポートを用意しています。",
   path: "/courses",
   keywords: [
-    "Solvora Learning Lab 講座",
-    "AI復習プリント 講座",
-    "高校物理専門塾 講座",
-    "高校物理 個別指導 講座",
-    "高校物理 オンライン 講座",
+    "Solvora Learning Lab 学習サポート",
+    "高校物理 個別指導 サポート",
+    "高校物理 オンライン 個別指導",
     "大学受験 物理 個別指導",
-    "力学 集中講座",
     "電磁気 集中講座",
+    "力学 集中講座",
+    "物理 苦手 克服",
   ],
   category: "education",
 });
@@ -35,28 +34,28 @@ export default function CoursesIndexPage() {
   return (
     <>
       <PageHero
-        eyebrow="COURSES — Solvora の全講座"
-        watermark="講"
+        eyebrow="LEARNING SUPPORT — 学習サポート一覧"
+        watermark="支"
         tone="brand"
         breadcrumb={[
           { label: "ホーム", href: "/" },
-          { label: "講座一覧", href: "/courses" },
+          { label: "学習サポート", href: "/courses" },
         ]}
         title={
           <>
-            <span className="block">高校物理・理系個別指導の</span>
+            <span className="block">プリントと参考書だけで</span>
             <span className="block">
-              <span className="text-brand">講座一覧</span>。
+              届かない人のための、<span className="text-brand">人がつくサポート</span>。
             </span>
           </>
         }
-        description="Solvora Learning Lab では、書籍ベースの集中講座を軸に、志望校や目的に合わせて高校物理・理系個別指導をご用意しています。すべての講座はオンラインで全国からご受講いただけます（高校物理専門塾としての指導継続）。"
+        description="演習プリントと参考書『考える力を育てる』シリーズで自分のペースで進めて、それでも詰まる単元・立式の癖がある方向けに、森祐太による個別の学習サポートを用意しています。すべてオンライン・全国対応・入塾金 0 円。原則は、まずプリントを試してから検討してください。"
       />
 
       <Section
-        eyebrow="ALL COURSES"
-        title="目的別 — コース一覧"
-        description="体験授業から志望校別カリキュラム、分野別集中講座、定期テスト対策まで。"
+        eyebrow="ALL SUPPORT"
+        title="目的別 — サポート一覧"
+        description="体験授業（入口）から、書籍ベースの分野別集中、定期テスト対策まで。プリント・参考書では届かない単元だけ、人と一緒に解きます。"
       >
         <div className="grid gap-6 md:grid-cols-2">
           {courseList.map((c) => {
@@ -147,15 +146,15 @@ export default function CoursesIndexPage() {
         id="ld-breadcrumb-courses"
         data={breadcrumbJsonLd([
           { name: "ホーム", href: "/" },
-          { name: "講座一覧", href: "/courses" },
+          { name: "学習サポート", href: "/courses" },
         ])}
       />
       <JsonLd
         id="ld-collection-courses"
         data={collectionPageJsonLd({
-          name: "Solvora Learning Lab の講座一覧（高校物理・理系個別指導）",
+          name: "Solvora Learning Lab の学習サポート一覧（高校物理 個別指導）",
           description:
-            "Solvora Learning Lab の体験授業、分野別集中講座、定期テスト対策を比較できる講座一覧ページです（高校物理専門塾としての指導継続）。",
+            "無料プリントと参考書 6 冊で進めても詰まる方向けに、森祐太による個別の学習サポート（体験授業・分野別集中・テスト対策）を一覧化したページです。",
           path: "/courses",
           items: courseList.map((course) => ({
             name: course.title,
@@ -167,8 +166,9 @@ export default function CoursesIndexPage() {
       <JsonLd
         id="ld-courses-itemlist"
         data={itemListJsonLd({
-          name: "Solvora Learning Lab 講座一覧",
-          description: "目的別に選べる、高校物理・理系個別指導（AI復習プリント付き）の講座一覧です。",
+          name: "Solvora Learning Lab 学習サポート一覧",
+          description:
+            "プリント・参考書で進めても詰まる方向けに、目的別に選べる高校物理の個別サポート一覧です。",
           path: "/courses",
           items: courseList.map((course) => ({
             name: course.title,

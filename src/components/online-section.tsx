@@ -17,8 +17,8 @@ const items = [
   },
   {
     icon: BookMarked,
-    title: "オリジナル教材で本質から理解",
-    body: "授業の軸は、講師（森祐太）自身が執筆した『考える力を育てる』シリーズ。公式の暗記ではなく、現象と原理から立式できる状態を目指して組み立てます。",
+    title: "参考書 6 冊で授業の軸を固める",
+    body: "サポート授業の軸は、森祐太自身が執筆した参考書『考える力を育てる』シリーズ 6 冊。公式の暗記ではなく、現象と原理から立式できる状態を目指して組み立てます。",
     tone: "warm",
   },
   {
@@ -41,8 +41,8 @@ const items = [
   },
   {
     icon: FileText,
-    title: "AI復習プリント (REMが補助)",
-    body: "授業で解けなかった問題に近い類題と解答・解説を AI（REM）が下書きし、講師が確認したうえで復習PDFとしてお渡しします。",
+    title: "AI 復習プリント（REM が補助）",
+    body: "サポート授業で解けなかった問題に近い類題と解答・解説を AI（REM）が下書きし、講師が確認したうえで復習 PDF としてお渡しします。",
     tone: "forest",
   },
 ] as const;
@@ -56,9 +56,9 @@ const toneMap = {
 export function OnlineSection() {
   return (
     <Section
-      eyebrow="ONLINE ADVANTAGE"
+      eyebrow="ONLINE ADVANTAGE — 学習サポートの強み"
       title={<>Solvora × オンライン、<br className="sm:hidden" />だからできること。</>}
-      description="移動時間を学習時間に変え、解けなかった問題は AI 復習プリントに整える。高校物理・理系個別指導は、オンラインのほうが加速します。"
+      description="プリントや参考書で進めても詰まる単元を、移動時間ゼロで講師と一緒にほどく。Solvora のオンライン個別サポートは、AI 復習プリントで翌週まで連続させます。"
       className="bg-paper"
     >
       <div className="grid gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">

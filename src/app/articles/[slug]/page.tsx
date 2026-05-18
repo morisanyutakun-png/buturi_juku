@@ -115,28 +115,30 @@ export default async function ArticleDetailPage({
                   NEXT STEP
                 </p>
                 <h2 className="mt-3 font-serif text-2xl text-ink-900">
-                  読むだけで終わらせない。<br className="sm:hidden" />
-                  体験授業で、現在地を診断しませんか。
+                  読み終わったら、<br className="sm:hidden" />
+                  そのまま 1 問解いてみてください。
                 </h2>
                 <p className="mt-4 text-sm text-ink-700 leading-relaxed">
-                  体験授業では、この記事の内容をあなたの現状に合わせて具体化します。
-                  60分で学習戦略のドラフトをお渡しします。
+                  この記事に対応する単元の演習プリントを、解答・解説まで無料で公開しています。全分野を体系的に読み通したいなら、参考書 6 冊もあります。
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Link
-                    href="/trial"
+                    href="/prints"
                     className="inline-flex items-center gap-2 rounded-full bg-warm px-5 py-3 text-sm font-medium text-white hover:bg-warm-deep transition"
                   >
-                    体験授業を申し込む
+                    演習プリントを開く
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <Link
-                    href="/courses"
+                    href="/teacher#books"
                     className="inline-flex items-center gap-2 rounded-full border border-ink-900/15 px-5 py-3 text-sm text-ink-900 hover:border-brand hover:text-brand transition"
                   >
-                    高校物理・理系個別指導の講座を見る
+                    参考書 6 冊を見る
                   </Link>
                 </div>
+                <p className="mt-4 text-xs text-ink-500 leading-relaxed">
+                  それでも 1 問で止まる方は、<Link href="/trial" className="text-ink-800 underline decoration-ink-900/20 underline-offset-2 hover:text-brand-deep">60 分の体験授業</Link>もあります。
+                </p>
               </div>
             </div>
 
@@ -149,7 +151,7 @@ export default async function ArticleDetailPage({
                 </p>
                 <p className="mt-3 font-serif text-ink-900">森 祐太</p>
                 <p className="mt-2 text-xs text-ink-600 leading-relaxed">
-                  物理専門塾 主宰。書籍執筆・教材開発を手がける。
+                  Solvora Learning Lab の演習プリント全教材と参考書『考える力を育てる』シリーズの著者。学習サポート（個別指導）も担当。
                 </p>
                 <Link
                   href="/teacher"

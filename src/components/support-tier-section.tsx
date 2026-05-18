@@ -6,12 +6,8 @@ import { getCourseBySlug } from "@/data/courses";
 /**
  * 「学習サポート」セクション。
  *
- * サイト方針（2026.05）以降:
- *   - 個別指導・体験授業は、プリント・参考書で進めても一人では難しい人だけが
- *     使う「上位サポート」として位置づける。
- *   - 教材棚（PrintsTeaser）→ 参考書 → このセクション、の順で読まれることを前提。
- *   - 価格よりも「何をしてくれるか」を先に置き、売り込み感を抑える。
- *   - 3 つの代表サポート（体験授業 / 電磁気集中 / テスト前集中）を控えめに並べる。
+ * 体験授業（TrialSpotlight）の次段に置き、続けて伴走が必要な方向けに
+ * 週次の個別サポート（電磁気集中 / テスト前集中）を提示する。
  */
 
 type TierMeta = {
@@ -23,13 +19,6 @@ type TierMeta = {
 };
 
 const tierMeta: TierMeta[] = [
-  {
-    slug: "trial",
-    badge: "入口",
-    blurb:
-      "まずは 60 分。プリントの解答で詰まった箇所を題材に、立式の癖と次の一手を見立てます。",
-    span: "60 分 / 初回のみ",
-  },
   {
     slug: "electromagnetism",
     badge: "おすすめ",
@@ -79,18 +68,18 @@ export function SupportTierSection() {
         <div className="grid gap-6 sm:gap-10 md:grid-cols-[1fr_1.55fr] md:items-start">
           <div>
             <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] sm:text-[10px] font-medium uppercase tracking-[0.18em] sm:tracking-[0.32em] text-brand-deep before:inline-block before:h-px before:w-5 sm:before:w-6 before:bg-current before:opacity-50">
-              LEARNING SUPPORT — 一人で進めるのが難しい方へ
+              LEARNING SUPPORT — 続けて伴走が必要な方へ
             </p>
             <h2
               id="support-tier-heading"
               className="mt-4 sm:mt-6 font-serif text-[1.6rem] sm:text-[2.1rem] leading-[1.35] sm:leading-[1.2] tracking-[-0.012em] text-ink-900"
             >
-              プリントと参考書だけで届かない人に、
+              体験のあと、
               <br className="hidden sm:block" />
-              <span className="text-warm-deep">人がつくサポート</span>を残しました。
+              <span className="text-warm-deep">毎週そばで見てほしい</span>方には。
             </h2>
             <p className="mt-4 sm:mt-6 max-w-md text-[14px] sm:text-[15px] leading-[1.9] sm:leading-[1.85] text-ink-700">
-              演習プリントと『考える力を育てる』シリーズで自分のペースで進めて、それでも詰まる単元・立式の癖がある方には、森祐太による個別の学習サポートを残しています。
+              「立式の癖はわかった。でも、ひとりで直す自信がない」——そんな方のために、週次で並走する個別サポートを用意しています。書籍ベースの分野別集中と、テスト前の駆け込み対応の 2 種類です。
             </p>
             <ul className="mt-5 space-y-2.5 sm:mt-6 text-[13.5px] sm:text-[14px] leading-[1.8] text-ink-700">
               <li className="flex items-start gap-2.5">
@@ -99,7 +88,7 @@ export function SupportTierSection() {
                   aria-hidden
                   strokeWidth={1.7}
                 />
-                完全 1 対 1 のオンライン個別指導（全国・海外対応）
+                完全 1 対 1 のオンライン（全国・海外対応）
               </li>
               <li className="flex items-start gap-2.5">
                 <UserCheck
@@ -107,7 +96,7 @@ export function SupportTierSection() {
                   aria-hidden
                   strokeWidth={1.7}
                 />
-                授業の軸は同じ参考書『考える力を育てる』シリーズ
+                授業の軸は同じ『考える力を育てる』シリーズ
               </li>
               <li className="flex items-start gap-2.5">
                 <UserCheck
@@ -121,7 +110,7 @@ export function SupportTierSection() {
             <p className="mt-5 sm:mt-7 rounded-2xl border border-ink-900/[0.08] bg-white/80 px-4 py-3 text-[12.5px] sm:text-[13px] leading-[1.8] text-ink-600">
               <span className="inline-flex items-center gap-1.5 text-warm-deep">
                 <FileText className="h-3.5 w-3.5" aria-hidden />
-                <span className="font-medium">推奨フロー</span>
+                <span className="font-medium">受講の順番</span>
               </span>
               ：まず{" "}
               <Link
@@ -130,7 +119,7 @@ export function SupportTierSection() {
               >
                 演習プリント
               </Link>
-              を 1 単元解いて、詰まる癖が見えてきたら体験授業へ。
+              を試して、立式の癖が気になったら体験授業へ。そこで合うと感じたら、この週次サポートを検討してください。
             </p>
           </div>
 

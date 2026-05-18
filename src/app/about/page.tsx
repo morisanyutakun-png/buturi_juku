@@ -9,18 +9,17 @@ import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Solvora Learning Lab について — AI復習プリント付き 高校物理・理系個別指導",
+  title: "Solvora Learning Lab について — 高校物理の無料プリント・参考書・学習サポートの考え方",
   description:
-    "Solvora Learning Lab の理念・指導思想・総合塾との違いをまとめたページです。高校物理専門塾としての姿勢を継承しつつ、解けなかった1問を AI復習プリントに変えるサービス設計を解説します。",
+    "Solvora Learning Lab は、高校物理の無料プリント・解説 PDF・参考書を公開しているサイトです。教材は森祐太が全分野自ら執筆し、プリントから参考書まで同じ枠組みで読み通せます。それでも詰まる方には、個別の学習サポート（体験授業・分野別講座）も用意しています。",
   path: "/about",
   keywords: [
     "Solvora Learning Lab",
-    "AI復習プリント",
-    "理系個別指導",
-    "高校物理専門塾",
-    "高校物理専門塾 とは",
+    "高校物理 教材",
+    "高校物理 プリント",
+    "高校物理 参考書",
+    "高校物理 専門塾",
     "高校物理 個別指導",
-    "高校物理 総合塾 違い",
     "高校物理 苦手 克服",
   ],
   category: "education",
@@ -39,14 +38,14 @@ export default function AboutPage() {
         ]}
         title={
           <>
-            <span className="block">解けなかった問題を、</span>
+            <span className="block">公式を当てはめる学習を、</span>
             <span className="block">
-              次の<span className="text-brand">理解</span>と<span className="text-warm-deep">復習</span>に
+              <span className="text-brand">立式の手順</span>に
             </span>
-            <span className="block">変える個別指導。</span>
+            <span className="block">置き換える。</span>
           </>
         }
-        description="高校物理は、わかったふりで止まると最も損をする科目です。Solvora Learning Lab は『わかったふり』を許さず、解けなかった1問を講師が確認したうえで AI復習プリントに変え、次の理解へつなげます。高校物理専門塾としての指導は、ここでも継続しています。"
+        description="高校物理は、わかったふりで止まると最も損をする科目です。Solvora Learning Lab は、力学から原子まで全分野の演習プリントと参考書を、ひとつの考え方で書き通しています。それでも詰まる単元には、個別の学習サポートで人がつきます。"
       />
 
       <Section
@@ -64,7 +63,7 @@ export default function AboutPage() {
               物理を、暗記ではなく理解へ。
             </h3>
             <p className="mt-5 sm:mt-6 text-[15.5px] sm:text-base leading-[2] sm:leading-relaxed text-ink-700">
-              公式に当てはめる学習は、問題の前提が少しずれた瞬間に崩れます。私たちは物理を『現象を数式に翻訳する営み』として捉え直し、原理からの立式ができる状態を作ることを使命としています。
+              公式に当てはめる学習は、問題の前提が少しずれた瞬間に崩れます。私たちは物理を『現象を数式に翻訳する営み』として捉え直し、原理からの立式ができる状態を作ることを使命としています。教材も授業も、すべて同じ枠組みで設計しています。
             </p>
           </div>
           <div className="rounded-2xl border border-warm/30 bg-gradient-to-br from-warm-bg via-white to-paper-soft p-7 sm:p-8 shadow-soft">
@@ -75,7 +74,7 @@ export default function AboutPage() {
               物理だけを、深く、丁寧に。
             </h3>
             <p className="mt-5 sm:mt-6 text-[15.5px] sm:text-base leading-[2] sm:leading-relaxed text-ink-700">
-              私たちは物理しか扱いません。だからこそ、あらゆる分野のあらゆる問題を『なぜそう立式するのか』のレベルまで解きほぐすことができます。
+              私たちは物理しか扱いません。だからこそ、教材も指導も、あらゆる分野のあらゆる問題を『なぜそう立式するのか』のレベルまで解きほぐせます。
             </p>
           </div>
         </div>
@@ -88,22 +87,22 @@ export default function AboutPage() {
       <Section
         eyebrow="WHY PHYSICS-FIRST"
         title="なぜ高校物理を主軸に置くのか"
-        description="Solvora Learning Lab は理系個別指導サービスですが、軸足は高校物理にあります。高校物理を深く扱うからこそ提供できる価値を3点でお伝えします（高校物理専門塾としての指導継続）。"
+        description="Solvora Learning Lab は教材リソースとしても個別サポートとしても、軸足は高校物理にあります。高校物理を深く扱うからこそ提供できる価値を 3 点でお伝えします。"
         className="bg-paper-soft"
       >
         <div className="grid gap-8 md:grid-cols-3">
           {[
             {
               title: "分野横断の視点を持てる",
-              body: "力学で培った運動量の考え方が、電磁気や波動の理解を支えます。物理専門だからこそ、分野をまたいだ『同じ構造』を授業で示せます。",
+              body: "力学で培った運動量の考え方が、電磁気や波動の理解を支えます。物理専門だからこそ、分野をまたいだ『同じ構造』を教材で示せます。",
             },
             {
-              title: "教材・テストの取捨選択ができる",
-              body: "物理に限った膨大な教材と出題傾向の中から、あなたに本当に必要なものだけを提示できます。勉強時間を浪費しません。",
+              title: "教材・問題の取捨選択ができる",
+              body: "物理に限った膨大な教材と出題傾向の中から、あなたに本当に必要なものだけを棚から取り出せます。勉強時間を浪費しません。",
             },
             {
-              title: "講師の専門性が深い",
-              body: "物理以外を教えないからこそ、毎年の入試動向を追い続けられます。物理の最新出題にキャッチアップし続ける体制があります。",
+              title: "教材を作っている人が深い",
+              body: "物理以外を教えないからこそ、毎年の入試動向を追い続けられます。プリントも参考書もこの一人が書いているので、ぶれません。",
             },
           ].map((x) => (
             <div
@@ -121,8 +120,8 @@ export default function AboutPage() {
 
       <Section
         eyebrow="TEACHING ORDER"
-        title="授業の進行順序"
-        description="私たちの授業には、明確な順序があります。"
+        title="教材と授業の進行順序"
+        description="プリントも参考書もサポート授業も、すべてこの順序で組み立てています。"
         className="bg-paper"
       >
         <ol className="space-y-4">
@@ -168,10 +167,7 @@ export default function AboutPage() {
         </ol>
       </Section>
 
-      <CtaBlock
-        title="あなたの物理を、60分で診断します。"
-        description="体験授業では、現状のヒアリングから学習戦略の提案までを行います。入塾前提ではありません。"
-      />
+      <CtaBlock />
 
       <JsonLd
         id="ld-breadcrumb-about"
@@ -183,9 +179,9 @@ export default function AboutPage() {
       <JsonLd
         id="ld-webpage-about"
         data={webPageJsonLd({
-          name: "Solvora Learning Lab について — AI復習プリント付き 高校物理・理系個別指導",
+          name: "Solvora Learning Lab について — 高校物理の無料プリント・参考書・学習サポートの考え方",
           description:
-            "Solvora Learning Lab の理念、指導方針、総合塾との違いをまとめたページです（高校物理専門塾としての姿勢を継承）。",
+            "Solvora Learning Lab の理念、教材設計の方針、必要な人だけが使う個別サポートについてまとめたページです。",
           path: "/about",
         })}
       />

@@ -12,14 +12,10 @@ import {
 } from "@/data/prints";
 
 /**
- * TOP の「教材棚」セクション。
+ * TOP の演習プリント主役セクション。
  *
- * サイト方針（2026.05）以降:
- *   - ホームの第一フォールド直下に置き、Hero の「演習プリントを開く」CTA から
- *     1 スクロールでプリント棚そのものが見える状態にする。
- *   - 単元別チップ → 棚の 6 冊サムネ → 価値訴求バー → 全教材リンク、の順で
- *     /prints への深い導線を作る。
- *   - 個別指導サイトではなく "教材リソースサイト" の表情を作る主役セクション。
+ * Hero の「演習プリントを開く」CTA から 1 スクロールでプリントの実物が見える状態にする。
+ * 単元チップ → 6 枚サムネ → 価値訴求 → 全教材リンク、の順で /prints へ送り込む。
  */
 
 const subjectAccent: Record<PrintSubject, string> = {
@@ -92,18 +88,18 @@ export function PrintsTeaser() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
           <div className="max-w-2xl">
             <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] sm:text-[10px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.32em] text-warm-deep before:inline-block before:h-px before:w-5 before:bg-current before:opacity-50">
-              PRINTS — 高校物理 演習プリント
+              PRINTS — 演習プリント
             </p>
             <h2
               id="prints-teaser-heading"
               className="mt-3 sm:mt-5 font-serif text-[1.55rem] sm:text-[2.2rem] leading-[1.35] sm:leading-[1.25] tracking-[-0.012em] text-ink-900"
             >
-              苦手な単元から、棚にあるプリントを
+              苦手な単元から、
               <br className="hidden sm:block" />
-              <span className="text-warm-deep">そのまま開いて読む</span>。
+              <span className="text-warm-deep">無料で開いて読む</span>。
             </h2>
             <p className="mt-3 sm:mt-5 text-[13.5px] sm:text-[15px] leading-[1.85] text-ink-700">
-              ダウンロード前に、ページ画像と解答解説を Web で読めます。気に入ったら印刷向け PDF をどうぞ。<strong className="font-medium text-ink-900">登録も申込も不要、すべて無料</strong>です。
+              力学から原子まで、典型問題を <strong className="font-medium text-ink-900">問題・解答・解説のセット</strong>で公開しています。Web プレビューでそのまま読めて、PDF で印刷もできます。<strong className="font-medium text-ink-900">登録も申込も要りません</strong>。
             </p>
           </div>
           <Link

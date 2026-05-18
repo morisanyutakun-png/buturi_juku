@@ -23,19 +23,17 @@ import {
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "オンライン受講｜Solvora Learning Lab — 全国どこからでも1対1で",
+  title: "オンライン個別サポート｜Solvora Learning Lab — 全国どこからでも 1 対 1 で",
   description:
-    "Solvora Learning Lab のオンライン指導は、通塾不要・全国対応・1対1の高校物理・理系個別指導です。画面共有でのライブ解説、授業ノート（PDF配布）、毎回の宿題と次回フィードバック、AI 復習プリントまでを一貫して提供します（高校物理専門塾としての指導を継続）。",
+    "Solvora Learning Lab のオンライン個別サポートは、通塾不要・全国対応・1 対 1 の高校物理の学習サポートです。画面共有でのライブ解説、授業ノート（PDF 配布）、毎回の宿題と次回フィードバック、AI 復習プリントまでを一貫して提供します。プリントや参考書で進めても詰まる方向けの、上位サポート枠です。",
   path: "/online",
   keywords: [
-    "Solvora Learning Lab オンライン",
-    "AI復習プリント オンライン",
-    "高校物理専門塾 オンライン",
     "高校物理 オンライン 個別指導",
     "高校物理 通信 塾",
-    "オンライン 物理塾 高校生",
-    "全国対応 物理塾",
+    "オンライン 物理 高校生",
+    "全国対応 物理 個別指導",
     "オンライン 物理 1対1",
+    "高校物理 学習サポート",
   ],
   category: "education",
 });
@@ -95,23 +93,24 @@ export default function OnlinePage() {
   return (
     <>
       <PageHero
-        eyebrow="ONLINE — 全国どこからでも1対1"
+        eyebrow="ONLINE — 全国どこからでも 1 対 1 の学習サポート"
         watermark="繋"
         tone="gold"
         breadcrumb={[
           { label: "ホーム", href: "/" },
+          { label: "学習サポート", href: "/courses" },
           { label: "オンライン受講", href: "/online" },
         ]}
         title={
           <>
-            <span className="block">Solvora Learning Lab、</span>
+            <span className="block">詰まった単元を、</span>
             <span className="block">
               <span className="text-brand">オンライン</span>で
             </span>
-            <span className="block">全国対応。</span>
+            <span className="block">一緒にほどく。</span>
           </>
         }
-        description="Solvora Learning Lab のオンライン指導は、通塾不要・全国対応・1対1の高校物理・理系個別指導です。授業で解けなかった問題を、講師が確認したうえで AI（REM）と一緒に類題・解答・復習プリントに整えてお渡しします。地方・海外からでも、都市部と同じ授業をそのまま受講できます（高校物理専門塾としての指導継続）。"
+        description="Solvora Learning Lab のオンライン個別サポートは、通塾不要・全国対応・1 対 1 の高校物理学習サポートです。演習プリントと参考書で進めても詰まる単元を、画面共有のライブ解説と AI（REM）の復習プリントで一緒にほどきます。地方・海外からでも、都市部と同じ品質でお受けいただけます。"
       >
         <div className="flex flex-wrap gap-3">
           <Link
@@ -122,10 +121,10 @@ export default function OnlinePage() {
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
           <Link
-            href="/courses"
+            href="/prints"
             className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/80 px-7 py-4 text-[15px] sm:text-[14px] text-ink-800 transition hover:border-ink-900/30 hover:bg-white min-h-[52px] sm:min-h-0"
           >
-            高校物理・理系個別指導の講座を見る
+            まず演習プリントを試す
             <ArrowRight className="h-3.5 w-3.5 opacity-50" />
           </Link>
         </div>
@@ -140,7 +139,7 @@ export default function OnlinePage() {
             オンラインで受ける4つの理由。
           </>
         }
-        description="『オンラインは対面の代替』ではありません。高校物理・理系個別指導は、オンラインのほうが加速します。"
+        description="『オンラインは対面の代替』ではありません。高校物理の学習サポートは、オンラインのほうが加速します。"
         className="bg-paper-soft"
       >
         <div className="grid gap-5 md:grid-cols-2">
@@ -230,35 +229,38 @@ export default function OnlinePage() {
       <Testimonials />
 
       <CtaBlock
-        eyebrow="START ONLINE"
-        title="オンラインで、まず60分の体験授業を。"
-        description="入塾前提ではない学習相談としてもご利用いただけます。受講環境のチェックから対応します。"
+        eyebrow="START ONLINE — 学習サポートの入口"
+        title="まずは演習プリントを試して、それでも詰まればオンラインで。"
+        description="無料の演習プリントと参考書だけで届かない方向けに、オンラインで 1 対 1 の学習サポートを残しています。入塾前提ではない学習相談としてもご利用いただけます。"
+        primary={{ label: "体験授業を申し込む", href: "/contact?topic=trial#contact-form" }}
+        secondary={{ label: "演習プリントを開く", href: "/prints" }}
       />
 
       <JsonLd
         id="ld-breadcrumb-online"
         data={breadcrumbJsonLd([
           { name: "ホーム", href: "/" },
+          { name: "学習サポート", href: "/courses" },
           { name: "オンライン受講", href: "/online" },
         ])}
       />
       <JsonLd
         id="ld-webpage-online"
         data={webPageJsonLd({
-          name: "オンライン受講｜Solvora Learning Lab — 全国どこからでも1対1で",
+          name: "オンライン個別サポート ｜ Solvora Learning Lab — 全国どこからでも 1 対 1 で",
           description:
-            "Solvora Learning Lab のオンライン指導の専用ページ。通塾不要・全国対応・1対1の高校物理・理系個別指導と AI復習プリントの特徴・受講環境・FAQをまとめています（高校物理専門塾としての指導継続）。",
+            "Solvora Learning Lab のオンライン個別サポートの専用ページ。通塾不要・全国対応・1 対 1 の高校物理学習サポートと AI 復習プリントの特徴・受講環境・FAQ をまとめています。",
           path: "/online",
         })}
       />
       <JsonLd
         id="ld-service-online"
         data={serviceJsonLd({
-          name: "Solvora Learning Lab のオンライン指導（高校物理専門塾）",
+          name: "Solvora Learning Lab のオンライン学習サポート（高校物理）",
           description:
-            "高校物理が苦手な高校生・受験生に向けた、全国オンライン対応の高校物理・理系個別指導。1対1個別指導と AI 復習プリント（REM 補助）で、力学・電磁気・波動・熱力学・原子の全分野を体系的に組み立て直します。",
+            "プリントや参考書で進めても詰まる高校生・受験生向けの、全国オンライン対応の高校物理 1 対 1 個別サポート。AI 復習プリント（REM 補助）で力学・電磁気・波動・熱力学・原子の全分野を体系的に組み立て直します。",
           path: "/online",
-          serviceType: "オンライン高校物理専門塾 / 高校物理・理系個別指導",
+          serviceType: "オンライン高校物理 個別サポート",
         })}
       />
       <JsonLd

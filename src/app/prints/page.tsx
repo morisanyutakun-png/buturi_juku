@@ -27,7 +27,7 @@ import {
 export const metadata: Metadata = buildMetadata({
   title: "高校物理 演習プリント アーカイブ ｜ 無料・Web で読める・PDF 印刷 OK",
   description:
-    "高校物理（力学・電磁気・波動・熱・原子）の演習プリントを、Web プレビュー＋印刷向け PDF＋解答解説まで無料で公開。登録も申込も不要。授業・自習・直前演習にそのまま使える、Solvora Learning Lab の教材棚です。さらに参考書『考える力を育てる』シリーズ 6 冊と組み合わせて全分野を体系的に読み通せます。",
+    "公式は覚えたのに、なぜか解けない——その壁を立式の手順から崩すための演習プリントを、力学・電磁気・波動・熱・原子の全分野で無料公開しています。問題・解答・解説のセットで、Web でそのまま読めて、PDF で印刷もできます。登録も申込も要りません。",
   path: "/prints",
   keywords: [
     "高校物理 プリント",
@@ -260,13 +260,13 @@ export default function PrintsIndexPage() {
       {/* 単発で買える有料プリント — 「もっと欲しい人」への分岐（note） */}
       <NotePromoSection />
 
-      {/* 教材だけで届かない人向けの soft な学習サポート案内 */}
+      {/* 教材だけで届かない人向けの soft な体験授業案内 */}
       <CtaBlock
-        eyebrow="LEARNING SUPPORT — 一人で進めるのが難しい方へ"
-        title="プリントと参考書だけで届かないとき、サポートが残っています。"
-        description="演習プリントと『考える力を育てる』シリーズで進めて、それでも詰まる単元・立式の癖がある方には、森祐太による個別の学習サポートを用意しています。原則は、まずプリントを試してから検討してください。"
-        primary={{ label: "参考書 6 冊を見る", href: "/teacher#books" }}
-        secondary={{ label: "学習サポートを見る", href: "/courses" }}
+        eyebrow="STILL STUCK? — 1 問で止まる方へ"
+        title="それでも止まる単元があれば、60 分だけ一緒に見ます。"
+        description="プリントを 1 単元解いて、立式の癖が気になったら、体験授業（60 分・¥3,000）でお預かりします。事前にプリントをお送りして、当日それを題材に進めます。"
+        primary={{ label: "体験授業を申し込む", href: "/contact?topic=trial#contact-form" }}
+        secondary={{ label: "参考書 6 冊を見る", href: "/teacher#books" }}
       />
 
       <JsonLdGraph

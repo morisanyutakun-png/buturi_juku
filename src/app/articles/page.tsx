@@ -11,15 +11,15 @@ import { articles, articleHref } from "@/data/articles";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = buildMetadata({
-  title: "高校物理の学習コラム ｜ Solvora Learning Lab",
+  title: "高校物理の学習コラム ｜ Solvora Learning Lab — プリント・参考書の読み解き",
   description:
-    "Solvora Learning Lab（高校物理専門塾としての指導も継続）が発信する高校物理の学習コラム一覧です。高校物理の勉強法、力学・電磁気・波動・熱力学・原子の分野別の苦手克服、大学受験物理の戦略について、現場から発信します。",
+    "Solvora Learning Lab が発信する高校物理の学習コラム一覧です。演習プリントと参考書『考える力を育てる』シリーズの読み解き、力学・電磁気・波動・熱・原子の分野別の苦手克服、大学受験物理の戦略について、すこし長めの読み物としてまとめています。",
   path: "/articles",
   keywords: [
     "高校物理 勉強法",
     "高校物理 苦手",
-    "Solvora Learning Lab コラム",
-    "高校物理専門塾 コラム",
+    "高校物理 プリント 解き方",
+    "高校物理 参考書 読み方",
     "大学受験物理 勉強法",
     "力学 勉強法",
     "電磁気 勉強法",
@@ -35,23 +35,22 @@ export default function ArticlesIndexPage() {
   return (
     <>
       <PageHero
-        eyebrow="INSIGHTS — 高校物理の学習コラム"
+        eyebrow="INSIGHTS — プリントと参考書の読み解きコラム"
         watermark="解"
         tone="ink"
         breadcrumb={[
           { label: "ホーム", href: "/" },
-          { label: "物理学習コラム", href: "/articles" },
+          { label: "学習コラム", href: "/articles" },
         ]}
         title={
           <>
-            <span className="block">高校物理を</span>
+            <span className="block">プリントの裏側を、</span>
             <span className="block">
-              <span className="text-brand-deep">解きほぐす</span>、
+              <span className="text-brand-deep">すこし長めに</span>。
             </span>
-            <span className="block">学習コラム。</span>
           </>
         }
-        description="Solvora Learning Lab から、高校物理の学び方・分野別の躓きやすいポイント・大学受験物理の戦略を、指導現場の視点で発信します（高校物理専門塾としての発信を継続）。"
+        description="演習プリントと参考書『考える力を育てる』シリーズの補助記事です。高校物理の学び方・分野別の躓きやすいポイント・大学受験物理の戦略を、紙幅をとってまとめています。"
       />
 
       <Section
@@ -128,7 +127,7 @@ export default function ArticlesIndexPage() {
         id="ld-breadcrumb-articles"
         data={breadcrumbJsonLd([
           { name: "ホーム", href: "/" },
-          { name: "物理学習コラム", href: "/articles" },
+          { name: "学習コラム", href: "/articles" },
         ])}
       />
       <JsonLd
@@ -136,7 +135,7 @@ export default function ArticlesIndexPage() {
         data={collectionPageJsonLd({
           name: "高校物理の学習コラム ｜ Solvora Learning Lab",
           description:
-            "Solvora Learning Lab（高校物理専門塾としての指導も継続）が発信する、高校物理の学び方・分野別の苦手克服・大学受験物理の戦略をまとめた記事一覧です。",
+            "Solvora Learning Lab が発信する、演習プリントと参考書を読み解くための学習コラム一覧です。",
           path: "/articles",
           items: sorted.map((article) => ({
             name: article.title,
@@ -149,7 +148,7 @@ export default function ArticlesIndexPage() {
         id="ld-articles-itemlist"
         data={itemListJsonLd({
           name: "高校物理の学習コラム一覧",
-          description: "Solvora Learning Lab（高校物理専門塾）による、高校物理・大学受験物理の学習記事一覧です。",
+          description: "演習プリントと参考書『考える力を育てる』シリーズを補助する、Solvora Learning Lab の学習コラム一覧です。",
           path: "/articles",
           items: sorted.map((article) => ({
             name: article.title,

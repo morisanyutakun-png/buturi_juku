@@ -26,7 +26,7 @@ export function organizationJsonLd() {
 
   const hasOfferCatalog = {
     "@type": "OfferCatalog",
-    name: `${siteConfig.name} の講座カタログ（高校物理・理系個別指導）`,
+    name: `${siteConfig.name} の学習サポートカタログ（高校物理 個別指導）`,
     itemListElement: visibleCourses().map((c) => ({
       "@type": "Offer",
       url: absoluteUrl(`/courses/${c.slug}`, siteConfig.url),

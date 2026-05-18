@@ -13,7 +13,7 @@ export function ForEveryoneSection() {
     <Section
       eyebrow="FOR EVERY LEARNER"
       title={<>高校物理を高めたい人、<br className="sm:hidden" />みんなウェルカム。</>}
-      description="Solvora Learning Lab は、初学者から難関大志望まで、高校物理を伸ばしたい全ての方を受け入れます（高校物理専門塾としての指導継続）。『苦手だから無理かも』『自分のレベルでは申し込めない』ということは、一切ありません。あなたに合ったルートを、体験授業で一緒に設計します。"
+      description="Solvora Learning Lab の演習プリントと参考書は、初学者から難関大志望まで、誰でも自由に手に取れます。『苦手だから無理かも』『自分のレベルでは申し込めない』ということは一切ありません。まずは演習プリントを 1 単元、自分のペースで開いてみてください。"
       className="bg-paper"
     >
       <div className="grid gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -40,11 +40,11 @@ export function ForEveryoneSection() {
           OUR STANCE
         </p>
         <p className="mt-3 sm:mt-5 font-serif text-[1.15rem] sm:text-[1.35rem] tracking-[-0.012em] leading-[1.55] sm:leading-relaxed text-ink-900 sm:text-[1.55rem]">
-          『<span className="text-warm-deep">あなたのレベルに合うルート</span>』を、<br className="sm:hidden" />体験授業で一緒に見つけます。
+          まずは <span className="text-warm-deep">演習プリントを 1 単元</span>、<br className="sm:hidden" />自分のペースで開いてみてください。
         </p>
         <p className="mt-3 sm:mt-5 text-[13px] sm:text-[14px] leading-[1.85] sm:leading-[1.85] text-ink-600">
-          体験授業では現在地を丁寧にヒアリングしたうえで、<br className="hidden sm:block" />
-          合うと感じられたときだけ、受講を選んでください。
+          一人で進めるのが難しい単元があったときだけ、<br className="hidden sm:block" />
+          学習サポート（個別指導）を検討していただいて構いません。
         </p>
       </div>
     </Section>

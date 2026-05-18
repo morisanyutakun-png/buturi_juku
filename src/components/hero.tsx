@@ -54,22 +54,21 @@ export function Hero() {
                 {siteConfig.nameEn}
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-warm/35 bg-warm-bg px-3 py-1 text-[10px] sm:text-[10.5px] font-medium tracking-[0.18em] text-warm-deep">
-                教材棚 / Web で読める
+                高校物理 無料プリント
               </span>
             </div>
 
             <h1
-              className="mt-4 sm:mt-5 font-serif text-[2.05rem] leading-[1.18] tracking-[-0.02em] text-ink-900 sm:text-[3.2rem] sm:leading-[1.12] lg:text-[3.95rem] lg:leading-[1.06]"
+              className="mt-4 sm:mt-5 font-serif text-[2.05rem] leading-[1.22] tracking-[-0.02em] text-ink-900 sm:text-[3.1rem] sm:leading-[1.14] lg:text-[3.85rem] lg:leading-[1.08]"
               style={{
                 wordBreak: "keep-all",
                 overflowWrap: "break-word",
                 lineBreak: "strict",
               }}
             >
+              <span className="block">公式は覚えた。</span>
               <span className="block">
-                高校物理を、<span className="text-brand-deep">棚で読む</span>。
-              </span>
-              <span className="block">
+                それなのに、
                 <span className="relative inline-block">
                   <span
                     className="bg-clip-text text-transparent"
@@ -78,19 +77,20 @@ export function Hero() {
                         "linear-gradient(120deg, #b35f27 0%, #e28040 50%, #f3a86c 100%)",
                     }}
                   >
-                    プリント・解説・参考書
+                    解けない
                   </span>
                   <span
                     aria-hidden
                     className="absolute inset-x-0 -bottom-1 h-[8px] sm:h-[10px] -z-10 rounded-full bg-warm/25"
                   />
                 </span>
-                を、ここに。
+                。
               </span>
             </h1>
 
-            <p className="mt-6 sm:mt-7 max-w-xl text-[14px] sm:text-[16px] leading-[1.9] sm:leading-[1.85] text-ink-700">
-              力学・電磁気・波動・熱・原子の演習プリントを、Web プレビュー＋印刷向け PDF＋解答解説まで載せて公開しています。さらに体系的に学びたい方には、講師 <strong className="font-medium text-ink-900">森祐太</strong> が書いた参考書『考える力を育てる』シリーズ全 6 冊もご用意しています。
+            <p className="mt-6 sm:mt-7 max-w-xl text-[14.5px] sm:text-[16px] leading-[1.95] sm:leading-[1.85] text-ink-700">
+              ——その壁は、立式の手順を踏み直せば崩せます。<br className="hidden sm:block" />
+              力学・電磁気・波動・熱・原子の演習プリントを、解答と解説までセットで無料で公開しています。気になる単元から、開いてください。
             </p>
 
             <div className="mt-7 sm:mt-9 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
@@ -104,7 +104,7 @@ export function Hero() {
               >
                 <span className="relative z-10 inline-flex items-center gap-2">
                   <FileText className="h-4 w-4 opacity-90" aria-hidden />
-                  演習プリントを開く
+                  演習プリントを開く（無料）
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                 </span>
                 <span
@@ -126,7 +126,7 @@ export function Hero() {
             <ul className="mt-5 sm:mt-6 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11.5px] sm:text-[12px] text-ink-600">
               <li className="inline-flex items-center gap-1.5">
                 <span aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-forest" />
-                完全無料・申込不要
+                完全無料・登録不要
               </li>
               <li className="inline-flex items-center gap-1.5">
                 <span aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-brand" />
@@ -138,16 +138,16 @@ export function Hero() {
               </li>
             </ul>
 
-            {/* soft path CTA — 「一人では難しい人だけ」へ控えめに学習サポートを案内 */}
-            <p className="mt-4 sm:mt-5 text-[12.5px] sm:text-[13px] text-ink-500">
-              一人で進めるのが難しい方は{" "}
+            {/* soft path CTA — 体験授業を最弱トーンで残す。プリント・参考書のあとの選択肢として明示 */}
+            <p className="mt-4 sm:mt-5 text-[12.5px] sm:text-[13px] text-ink-500 leading-[1.85]">
+              それでも 1 問で止まる方には、{" "}
               <Link
-                href="/courses"
-                className="font-medium text-ink-800 underline decoration-ink-900/20 underline-offset-[5px] transition hover:text-brand-deep hover:decoration-brand-deep/40"
+                href="/trial"
+                className="font-medium text-warm-deep underline decoration-warm/30 underline-offset-[5px] transition hover:decoration-warm-deep"
               >
-                学習サポート
+                60 分の体験授業（¥3,000）
               </Link>
-              （個別指導・体験授業）もご用意しています
+              もあります。
             </p>
           </div>
 

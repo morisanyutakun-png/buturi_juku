@@ -6,16 +6,16 @@ import { books, type Book } from "@/data/books";
 export function BookShowcase() {
   return (
     <Section
-      eyebrow="OUR TEACHING MATERIALS — 講師制作の物理教材で授業"
-      title={<>森祐太が作成した物理教材で、<br className="sm:hidden" />構造から学ぶ。</>}
-      description="授業では、森祐太が自作した高校物理教材を活用します。力学・電磁気・波動・熱力学・原子を、公式暗記ではなく『なぜその式を立てるのか』から整理。授業内容と AI 復習プリントが自然につながる構成です。"
+      eyebrow="OUR BOOKS — 著者執筆の参考書 6 冊"
+      title={<>森祐太が書いた参考書で、<br className="sm:hidden" />構造から読み通す。</>}
+      description="演習プリントが「1 問単位」なら、こちらは「全分野を 1 冊で」読み通すための本です。『考える力を育てる』シリーズ全 6 冊。力学・電磁気・波動・熱・原子を、公式暗記ではなく『なぜその式を立てるのか』から整理しています。プリントと同じ枠組みで書かれているので、続きとしてそのまま読めます。"
       className="relative overflow-hidden bg-gradient-to-b from-cream via-cream to-cream-muted text-ink-900 border-y border-ink-900/10"
     >
       <ul className="grid gap-2 sm:gap-4 mb-10 sm:mb-16 sm:grid-cols-2">
         {[
           "市販教材だけに依存しない",
-          "講師自作教材で一貫指導",
-          "授業内容と AI復習プリントがつながる",
+          "プリントと同じ枠組みで全分野を読み通せる",
+          "学習サポート（個別指導）の指定教材としても利用",
           "つまずきを教材側からも補強",
         ].map((b) => (
           <li

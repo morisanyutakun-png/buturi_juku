@@ -11,7 +11,7 @@ import { siteConfig } from "@/data/site";
 export const metadata: Metadata = buildMetadata({
   title: "お問い合わせ ｜ Solvora Learning Lab",
   description:
-    "Solvora Learning Lab（高校物理・理系個別指導 / AI復習プリント付き）へのお問い合わせはこちらから。体験授業のお申し込み、受講相談、料金に関するご質問などをお受けしています（高校物理専門塾としての指導継続）。",
+    "Solvora Learning Lab へのお問い合わせはこちらから。プリントや参考書で進めても詰まる方向けの体験授業お申し込み、学習サポートの受講相談、料金に関するご質問などをお受けしています。",
   path: "/contact",
   keywords: [
     "Solvora Learning Lab お問い合わせ",
@@ -139,7 +139,7 @@ export default function ContactPage() {
         data={webPageJsonLd({
           name: "お問い合わせ ｜ Solvora Learning Lab",
           description:
-            "Solvora Learning Lab が、体験授業の申し込み・受講相談・料金に関する質問を受け付けるお問い合わせページです（高校物理専門塾としての指導継続）。",
+            "Solvora Learning Lab が、体験授業の申し込み・学習サポートの受講相談・料金に関する質問を受け付けるお問い合わせページです。",
           path: "/contact",
         })}
       />

@@ -14,21 +14,19 @@ import { books } from "@/data/books";
 import { instructor } from "@/data/instructor";
 
 export const metadata: Metadata = buildMetadata({
-  title: "主宰講師 森祐太 — Solvora Learning Lab 講師紹介",
+  title: "講師・著者 森祐太 — Solvora Learning Lab の教材をつくっている人",
   description:
-    "Solvora Learning Lab（高校物理専門塾としての指導も継続）の主宰講師・森祐太(名古屋大学 工学部 電気電子情報工学科)のプロフィール。共通テスト物理満点、二次試験9割、力学・電磁気・熱力学・波動・原子の書籍執筆実績、高校物理の個別指導経験など、講師の強みと指導スタンスをご紹介します。",
+    "Solvora Learning Lab の演習プリント全教材と参考書『考える力を育てる』シリーズを書いている森祐太（名古屋大学 工学部 電気電子情報工学科）のプロフィール。共通テスト物理満点、二次試験 9 割、力学・電磁気・熱・波動・原子の参考書 6 冊執筆、高校物理の個別指導経験など、教材設計の背景と指導スタンスをご紹介します。",
   path: "/teacher",
   keywords: [
-    "Solvora Learning Lab 講師",
-    "高校物理専門塾 講師",
-    "高校物理 講師",
     "森祐太 物理",
+    "高校物理 著者",
     "名古屋大学 物理 講師",
     "考える力を育てる 力学",
     "考える力を育てる 電磁気学",
     "考える力を育てる 熱力学",
     "考える力を育てる 波動 原子",
-    "高校物理 書籍",
+    "高校物理 参考書",
     "大学受験物理 講師",
   ],
   category: "education",
@@ -38,7 +36,7 @@ export default function TeacherPage() {
   return (
     <>
       <PageHero
-        eyebrow="INSTRUCTOR — 主宰講師 森祐太"
+        eyebrow="INSTRUCTOR — 教材をつくっている人"
         watermark="師"
         tone="warm"
         breadcrumb={[
@@ -47,11 +45,11 @@ export default function TeacherPage() {
         ]}
         title={
           <>
-            <span className="block">高校物理を</span>
+            <span className="block">プリントも参考書も、</span>
             <span className="block">
-              『<span className="text-warm">言語化</span>』する、
+              『<span className="text-warm">言語化</span>』する人が
             </span>
-            <span className="block">Solvora の講師。</span>
+            <span className="block">全部書きました。</span>
           </>
         }
         description={instructor.leadline}
@@ -60,7 +58,7 @@ export default function TeacherPage() {
       <Section
         eyebrow="PROFILE"
         title="主宰講師のプロフィール"
-        description="名古屋大学で電磁気を専攻しながら、Solvora Learning Lab（高校物理専門塾としての指導も継続）として、大学受験物理・高校物理・理系個別指導にあたっています。"
+        description="名古屋大学で電磁気を専攻しながら、Solvora Learning Lab の演習プリント全教材と参考書『考える力を育てる』シリーズを自ら執筆。プリントや参考書で進めても詰まる方への学習サポート（個別指導）も森祐太が直接担当しています。"
       >
         <div className="grid gap-10 rounded-3xl border border-ink-900/10 bg-gradient-to-br from-paper-soft via-white to-paper-soft p-8 md:grid-cols-[1fr_1.3fr] md:p-14">
           <InstructorPortrait />
@@ -210,7 +208,8 @@ export default function TeacherPage() {
         </div>
       </Section>
 
-      {/* Book showcase */}
+      {/* Book showcase — `#books` アンカーは /teacher#books として外部から参照される */}
+      <div id="books" className="scroll-mt-24" />
       <BookShowcase />
 
       <Section
@@ -304,9 +303,11 @@ export default function TeacherPage() {
       </Section>
 
       <CtaBlock
-        eyebrow="MEET YOUR INSTRUCTOR"
-        title="まずは60分、対話してみませんか。"
-        description="体験授業は主宰講師が直接担当します。学習戦略の提案までその場で行います。"
+        eyebrow="MEET YOUR AUTHOR — 教材を書いている人と話す"
+        title="まずは教材を読んで、必要なら 60 分、対話してみませんか。"
+        description="演習プリントと参考書 6 冊で進めて、それでも詰まる単元があれば、教材を書いた本人が直接担当する 60 分の体験授業をご用意しています。"
+        primary={{ label: "演習プリントを開く", href: "/prints" }}
+        secondary={{ label: "体験授業を申し込む", href: "/contact?topic=trial#contact-form" }}
       />
 
       <JsonLd
@@ -329,7 +330,7 @@ export default function TeacherPage() {
       <JsonLd
         id="ld-webpage-teacher"
         data={webPageJsonLd({
-          name: "主宰講師 森祐太 — Solvora Learning Lab 講師紹介",
+          name: "講師・著者 森祐太 — Solvora Learning Lab の教材をつくっている人",
           description: instructor.leadline,
           path: "/teacher",
         })}

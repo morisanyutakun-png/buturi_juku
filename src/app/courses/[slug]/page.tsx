@@ -35,13 +35,13 @@ export async function generateMetadata(
   const course = getCourseBySlug(slug);
   if (!course) return {};
   return buildMetadata({
-    title: `${course.title} ｜ Solvora Learning Lab の講座`,
-    description: `Solvora Learning Lab（高校物理・理系個別指導）の${course.title}。${course.subtitle} — ${course.summary}`,
+    title: `${course.title} ｜ Solvora Learning Lab の学習サポート`,
+    description: `Solvora Learning Lab の学習サポートのうち、${course.title}。${course.subtitle} — ${course.summary}`,
     path: `/courses/${course.slug}`,
     keywords: [
-      "Solvora Learning Lab",
-      "高校物理専門塾",
-      `高校物理専門塾 ${course.category}`,
+      "Solvora Learning Lab 学習サポート",
+      "高校物理 個別指導",
+      `高校物理 個別指導 ${course.category}`,
       course.title,
       course.subtitle,
       course.category,
@@ -75,7 +75,7 @@ export default async function CourseDetailPage({
         <Breadcrumb
           items={[
             { label: "ホーム", href: "/" },
-            { label: "講座一覧", href: "/courses" },
+            { label: "学習サポート", href: "/courses" },
             { label: course.title, href: `/courses/${course.slug}` },
           ]}
         />
@@ -230,7 +230,7 @@ export default async function CourseDetailPage({
                     {
                       step: "04",
                       title: "ご都合の日に受講開始",
-                      body: "決定した日程で授業を実施。毎週の授業で理解度を確認しながら、解けなかった1問は AI（REM）で復習プリント化し最後まで伴走します。",
+                      body: "決定した日程で授業を実施。毎週の授業で理解度を確認しながら、詰まった単元は AI（REM）で復習プリント化し最後まで伴走します。",
                     },
                   ].map((s) => (
                     <li
@@ -372,7 +372,7 @@ export default async function CourseDetailPage({
         id={`ld-breadcrumb-course-${course.slug}`}
         data={breadcrumbJsonLd([
           { name: "ホーム", href: "/" },
-          { name: "講座一覧", href: "/courses" },
+          { name: "学習サポート", href: "/courses" },
           { name: course.title, href: `/courses/${course.slug}` },
         ])}
       />

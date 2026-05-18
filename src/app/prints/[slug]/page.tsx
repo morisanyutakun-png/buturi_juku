@@ -185,32 +185,44 @@ export default async function PrintDetailPage({
           </Container>
         </section>
 
-        {/* Inline CTA — 体験授業（単一） */}
+        {/* Inline CTA — このプリントの単元から、note・参考書・体験授業へ */}
         <Container className="pb-12 sm:pb-16">
           <aside className="mx-auto max-w-3xl rounded-2xl border border-brand/25 bg-gradient-to-br from-brand-bg/60 via-white to-paper p-6 sm:p-8">
             <p className="text-[10px] tracking-[0.28em] uppercase text-brand-deep">
               NEXT STEP
             </p>
             <h3 className="mt-3 font-serif text-[1.1rem] sm:text-[1.25rem] leading-snug text-ink-900">
-              解いて詰まったところを、60 分の体験授業で言語化します。
+              これが効いたなら、同じ枠組みの本で全分野を読み通せます。
             </h3>
+            <p className="mt-3 text-[13.5px] leading-[1.85] text-ink-700">
+              『考える力を育てる』シリーズ全 6 冊（力学・電磁気・熱・波動・原子）は、このプリントと同じ「現象 → 立式 → 演習」の順序で書かれています。
+              <br />
+              「もっと類題を解きたい」方は note の有料単発 PDF、「1 問で止まる癖を一緒に見てほしい」方は 60 分の体験授業もあります。
+            </p>
             <div className="mt-5 flex flex-wrap gap-3">
-              <Link
-                href="/trial"
-                className="group inline-flex items-center gap-2 rounded-full bg-warm px-5 py-2.5 text-[13.5px] font-medium text-white transition hover:bg-warm-deep"
-              >
-                体験授業を申し込む
-                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
-              </Link>
               <a
                 href={NOTE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full bg-warm px-5 py-2.5 text-[13.5px] font-medium text-white transition hover:bg-warm-deep"
+              >
+                note の有料プリントを見る
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <Link
+                href="/teacher#books"
                 className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/80 px-5 py-2.5 text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
               >
-                note の類題セットを見る
-                <ArrowUpRight className="h-3.5 w-3.5 opacity-70" />
-              </a>
+                参考書 6 冊を見る
+                <ArrowRight className="h-3.5 w-3.5 opacity-60" />
+              </Link>
+              <Link
+                href="/trial"
+                className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.14] bg-white/80 px-5 py-2.5 text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
+              >
+                体験授業を見る
+                <ArrowRight className="h-3.5 w-3.5 opacity-50" />
+              </Link>
             </div>
           </aside>
         </Container>
