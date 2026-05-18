@@ -2,19 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 
 /**
  * Mobile bottom sticky CTA。
  *
  * 表示条件:
  *   - スマホ（md未満）のみ
- *   - ホーム `/` ではページ内 CTA が複数あるため非表示（邪魔感の解消）
+ *   - ホーム `/` および /prints ではページ内に CTA があるため非表示
  *   - /trial /contact /thanks など、ページ自体がコンバージョン場の場合も非表示
  *
  * デザイン:
- *   - 「相談する」サブボタンを撤去し、単一 CTA（体験申込）のみに簡素化。
- *   - 高さ・パディングを詰めて、コンテンツ閲覧の妨げを最小化。
+ *   - 教材棚 (prints) を起点にしたサイト方針に合わせ、CTA は「演習プリントを開く」に統一。
+ *     売り込み感を抑え、教材へのアクセスを最短化する。
  *
  * Pairs with `main { padding-bottom: 64px }` in globals.css so the
  * bar never overlaps page content.
@@ -22,9 +22,9 @@ import { ArrowRight } from "lucide-react";
 export function MobileCtaBar() {
   const pathname = usePathname();
 
-  // 非表示にするパス
   const hidden =
     pathname === "/" ||
+    pathname === "/prints" ||
     pathname === "/trial" ||
     pathname === "/contact" ||
     pathname === "/thanks";
@@ -39,14 +39,15 @@ export function MobileCtaBar() {
     >
       <div className="container py-2">
         <Link
-          href="/contact?topic=trial#contact-form"
+          href="/prints"
           className="group inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full px-3 text-[14px] font-medium text-white shadow-warm active:scale-[0.98] transition-transform"
           style={{
             background:
               "linear-gradient(120deg, #b35f27 0%, #e28040 60%, #f3a86c 100%)",
           }}
         >
-          体験授業を申し込む
+          <FileText className="h-3.5 w-3.5 opacity-90" />
+          演習プリントを開く
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>

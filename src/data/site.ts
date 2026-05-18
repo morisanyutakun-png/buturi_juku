@@ -7,23 +7,23 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https:/
 
 export const siteConfig = {
   name: "Solvora Learning Lab",
-  nameSub: "AI復習プリント付き 理系個別指導",
+  nameSub: "高校物理 演習プリント・解説 PDF・参考書",
   /** SEO 上の二次的な肩書き（本文に自然に混ぜる用）。「高校物理 個別指導」を残す目的で保持。 */
   nameSeo: "高校物理・理系個別指導",
   nameEn: "SOLVORA LEARNING LAB",
   shortName: "Solvora",
   /** 旧ブランド。JSON-LD の alternateName と一部 SEO 文脈にのみ残す。表向きの本文には出さない。 */
   legacyName: "高校物理専門塾 物理の森",
-  tagline: "解けなかった1問を、その子専用の復習プリントに。",
+  tagline: "高校物理を、Web で読める教材棚に。",
   description:
-    "Solvora Learning Lab は、解けなかった1問からその子専用の復習プリントを作る、AI復習プリント付きの高校物理・理系個別指導です。森祐太が作成した物理教材と、類題生成 AI「REM」を活用し、つまずきの原因分析、構造理解、類題演習、復習PDF作成までを一貫して支えます。",
+    "Solvora Learning Lab は、高校物理の演習プリント・解説 PDF・参考書をひとつの棚に並べた学習リソースです。力学・電磁気・波動・熱・原子の典型問題は Web で読めて PDF で印刷でき、講師作の参考書『考える力を育てる』シリーズ全 6 冊で全分野を体系的に読み通せます。一人では進めにくい方には、森祐太による個別の学習サポート（体験授業・分野別講座）も用意しています。",
   url: siteUrl,
   locale: "ja_JP",
   // og:image / twitter:image are auto-generated from src/app/opengraph-image.tsx
   // (Next.js file-based convention). The path below is used by JSON-LD
   // logo / primaryImageOfPage references — Solvora 公式ロックアップ PNG を使用。
   ogImage: "/brand/solvora-lockup.png",
-  ogImageAlt: "Solvora Learning Lab — AI復習プリント付き 高校物理・理系個別指導",
+  ogImageAlt: "Solvora Learning Lab — 高校物理 演習プリント・解説 PDF・参考書",
   twitter: "@butsuri_no_mori",
   version: "2026.05.07",
   author: {
@@ -107,44 +107,38 @@ export const siteConfig = {
 } as const;
 
 export const mainNav: NavItem[] = [
-  { label: "塾について", href: "/about" },
-  { label: "講師紹介", href: "/teacher" },
-  { label: "講座", href: "/courses" },
   { label: "演習プリント", href: "/prints" },
-  { label: "物理学習コラム", href: "/articles" },
+  { label: "参考書", href: "/teacher#books" },
+  { label: "学習コラム", href: "/articles" },
+  { label: "学習サポート", href: "/courses" },
   { label: "よくある質問", href: "/faq" },
   { label: "お問い合わせ", href: "/contact" },
 ];
 
 export const footerNav: { heading: string; items: NavItem[] }[] = [
   {
-    heading: "塾について",
+    heading: "教材棚",
     items: [
-      { label: "塾の理念", href: "/about" },
-      { label: "講師紹介", href: "/teacher" },
-      { label: "講座一覧", href: "/courses" },
+      { label: "演習プリント", href: "/prints" },
+      { label: "参考書 6冊", href: "/teacher#books" },
+      { label: "学習コラム", href: "/articles" },
     ],
   },
   {
-    heading: "目的別",
+    heading: "学習サポート",
     items: [
+      { label: "サポート一覧", href: "/courses" },
+      { label: "体験授業", href: "/trial" },
       { label: "オンライン受講", href: "/online" },
     ],
   },
   {
-    heading: "学ぶ",
+    heading: "塾について",
     items: [
-      { label: "体験授業", href: "/trial" },
-      { label: "演習プリント", href: "/prints" },
-      { label: "物理学習コラム", href: "/articles" },
+      { label: "塾の理念", href: "/about" },
+      { label: "講師紹介", href: "/teacher" },
       { label: "よくある質問", href: "/faq" },
-    ],
-  },
-  {
-    heading: "お問い合わせ",
-    items: [
       { label: "お問い合わせ", href: "/contact" },
-      { label: "体験申込", href: "/trial" },
     ],
   },
   {

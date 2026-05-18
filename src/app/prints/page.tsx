@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowRight, FileText, Layers } from "lucide-react";
+import { BookCoversStrip } from "@/components/book-covers-strip";
 import { CtaBlock } from "@/components/cta-block";
 import { NotePromoSection } from "@/components/note-promo-section";
 import { PrintsHero } from "@/components/prints-hero";
@@ -24,21 +25,24 @@ import {
 } from "@/data/prints";
 
 export const metadata: Metadata = buildMetadata({
-  title: "演習プリント アーカイブ ｜ Web で読める 高校物理 教材集",
+  title: "高校物理 演習プリント アーカイブ ｜ 無料・Web で読める・PDF 印刷 OK",
   description:
-    "Solvora Learning Lab が公開する高校物理の演習プリント アーカイブ。ダウンロードしなくても Web 上でページ画像を読め、解答解説も併載。力学・電磁気の典型問題を、印刷向け PDF・段階解説・SEO 最適化された本文でそのまま提供します。",
+    "高校物理（力学・電磁気・波動・熱・原子）の演習プリントを、Web プレビュー＋印刷向け PDF＋解答解説まで無料で公開。登録も申込も不要。授業・自習・直前演習にそのまま使える、Solvora Learning Lab の教材棚です。さらに参考書『考える力を育てる』シリーズ 6 冊と組み合わせて全分野を体系的に読み通せます。",
   path: "/prints",
   keywords: [
     "高校物理 プリント",
     "高校物理 演習プリント",
+    "高校物理 プリント 無料",
+    "高校物理 問題集 無料",
     "物理 プリント PDF",
     "物理 演習問題 PDF",
-    "高校物理 問題集 無料",
+    "高校物理 解説 PDF",
+    "力学 プリント PDF",
+    "電磁気 プリント PDF",
     "コンデンサ 問題 PDF",
     "単振動 問題 PDF",
-    "REM プリント",
-    "高校物理 教材",
     "高校物理 教材アーカイブ",
+    "高校物理 参考書",
   ],
   category: "education",
 });
@@ -248,13 +252,21 @@ export default function PrintsIndexPage() {
         </section>
       ))}
 
-      {/* 「もっと欲しい人」への分岐 — note の有料プリント送客 */}
+      {/* KDP 参考書 — プリント → 参考書 への自然な橋渡し
+          『考える力を育てる』シリーズ全 6 冊を表紙ストリップで一覧表示。
+          プリントで気に入った単元を、参考書側で体系的に読み通す導線になる。 */}
+      <BookCoversStrip />
+
+      {/* 単発で買える有料プリント — 「もっと欲しい人」への分岐（note） */}
       <NotePromoSection />
 
+      {/* 教材だけで届かない人向けの soft な学習サポート案内 */}
       <CtaBlock
-        eyebrow="STILL STUCK?"
-        title="プリントを解いて『どこで間違えたか』を、一緒に診断します。"
-        description="体験授業ではこのプリントの単元を例に、立式の癖と次の一手をお渡しします。プリントを解いてから来ていただくと、診断の解像度がさらに上がります。"
+        eyebrow="LEARNING SUPPORT — 一人で進めるのが難しい方へ"
+        title="プリントと参考書だけで届かないとき、サポートが残っています。"
+        description="演習プリントと『考える力を育てる』シリーズで進めて、それでも詰まる単元・立式の癖がある方には、森祐太による個別の学習サポートを用意しています。原則は、まずプリントを試してから検討してください。"
+        primary={{ label: "参考書 6 冊を見る", href: "/teacher#books" }}
+        secondary={{ label: "学習サポートを見る", href: "/courses" }}
       />
 
       <JsonLdGraph

@@ -12,7 +12,7 @@ import { GA_ID, GADS_ID } from "@/lib/analytics";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} ｜ AI復習プリント付き 高校物理・理系個別指導`,
+    default: `${siteConfig.name} ｜ 高校物理 演習プリント・解説 PDF・参考書`,
     template: `%s ｜ ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} ｜ AI復習プリント付き 高校物理・理系個別指導`,
+    title: `${siteConfig.name} ｜ 高校物理 演習プリント・解説 PDF・参考書`,
     description: siteConfig.description,
     // og:image is auto-injected by Next.js from src/app/opengraph-image.tsx
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: siteConfig.twitter,
     creator: siteConfig.twitter,
-    title: `${siteConfig.name} ｜ AI復習プリント付き 高校物理・理系個別指導`,
+    title: `${siteConfig.name} ｜ 高校物理 演習プリント・解説 PDF・参考書`,
     description: siteConfig.description,
     // twitter:image is auto-injected from the same opengraph-image convention
   },

@@ -36,14 +36,24 @@ const navMeta: Record<
   string,
   { icon: LucideIcon; tone: "brand" | "warm" | "forest" | "gold"; sub: string }
 > = {
-  "/about": { icon: Sparkles, tone: "brand", sub: "コンセプト・指導方針" },
-  "/teacher": { icon: UserSquare, tone: "warm", sub: "森祐太のプロフィール" },
+  "/prints": {
+    icon: FileText,
+    tone: "warm",
+    sub: "Web で読める / PDF 無料 / 申込不要",
+  },
+  "/teacher#books": {
+    icon: BookOpen,
+    tone: "gold",
+    sub: "『考える力を育てる』シリーズ 6 冊",
+  },
+  "/articles": { icon: BookOpen, tone: "brand", sub: "物理学習コラム" },
   "/courses": {
     icon: GraduationCap,
     tone: "forest",
-    sub: "電磁気集中 / 分野別 / テスト対策",
+    sub: "一人で進めるのが難しい人向け",
   },
-  "/articles": { icon: BookOpen, tone: "brand", sub: "物理学習コラム" },
+  "/about": { icon: Sparkles, tone: "brand", sub: "コンセプト・指導方針" },
+  "/teacher": { icon: UserSquare, tone: "warm", sub: "森祐太のプロフィール" },
   "/faq": { icon: HelpCircle, tone: "gold", sub: "よくある質問" },
   "/contact": { icon: Mail, tone: "warm", sub: "お問い合わせ・相談" },
 };
@@ -191,7 +201,7 @@ export default function MobileNavDrawer({ open, onClose }: Props) {
           </p>
           <div className="mt-3 grid gap-2.5">
             <Link
-              href="/contact?topic=trial#contact-form"
+              href="/prints"
               onClick={onClose}
               className="group inline-flex min-h-[56px] items-center justify-center gap-2 rounded-full px-5 text-[15px] font-medium text-white shadow-warm transition active:scale-[0.99]"
               style={{
@@ -199,24 +209,25 @@ export default function MobileNavDrawer({ open, onClose }: Props) {
                   "linear-gradient(120deg, #b35f27 0%, #e28040 60%, #f3a86c 100%)",
               }}
             >
-              体験授業を申し込む
+              <FileText className="h-4 w-4 opacity-90" aria-hidden />
+              演習プリントを開く
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
-              href="/prints"
+              href="/teacher#books"
               onClick={onClose}
-              className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-warm/35 bg-warm-bg/70 px-5 text-[14px] text-warm-deep transition hover:bg-warm-bg"
+              className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-gold/40 bg-gold-soft/55 px-5 text-[14px] text-gold-deep transition hover:bg-gold-soft/80"
             >
-              <FileText className="h-3.5 w-3.5 opacity-70" aria-hidden />
-              演習プリントを試し読み
+              <BookOpen className="h-3.5 w-3.5 opacity-70" aria-hidden />
+              参考書 6 冊を見る
               <ArrowRight className="h-3.5 w-3.5 opacity-60" />
             </Link>
             <Link
-              href="/online"
+              href="/courses"
               onClick={onClose}
               className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-ink-900/15 bg-white px-5 text-[14px] text-ink-800 transition hover:border-brand hover:text-brand"
             >
-              オンライン受講について
+              学習サポートを見る
               <ArrowRight className="h-3.5 w-3.5 opacity-50" />
             </Link>
           </div>

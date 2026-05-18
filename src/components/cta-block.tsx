@@ -11,11 +11,11 @@ type Props = {
 };
 
 export function CtaBlock({
-  eyebrow = "BOOK A TRIAL SESSION",
-  title = "まずは60分の体験授業で、現在地を見に行きませんか。",
-  description = "残り時間と志望校から逆算した学習戦略を、その場でお渡しします。無理な勧誘は行いません。",
-  primary = { label: "体験授業を申し込む", href: "/contact?topic=trial#contact-form" },
-  secondary = { label: "体験授業の流れを見る", href: "/trial" },
+  eyebrow = "OPEN THE SHELF — 教材棚から始める",
+  title = "まずは演習プリントを開いて、棚の中を覗いてみてください。",
+  description = "登録も申込も不要、すべて無料。力学・電磁気・波動・熱・原子の典型問題と解説を Web で読めます。一人で詰まる単元だけ、学習サポートを使ってください。",
+  primary = { label: "演習プリントを開く", href: "/prints" },
+  secondary = { label: "学習サポートを見る", href: "/courses" },
 }: Props) {
   return (
     <section className="relative isolate overflow-hidden border-y border-ink-900/[0.06]">

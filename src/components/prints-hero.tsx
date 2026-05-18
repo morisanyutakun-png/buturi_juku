@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight, BookOpen, FileDown, FileText, Sparkles } from "lucide-react";
 import { Container } from "@/components/container";
 import { Breadcrumb } from "@/components/breadcrumb";
 import type { Print } from "@/data/prints";
@@ -92,37 +93,74 @@ export function PrintsHero({ cards, total }: Props) {
                 className="pointer-events-none absolute inset-0 rounded-[1.5rem] ring-1 ring-inset ring-white/60"
               />
 
-              <p className="relative text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.26em] sm:tracking-[0.3em] text-warm-deep">
-                演習プリント
+              <p className="relative inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.26em] sm:tracking-[0.3em] text-warm-deep">
+                <span
+                  aria-hidden
+                  className="inline-block h-1.5 w-1.5 rounded-full bg-warm"
+                />
+                PRINTS — 高校物理 演習プリント アーカイブ
               </p>
 
               <h1
-                className="relative mt-4 sm:mt-5 font-serif text-[2.4rem] sm:text-[2.9rem] lg:text-[3.2rem] leading-[1.1] tracking-[-0.022em] text-ink-900"
+                className="relative mt-4 sm:mt-5 font-serif text-[2.3rem] sm:text-[2.85rem] lg:text-[3.15rem] leading-[1.1] tracking-[-0.022em] text-ink-900"
                 style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}
               >
-                Web で読める、<br />
-                <span className="text-warm-deep">高校物理 演習集。</span>
+                高校物理プリント、
+                <br />
+                <span className="text-warm-deep">すべて Web で読めます。</span>
               </h1>
 
               <p
-                className="relative mt-5 sm:mt-6 text-[14px] sm:text-[15px] leading-[1.9] text-ink-700"
+                className="relative mt-5 sm:mt-6 text-[14px] sm:text-[15.5px] leading-[1.9] text-ink-700"
                 style={{ lineBreak: "strict", wordBreak: "normal", overflowWrap: "anywhere" }}
               >
-                典型問題を、PDF と Web プレビューのセットで公開しています。授業・自習・直前演習にそのまま使えます。
+                力学・電磁気・波動・熱・原子の典型問題を、
+                <strong className="font-medium text-ink-900">Web プレビュー＋印刷向け PDF＋解答解説</strong>
+                までセットで公開しています。授業・自習・直前演習にそのまま使える教材棚です。<strong className="font-medium text-ink-900">登録も申込も不要、すべて無料。</strong>
               </p>
 
-              <div className="relative mt-6 sm:mt-7 flex items-end justify-between gap-3">
-                <p className="font-mono text-[11px] tracking-[0.18em] text-ink-500">
-                  全 {total} 教材 / 順次追加
-                </p>
+              {/* 価値訴求バー — 着地ユーザーが「何が手に入るか」を 1 行で把握できる */}
+              <ul className="relative mt-5 sm:mt-6 grid grid-cols-2 gap-1.5 sm:gap-2">
+                {[
+                  { icon: FileText, label: "Web で読める" },
+                  { icon: FileDown, label: "PDF 印刷 OK" },
+                  { icon: Sparkles, label: "解答・解説つき" },
+                  { icon: BookOpen, label: "登録不要 / 無料" },
+                ].map((x) => (
+                  <li
+                    key={x.label}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-ink-900/[0.08] bg-white/85 px-3 py-1.5 text-[11.5px] sm:text-[12px] text-ink-700 backdrop-blur"
+                  >
+                    <x.icon
+                      className="h-3 w-3 shrink-0 text-warm-deep"
+                      aria-hidden
+                      strokeWidth={1.7}
+                    />
+                    {x.label}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="relative mt-6 sm:mt-7 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-3">
                 <a
                   href="#materials"
-                  className="inline-flex items-center gap-1.5 text-[12.5px] text-ink-800 transition hover:text-warm-deep"
+                  className="group inline-flex items-center justify-center gap-1.5 rounded-full bg-ink-900 px-5 py-3 text-[13.5px] font-medium text-paper transition hover:bg-ink-800"
                 >
-                  教材を見る
-                  <span aria-hidden>↓</span>
+                  教材棚を見る
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                 </a>
+                <Link
+                  href="/teacher#books"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-full border border-ink-900/15 bg-white/80 px-5 py-3 text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
+                >
+                  <BookOpen className="h-3.5 w-3.5 opacity-70" aria-hidden />
+                  参考書 6 冊も見る
+                </Link>
               </div>
+
+              <p className="relative mt-4 font-mono text-[11px] tracking-[0.18em] text-ink-500">
+                全 {total} 教材 / 順次追加
+              </p>
             </div>
           </div>
 

@@ -26,20 +26,20 @@ export function SiteHeader() {
 
         <div className="hidden md:flex items-center gap-2">
           <Link
-            href="/contact"
+            href="/courses"
             className="rounded-full px-4 py-2 text-[13px] text-ink-700 transition hover:bg-ink-900/[0.04] hover:text-ink-900"
           >
-            お問い合わせ
+            学習サポート
           </Link>
           <Link
-            href="/trial"
+            href="/prints"
             className="group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-medium text-paper shadow-warm transition duration-200 hover:brightness-105"
             style={{
               background:
                 "linear-gradient(120deg, #b35f27 0%, #e28040 60%, #f3a86c 100%)",
             }}
           >
-            体験授業
+            演習プリント
             <span
               aria-hidden
               className="inline-block transition-transform duration-300 group-hover:translate-x-0.5"

@@ -75,7 +75,7 @@ export function ComparisonTable() {
     <Section
       eyebrow="COMPARISON"
       title="Solvora Learning Lab と、他の選択肢との違い"
-      description="AI復習プリント付き 高校物理・理系個別指導は、総合塾・独学・映像授業と何が違うのか。比較表でご確認ください（高校物理専門塾としての指導継続）。"
+      description="教材棚（無料プリント＋参考書 6 冊）を主軸に、必要な人だけ個別サポートを使う Solvora 流の学び方を、総合塾・独学・映像授業と並べて比較します。"
       className="bg-paper-soft"
     >
       <div className="overflow-hidden rounded-2xl border border-ink-900/10 bg-white shadow-soft">

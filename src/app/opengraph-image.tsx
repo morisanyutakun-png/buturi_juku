@@ -144,7 +144,7 @@ export default function OpengraphImage() {
                 display: "flex",
               }}
             >
-              AI復習プリント付き 高校物理・理系個別指導
+              高校物理 演習プリント・解説 PDF・参考書
             </div>
           </div>
         </div>
@@ -166,7 +166,7 @@ export default function OpengraphImage() {
               display: "flex",
             }}
           >
-            REPAIR EVERY MISSED PROBLEM
+            OPEN THE SHELF — 教材棚を、ひらく
           </div>
           <div
             style={{
@@ -180,14 +180,13 @@ export default function OpengraphImage() {
             }}
           >
             <div style={{ display: "flex" }}>
-              解けなかった
-              <span style={{ color: "#1f5aa6" }}>1問</span>
-              を、
+              高校物理を、
+              <span style={{ color: "#1f5aa6" }}>棚で読む</span>
+              。
             </div>
             <div style={{ display: "flex" }}>
-              その子専用の
-              <span style={{ color: "#b35f27" }}>復習プリント</span>
-              に。
+              <span style={{ color: "#b35f27" }}>プリント・解説・参考書</span>
+              を、ここに。
             </div>
           </div>
         </div>
@@ -218,7 +217,7 @@ export default function OpengraphImage() {
                 display: "flex",
               }}
             >
-              講師がつまずきを確認し、AI（REM）で類題・解答・復習PDFを作成します。
+              力学・電磁気・波動・熱・原子の演習プリントと解説 PDF を、Web プレビュー＋印刷向け PDF で無料公開。参考書 6 冊と合わせて、自分のペースで読み通せます。
             </div>
             <div
               style={{
@@ -229,7 +228,7 @@ export default function OpengraphImage() {
                 display: "flex",
               }}
             >
-              全国オンライン対応 / 1対1個別指導 / 入塾金0円
+              FREE / WEB & PDF / 参考書 6冊 / 必要な人だけ学習サポート
             </div>
           </div>
 
@@ -253,7 +252,7 @@ export default function OpengraphImage() {
                 display: "flex",
               }}
             >
-              TRIAL · 60 MIN
+              PRINTS · FREE
             </div>
             <div
               style={{
@@ -267,7 +266,7 @@ export default function OpengraphImage() {
                 display: "flex",
               }}
             >
-              AI復習プリント付き
+              教材棚 / Web で読める
             </div>
           </div>
         </div>
