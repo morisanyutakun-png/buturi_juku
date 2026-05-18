@@ -26,10 +26,10 @@ export function SiteHeader() {
 
         <div className="hidden md:flex items-center gap-2">
           <Link
-            href="/courses"
-            className="rounded-full px-4 py-2 text-[13px] text-ink-700 transition hover:bg-ink-900/[0.04] hover:text-ink-900"
+            href="/trial"
+            className="rounded-full border border-warm/35 bg-warm-bg/60 px-4 py-2 text-[13px] font-medium text-warm-deep transition hover:bg-warm-bg"
           >
-            学習サポート
+            体験授業
           </Link>
           <Link
             href="/prints"

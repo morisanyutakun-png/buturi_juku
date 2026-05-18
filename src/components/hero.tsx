@@ -138,17 +138,20 @@ export function Hero() {
               </li>
             </ul>
 
-            {/* soft path CTA — 体験授業を最弱トーンで残す。プリント・参考書のあとの選択肢として明示 */}
-            <p className="mt-4 sm:mt-5 text-[12.5px] sm:text-[13px] text-ink-500 leading-[1.85]">
-              それでも 1 問で止まる方には、{" "}
+            {/* trial mini-chip — プリント・参考書の "あと一歩" として体験授業を視認性高めに置く。
+                メイン CTA より小さく、しかしテキストリンクよりは明確に見える独立した chip。 */}
+            <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
+              <span className="text-[12px] sm:text-[12.5px] text-ink-600 leading-tight">
+                それでも 1 問で止まる方は——
+              </span>
               <Link
-                href="/trial"
-                className="font-medium text-warm-deep underline decoration-warm/30 underline-offset-[5px] transition hover:decoration-warm-deep"
+                href="#trial-spotlight"
+                className="group inline-flex items-center gap-1.5 rounded-full border border-warm-deep/35 bg-warm-bg/85 px-3 py-1.5 text-[12px] sm:text-[12.5px] font-medium text-warm-deep transition hover:border-warm-deep/55 hover:bg-warm-bg"
               >
-                60 分の体験授業（¥3,000）
+                体験授業（60 分・¥3,000）
+                <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" />
               </Link>
-              もあります。
-            </p>
+            </div>
           </div>
 
           {/* REM print mockup — モバイル/PC を 1 つの DOM に統合。

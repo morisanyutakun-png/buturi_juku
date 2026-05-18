@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { footerNav, siteConfig } from "@/data/site";
 import { BrandMark } from "@/components/brand-mark";
@@ -40,12 +41,14 @@ export function SiteFooter() {
                     aria-label="森祐太の note を新しいタブで開く"
                     className="group inline-flex min-h-[40px] items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/80 px-4 py-2 text-[13px] sm:text-[13px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
                   >
-                    <span
+                    <Image
+                      src="/brand/note-icon.webp"
+                      width={24}
+                      height={24}
+                      alt=""
                       aria-hidden
-                      className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-ink-900/15 bg-white font-serif text-[11px] tracking-[-0.02em] text-ink-900"
-                    >
-                      n
-                    </span>
+                      className="h-6 w-6 rounded-full border border-ink-900/15 bg-white p-[3px]"
+                    />
                     <span className="font-medium">note</span>
                     <span className="text-ink-400">/ yuta_mori_ind</span>
                     <ArrowUpRight

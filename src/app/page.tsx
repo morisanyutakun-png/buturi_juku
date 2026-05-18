@@ -367,78 +367,72 @@ export default function HomePage() {
         <SafetyPolicySection />
       </div>
 
-      {/* ARTICLES — 学習コラム（プリント・参考書を読み解くための補助記事） */}
+      {/* ARTICLES — コンパクトな見出しリスト（desktop only）
+          学習コラムは SEO とブランドの厚みのため残すが、フル幅 4 カードはトップでは重い。
+          見出し＋日付の控えめなリスト + 全件リンクに圧縮し、必要な人だけが辿れる形にする。 */}
       <div className="hidden cv-auto sm:block">
-      <Section
-        eyebrow="INSIGHTS"
-        title="物理学習コラム"
-        description="プリントと参考書を読み解くための補助記事です。単元の考え方・解法の構造を、すこし長めに掘り下げています。"
-        className="bg-paper"
-      >
-        <div className="grid gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {latestArticles.map((a) => {
-            const isExternal = Boolean(a.externalUrl);
-            const href = articleHref(a);
-            const className =
-              "group flex h-full flex-col justify-between rounded-2xl sm:rounded-3xl border border-ink-900/[0.07] bg-white/85 p-5 sm:p-7 shadow-soft backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink-900/[0.12] hover:shadow-card";
-
-            const inner = (
-              <>
-                <div>
-                  <div className="flex items-center gap-2 text-[10px] sm:text-[10px] font-medium tracking-[0.18em] sm:tracking-[0.28em] uppercase text-brand-deep">
-                    <span>{a.category}</span>
-                    {isExternal && (
-                      <span className="inline-flex items-center gap-0.5 rounded-full border border-ink-900/[0.08] bg-paper px-1.5 py-0.5 text-[9px] sm:text-[8.5px] tracking-[0.14em] sm:tracking-[0.18em] text-ink-500 normal-case">
-                        yuta-eng
-                        <ArrowUpRight className="h-2 w-2" />
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="mt-3 sm:mt-4 font-serif text-[1rem] sm:text-[1.05rem] leading-[1.45] sm:leading-snug tracking-[-0.005em] text-ink-900">
-                    {a.title}
-                  </h3>
-                  <p className="mt-2.5 sm:mt-3.5 text-[12.5px] sm:text-[13px] leading-[1.75] sm:leading-[1.75] text-ink-600 line-clamp-4">
-                    {a.description}
-                  </p>
-                </div>
-                <p className="mt-6 inline-flex items-center gap-1.5 text-[13.5px] sm:text-[12px] text-ink-900 transition-transform duration-300 group-hover:translate-x-0.5">
-                  高校物理の学習コラムを読む
-                  {isExternal ? (
-                    <ArrowUpRight className="h-3 w-3" />
-                  ) : (
-                    <ArrowRight className="h-3 w-3" />
-                  )}
+        <section aria-labelledby="articles-teaser-heading" className="border-y border-ink-900/[0.06] bg-paper">
+          <div className="container py-12 sm:py-16">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+              <div>
+                <p className="flex flex-wrap items-center gap-x-2 text-[10px] font-medium uppercase tracking-[0.28em] text-brand-deep before:inline-block before:h-px before:w-5 before:bg-current before:opacity-50">
+                  INSIGHTS — 物理学習コラム
                 </p>
-              </>
-            );
-
-            return isExternal ? (
-              <a
-                key={a.slug}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={className}
+                <h2
+                  id="articles-teaser-heading"
+                  className="mt-3 font-serif text-[1.45rem] sm:text-[1.7rem] leading-[1.35] tracking-[-0.012em] text-ink-900"
+                >
+                  プリントの裏側を、すこし長めに。
+                </h2>
+              </div>
+              <Link
+                href="/articles"
+                className="self-start inline-flex items-center gap-1.5 rounded-full border border-ink-900/15 bg-white/80 px-4 py-2.5 text-[13px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white sm:self-end"
               >
-                {inner}
-              </a>
-            ) : (
-              <Link key={a.slug} href={href} className={className}>
-                {inner}
+                すべてのコラムを見る
+                <ArrowRight className="h-3.5 w-3.5 opacity-60" />
               </Link>
-            );
-          })}
-        </div>
-        <div className="mt-12 text-center">
-          <Link
-            href="/articles"
-            className="inline-flex items-center gap-2 rounded-full border border-ink-900/[0.12] bg-white/70 px-6 py-3.5 text-[13.5px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white"
-          >
-            高校物理の学習コラム一覧
-            <ArrowRight className="h-3.5 w-3.5 opacity-60" />
-          </Link>
-        </div>
-      </Section>
+            </div>
+
+            <ul className="mt-6 sm:mt-7 divide-y divide-ink-900/[0.07] rounded-2xl border border-ink-900/[0.07] bg-white/85 backdrop-blur-sm">
+              {latestArticles.slice(0, 4).map((a) => {
+                const isExternal = Boolean(a.externalUrl);
+                const href = articleHref(a);
+                const inner = (
+                  <div className="group flex items-center gap-4 px-5 py-4 sm:px-6 sm:py-4 transition hover:bg-paper-soft/60">
+                    <span className="inline-flex w-[78px] shrink-0 text-[9.5px] font-medium uppercase tracking-[0.22em] text-brand-deep">
+                      {a.category}
+                    </span>
+                    <span className="flex-1 min-w-0">
+                      <span className="block font-serif text-[14px] sm:text-[14.5px] leading-[1.55] text-ink-900 line-clamp-1">
+                        {a.title}
+                      </span>
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[11.5px] text-ink-500 shrink-0">
+                      {a.readingTime}
+                      {isExternal ? (
+                        <ArrowUpRight className="h-3 w-3 opacity-60 transition group-hover:-translate-y-0.5" />
+                      ) : (
+                        <ArrowRight className="h-3 w-3 opacity-60 transition group-hover:translate-x-0.5" />
+                      )}
+                    </span>
+                  </div>
+                );
+                return (
+                  <li key={a.slug}>
+                    {isExternal ? (
+                      <a href={href} target="_blank" rel="noopener noreferrer">
+                        {inner}
+                      </a>
+                    ) : (
+                      <Link href={href}>{inner}</Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
       </div>
 
       {/* 最終 CTA（プリント主導の copy で締める） */}
