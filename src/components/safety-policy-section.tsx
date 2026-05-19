@@ -71,11 +71,11 @@ export function SafetyPolicySection() {
             id="safety-heading"
             className="mt-4 sm:mt-6 font-serif text-[1.6rem] sm:text-[2.1rem] leading-[1.4] sm:leading-[1.25] tracking-[-0.012em] text-ink-900"
           >
-            「申し込んで大丈夫かな」を、<br className="sm:hidden" />
-            <span className="text-forest-deep">運用ポリシー</span>で消します。
+            「申し込んで大丈夫かな」<br className="sm:hidden" />
+            <span className="text-forest-deep">——と思うあなたへ</span>。
           </h2>
           <p className="mt-4 sm:mt-5 text-[14px] sm:text-[15px] leading-[1.9] sm:leading-[1.85] text-ink-700">
-            個人運営のオンライン塾を選ぶときに、特に気になる「ツール」「お金」「トラブル」の3点を、最初に明示します。
+            個人運営のオンライン塾を選ぶとき、気になるのは「使うツール」「お金まわり」「トラブル時の対応」だと思います。先に、この 3 点をはっきりさせておきます。
           </p>
         </div>
 
