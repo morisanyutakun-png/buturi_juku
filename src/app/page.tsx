@@ -147,6 +147,10 @@ export default function HomePage() {
         <BookCoversStrip />
       </div>
 
+      <div className="cv-auto">
+        <BookShowcase />
+      </div>
+
       {/* 2. 無料の演習プリント — サブ入口 */}
       <div className="cv-auto">
         <PrintsTeaser />
@@ -260,10 +264,9 @@ export default function HomePage() {
         </Section>
       </div>
 
-      {/* PULL QUOTE / BookShowcase（フル詳細）はデスクトップのみ */}
+      {/* PULL QUOTEはデスクトップのみ */}
       <div className="hidden cv-auto sm:block">
         <PullQuote />
-        <BookShowcase />
       </div>
 
       {/* INSTRUCTOR — 「教材を作っている人」として、プリント・参考書の直後に紹介 */}
