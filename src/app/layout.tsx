@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     ...siteConfig.seo.highIntentKeywords,
   ],
   formatDetection: { email: false, address: false, telephone: false },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,

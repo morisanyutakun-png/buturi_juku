@@ -90,12 +90,12 @@ export function Hero() {
 
             <p className="mt-6 sm:mt-7 max-w-xl text-[14.5px] sm:text-[16px] leading-[1.95] sm:leading-[1.85] text-ink-700">
               ——その壁は、立式の手順を踏み直せば崩せます。<br className="hidden sm:block" />
-              力学・電磁気・波動・熱・原子の演習プリントを、解答と解説までセットで無料で公開しています。気になる単元から、開いてください。
+              力学・電磁気・波動・熱・原子の全5分野について、本質的な理解と立式の型を身につけるための参考書『考える力を育てる』シリーズ全6冊を展開しています。体系的に物理を学びたい方は、ぜひ手に取ってみてください。
             </p>
 
             <div className="mt-7 sm:mt-9 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
               <Link
-                href="/prints"
+                href="/teacher#books"
                 className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-4 text-[15px] sm:text-[14.5px] font-medium text-paper transition duration-300 ease-out min-h-[54px] sm:min-h-0"
                 style={{
                   background:
@@ -103,8 +103,8 @@ export function Hero() {
                 }}
               >
                 <span className="relative z-10 inline-flex items-center gap-2">
-                  <FileText className="h-4 w-4 opacity-90" aria-hidden />
-                  演習プリントを開く（無料）
+                  <BookOpen className="h-4 w-4 opacity-90" aria-hidden />
+                  参考書 6冊を見る
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                 </span>
                 <span
@@ -113,28 +113,28 @@ export function Hero() {
                 />
               </Link>
               <Link
-                href="/teacher#books"
+                href="/prints"
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-ink-900/15 bg-white/80 px-6 py-3.5 text-[14.5px] sm:text-[14px] text-ink-800 backdrop-blur transition hover:border-ink-900/30 hover:bg-white min-h-[52px] sm:min-h-0"
               >
-                <BookOpen className="h-3.5 w-3.5 opacity-70" aria-hidden />
-                参考書 6 冊を見る
+                <FileText className="h-3.5 w-3.5 opacity-70" aria-hidden />
+                無料の演習プリント
                 <ArrowRight className="h-3.5 w-3.5 opacity-60" />
               </Link>
             </div>
 
-            {/* tiny value-prop strip — プリントの「無料・申込不要・解説あり」を端的に明示 */}
+            {/* tiny value-prop strip */}
             <ul className="mt-5 sm:mt-6 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11.5px] sm:text-[12px] text-ink-600">
               <li className="inline-flex items-center gap-1.5">
                 <span aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-forest" />
-                完全無料・登録不要
+                Amazon Kindle にて出版中
               </li>
               <li className="inline-flex items-center gap-1.5">
                 <span aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-brand" />
-                Web で読める / PDF 印刷 OK
+                全5分野を網羅
               </li>
               <li className="inline-flex items-center gap-1.5">
                 <span aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-warm-deep" />
-                解答・解説までセット
+                本質的理解と立式の型
               </li>
             </ul>
 

@@ -139,22 +139,22 @@ export default function HomePage() {
               → 体験授業（60 分） → 信頼 → 講師 → 続けて伴走が必要な方向けの週次サポート → 締め
           ============================================================ */}
 
-      {/* FV — 悩み駆動の H1 + 演習プリント主導 + 体験授業を soft link で残す */}
+      {/* FV — 悩み駆動の H1 + 書籍主導 + 体験授業を soft link で残す */}
       <Hero />
 
-      {/* 1. 無料の演習プリント — メイン入口 */}
+      {/* 1. KDP 参考書 6 冊 — 全分野を体系的に読みたい人へ */}
+      <div className="cv-auto">
+        <BookCoversStrip />
+      </div>
+
+      {/* 2. 無料の演習プリント — サブ入口 */}
       <div className="cv-auto">
         <PrintsTeaser />
       </div>
 
-      {/* 2. note の有料プリント — 単発 PDF 流入 */}
+      {/* 3. note の有料プリント — 単発 PDF 流入 */}
       <div className="cv-auto">
         <NotePromoSection />
-      </div>
-
-      {/* 3. KDP 参考書 6 冊 — 全分野を体系的に読みたい人へ */}
-      <div className="cv-auto">
-        <BookCoversStrip />
       </div>
 
       {/* 4. 体験授業（60 分・¥3,000）— 教材で詰まる方の入口として復活 */}
