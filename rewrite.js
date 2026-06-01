@@ -1,4 +1,6 @@
-import Image from "next/image";
+const fs = require('fs');
+
+const code = `import Image from "next/image";
 import Link from "next/link";
 import { getBookBySlug, books } from "@/data/books";
 import { cn } from "@/lib/utils";
@@ -122,3 +124,6 @@ function BookCover({ book }: { book: (typeof books)[number] }) {
     </Link>
   );
 }
+`;
+
+fs.writeFileSync('src/components/hero-books-visual.tsx', code);
